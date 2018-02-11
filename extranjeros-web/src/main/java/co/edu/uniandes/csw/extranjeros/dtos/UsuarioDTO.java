@@ -42,7 +42,7 @@ public class UsuarioDTO {
     private String usuario;
     private String clave;
     private String correo;
-    private Long celular;
+    private int celular;
 
     //---------------------------------------------------
     // Constructor
@@ -55,7 +55,7 @@ public class UsuarioDTO {
      * @param pCorreo Correo asociado a la cuenta del usuario
      * @param pCelular Celular asociado al usuario
      */
-    public UsuarioDTO(String pUsuario, String pClave, String pCorreo, Long pCelular){
+    public UsuarioDTO(String pUsuario, String pClave, String pCorreo, int pCelular){
         
         usuario = pUsuario;
         clave = pClave;
@@ -119,7 +119,7 @@ public class UsuarioDTO {
     /**
      * @return El numero de un usuario.
      */
-    public Long getCelular(){
+    public int getCelular(){
         return celular;
     }
     
@@ -127,7 +127,7 @@ public class UsuarioDTO {
      * Crea o modifica el numero asociado a un usuario.
      * @param newPhone El nuevo correo. 
      */
-    public void setCelular(Long newPhone){
+    public void setCelular(int newPhone){
         this.celular = newPhone;
     }
     

@@ -152,7 +152,6 @@ public class CityResource {
     
     /**
      * <h1>DELETE /api/cities/{id} : Borrar ciudad por id.</h1>
-     * 
      * <pre>Borra la ciudad con el id asociado recibido en la URL.
      * 
      * Códigos de respuesta:<br>

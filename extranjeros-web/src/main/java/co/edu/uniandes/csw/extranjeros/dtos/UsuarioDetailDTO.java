@@ -20,7 +20,8 @@ public class UsuarioDetailDTO extends UsuarioDTO {
     // Atributos
     //---------------------------------------------------
     
-    private List <String> factura;
+    private List <FacturaDTO> facturas;
+    private List <ViviendaDTO> viviendas;
 
     //---------------------------------------------------
     // Constructor
@@ -35,13 +36,30 @@ public class UsuarioDetailDTO extends UsuarioDTO {
      * @param pCelular Celular asociado al usuario
      * @param pFactura Factura asociada a un Usuario. 
      */
-    public UsuarioDetailDTO(String pUsuario, String pClave, String pCorreo, Long pCelular, List<String> pFactura){
+    public UsuarioDetailDTO(String pUsuario, String pClave, String pCorreo, int pCelular, List<FacturaDTO> pFactura, 
+                            List<ViviendaDTO> pVivienda){
         super(pUsuario, pClave, pCorreo, pCelular);
-        factura = pFactura;
-    }  
+        facturas = pFactura;
+    }
+
+    //---------------------------------------------------
+    // Metodos
+    //---------------------------------------------------
     
-    public List getFactura(){
-        return factura;
+    /**
+     * Obtiene las facturas asociadas al Usuario
+     * @return List. Lista con las facturas.
+     */
+    public List<FacturaDTO> getFactura(){
+        return facturas;
     }
     
+     /**
+     * Obtiene las facturas asociadas al Usuario
+     * @return List. Lista con las facturas.
+     */
+    public List<ViviendaDTO> getViviendas(){
+        return viviendas;
+    }
+
 }
