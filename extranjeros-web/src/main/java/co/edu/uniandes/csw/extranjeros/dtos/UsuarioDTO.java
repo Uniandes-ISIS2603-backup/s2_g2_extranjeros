@@ -45,16 +45,32 @@ public class UsuarioDTO {
     private Long celular;
 
     //---------------------------------------------------
-    // Metodos
+    // Constructor
     //---------------------------------------------------
     
     /**
      * Metodo para modelar el constructor por defecto
+     * @param pUsuario Nombre de usuario (carlManson0506, por ejemplo)
+     * @param pClave Clave asociada a la cuenta del usuario
+     * @param pCorreo Correo asociado a la cuenta del usuario
+     * @param pCelular Celular asociado al usuario
      */
-    public UsuarioDTO(){
+    public UsuarioDTO(String pUsuario, String pClave, String pCorreo, Long pCelular){
         
+        usuario = pUsuario;
+        clave = pClave;
+        correo = pCorreo;
+        celular = pCelular;
     }
-    // Entity
+    
+    //---------------------------------------------------
+    // Metodos
+    //---------------------------------------------------
+    
+    /**
+     * ENTITY
+    */
+    
     /**
      * @return El nombre (nickname en la plataforma) del usuario. 
      */

@@ -14,8 +14,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * <pre>
  *   {
  *      "nombre": String,
- *      "name: string,
- *      "zipcode": string
+ *      "vivienda": Vivienda
  *   }
  * </pre>
  * Por ejemplo una ciudad se representa asi:<br>
@@ -23,17 +22,47 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * <pre>
  * 
  *   {
- *      "id": 91852,
- *      "name: "Bogota, DC",
- *      "zipcode": "121110"
+ *      "nombre": "Carlos Hugo" 
+ *      "vivienda": [ {Vivienda1, Vivienda2,Vivienda3}]  ,
  *   }
  *
  * </pre>
  * @author Jose Pacheco
  */
-public class ArrendatarioDTO {
- 
-
+public class ArrendatarioDTO extends UsuarioDTO {
     
+    //---------------------------------------------------
+    // Atributos
+    //---------------------------------------------------
+    
+    private String nombre;
+  
+    //---------------------------------------------------
+    // Constructor
+    //---------------------------------------------------
+    
+    public ArrendatarioDTO(String pUsuario, String pClave, String pCorreo, Long pCelular, String pNombre){
+        super(pUsuario, pClave, pCorreo, pCelular);
+        nombre = pNombre;
+    }
+    
+    //---------------------------------------------------
+    // Constructor
+    //---------------------------------------------------
+    
+    /**
+     * @return Obtiene el nombre del arrendatario
+     */
+    public String getName(){
+        return nombre;
+    }
+    
+    /**
+     * Crea el nombre asociado a un usuario de tipo arrendatario
+     * @param newName 
+     */
+    public void setName(String newName){
+        this.nombre = newName;
+    }
     
 }
