@@ -19,7 +19,10 @@ public class FacturaDetailDTO extends FacturaDTO {
      * Servicios opcionales ofrecidos por la vivienda.
      */
     private List<ServicioDTO> serviciosExtra;
-    
+    /**
+     * vivienda de la factura.
+     */
+    private ViviendaDTO vivienda;
     /**
      * Constructor por defecto
      */
