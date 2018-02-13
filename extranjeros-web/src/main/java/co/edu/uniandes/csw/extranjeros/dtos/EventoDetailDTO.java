@@ -33,7 +33,7 @@ import java.util.ArrayList;
  */
 public class EventoDetailDTO extends EventoDTO {
     
-    private LugarDeInteresDTO lugarDeInteres;
+    private LugaresDeInteresDTO lugarDeInteres;
     private ArrayList<EstudianteDTO> estudiantes;
 
     /**

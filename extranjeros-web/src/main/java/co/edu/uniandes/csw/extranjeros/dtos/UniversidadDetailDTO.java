@@ -12,8 +12,8 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 public class UniversidadDetailDTO extends UniversidadDTO {
     
     
-    public UniversidadDetailDTO(String pNombre, String pDireccion, String pUbicacionLat, String pUbicacionLon){
-        super(pNombre, pDireccion, pUbicacionLat, pUbicacionLon);
+    public UniversidadDetailDTO(){
+        
     }
     
 }
