@@ -11,8 +11,8 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  */
 public class LugaresDeInteresDetailDTO extends LugaresDeInteresDTO{
     
-    public LugaresDeInteresDetailDTO(String pTipo, String pNombre, String pDireccion, Integer pTelefono, EventoDTO pEventos, String pUbicacionLat, String pUbicacionLon){
-        super(pTipo, pNombre, pDireccion, pTelefono, pEventos, pUbicacionLat, pUbicacionLon);
+    public LugaresDeInteresDetailDTO(){
+        
     }
     
 }

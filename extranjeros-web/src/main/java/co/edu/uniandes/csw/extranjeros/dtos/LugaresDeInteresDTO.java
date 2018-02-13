@@ -34,14 +34,8 @@ public class LugaresDeInteresDTO {
      * @param pUbicacionLon 
      */
     
-    public LugaresDeInteresDTO (String pTipo, String pNombre, String pDireccion, Integer pTelefono, EventoDTO pEventos, String pUbicacionLat, String pUbicacionLon){
-        tipo = pTipo;
-        nombre= pNombre;
-        direccion = pDireccion;
-        telefono = pTelefono;
-        eventos = pEventos;
-        ubicacionLat = pUbicacionLat;
-        ubicacionLon = pUbicacionLon;
+    public LugaresDeInteresDTO (){
+        
         
     }
     

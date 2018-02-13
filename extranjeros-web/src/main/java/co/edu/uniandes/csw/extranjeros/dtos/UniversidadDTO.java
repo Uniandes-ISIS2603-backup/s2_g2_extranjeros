@@ -52,12 +52,9 @@ public class UniversidadDTO {
      * @param pUbicacionLon 
      */
     
-    public UniversidadDTO(String pNombre, String pDireccion, String pUbicacionLat, String pUbicacionLon)
+    public UniversidadDTO()
     {
-        nombre = pNombre;
-        direccion = pDireccion;
-        ubicacionLat = pUbicacionLat;
-        ubicacionLon = pUbicacionLon;
+        
     }
     
     //------------------
