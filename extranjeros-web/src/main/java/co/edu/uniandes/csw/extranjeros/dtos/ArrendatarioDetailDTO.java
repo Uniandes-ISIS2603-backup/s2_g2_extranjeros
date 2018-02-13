@@ -18,7 +18,6 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     // Constructor
     //---------------------------------------------------
     
-    public ArrendatarioDetailDTO(String pUsuario, String pClave, String pCorreo, int pCelular, String pNombre){
-     super(pUsuario, pClave, pCorreo, pCelular, pNombre);
+    public ArrendatarioDetailDTO(){
     }
 }
