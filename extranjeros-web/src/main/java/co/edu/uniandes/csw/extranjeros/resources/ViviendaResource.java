@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.extranjeros.resources;
 import co.edu.uniandes.csw.extranjeros.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.extranjeros.dtos.ViviendaDetailDTO;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
