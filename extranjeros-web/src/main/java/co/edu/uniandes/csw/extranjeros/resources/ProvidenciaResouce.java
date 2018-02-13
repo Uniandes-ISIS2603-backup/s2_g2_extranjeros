@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -25,22 +29,30 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class ProvidenciaResouce {
     
+    @POST
      public ProvidenciaDetailDTO createEstudiante(ProvidenciaDetailDTO providencia) {
         return providencia;
     }
     
+     @GET
     public List<ProvidenciaDetailDTO> getEstudiantes() {
         return new ArrayList<>();
     }
     
+    @GET
+    @Path("{id: \\d+}")
     public ProvidenciaDetailDTO getEstudiante(@PathParam("id") Long id) {
         return null;
     }
     
+    @PUT
+    @Path("{id: \\d+}")
      public ProvidenciaDetailDTO updateEstudiante(@PathParam("id") Long id, ProvidenciaDetailDTO providencia) {
         return providencia;
     }
      
+     @DELETE
+    @Path("{id: \\d+}")
      public void deleteEstudiante(@PathParam("id") Long id) {
         
     }
