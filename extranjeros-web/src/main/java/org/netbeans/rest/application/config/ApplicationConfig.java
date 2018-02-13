@@ -32,9 +32,11 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uniandes.csw.extranjeros.mappers.BusinessLogicExceptionMapper.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.ArrendatarioResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.CityResource.class);
+        resources.add(co.edu.uniandes.csw.extranjeros.resources.EstudianteResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.EventoResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.FacturaResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.LugaresDeInteresResource.class);
+        resources.add(co.edu.uniandes.csw.extranjeros.resources.ProvidenciaResouce.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.ServicioResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.TarjetaResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.UniversidadResource.class);

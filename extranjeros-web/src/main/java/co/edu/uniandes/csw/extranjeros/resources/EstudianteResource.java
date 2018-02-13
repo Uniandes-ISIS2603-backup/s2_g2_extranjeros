@@ -9,13 +9,21 @@ import co.edu.uniandes.csw.extranjeros.dtos.CityDetailDTO;
 import co.edu.uniandes.csw.extranjeros.dtos.EstudianteDetailDTO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
 
 /**
  *
  * @author am.quintero12
  */
+@Path("estudiantes")
+@Produces("application/json")
+@Consumes("application/json")
+@RequestScoped
 public class EstudianteResource {
     
     public EstudianteDetailDTO createEstudiante(EstudianteDetailDTO estudiante) {
