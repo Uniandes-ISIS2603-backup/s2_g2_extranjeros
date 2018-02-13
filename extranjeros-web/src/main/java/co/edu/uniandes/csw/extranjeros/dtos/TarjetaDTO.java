@@ -26,7 +26,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
 
 /**
- * CityDTO Objeto de transferencia de datos de Cities. Los DTO contienen las
+ * TarjetaDTO Objeto de transferencia de datos de Cities. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el
  * servidor.
  * 
@@ -34,50 +34,41 @@ import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
  * <pre>
  *   {
  *      "id": number,
- *      "name: string,
- *      "zipcode": string
+ *      "numero: number,
+ *      "banco": string,
+ *      "fechaCaducidad: string
  *   }
  * </pre>
- * Por ejemplo una ciudad se representa asi:<br>
+ * Por ejemplo una tarjeta se representa asi:<br>
  * 
  * <pre>
  * 
  *   {
  *      "id": 91852,
- *      "name: "Bogota, DC",
- *      "zipcode": "121110"
+ *      "numero: 123456789,
+ *      "banco": "davivienda",
+ *      "fechaCaducidad: "2018/20/02"        
  *   }
  *
  * </pre>
  * @author ISIS2603
  */
-public class CityDTO {
+public class TarjetaDTO {
 
     private Long id;
-    private String name;
-    private String zipcode;
+    private Long numero;
+    private String banco;
+    private String fechaCaducidad;
 
     /**
      * Constructor por defecto
      */
-    public CityDTO() {
+    public TarjetaDTO() {
     }
 
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param city: Es la entidad que se va a convertir a DTO
-     */
-    public CityDTO(CityEntity city) {
-        this.id = city.getId();
-        this.name = city.getName();
-        this.zipcode = city.getZipcode();
-
-    }
 
     /**
-     * @return El ID de la ciudad
+     * @return El ID de la tarjeta
      */
     public Long getId() {
         return id;
@@ -91,31 +82,45 @@ public class CityDTO {
     }
 
     /**
-     * @return El nombre de la ciudad
+     * @return El nombre del banco
      */
-    public String getName() {
-        return name;
+    public String getBanco() {
+        return banco;
     }
 
     /**
      * @param name El nuevo nombre
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setBanco(String name) {
+        this.banco = name;
     }
 
     /**
-     * @return El zipcode de la ciudad
+     * @return la fecha de caducidad
      */
-    public String getZipcode() {
-        return zipcode;
+    public String getFechaCaducidad() {
+        return fechaCaducidad;
     }
 
     /**
-     * @param zipcode El nuevo zipcode
+     * @param fecha La nueva fecha
      */
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setFechaCaducidad(String fecha) {
+        this.fechaCaducidad = fecha;
+    }
+    
+    /**
+     * @return El numero de la tarjeta
+     */
+    public Long getNumero() {
+        return numero;
+    }
+    
+    /**
+     * @param num El nuevo numero
+     */
+    public void setNumero(Long num) {
+        this.numero = num;
     }
 
     /**
@@ -123,11 +128,11 @@ public class CityDTO {
      *
      * @return Un Entity con los valores del DTO
      */
-    public CityEntity toEntity() {
-        CityEntity entity = new CityEntity();
-        entity.setId(this.id);
-        entity.setName(this.name);
-        entity.setZipcode(this.zipcode);
-        return entity;
-    }
+    //public CityEntity toEntity() {
+    //    CityEntity entity = new CityEntity();
+    //    entity.setId(this.id);
+    //    entity.setName(this.banco);
+    //    entity.setZipcode(this.fechaCaducidad);
+    //    return entity;
+    //}
 }

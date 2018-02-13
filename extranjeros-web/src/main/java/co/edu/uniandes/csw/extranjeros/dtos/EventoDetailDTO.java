@@ -23,19 +23,23 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.extranjeros.dtos;
 import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
+import java.util.ArrayList;
 
 /**
- * Clase que extiende de {@link CityDTO} para manejar la transformacion entre
+ * Clase que extiende de {@link EventoDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
- * contenido de la ciudad vaya a la documentacion de {@link CityDTO}
+ * contenido de la evento vaya a la documentacion de {@link EventoDTO}
  * @author ISIS2603
  */
-public class CityDetailDTO extends CityDTO {
+public class EventoDetailDTO extends EventoDTO {
+    
+    private LugarDeInteresDTO lugarDeInteres;
+    private ArrayList<EstudianteDTO> estudiantes;
 
     /**
      * Constructor por defecto
      */
-    public CityDetailDTO() {
+    public EventoDetailDTO() {
     }
 
     /**
@@ -43,19 +47,19 @@ public class CityDetailDTO extends CityDTO {
      *
      * @param entity La entidad de ciudad a partir de la cual se construye el objeto
      */
-    public CityDetailDTO(CityEntity entity) {
-        super(entity);
-    }
+    //public EventoDetailDTO(CityEntity entity) {
+      //  super(entity);
+    //}
 
     /**
      * Transformar un DTO a un Entity
      *
      * @return  La entidad construida a partir del DTO.
      */
-    @Override
-    public CityEntity toEntity() {
-        CityEntity cityE = super.toEntity();
-        return cityE;
-    }
+   // @Override
+    //public CityEntity toEntity() {
+    //    CityEntity cityE = super.toEntity();
+    //    return cityE;
+    //}
 
 }

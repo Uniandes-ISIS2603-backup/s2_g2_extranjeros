@@ -24,7 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.extranjeros.resources;
 
 
-import co.edu.uniandes.csw.extranjeros.dtos.CityDetailDTO;
+import co.edu.uniandes.csw.extranjeros.dtos.TarjetaDetailDTO;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
@@ -41,11 +41,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
- * <pre>Clase que implementa el recurso "cities".
- * URL: /api/cities
+ * <pre>Clase que implementa el recurso "Tarjeta".
+ * URL: /api/tarjeta
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
- * este recurso tiene la ruta "cities".</i>
+ * este recurso tiene la ruta "Tarjeta".</i>
  *
  * <h2>Anotaciones </h2>
  * <pre>
@@ -56,18 +56,18 @@ import javax.ws.rs.Produces;
  * @author ISIS2603  
  * @version 1.0
  */
-@Path("cities")
+@Path("tarjeta")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class CityResource {
+public class TarjetaResource {
 
     /**
-     * <h1>POST /api/cities : Crear una ciudad.</h1>
+     * <h1>POST /api/tarjeta : Crear una tarjeta.</h1>
      * 
-     * <pre>Cuerpo de petición: JSON {@link CityDetailDTO}.
+     * <pre>Cuerpo de petición: JSON {@link TarjetaDetailDTO}.
      * 
-     * Crea una nueva ciudad con la informacion que se recibe en el cuerpo 
+     * Crea una nueva tarjetas con la informacion que se recibe en el cuerpo 
      * de la petición y se regresa un objeto identico con un id auto-generado 
      * por la base de datos.
      * 
@@ -76,97 +76,97 @@ public class CityResource {
      * 200 OK Creó la nueva ciudad .
      * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 412 Precodition Failed: Ya existe la ciudad.
+     * 412 Precodition Failed: Ya existe la tarjeta.
      * </code>
      * </pre>
-     * @param city {@link CityDetailDTO} - La ciudad que se desea guardar.
-     * @return JSON {@link CityDetailDTO}  - La ciudad guardada con el atributo id autogenerado.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la ciudad.
+     * @param tarjeta {@link TarjetaDetailDTO} - La tarjeta que se desea guardar.
+     * @return JSON {@link TarjetaDetailDTO}  - La tarjeta guardada con el atributo id autogenerado.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la tarjeta.
      */
     @POST
-    public CityDetailDTO createCity(CityDetailDTO city) throws BusinessLogicException {
-        return city;
+    public TarjetaDetailDTO createTarjeta(TarjetaDetailDTO tarjeta) throws BusinessLogicException {
+        return tarjeta;
     }
 
     /**
-     * <h1>GET /api/cities : Obtener todas las ciudades.</h1>
+     * <h1>GET /api/tarjetas : Obtener todas las tarjetas.</h1>
      * 
-     * <pre>Busca y devuelve todas las ciudades que existen en la aplicacion.
+     * <pre>Busca y devuelve todas las tarjetas que existen en la aplicacion.
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve todas las ciudades de la aplicacion.</code> 
+     * 200 OK Devuelve todas las tarjetas de la aplicacion.</code> 
      * </pre>
-     * @return JSONArray {@link CityDetailDTO} - Las ciudades encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
+     * @return JSONArray {@link TarjetaDetailDTO} - Las tarjetas encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<CityDetailDTO> getCities() {
+    public List<TarjetaDetailDTO> getTarjetas() {
         return new ArrayList<>();
     }
 
     /**
-     * <h1>GET /api/cities/{id} : Obtener ciudad por id.</h1>
+     * <h1>GET /api/tarjetas/{id} : Obtener tarjeta por id.</h1>
      * 
-     * <pre>Busca la ciudad con el id asociado recibido en la URL y la devuelve.
+     * <pre>Busca la tarjeta con el id asociado recibido en la URL y la devuelve.
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve la ciudad correspondiente al id.
+     * 200 OK Devuelve la tarjeta correspondiente al id.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found No existe una ciudad con el id dado.
+     * 404 Not Found No existe una tarjeta con el id dado.
      * </code> 
      * </pre>
-     * @param id Identificador de la ciudad que se esta buscando. Este debe ser una cadena de dígitos.
-     * @return JSON {@link CityDetailDTO} - La ciudad buscada
+     * @param id Identificador de la tarjeta que se esta buscando. Este debe ser una cadena de dígitos.
+     * @return JSON {@link TarjetaDetailDTO} - La tarjeta buscada
      */
     @GET
     @Path("{id: \\d+}")
-    public CityDetailDTO getCity(@PathParam("id") Long id) {
+    public TarjetaDetailDTO getTarjeta(@PathParam("id") Long id) {
         return null;
     }
     
     /**
-     * <h1>PUT /api/cities/{id} : Actualizar ciudad con el id dado.</h1>
-     * <pre>Cuerpo de petición: JSON {@link CityDetailDTO}.
+     * <h1>PUT /api/tarjetas/{id} : Actualizar tarjeta con el id dado.</h1>
+     * <pre>Cuerpo de petición: JSON {@link TarjetaDetailDTO}.
      * 
-     * Actualiza la ciudad con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
+     * Actualiza la tarjeta con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Actualiza la ciudad con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> 
+     * 200 OK Actualiza la tarjeta con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found. No existe una ciudad con el id dado.
+     * 404 Not Found. No existe una tarjeta con el id dado.
      * </code> 
      * </pre>
-     * @param id Identificador de la ciudad que se desea actualizar.Este debe ser una cadena de dígitos.
-     * @param city {@link CityDetailDTO} La ciudad que se desea guardar.
-     * @return JSON {@link CityDetailDTO} - La ciudad guardada.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la ciudad porque ya existe una con ese nombre.
+     * @param id Identificador de la tarjeta que se desea actualizar.Este debe ser una cadena de dígitos.
+     * @param tarjeta {@link TarjetaDetailDTO} La tarjeta que se desea guardar.
+     * @return JSON {@link TarjetaDetailDTO} - La tarjeta guardada.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la tarjeta porque ya existe una con ese nombre.
      */
     @PUT
     @Path("{id: \\d+}")
-    public CityDetailDTO updateCity(@PathParam("id") Long id, CityDetailDTO city) throws BusinessLogicException {
-        return city;
+    public TarjetaDetailDTO updateTarjeta(@PathParam("id") Long id, TarjetaDetailDTO tarjeta) throws BusinessLogicException {
+        return tarjeta;
     }
     
     /**
-     * <h1>DELETE /api/cities/{id} : Borrar ciudad por id.</h1>
+     * <h1>DELETE /api/tarjetas/{id} : Borrar ciudad por id.</h1>
      * 
-     * <pre>Borra la ciudad con el id asociado recibido en la URL.
+     * <pre>Borra la tarjeta con el id asociado recibido en la URL.
      * 
      * Códigos de respuesta:<br>
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Elimina la ciudad correspondiente al id dado.</code>
+     * 200 OK Elimina la tarjeta correspondiente al id dado.</code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found. No existe una ciudad con el id dado.
+     * 404 Not Found. No existe una tarjeta con el id dado.
      * </code>
      * </pre>
-     * @param id Identificador de la ciudad que se desea borrar. Este debe ser una cadena de dígitos.
+     * @param id Identificador de la tarjeta que se desea borrar. Este debe ser una cadena de dígitos.
      */
     @DELETE
     @Path("{id: \\d+}")
-     public void deleteCity(@PathParam("id") Long id) {
+     public void deleteTarjeta(@PathParam("id") Long id) {
         // Void
     }
 }
