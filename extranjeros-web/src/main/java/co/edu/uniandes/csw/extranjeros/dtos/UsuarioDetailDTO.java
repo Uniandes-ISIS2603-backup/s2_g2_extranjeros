@@ -36,10 +36,7 @@ public class UsuarioDetailDTO extends UsuarioDTO {
      * @param pCelular Celular asociado al usuario
      * @param pFactura Factura asociada a un Usuario. 
      */
-    public UsuarioDetailDTO(String pUsuario, String pClave, String pCorreo, int pCelular, List<FacturaDTO> pFactura, 
-                            List<ViviendaDTO> pVivienda){
-        super(pUsuario, pClave, pCorreo, pCelular);
-        facturas = pFactura;
+    public UsuarioDetailDTO(){
     }
 
     //---------------------------------------------------

@@ -55,12 +55,7 @@ public class UsuarioDTO {
      * @param pCorreo Correo asociado a la cuenta del usuario
      * @param pCelular Celular asociado al usuario
      */
-    public UsuarioDTO(String pUsuario, String pClave, String pCorreo, int pCelular){
-        
-        usuario = pUsuario;
-        clave = pClave;
-        correo = pCorreo;
-        celular = pCelular;
+    public UsuarioDTO(){
     }
     
     //---------------------------------------------------
