@@ -15,6 +15,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  *   {
  *      "nombre": String,
  *      "vivienda": Vivienda
+ *      "id": number
  *   }
  * </pre>
  * Por ejemplo una ciudad se representa asi:<br>
@@ -24,6 +25,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  *   {
  *      "nombre": "Carlos Hugo" 
  *      "vivienda": [{Vivienda1, Vivienda2, Vivienda3}]
+ *      "id": 4323
  *   }
  *
  * </pre>

@@ -16,7 +16,8 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  *      "usuario": String,
  *      "clave": string,
  *      "correoAsociado": string,
- *      "celular": number
+ *      "celular": number,
+ *      "id": number
  *   }
  * </pre>
  * Por ejemplo un usuario se podria representar asi:<br>
@@ -28,6 +29,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  *      "clave": "holamundo12345",
  *      "correoAsociado": "carlmanson@outlook.com",
  *      "celular": 31132867894
+ *      "id": 31231
  *   }
  *
  * </pre>
