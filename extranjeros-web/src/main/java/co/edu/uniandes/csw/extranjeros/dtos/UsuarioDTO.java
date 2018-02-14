@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
  * UsuarioDTO es un Objeto de transferencia de datos de Arrendatario. Los DTO contienen las
- * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * representaciones de los JSON que se transfieren entre el cliente y el
  * servidor.
  * 
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -43,17 +43,14 @@ public class UsuarioDTO {
     private String clave;
     private String correo;
     private int celular;
+    private Long id;
 
     //---------------------------------------------------
     // Constructor
     //---------------------------------------------------
     
     /**
-     * Metodo para modelar el constructor por defecto
-     * @param pUsuario Nombre de usuario (carlManson0506, por ejemplo)
-     * @param pClave Clave asociada a la cuenta del usuario
-     * @param pCorreo Correo asociado a la cuenta del usuario
-     * @param pCelular Celular asociado al usuario
+     * Metodo para modelar el constructor por defecto.
      */
     public UsuarioDTO(){
     }
@@ -124,6 +121,21 @@ public class UsuarioDTO {
      */
     public void setCelular(int newPhone){
         this.celular = newPhone;
+    }
+    
+    /**
+     * @return Retorna el ID de un Usuario. 
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Le asgina un identificador a un Usuario
+     * @param id Identificador que se asociara
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
     
 }

@@ -30,13 +30,9 @@ public class UsuarioDetailDTO extends UsuarioDTO {
     /**
      * Constructor para generar un objeto de tipo Usuario, aniadiendo 
      * sus relaciones.
-     * @param pUsuario Nombre de usuario (carlManson0506, por ejemplo)
-     * @param pClave Clave asociada a la cuenta del usuario
-     * @param pCorreo Correo asociado a la cuenta del usuario
-     * @param pCelular Celular asociado al usuario
-     * @param pFactura Factura asociada a un Usuario. 
      */
     public UsuarioDetailDTO(){
+        super();
     }
 
     //---------------------------------------------------
@@ -47,16 +43,31 @@ public class UsuarioDetailDTO extends UsuarioDTO {
      * Obtiene las facturas asociadas al Usuario
      * @return List. Lista con las facturas.
      */
-    public List<FacturaDTO> getFactura(){
+    public List<FacturaDTO> getFacturas() {
         return facturas;
     }
     
      /**
-     * Obtiene las facturas asociadas al Usuario
+     * Genera una lista de las Facturas a asociar con un usuario. 
+     * @param pFacturas La nueva lista de Facturas. 
+     */
+    public void setFacturas(List<FacturaDTO> pFacturas) {
+        this.facturas = pFacturas;
+    }
+    
+     /**
+     * Obtiene las Viviendas asociadas al Usuario
      * @return List. Lista con las facturas.
      */
     public List<ViviendaDTO> getViviendas(){
         return viviendas;
     }
-
+    
+    /**
+     * Genera una lista de las Viviendas a asociar con un usuario. 
+     * @param pViviendas La nueva lista de Viviendas. 
+     */
+    public void setViviendas (List<ViviendaDTO> pViviendas) {
+        this.viviendas = pViviendas;
+    }
 }

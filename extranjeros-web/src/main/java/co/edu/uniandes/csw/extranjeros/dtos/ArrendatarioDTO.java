@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
  * ArrendatarioDTO Objeto de transferencia de datos de Arrendatario. Los DTO contienen las
- * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * representaciones de los JSON que se transfieren entre el cliente y el
  * servidor.
  * 
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -23,7 +23,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * 
  *   {
  *      "nombre": "Carlos Hugo" 
- *      "vivienda": [ {Vivienda1, Vivienda2,Vivienda3}]  ,
+ *      "vivienda": [{Vivienda1, Vivienda2, Vivienda3}]
  *   }
  *
  * </pre>
@@ -36,31 +36,54 @@ public class ArrendatarioDTO extends UsuarioDTO {
     //---------------------------------------------------
     
     private String nombre;
+    private Long id;
   
     //---------------------------------------------------
     // Constructor
     //---------------------------------------------------
     
+    /**
+     * Constructor por defecto de la Clase.
+     */
     public ArrendatarioDTO(){
     }
     
     //---------------------------------------------------
-    // Constructor
+    // Metodos
     //---------------------------------------------------
-    
+
     /**
      * @return Obtiene el nombre del arrendatario
      */
-    public String getName(){
+    public String getNombre() {
         return nombre;
     }
-    
+
     /**
      * Crea el nombre asociado a un usuario de tipo arrendatario
-     * @param newName 
+     * @param pNombre Nombre a asociar 
      */
-    public void setName(String newName){
-        this.nombre = newName;
+    public void setNombre(String pNombre) {
+        this.nombre = pNombre;
     }
+
+     /**
+     * @return Retorna el ID de un Usuario. 
+     */
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Le asgina un identificador a un Usuario
+     * @param id Identificador que se asociara
+     */
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+
     
 }
