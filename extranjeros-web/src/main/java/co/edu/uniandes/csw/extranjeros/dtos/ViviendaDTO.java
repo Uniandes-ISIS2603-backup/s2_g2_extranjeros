@@ -6,9 +6,43 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 import java.util.List;
-
 /**
+ * ViviendaDTO Objeto que representa las viviendas fisicas del mundo, como una casa o un apartamento
+ * 
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *    "id": number,
+ *    "direccion": string,
+ *    "disponible": boolean,
+ *    "servicio": Servicio,
+ *    "valoracion": Valoracion,
+ *    "valoracionPromedio": number,
+ *    "latitud": number,
+ *    "longitud": number,
+ *    "tipoAlojamiento": string,
+ *  
+ *  }
+ * </pre>
+ * Por ejemplo una vivienda se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *    "id": 3312,
+ *    "direccion": "calle 21 1307",
+ *    "disponible": true,
+ *    "servicio": [{servicio1,servicio2}],
+ *    "valoracion": [{valoracion1,valoracion2, valoracion3},
+ *    "valoracionPromedio": 4,
+ *    "latitud": 32,
+ *    "longitud": 456,
+ *    "tipoAlojamiento": "B",
+ *      
+ *  }
  *
+ * </pre>
  * @author jd.arango
  */
 public class ViviendaDTO {
@@ -20,7 +54,7 @@ public class ViviendaDTO {
     
     private String direccion;
     
-    
+ 
     private List<ServicioDTO> serviciosFijos;
    
     private List<ServicioDTO> serviciosAdicionales;

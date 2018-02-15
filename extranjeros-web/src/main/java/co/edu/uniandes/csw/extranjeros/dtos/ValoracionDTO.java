@@ -6,12 +6,34 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
+ * ValoracionDTO Objeto que representa una valoracion de una vivienda 
+ * 
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *    "id": number,
+ *    "valoracion": number,
+ *    "comentario": string,
+ *   
+ *  }
+ * </pre>
+ * Por ejemplo una valoracion se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *   "id": 3124,
+ *    "valoracion": 3,
+ *    "comentario": "habia mucho ruido",
  *
+ *  }
+ *
+ * </pre>
  * @author jd.arango
  */
 public class ValoracionDTO {
     private long id;
-    
     
     private double valoracion;
     
