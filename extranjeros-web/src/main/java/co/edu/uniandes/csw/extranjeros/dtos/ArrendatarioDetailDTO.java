@@ -18,6 +18,10 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     // Constructor
     //---------------------------------------------------
     
+    /**
+     * Constructor por defecto de la Clase.
+     */
     public ArrendatarioDetailDTO(){
+        super();
     }
 }
