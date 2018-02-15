@@ -6,7 +6,40 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
+ * LugaresDeInteresDTO Objeto de transferencia de datos de Extranjeros. Los DTO contienen las
+ * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "id": number,
+ *      "tipo": string,
+ *      "nombre": string,
+ *      "direccion": string,
+ *      "telefono": number,
+ *      "eventos": EventoDTO,
+ *      "ubicacionLon": string,
+ *      "ubicacionLat": string
+ *      
+ *   }
+ * </pre>
+ * Por ejemplo un Lugar de Interes se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "id": 12311,
+ *      "tipo": "Bar",
+ *      "nombre": "La Pola",
+ *      "direccion": "Calle 22 # 1 - 15",
+ *      "telefono": 3224593,
+ *      "eventos": EventoDTO,
+ *      "ubicacionLon": "1.343344",
+ *      "ubicacionLat": "-44.23233"       
+ *   }
  *
+ * </pre>
  * @author Oliver Amaya
  */
 public class LugaresDeInteresDTO {
@@ -25,14 +58,7 @@ public class LugaresDeInteresDTO {
     //------------------
     /**
      * Metodo para modelar el constructor por defecto
-     * @param pTipo
-     * @param pNombre
-     * @param pDireccion
-     * @param pTelefono
-     * @param pEventos
-     * @param pUbicacionLat
-     * @param pUbicacionLon 
-     */
+     **/
     
     public LugaresDeInteresDTO (){
         
@@ -135,7 +161,7 @@ public class LugaresDeInteresDTO {
     
     /**
      * Asigna latitud de la ubicacion del sitio de interes.
-     * @param latitud La latitud
+     * @param ubicacionLat La latitud
      */
 
     public void setUbicacionLat(String ubicacionLat) {
@@ -152,7 +178,7 @@ public class LugaresDeInteresDTO {
     
     /**
      * Asigna longitud de la ubicacion del sitio de interes.
-     * @param longitud La longitud
+     * @param ubicacionLon La longitud
      */
     
 
