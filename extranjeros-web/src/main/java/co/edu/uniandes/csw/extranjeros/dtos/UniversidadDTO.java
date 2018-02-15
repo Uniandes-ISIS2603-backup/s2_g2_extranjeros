@@ -15,7 +15,9 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  *   {
  *      "id": number,
  *      "name: string,
- *      "zipcode": string
+ *      "direccion": string,
+ *      "ubicacionLat": string,
+ *      "ubicacionLon": string
  *   }
  * </pre>
  * Por ejemplo una ciudad se representa asi:<br>
@@ -23,9 +25,11 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * <pre>
  * 
  *   {
- *      "id": 91852,
- *      "name: "Bogota, DC",
- *      "zipcode": "121110"
+ *      "id": 121,
+ *      "name: "Universidad de los Andes",
+ *      "direccion": "Carrera 1 # 19 - 33",
+ *      "ubicacionLon": "1.343344",
+ *      "ubicacionLat": "-44.23233" 
  *   }
  *
  * </pre>
@@ -39,6 +43,7 @@ public class UniversidadDTO {
     private String direccion;
     private String ubicacionLat;
     private String ubicacionLon;
+    private Long id;
     
     
     //------------------
@@ -129,5 +134,22 @@ public class UniversidadDTO {
     public void setUbicacionLon(String ubicacionLon){
         this.ubicacionLon = ubicacionLon;
     }
+    
+    /**
+     * @return El ID de la universidad
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id El nuevo ID
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
+    
     
 }

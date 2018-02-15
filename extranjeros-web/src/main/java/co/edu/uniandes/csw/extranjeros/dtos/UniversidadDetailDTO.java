@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
- *
- * @author o.amaya724
+ * Clase que extiende de {@link UniversidadDTO} para manejar la transformacion entre
+ * los objetos JSON y las Entidades de la base de datos. Para conocer el
+ * contenido de la evento vaya a la documentacion de {@link UniversidadDTO}
+ * @author Oliver Amaya
  */
 public class UniversidadDetailDTO extends UniversidadDTO {
     
