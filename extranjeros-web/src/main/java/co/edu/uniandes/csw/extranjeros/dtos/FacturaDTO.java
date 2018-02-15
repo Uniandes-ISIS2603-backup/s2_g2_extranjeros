@@ -6,7 +6,43 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
+ * FacturaDTO Objeto de transferencia de datos de Facturas. Los DTO contienen las
+ * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *    "id": number,
+ *    "costoFijo": number,
+ *    "costosAdicionales": number,
+ *    "formaDePago": string,
+ *    "mesesAPagar": number,
+ *    "numerodeInquilinos": number,
+ *    "dividirCuentaServicios": boolean,
+ *    "fechaEntrada": string,
+ *    "fechaSalida":string,
+ *    "IVA": number
+ *  }
+ * </pre>
+ * Por ejemplo una factura se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *    "id": 9185,
+ *    "costoFijo": 120000.0,
+ *    "costosAdicionales": 5000.0,
+ *    "formaDePago": "efectivo",
+ *    "mesesAPagar": 12,
+ *    "numerodeInquilinos": 3,
+ *    "dividirCuentaServicios": true,
+ *    "fechaEntrada": "16 enero",
+ *    "fechaSalida":"18 febrero",
+ *    "IVA": 0.013
+ *  }
  *
+ * </pre>
  * @author s.rodriguezm
  */
 public class FacturaDTO {
