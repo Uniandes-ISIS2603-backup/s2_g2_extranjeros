@@ -7,7 +7,9 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 import java.util.*;
 /**
- *
+ * Clase que extiende de {@link FacturaDTO} para manejar la transformacion entre
+ * los objetos JSON y las Entidades de la base de datos. Para conocer el
+ * contenido de la factura vaya a la documentacion de {@link FacturaDTO}
  * @author s.rodriguezm
  */
 public class FacturaDetailDTO extends FacturaDTO {

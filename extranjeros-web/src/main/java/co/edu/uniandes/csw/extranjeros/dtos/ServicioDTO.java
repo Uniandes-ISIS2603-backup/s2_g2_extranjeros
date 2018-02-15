@@ -6,7 +6,29 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
+ * ServicioDTO Objeto de transferencia de datos de Servicios. Los DTO contienen las
+ * represnetaciones de los JSON que se transfieren entre el cliente y el
+ * servidor.
+ * 
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *    "id": number,
+ *    "tipo": string,
+ *    "adicional": boolean
+ *   }
+ * </pre>
+ * Por ejemplo un servicio se representa asi:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *    "id": 1321548,
+ *    "tipo": "Agua",
+ *    "adicional": false
+ *   }
  *
+ * </pre>
  * @author s.rodriguezm
  */
 public class ServicioDTO {
