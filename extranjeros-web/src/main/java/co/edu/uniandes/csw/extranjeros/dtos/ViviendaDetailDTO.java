@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
- *
+ * Clase que extiende de {@link ViviendaDTO} para manejar la transformacion entre
+ * los objetos JSON y las Entidades de la base de datos. Para conocer el
+ * contenido de la vivienda vaya a la documentacion de {@link ViviendaDTO}
  * @author jd.arango
  */
 public class ViviendaDetailDTO extends ViviendaDTO {

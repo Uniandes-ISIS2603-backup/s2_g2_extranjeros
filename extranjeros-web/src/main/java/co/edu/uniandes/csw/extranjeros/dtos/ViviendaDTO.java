@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 
 import java.util.List;
 /**
- * ViviendaDTO Objeto que representa las viviendas fisicas del mundo, como una casa o un apartamento
+ * ViviendaDTO: Objeto que representa las viviendas fisicas del mundo, como una casa o un apartamento.
  * 
  * 
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>

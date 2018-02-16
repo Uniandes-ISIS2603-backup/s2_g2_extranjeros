@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 /**
- * ValoracionDTO Objeto que representa una valoracion de una vivienda 
+ * ValoracionDTO Objeto que representa una valoracion de una vivienda. 
  * 
  * 
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
