@@ -146,6 +146,7 @@ public class ServicioPersistenceTest
     /**
      * Prueba para consultar todos los servicios.
      */
+    @Test
     public void getServiciosTest()
     {
         List<ServicioEntity> serviciosPR=servicioPersistence.findAll();
@@ -175,6 +176,7 @@ public class ServicioPersistenceTest
     /**
      * Prueba para actualizar un servicio.
      */
+    @Test
     public void updateServicioTest()
     {
         ServicioEntity servicio1 = data.get(0);

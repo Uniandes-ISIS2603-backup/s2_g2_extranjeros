@@ -152,6 +152,7 @@ public class FacturaPersistenceTest
     /**
      * Prueba para consultar todas las facturas.
      */
+    @Test
     public void getFacturasTest()
     {
         List<FacturaEntity> facturasPR=servicioPersistence.findAll();
@@ -181,6 +182,7 @@ public class FacturaPersistenceTest
     /**
      * Prueba para actualizar una factura.
      */
+    @Test
     public void updateFacturaTest()
     {
         FacturaEntity factura1 = data.get(0);
