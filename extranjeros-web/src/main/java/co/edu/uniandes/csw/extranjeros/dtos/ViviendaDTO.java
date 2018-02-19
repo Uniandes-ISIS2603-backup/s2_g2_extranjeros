@@ -50,11 +50,8 @@ public class ViviendaDTO {
     
     private boolean disponible;
     
-    
-    
     private String direccion;
     
- 
     private List<ServicioDTO> serviciosFijos;
    
     private List<ServicioDTO> serviciosAdicionales;
