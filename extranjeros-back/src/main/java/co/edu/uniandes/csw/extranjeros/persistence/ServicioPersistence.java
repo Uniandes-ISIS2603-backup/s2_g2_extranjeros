@@ -21,7 +21,7 @@ public class ServicioPersistence
 {
     private static final Logger LOGGER= Logger.getLogger(ServicioPersistence.class.getName());
     
-    @PersistenceContext(unitName="ExtrangerosPU")
+    @PersistenceContext(unitName="ExtranjerosPU")
     protected EntityManager em;
     /**
      * Busca el servicio en la base de datos con el id enviado en el argumento
