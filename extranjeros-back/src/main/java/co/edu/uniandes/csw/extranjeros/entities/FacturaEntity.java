@@ -5,7 +5,11 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 /**
  *
  * @author s.rodriguezm
@@ -22,7 +26,23 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private String fechaEntrada;
     private String fechaSalida;
     private Double IVA;
-
+    
+    /**
+     * Vivienda que se factura.
+     */
+    @OneToOne
+    @JoinColumn(name="V_ID")
+    private ViviendaEntity vivienda;
+    
+    /**
+     * Lista de servicios que ya estan incluidos en el precio base.
+     */
+    @OneToMany
+    private List<ServicioEntity> serviciosIncluidos;
+    
+    /**
+     * Lista de servicios que ya estan incluidos.
+     */
      /**
      * @return costo fijo del arriendo.
      */
