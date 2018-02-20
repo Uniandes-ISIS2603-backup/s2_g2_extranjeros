@@ -23,7 +23,7 @@ public class TarjetaPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(TarjetaPersistence.class.getName());
     
-    @PersistenceContext(unitName="ExtranjerosPU")
+    @PersistenceContext(unitName = "ExtranjerosPU")
     protected EntityManager em;
     
     /**
