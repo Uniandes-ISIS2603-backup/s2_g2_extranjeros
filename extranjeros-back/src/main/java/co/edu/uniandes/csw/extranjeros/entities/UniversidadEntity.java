@@ -19,7 +19,6 @@ public class UniversidadEntity extends BaseEntity implements Serializable {
     private String direccion;
     private String ubicacionLat;
     private String ubicacionLon;
-    private Long id;
 
     //------------------
     //Metodos
@@ -93,22 +92,4 @@ public class UniversidadEntity extends BaseEntity implements Serializable {
     public void setUbicacionLon(String ubicacionLon){
         this.ubicacionLon = ubicacionLon;
     }
-    
-    /**
-     * @return El ID de la universidad
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id El nuevo ID
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    
-    
-    
 }
