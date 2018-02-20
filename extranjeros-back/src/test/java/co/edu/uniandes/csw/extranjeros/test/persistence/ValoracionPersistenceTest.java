@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
@@ -24,6 +25,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -31,6 +33,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author jd.arango
  */
+@RunWith(Arquillian.class)
 public class ValoracionPersistenceTest {
     
     public ValoracionPersistenceTest() {
@@ -103,8 +106,7 @@ public class ValoracionPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 20; i++) {
             ValoracionEntity entity = factory.manufacturePojo(ValoracionEntity.class);
-
-            em.persist(entity);
+           em.persist(entity);
             data.add(entity);
         }
     }
@@ -125,7 +127,7 @@ public class ValoracionPersistenceTest {
         ValoracionEntity entity = em.find(ValoracionEntity.class, result.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getComentario(), entity.getComentario());
-        Assert.assertSame(newEntity.getValoracion(), entity.getValoracion());
+        Assert.assertEquals(newEntity.getValoracion(), entity.getValoracion());
        }
     
 
@@ -162,7 +164,7 @@ public class ValoracionPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
      Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getComentario(), entity.getComentario());
-        Assert.assertSame(newEntity.getValoracion(), entity.getValoracion());
+        Assert.assertEquals(newEntity.getValoracion(), entity.getValoracion());
     
     }
 
@@ -196,9 +198,9 @@ public class ValoracionPersistenceTest {
 
         ValoracionEntity resp = em.find(ValoracionEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getComentario(), entity.getComentario());
-        Assert.assertSame(newEntity.getValoracion(), entity.getValoracion());
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getComentario(), resp.getComentario());
+        Assert.assertEquals(newEntity.getValoracion(), resp.getValoracion());
       
     }
 
