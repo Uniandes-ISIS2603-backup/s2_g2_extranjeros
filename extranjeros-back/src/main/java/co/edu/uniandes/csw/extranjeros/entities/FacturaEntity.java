@@ -41,8 +41,10 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private List<ServicioEntity> serviciosIncluidos;
     
     /**
-     * Lista de servicios que ya estan incluidos.
+     * Lista de servicios adicionales.
      */
+    @OneToMany
+    private List<ServicioEntity> serviciosAdicionales;
      /**
      * @return costo fijo del arriendo.
      */
