@@ -23,7 +23,7 @@ public class TarjetaPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(TarjetaPersistence.class.getName());
     
-    @PersistenceContext(unitName="ExtranjerosPU")
+    @PersistenceContext(unitName = "ExtranjerosPU")
     protected EntityManager em;
     
     /**
@@ -69,8 +69,10 @@ public class TarjetaPersistence {
          return em.merge(entity);
     }
     
-    public void delete(TarjetaEntity entity) {
-        em.remove(entity);
+    public void delete(Long id)
+    {
+        LOGGER.log(Level.INFO, "Borrando Tarjeta con el id={0}",id);
+        em.remove(find(id));
     }
     
     public List<TarjetaEntity> findAll() {

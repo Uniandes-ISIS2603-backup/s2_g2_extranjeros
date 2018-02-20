@@ -196,7 +196,7 @@ public class EventoPersistenceTest {
     @Test
     public void deleteEventoTest() {
         EventoEntity entity = data.get(0);
-        eventoPersistence.delete(entity);
+        eventoPersistence.delete(entity.getId());
         EventoEntity deleted = em.find(EventoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -218,15 +218,15 @@ public class EventoPersistenceTest {
 
         EventoEntity resp = em.find(EventoEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getResponsableEventoP(), entity.getResponsableEventoP());
-        Assert.assertEquals(newEntity.getNombreEvento(), entity.getNombreEvento());
-        Assert.assertEquals(newEntity.getTipoEvento(), entity.getTipoEvento());
-        Assert.assertEquals(newEntity.getFechaEvento(), entity.getFechaEvento());
-        Assert.assertEquals(newEntity.getDistanciaVivienda(), entity.getDistanciaVivienda());
-        Assert.assertEquals(newEntity.getUbicacionLon(), entity.getUbicacionLon());
-        Assert.assertEquals(newEntity.getUbicacionLat(), entity.getUbicacionLat());
-        Assert.assertEquals(newEntity.getPrivado(), entity.getPrivado());
-        Assert.assertEquals(newEntity.getCapacidad(), entity.getCapacidad());
+        Assert.assertEquals(newEntity.getResponsableEventoP(), resp.getResponsableEventoP());
+        Assert.assertEquals(newEntity.getNombreEvento(), resp.getNombreEvento());
+        Assert.assertEquals(newEntity.getTipoEvento(), resp.getTipoEvento());
+        Assert.assertEquals(newEntity.getFechaEvento(), resp.getFechaEvento());
+        Assert.assertEquals(newEntity.getDistanciaVivienda(), resp.getDistanciaVivienda());
+        Assert.assertEquals(newEntity.getUbicacionLon(), resp.getUbicacionLon());
+        Assert.assertEquals(newEntity.getUbicacionLat(), resp.getUbicacionLat());
+        Assert.assertEquals(newEntity.getPrivado(), resp.getPrivado());
+        Assert.assertEquals(newEntity.getCapacidad(), resp.getCapacidad());
     }
     
 }
