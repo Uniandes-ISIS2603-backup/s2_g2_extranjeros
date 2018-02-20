@@ -69,8 +69,10 @@ public class EventoPersistence {
          return em.merge(entity);
     }
     
-    public void delete(EventoEntity entity) {
-        em.remove(entity);
+    public void delete(Long id)
+    {
+        LOGGER.log(Level.INFO, "Borrando Evento con el id={0}",id);
+        em.remove(find(id));
     }
     
     public List<EventoEntity> findAll() {
