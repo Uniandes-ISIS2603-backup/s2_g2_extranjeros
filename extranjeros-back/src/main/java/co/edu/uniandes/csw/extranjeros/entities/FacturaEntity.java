@@ -86,7 +86,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
     /**
      * @return Si se va a dividir o no el pago de los servicios.
      */
-    public Boolean getDividirCuentaServicios() {
+    public Boolean isDividirCuentaServicios() {
         return dividirCuentaServicios;
     }
     /**
