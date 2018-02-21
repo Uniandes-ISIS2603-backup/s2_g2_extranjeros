@@ -28,10 +28,10 @@ public class ProvidenciaPersistence {
      * @param id Id de la providencia que se buscará en la base de datos
      * @return devuelve la providencia encontrado en la base de datos.
      */
-    public ProvidenciaPersistence find(Long id)
+    public ProvidenciaEntity find(Long id)
     {
         LOGGER.log(Level.INFO, "Consultando la providencia con id={0}", id);
-        return em.find(ProvidenciaPersistence.class, id);
+        return em.find(ProvidenciaEntity.class, id);
     }
     /**
      * Busca la providencia en la base de datos
