@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
+import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
 
 /**
  * Clase que extiende de {@link LugaresDeInteresDTO} para manejar la transformacion entre
@@ -13,8 +14,31 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  */
 public class LugaresDeInteresDetailDTO extends LugaresDeInteresDTO{
     
+    /**
+     * Constructor por defecto
+     */
     public LugaresDeInteresDetailDTO(){
         
+    }
+    
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de ciudad a partir de la cual se construye el objeto
+     */
+    public LugaresDeInteresDetailDTO(LugaresDeInteresEntity entity) {
+        super(entity);
+    }
+    
+    /**
+     * Transformar un DTO a un Entity
+     *
+     * @return  La entidad construida a partir del DTO.
+     */
+    @Override
+    public LugaresDeInteresEntity toEntity() {
+        LugaresDeInteresEntity lugarDeInteresE = super.toEntity();
+        return lugarDeInteresE;
     }
     
 }
