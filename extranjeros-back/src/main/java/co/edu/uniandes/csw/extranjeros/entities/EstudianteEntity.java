@@ -14,15 +14,12 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class EstudianteEntity extends BaseEntity implements Serializable{
+public class EstudianteEntity extends UsuarioEntity implements Serializable{
     
     private String nombre;
     private String estadoArrendamiento;
-    private String usuario;
-    private String clave;
-    private String correo;
-    private int celular;
-
+    
+    
     
     /**
      * Método que retorna el nombre del estudiante
@@ -55,70 +52,5 @@ public class EstudianteEntity extends BaseEntity implements Serializable{
     public void setEstadoArrendamiento(String estadoArrendamiento) {
         this.estadoArrendamiento = estadoArrendamiento;
     }
-
-    /**
-     * 
-     * @return usuario del estudiante
-     */
-    public String getUsuario() {
-        return usuario;
-    }
-
-    /**
-     * 
-     * @param usuario del estudiante 
-     */
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    /**
-     * 
-     * @return clave del estudiante
-     */
-    public String getClave() {
-        return clave;
-    }
-
-    /**
-     * Asigna la clave del estudiante 
-     * @param clave del estudiante 
-     */
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-
-    /**
-     * 
-     * @return el correo del estudiante 
-     */
-    public String getCorreo() {
-        return correo;
-    }
-
-    /**
-     * Asigna el correo del estudiante
-     * @param correo del estudiante
-     */
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    /**
-     * 
-     * @return celular del estudiante 
-     */
-    public int getCelular() {
-        return celular;
-    }
-
-    /**
-     *Asigna el celular del estudiante 
-     * @param celular del estudiante
-     */
-    public void setCelular(int celular) {
-        this.celular = celular;
-    }
-    
     
 }

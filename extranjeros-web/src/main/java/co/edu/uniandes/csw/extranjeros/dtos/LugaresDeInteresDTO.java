@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
+
 /**
  * LugaresDeInteresDTO Objeto de transferencia de datos de Extranjeros. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el
@@ -63,6 +65,23 @@ public class LugaresDeInteresDTO {
     public LugaresDeInteresDTO (){
         
         
+    }
+    
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param city: Es la entidad que se va a convertir a DTO
+     */
+    public LugaresDeInteresDTO(LugaresDeInteresEntity lugarDeInteres) {
+   
+        this.nombre = lugarDeInteres.getNombre();
+        this.direccion = lugarDeInteres.getDireccion();
+        this.telefono = lugarDeInteres.getTelefono();
+        this.tipo = lugarDeInteres.getTipo();
+        this.ubicacionLat = lugarDeInteres.getUbicacionLat();
+        this.ubicacionLon = lugarDeInteres.getUbicacionLon();
+
     }
     
     
@@ -184,6 +203,22 @@ public class LugaresDeInteresDTO {
 
     public void setUbicacionLon(String ubicacionLon) {
         this.ubicacionLon = ubicacionLon;
+    }
+    
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public LugaresDeInteresEntity toEntity() {
+        LugaresDeInteresEntity entity = new LugaresDeInteresEntity();
+        entity.setNombre(this.nombre);
+        entity.setDireccion(this.direccion);
+        entity.setTelefono(this.telefono);
+        entity.setTipo(this.tipo);
+        entity.setUbicacionLat(this.ubicacionLat);
+        entity.setUbicacionLon(this.ubicacionLon);
+        return entity;
     }
     
     
