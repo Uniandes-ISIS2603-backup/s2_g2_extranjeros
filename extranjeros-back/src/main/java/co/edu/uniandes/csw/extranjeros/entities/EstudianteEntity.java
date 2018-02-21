@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,6 +20,68 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
     
     private String nombre;
     private String estadoArrendamiento;
+    
+    //RELACIONES
+   @OneToOne
+    private ProvidenciaEntity providencia;
+   
+   @OneToOne
+   private TarjetaEntity tarjeta;
+   
+   @OneToOne 
+   private UniversidadEntity universidad;
+   
+   @PodamExclude
+   @OneToMany
+   private EventoEntity eventosCreados;
+   
+   @PodamExclude
+    @OneToMany
+   private EventoEntity eventosInvitado;
+   
+   
+
+    public TarjetaEntity getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(TarjetaEntity tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+
+    public UniversidadEntity getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(UniversidadEntity universidad) {
+        this.universidad = universidad;
+    }
+
+    public EventoEntity getEventosCreados() {
+        return eventosCreados;
+    }
+
+    public void setEventosCreados(EventoEntity eventosCreados) {
+        this.eventosCreados = eventosCreados;
+    }
+
+    public EventoEntity getEventosInvitado() {
+        return eventosInvitado;
+    }
+
+    public void setEventosInvitado(EventoEntity eventosInvitado) {
+        this.eventosInvitado = eventosInvitado;
+    }
+   
+   
+
+    public ProvidenciaEntity getProvidencia() {
+        return providencia;
+    }
+
+    public void setProvidencia(ProvidenciaEntity providencia) {
+        this.providencia = providencia;
+    }
     
     
     
