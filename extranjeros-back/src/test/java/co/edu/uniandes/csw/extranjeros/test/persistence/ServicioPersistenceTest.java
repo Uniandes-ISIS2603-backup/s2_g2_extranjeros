@@ -140,8 +140,8 @@ public class ServicioPersistenceTest
         ServicioEntity servicio1=data.get(0);
         ServicioEntity servicio2=servicioPersistence.find(servicio1.getId());
         Assert.assertNotNull(servicio2);
-        Assert.assertNotEquals(servicio1.getTipo(), servicio2.getTipo());
-        Assert.assertNotEquals(servicio1.getAdicional(),servicio2.getAdicional());
+        Assert.assertEquals(servicio1.getTipo(), servicio2.getTipo());
+        Assert.assertEquals(servicio1.getAdicional(),servicio2.getAdicional());
     }
     /**
      * Prueba para consultar todos los servicios.
@@ -189,7 +189,7 @@ public class ServicioPersistenceTest
 
         ServicioEntity resp = em.find(ServicioEntity.class, servicio1.getId());
 
-        Assert.assertNotEquals(resp.getTipo(), servicio2.getTipo());
-        Assert.assertNotEquals(resp.getAdicional(),servicio2.getAdicional());
+        Assert.assertEquals(resp.getTipo(), servicio2.getTipo());
+        Assert.assertEquals(resp.getAdicional(),servicio2.getAdicional());
     }
 }

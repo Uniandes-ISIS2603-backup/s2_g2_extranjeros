@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
+
 /**
  * UniversidadDTO Objeto de transferencia de datos. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el
@@ -38,6 +40,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * @author Oliver Amaya
  */
 public class UniversidadDTO {
+    //Atributos
     
     private String nombre;
     private String direccion;
@@ -60,6 +63,21 @@ public class UniversidadDTO {
     public UniversidadDTO()
     {
         
+    }
+    
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param city: Es la entidad que se va a convertir a DTO
+     */
+    public UniversidadDTO(UniversidadEntity universidad) {
+   
+        this.nombre = universidad.getNombre();
+        this.direccion = universidad.getDireccion();
+        this.ubicacionLat =universidad.getUbicacionLat();
+        this.ubicacionLon = universidad.getUbicacionLon();
+
     }
     
     //------------------
@@ -149,6 +167,19 @@ public class UniversidadDTO {
         this.id = id;
     }
     
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public UniversidadEntity toEntity() {
+        UniversidadEntity entity = new UniversidadEntity();
+        entity.setNombre(this.nombre);
+        entity.setDireccion(this.direccion);
+        entity.setUbicacionLat(this.ubicacionLat);
+        entity.setUbicacionLon(this.ubicacionLon);
+        return entity;
+    }
     
     
     

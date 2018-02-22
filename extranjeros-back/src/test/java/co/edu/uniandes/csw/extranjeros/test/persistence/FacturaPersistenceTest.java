@@ -126,7 +126,7 @@ public class FacturaPersistenceTest
 
         Assert.assertEquals(factura1.getCostoFijo(), factura2.getCostoFijo());
         Assert.assertEquals(factura1.getCostosAdicionales(), factura2.getCostosAdicionales());
-        Assert.assertEquals(factura1.getDividirCuentaServicios(), factura2.getDividirCuentaServicios());
+        Assert.assertEquals(factura1.isDividirCuentaServicios(), factura2.isDividirCuentaServicios());
         Assert.assertEquals(factura1.getFechaEntrada(), factura2.getFechaEntrada());
         Assert.assertEquals(factura1.getFechaSalida(), factura2.getFechaSalida());
         Assert.assertEquals(factura1.getCostosAdicionales(), factura2.getCostosAdicionales());
@@ -143,7 +143,7 @@ public class FacturaPersistenceTest
         Assert.assertNotNull(factura2);
         Assert.assertEquals(factura1.getCostoFijo(), factura2.getCostoFijo());
         Assert.assertEquals(factura1.getCostosAdicionales(), factura2.getCostosAdicionales());
-        Assert.assertEquals(factura1.getDividirCuentaServicios(), factura2.getDividirCuentaServicios());
+        Assert.assertEquals(factura1.isDividirCuentaServicios(), factura2.isDividirCuentaServicios());
         Assert.assertEquals(factura1.getFechaEntrada(), factura2.getFechaEntrada());
         Assert.assertEquals(factura1.getFechaSalida(), factura2.getFechaSalida());
         Assert.assertEquals(factura1.getCostosAdicionales(), factura2.getCostosAdicionales());
@@ -195,12 +195,12 @@ public class FacturaPersistenceTest
 
         FacturaEntity resp = em.find(FacturaEntity.class, factura1.getId());
 
-        Assert.assertEquals(factura1.getCostoFijo(), factura2.getCostoFijo());
-        Assert.assertEquals(factura1.getCostosAdicionales(), factura2.getCostosAdicionales());
-        Assert.assertEquals(factura1.getDividirCuentaServicios(), factura2.getDividirCuentaServicios());
-        Assert.assertEquals(factura1.getFechaEntrada(), factura2.getFechaEntrada());
-        Assert.assertEquals(factura1.getFechaSalida(), factura2.getFechaSalida());
-        Assert.assertEquals(factura1.getCostosAdicionales(), factura2.getCostosAdicionales());
-        Assert.assertEquals(factura1.getIVA(), factura2.getIVA());
+        Assert.assertEquals(resp.getCostoFijo(), factura2.getCostoFijo());
+        Assert.assertEquals(resp.getCostosAdicionales(), factura2.getCostosAdicionales());
+        Assert.assertEquals(resp.isDividirCuentaServicios(), factura2.isDividirCuentaServicios());
+        Assert.assertEquals(resp.getFechaEntrada(), factura2.getFechaEntrada());
+        Assert.assertEquals(resp.getFechaSalida(), factura2.getFechaSalida());
+        Assert.assertEquals(resp.getCostosAdicionales(), factura2.getCostosAdicionales());
+        Assert.assertEquals(resp.getIVA(), factura2.getIVA());
     }
 }

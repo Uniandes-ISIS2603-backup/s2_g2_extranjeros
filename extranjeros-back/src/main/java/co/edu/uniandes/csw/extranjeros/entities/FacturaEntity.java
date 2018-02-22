@@ -9,6 +9,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 /**
  *
  * @author s.rodriguezm
@@ -36,7 +39,25 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private String fechaEntrada;
     private String fechaSalida;
     private Double IVA;
-
+    
+    /**
+     * Vivienda que se factura.
+     */
+    @OneToOne
+    @JoinColumn(name="V_ID")
+    private ViviendaEntity vivienda;
+    
+    /**
+     * Lista de servicios que ya estan incluidos en el precio base.
+     */
+    @OneToMany
+    private List<ServicioEntity> serviciosIncluidos;
+    
+    /**
+     * Lista de servicios adicionales.
+     */
+    @OneToMany
+    private List<ServicioEntity> serviciosAdicionales;
      /**
      * @return costo fijo del arriendo.
      */
@@ -100,7 +121,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
     /**
      * @return Si se va a dividir o no el pago de los servicios.
      */
-    public Boolean getDividirCuentaServicios() {
+    public Boolean isDividirCuentaServicios() {
         return dividirCuentaServicios;
     }
     /**

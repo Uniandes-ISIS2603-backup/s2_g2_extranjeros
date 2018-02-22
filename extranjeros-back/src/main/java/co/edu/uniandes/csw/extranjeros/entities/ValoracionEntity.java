@@ -21,7 +21,7 @@ public class ValoracionEntity extends BaseEntity implements Serializable {
     /**
      * @return the valoracion
      */
-    public double getValoracion() {
+    public Double getValoracion() {
         return valoracion;
     }
 
