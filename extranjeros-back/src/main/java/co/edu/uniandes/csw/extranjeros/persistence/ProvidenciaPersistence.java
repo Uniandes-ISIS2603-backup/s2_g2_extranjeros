@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,6 +18,7 @@ import javax.persistence.Query;
  *
  * @author am.quintero12
  */
+@Stateless
 public class ProvidenciaPersistence {
      private static final Logger LOGGER = Logger.getLogger(ProvidenciaPersistence.class.getName());
     
@@ -39,8 +41,8 @@ public class ProvidenciaPersistence {
      */
     public List<ProvidenciaEntity> findAll()
     {
-        LOGGER.info("Consultando todos los estudiantes");
-        Query q=em.createQuery("select u from estudiantes u");
+        LOGGER.info("Consultando todas las providencias");
+        Query q=em.createQuery("select u from providencia u");
         return q.getResultList();
     }
     /**
@@ -50,9 +52,9 @@ public class ProvidenciaPersistence {
      */
     public ProvidenciaEntity create(ProvidenciaEntity providencia)
     {
-        LOGGER.info("Creando una nueva universidad");
+        LOGGER.info("Creando una nueva providencia");
         em.persist(providencia);
-        LOGGER.info("Universidad creada");
+        LOGGER.info("Providencia creada");
         return providencia;
     }
     
@@ -63,7 +65,7 @@ public class ProvidenciaPersistence {
      */
     public ProvidenciaEntity update(ProvidenciaEntity providencia)
     {
-        LOGGER.log(Level.INFO, "Actualizando universidad con el id={0}", providencia.getId());
+        LOGGER.log(Level.INFO, "Actualizando providencia con el id={0}", providencia.getId());
         return em.merge(providencia);
     }
     
