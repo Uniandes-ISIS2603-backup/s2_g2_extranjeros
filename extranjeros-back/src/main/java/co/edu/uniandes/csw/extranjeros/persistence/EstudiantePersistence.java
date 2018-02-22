@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,6 +18,8 @@ import javax.persistence.Query;
  *
  * @author am.quintero12
  */
+
+@Stateless
 public class EstudiantePersistence {
     private static final Logger LOGGER = Logger.getLogger(EstudiantePersistence.class.getName());
     
@@ -49,7 +52,7 @@ public class EstudiantePersistence {
      */
     public EstudianteEntity create(EstudianteEntity estudiante)
     {
-        LOGGER.info("Creando una nueva universidad");
+        LOGGER.info("Creando una nuevo estudiante");
         em.persist(estudiante);
         LOGGER.info("Universidad creada");
         return estudiante;

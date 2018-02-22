@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -22,6 +24,7 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
     private String estadoArrendamiento;
     
     //RELACIONES
+   @PodamExclude
    @OneToOne
     private ProvidenciaEntity providencia;
    
@@ -36,7 +39,7 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
    private EventoEntity eventosCreados;
    
    @PodamExclude
-    @OneToMany
+   @ManyToMany
    private EventoEntity eventosInvitado;
    
    
