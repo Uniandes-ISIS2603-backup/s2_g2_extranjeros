@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,6 +18,17 @@ import javax.persistence.Entity;
 @Entity
 public class ViviendaEntity extends BaseEntity implements Serializable{
 
+    //---------------------------------------------------
+    // Atributos Relacional
+    //---------------------------------------------------
+    
+    @PodamExclude
+    @ManyToMany
+    private List <UsuarioEntity> usuarioInquilinos;
+    
+     //---------------------------------------------------
+    // Atributos
+    //---------------------------------------------------
     private boolean disponible;
     
     private String direccion;

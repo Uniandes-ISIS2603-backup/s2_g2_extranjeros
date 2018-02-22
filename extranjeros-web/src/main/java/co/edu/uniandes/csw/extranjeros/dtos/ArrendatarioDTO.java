@@ -14,17 +14,15 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * <pre>
  *   {
  *      "nombre": String,
- *      "vivienda": Vivienda
  *      "id": number
  *   }
  * </pre>
- * Por ejemplo una ciudad se representa asi:<br>
+ * Por ejemplo una Arrendatario se representa asi:<br>
  * 
  * <pre>
  * 
  *   {
  *      "nombre": "Carlos Hugo" 
- *      "vivienda": [{Vivienda1, Vivienda2, Vivienda3}]
  *      "id": 4323
  *   }
  *

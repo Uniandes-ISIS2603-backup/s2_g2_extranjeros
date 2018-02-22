@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author s.rodriguezm
@@ -13,6 +16,17 @@ import javax.persistence.Entity;
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable
 {
+    //---------------------------------------------------
+    // Atributos Relacional
+    //---------------------------------------------------
+    
+    @PodamExclude
+    @ManyToMany
+    private List <UsuarioEntity> usuariosAsociados; 
+
+    //---------------------------------------------------
+    // Atributos 
+    //---------------------------------------------------
     private Double costoFijo;
     private Double costosAdicionales;
     private String formaDePago;
