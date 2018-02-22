@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
@@ -36,11 +37,11 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
    
    @PodamExclude
    @OneToMany
-   private EventoEntity eventosCreados;
+   private List<EventoEntity> eventosCreados;
    
    @PodamExclude
    @ManyToMany
-   private EventoEntity eventosInvitado;
+   private List<EventoEntity> eventosInvitado;
    
    
 
@@ -60,19 +61,19 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
         this.universidad = universidad;
     }
 
-    public EventoEntity getEventosCreados() {
+    public List<EventoEntity> getEventosCreados() {
         return eventosCreados;
     }
 
-    public void setEventosCreados(EventoEntity eventosCreados) {
+    public void setEventosCreados(List<EventoEntity> eventosCreados) {
         this.eventosCreados = eventosCreados;
     }
 
-    public EventoEntity getEventosInvitado() {
+    public List <EventoEntity> getEventosInvitado() {
         return eventosInvitado;
     }
 
-    public void setEventosInvitado(EventoEntity eventosInvitado) {
+    public void setEventosInvitado(List<EventoEntity> eventosInvitado) {
         this.eventosInvitado = eventosInvitado;
     }
    
