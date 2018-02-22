@@ -5,7 +5,11 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @author jr.pacheco10
@@ -21,8 +25,20 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String usuario;
     private String clave;
     private String correo;
-    private Integer celular;    
+    private Integer celular;
 
+    //---------------------------------------------------
+    // Atributos Relacionales
+    //---------------------------------------------------
+    
+    @PodamExclude
+    @ManyToMany(mappedBy = "usuariosAsociados")
+    private List <FacturaEntity> facturas;
+    
+    @PodamExclude
+    @ManyToMany(mappedBy = "usuarioInquilinos", cascade = CascadeType.ALL)
+    private List <ViviendaEntity> viviendas;
+    
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------

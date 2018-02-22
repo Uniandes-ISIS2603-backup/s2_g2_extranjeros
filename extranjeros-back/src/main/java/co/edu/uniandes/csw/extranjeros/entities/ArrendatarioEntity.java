@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class ArrendatarioEntity extends BaseEntity implements Serializable {
+public class ArrendatarioEntity extends UsuarioEntity implements Serializable {
     
     //---------------------------------------------------
     // Atributos
