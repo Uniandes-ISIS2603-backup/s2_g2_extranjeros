@@ -5,7 +5,11 @@
  */
 package co.edu.uniandes.csw.heroes.entities;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -13,6 +17,16 @@ import javax.persistence.Entity;
  */
 @Entity
 public class HeroeEntity extends BaseEntity {
+    
+    
+    //----------------------
+    //  Relacion
+    //----------------------
+    
+    @PodamExclude 
+    @OneToMany (cascade = CascadeType.ALL)
+    private List <VillanoEntity> villanos;
+    
     
     private String name;
     private String habilidad;
@@ -34,6 +48,18 @@ public class HeroeEntity extends BaseEntity {
     }
 
     public HeroeEntity() {
+    }
+
+    //----------------------
+    //  Relacion
+    //----------------------
+
+    public List<VillanoEntity> getVillanos() {
+        return villanos;
+    }
+
+    public void setVillanos(List<VillanoEntity> villanos) {
+        this.villanos = villanos;
     }
     
 }

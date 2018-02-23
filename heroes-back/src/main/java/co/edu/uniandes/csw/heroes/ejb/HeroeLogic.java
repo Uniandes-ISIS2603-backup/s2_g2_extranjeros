@@ -24,9 +24,11 @@ SOFTWARE.
 package co.edu.uniandes.csw.heroes.ejb;
 
 import co.edu.uniandes.csw.heroes.entities.HeroeEntity;
+import co.edu.uniandes.csw.heroes.entities.VillanoEntity;
 import co.edu.uniandes.csw.heroes.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.heroes.persistence.HeroePersistence;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -48,6 +50,51 @@ public class HeroeLogic {
   
     public HeroeEntity createHeroe(HeroeEntity entity) throws BusinessLogicException{
         
+        String nombreIngresar = entity.getName();
+        HeroeEntity busqueda = persistence.findByName(nombreIngresar);
+        
+        if (busqueda != null){
+            throw new BusinessLogicException("Existe un Heroe con el mismo nombre en la Plataforma");
+        }
+        
+        List <VillanoEntity> villanosDeHeroe = entity.getVillanos();
+        boolean presos = true;
+        boolean esMenor = true;
+        
+        Date fechaHoy = new Date();
+        
+        for(VillanoEntity villano : villanosDeHeroe){
+
+            if (villano.isPreso() == false){
+                presos = false;
+                break;
+            }
+
+            else if (villano.getFechaArresto().before(fechaHoy)){
+                esMenor = false;
+                break;
+            }
+        }
+        
+        if (presos == false){
+            throw new BusinessLogicException("El Heroe que desea crear, no ha capturado a todos sus Villanos");
+        }
+        
+        if (esMenor == false){
+            throw new BusinessLogicException("La fecha de captura de los Villanos no es menor a la actual.");
+        }
+        
         return persistence.create(entity);
+    }
+    
+    
+    public void deleteHeroe(Long id) throws BusinessLogicException{
+        
+        HeroeEntity heroeEncontrar = getHeroe(id);
+        if (heroeEncontrar.getVillanos().isEmpty()){
+         throw new BusinessLogicException("El heroe no tiene Villanos asociados.");   
+        }
+        
+        persistence.delete(id);
     }
 }

@@ -78,4 +78,10 @@ public class HeroePersistence {
         em.persist(entity);
         return entity;
     }
+    
+    
+    public void delete(Long id){
+        HeroeEntity heroe = em.find(HeroeEntity.class, id);
+        em.remove(heroe);
+    }
 }

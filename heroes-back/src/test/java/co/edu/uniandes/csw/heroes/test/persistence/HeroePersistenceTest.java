@@ -6,7 +6,9 @@ package co.edu.uniandes.csw.heroes.test.persistence;
  * and open the template in the editor.
  */
 import co.edu.uniandes.csw.heroes.entities.HeroeEntity;
+import co.edu.uniandes.csw.heroes.entities.VillanoEntity;
 import co.edu.uniandes.csw.heroes.persistence.HeroePersistence;
+import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -52,9 +54,40 @@ public class HeroePersistenceTest {
 
         HeroeEntity entity = em.find(HeroeEntity.class, result.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());     
-        Assert.assertEquals(newEntity.getHabilidad(), entity.getHabilidad());     
-
-        //TODO agregar villanos, persistirlos y validar si se están relacionando correctamente
-         
+        Assert.assertEquals(newEntity.getHabilidad(), entity.getHabilidad());  
+        
+        // Tamanio
+        Assert.assertEquals(newEntity.getVillanos().size(), entity.getVillanos().size());
+        
+        // Objetos
+        List <VillanoEntity> villanosNewEntity = newEntity.getVillanos();
+        List <VillanoEntity> villanosEntity = entity.getVillanos();
+        
+        for (VillanoEntity villanonew : villanosNewEntity){
+            boolean encontrado = false;
+            
+            for (VillanoEntity villanoEnt : villanosEntity){
+                
+                if(villanonew.getId().equals(villanoEnt.getId())){
+                    encontrado = true;
+                }
+            }
+            Assert.assertTrue(encontrado);
+        }
+    }
+    
+    
+    @Test
+    public void deleteHeroeTest(){
+        
+        // Dado que no Hay data, genero un Heroe para despúes borrarlo
+//        PodamFactory factory = new PodamFactoryImpl();
+//        HeroeEntity newEntity = factory.manufacturePojo(HeroeEntity.class);
+//        HeroeEntity result = heroePersistence.create(newEntity);
+//
+//        Assert.assertNotNull(result);
+//        em.remove(result);
+//        
+//        Assert.assertNull(result);
     }
 }

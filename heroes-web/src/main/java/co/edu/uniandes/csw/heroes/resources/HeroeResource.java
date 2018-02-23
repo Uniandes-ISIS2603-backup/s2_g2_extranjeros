@@ -5,10 +5,12 @@ import co.edu.uniandes.csw.heroes.dtos.HeroeDetailDTO;
 import co.edu.uniandes.csw.heroes.ejb.HeroeLogic;
 import co.edu.uniandes.csw.heroes.entities.HeroeEntity;
 import co.edu.uniandes.csw.heroes.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.heroes.mappers.BusinessLogicExceptionMapper;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -44,5 +46,18 @@ public class HeroeResource {
         return new HeroeDetailDTO(heroe); 
     }
     
- 
+    @DELETE   
+    @PathParam("{id: \\d+}")
+    public void deleteHeroe(@PathParam("id") Long id){
+        
+        HeroeEntity heroe = heroeLogic.getHeroe(id);
+         if (heroe == null){ 
+            throw new WebApplicationException("El heroe no existe");   
+         }
+        try {
+            heroeLogic.deleteHeroe(id) ;
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(HeroeResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
