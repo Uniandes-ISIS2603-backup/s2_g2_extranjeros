@@ -93,7 +93,8 @@ con el json:
 			   "preso": true,
 			   "fechaArresto": "2018-02-22T20:38:54.973-05:00"
             }]
-}```
+}
+```
 
 b. Fijese en el id que retornó el POST y Ejecute 
 
@@ -110,7 +111,8 @@ b. Fijese en el id que retornó el POST y Ejecute
 			   "preso": false,
 			   "fechaArresto": "2018-02-22T20:38:54.973-05:00"
             }]
-}```
+}
+```
 
 ```json 
 { 
@@ -125,7 +127,8 @@ b. Fijese en el id que retornó el POST y Ejecute
 			   "preso": true,
 			   "fechaArresto": "2018-03-22T20:38:54.973-05:00"
             }]
-}```
+}
+```
 
 ## Punto 2 (40%): Se quiere que el sistema pueda liminar un heroe y todos sus villanos.
 Para ello usted de cumplir con los siguientes pasos.
