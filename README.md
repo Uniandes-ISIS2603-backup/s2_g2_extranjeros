@@ -16,7 +16,8 @@ En la aplicación usted encontrará que las funcionalidades de crear (POST) y so
 
 Se nos ha solicitado completar los siguientes requerimientos.
 
-## Punto 1 (60%): Se quiere que el sistema pueda gestionar ahora el listado de villanos que han sido capturados por el heroe.
+## Punto 1 (60%): Villanos
+Se desea que el sistema permita gestionar ahora el listado de villanos que han sido capturados por el heroe.
 De cada villano se conoce su nombre (name) (String), si está preso actualmente (preso) (Boolean), la fecha del último arresto (fechaArresto) (Date) y se tiene un campo 
 id (Long) que representa la llave primaria del villano. 
 
@@ -134,7 +135,8 @@ BussinessLogicException con un mensaje donde se especifique cual regla no se cum
 }
 ```
 
-## Punto 2 (40%): Se desea que el sistema permita eliminar un heroe y todos sus villanos.
+## Punto 2 (40%): Eliminar
+Se desea que el sistema permita eliminar un heroe y todos sus villanos.
 Para ello usted de cumplir con los siguientes pasos.
 
 1. (10%) Cree un método con el nombre delete en la clase HeroePersistent el cual recibe el id del heroe y elimina el heroe.
