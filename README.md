@@ -35,7 +35,8 @@ con el json:
 			   "preso": true,
 			   "fechaArresto": "2018-02-22T20:38:54.973-05:00"
             }]
-}```
+}
+```
 
 Se cree el heroe con la información de un villano o villanos. 
 
