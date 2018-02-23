@@ -72,7 +72,8 @@ Defina set/get y actualice el método constructor que recibe un HeroeEntity al i
 4. (15%) Modifique el método createHeroe de la clase HeroeLogic para que tenga en cuenta las siguientes reglas de negocio. 
 - No debe existir un heroe con el mismo nombre 
 - Todos los villanos deben estar presos
-- La fecha de captura de todos los villanos debe ser menor a la fecha actual (para esto puede usar los métodos before o after de la clase Date, o el método compareTo)
+- La fecha de captura de todos los villanos debe ser menor a la fecha actual (para esto puede usar los métodos before o after de la clase Date, o el método compareTo),
+
 Si las reglas de negocio se cumplen, se debe llamar la persistencia para que 
 el objeto sea persistido, de lo contrario debe lanzar una excepción 
 BussinessLogicException con un mensaje donde se especifique cual regla no se cumplió.
@@ -83,9 +84,9 @@ BussinessLogicException con un mensaje donde se especifique cual regla no se cum
 
 7. Ejecute la siguiente prueba la cual debe arrojar el código 200
 
-a. `POST localhost:8080/heroes-web/api/heroes`
+`POST localhost:8080/heroes-web/api/heroes`
 
-con el json:
+* json body
 
 ```json 
 { 
@@ -99,7 +100,7 @@ con el json:
 }
 ```
 
-b. Fijese en el id que retornó el POST y Ejecute 
+* Fijese en el id que retornó el POST y Ejecute 
 
 `GET localhost:8080/heroes-web/api/heroes/:id`
 
@@ -133,7 +134,7 @@ b. Fijese en el id que retornó el POST y Ejecute
 }
 ```
 
-## Punto 2 (40%): Se quiere que el sistema pueda liminar un heroe y todos sus villanos.
+## Punto 2 (40%): Se desea que el sistema permita eliminar un heroe y todos sus villanos.
 Para ello usted de cumplir con los siguientes pasos.
 
 1. (10%) Cree un método con el nombre delete en la clase HeroePersistent el cual recibe el id del heroe y elimina el heroe.
