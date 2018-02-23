@@ -51,7 +51,8 @@ public VillanoDTO(VillanoEntity heroe) {
         this.id = heroe.getId();
         this.name = heroe.getName();
 		...
-    }```
+    }
+```
 
 Para convertir un VillanoDTO en un VillanoEntity defina el siguiente método:
 ```java
@@ -61,7 +62,8 @@ public VillanoEntity toEntity() {
         entity.setName(this.name);   
         ...		
         return entity;
-    }```
+    }
+```
 2. (10%) Defina en HeroeEntity la relación con villano (unidireccional) e implemente sus set/get. Esta es una relación de **composición** de uno de muchos (OneToMany). 
 
 3. (15%) Defina un atributo nuevo en HeroeDetailDTO que representa el listado de villanos que han sido capturados por el villano (villanos).
