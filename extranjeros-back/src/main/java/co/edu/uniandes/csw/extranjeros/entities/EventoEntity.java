@@ -7,7 +7,12 @@ package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -19,6 +24,7 @@ public class EventoEntity extends BaseEntity implements Serializable{
     private String responsableEventoP;
     private String nombreEvento;
     private String tipoEvento;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaEvento;
     private Integer distanciaVivienda;
     private String ubicacionLon;
@@ -27,6 +33,9 @@ public class EventoEntity extends BaseEntity implements Serializable{
     private Integer capacidad;
     
     //Faltan asociaciones. Falta la lista de estudiantes.
+     @PodamExclude
+   @ManyToMany
+    private List<EstudianteEntity> estudiantesInvitados;
 
     public String getResponsableEventoP() {
         return responsableEventoP;
