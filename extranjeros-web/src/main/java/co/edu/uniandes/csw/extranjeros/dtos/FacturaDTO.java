@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import java.util.Date;
+
 /**
  * FacturaDTO Objeto de transferencia de datos de Facturas. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el
@@ -54,16 +57,32 @@ public class FacturaDTO {
     private Integer mesesAPagar;
     private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
-    private String fechaEntrada;
-    private String fechaSalida;
+    private Date fechaEntrada;
+    private Date fechaSalida;
     private Double IVA;
     
     
     /**
-     * Constructor por defecto
+     * Constructor por defecto.
      */
     public FacturaDTO(){}
-    
+    /**
+     * Constructor que recibe un entity.
+     * @param entity entidad
+     */
+    public FacturaDTO(FacturaEntity entity)
+    {
+        id=entity.getId();
+        costoFijo=entity.getCostoFijo();
+        costosAdicionales=entity.getCostosAdicionales();
+        formaDePago=entity.getFormaDePago();
+        mesesAPagar=entity.getMesesAPagar();
+        numerodeInquilinos=entity.getNumerodeInquilinos();
+        dividirCuentaServicios=entity.isDividirCuentaServicios();
+        fechaEntrada=entity.getFechaEntrada();
+        fechaSalida=entity.getFechaSalida();
+        IVA=entity.getIVA();
+    }
     //Métodos
     /**
      * @return el ID del servicio.
@@ -152,25 +171,25 @@ public class FacturaDTO {
     /**
      * @return fecha de entrada.
      */
-    public String getFechaEntrada() {
+    public Date getFechaEntrada() {
         return fechaEntrada;
     }
     /**
      * @param fechaEntrada nueva fecha de entrada.
      */
-    public void setFechaEntrada(String fechaEntrada) {
+    public void setFechaEntrada(Date fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
     /**
      * @return fecha de salida.
      */
-    public String getFechaSalida() {
+    public Date getFechaSalida() {
         return fechaSalida;
     }
     /**
      * @param fechaSalida nueva fecha de salida.
      */
-    public void setFechaSalida(String fechaSalida) {
+    public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
      /**
@@ -185,6 +204,27 @@ public class FacturaDTO {
     public void setIVA(Double IVA) {
         this.IVA = IVA;
     }
-    
+    /**
+     * Convierte un objeto FacturaDTO a FacturaEntity incluyendo los
+     * atributos de FacturaDTO.
+     *
+     * @return Nueva objeto FacturaEntity.
+     *
+     */
+    public FacturaEntity toEntity()
+    {
+        FacturaEntity e=new FacturaEntity();
+        e.setId(id);
+        e.setCostoFijo(costoFijo);
+        e.setCostosAdicionales(costosAdicionales);
+        e.setDividirCuentaServicios(dividirCuentaServicios);
+        e.setFechaEntrada(fechaEntrada);
+        e.setFechaSalida(fechaSalida);
+        e.setFormaDePago(formaDePago);
+        e.setNumerodeInquilinos(numerodeInquilinos);
+        e.setMesesAPagar(mesesAPagar);
+        e.setIVA(IVA);
+        return e;
+    }
     
 }

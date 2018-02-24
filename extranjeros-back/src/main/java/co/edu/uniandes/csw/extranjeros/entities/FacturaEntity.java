@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -12,6 +13,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author s.rodriguezm
@@ -19,14 +22,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable
 {
-    //---------------------------------------------------
-    // Atributos Relacional
-    //---------------------------------------------------
-    
-    @PodamExclude
-    @ManyToMany
-    private List <UsuarioEntity> usuariosAsociados; 
-
     //---------------------------------------------------
     // Atributos 
     //---------------------------------------------------
@@ -36,8 +31,13 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private Integer mesesAPagar;
     private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
-    private String fechaEntrada;
-    private String fechaSalida;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaEntrada;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaSalida;
+    
     private Double IVA;
     
     /**
@@ -133,25 +133,25 @@ public class FacturaEntity extends BaseEntity implements Serializable
     /**
      * @return Fecha de entrada a la vivienda.
      */
-    public String getFechaEntrada() {
+    public Date getFechaEntrada() {
         return fechaEntrada;
     }
     /**
     * @param fechaEntrada Nueva fecha de entrada.
     */
-    public void setFechaEntrada(String fechaEntrada) {
+    public void setFechaEntrada(Date fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
     /**
      * @return Fecha de salida a la vivienda.
      */
-    public String getFechaSalida() {
+    public Date getFechaSalida() {
         return fechaSalida;
     }
     /**
     * @param fechaSalida Nueva fecha de salida.
     */
-    public void setFechaSalida(String fechaSalida) {
+    public void setFechaSalida(Date fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
     /**
@@ -165,6 +165,30 @@ public class FacturaEntity extends BaseEntity implements Serializable
     */
     public void setIVA(Double IVA) {
         this.IVA = IVA;
+    }
+
+    public ViviendaEntity getVivienda() {
+        return vivienda;
+    }
+
+    public void setVivienda(ViviendaEntity vivienda) {
+        this.vivienda = vivienda;
+    }
+
+    public List<ServicioEntity> getServiciosIncluidos() {
+        return serviciosIncluidos;
+    }
+
+    public void setServiciosIncluidos(List<ServicioEntity> serviciosIncluidos) {
+        this.serviciosIncluidos = serviciosIncluidos;
+    }
+
+    public List<ServicioEntity> getServiciosAdicionales() {
+        return serviciosAdicionales;
+    }
+
+    public void setServiciosAdicionales(List<ServicioEntity> serviciosAdicionales) {
+        this.serviciosAdicionales = serviciosAdicionales;
     }
     
 }
