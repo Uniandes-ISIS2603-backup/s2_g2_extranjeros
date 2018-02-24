@@ -5,6 +5,8 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
+import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
 import java.util.*;
 /**
  * Clase que extiende de {@link FacturaDTO} para manejar la transformacion entre
@@ -26,10 +28,73 @@ public class FacturaDetailDTO extends FacturaDTO {
      */
     private ViviendaDTO vivienda;
     /**
-     * Constructor por defecto
+     * Constructor por defecto.
      */
     public FacturaDetailDTO(){}
+    /**
+     * Constructor que recibe un entity.
+     * @param entity entidad
+     */
+    public FacturaDetailDTO(FacturaEntity entity)
+    {
+        super(entity);
+    }
+    /**
+     * @return la lista de servicios incluidos.
+     */
+    public List<ServicioDTO> getServiciosIncluidos() {
+        return serviciosIncluidos;
+    }
+    /**
+     * @param serviciosIncluidos la nueva lista de servicios incluidos.
+     */
+    public void setServiciosIncluidos(List<ServicioDTO> serviciosIncluidos) {
+        this.serviciosIncluidos = serviciosIncluidos;
+    }
+    /**
+     * @return la lista de servicios extra.
+     */
+    public List<ServicioDTO> getServiciosExtra() {
+        return serviciosExtra;
+    }
+    /**
+     * @param serviciosExtra la nueva lista de servicios extra.
+     */
+    public void setServiciosExtra(List<ServicioDTO> serviciosExtra) {
+        this.serviciosExtra = serviciosExtra;
+    }
+    /**
+     * @return la vivienda del arriendo.
+     */
+    public ViviendaDTO getVivienda() {
+        return vivienda;
+    }
+    /**
+     * @param vivienda la nueva vivienda del arriendo.
+     */
+    public void setVivienda(ViviendaDTO vivienda) {
+        this.vivienda = vivienda;
+    }
     
-   
+    public List<ServicioEntity> servicioDTOAServicioEntity(List<ServicioDTO> dto)
+    {
+       List<ServicioEntity> res=new ArrayList<>();
+       for(ServicioDTO x: dto)
+       {
+           res.add(x.toEntity());
+       }
+       return res;
+    }
+    
+    @Override
+    public FacturaEntity toEntity()
+    {
+        FacturaEntity e=super.toEntity();
+        e.setServiciosAdicionales(servicioDTOAServicioEntity(serviciosExtra));
+        e.setVivienda(vivienda.toEntity());
+        e.setServiciosIncluidos(servicioDTOAServicioEntity(serviciosIncluidos));
+    }
+    
+    
     
 }

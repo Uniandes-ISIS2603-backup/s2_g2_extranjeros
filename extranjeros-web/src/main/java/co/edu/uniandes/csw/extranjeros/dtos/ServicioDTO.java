@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
+
 /**
  * ServicioDTO Objeto de transferencia de datos de Servicios. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el
@@ -42,6 +44,21 @@ public class ServicioDTO {
      */
     public ServicioDTO(){}
     
+    
+    /**
+     * Crea un objeto ServicioDTO a partir de un objeto ServicioEntity.
+     *
+     * @param entity Entidad ServicioEntity desde la cual se va a crear el nuevo
+     * objeto.
+     * 
+     */
+    public ServicioDTO(ServicioEntity entity) {
+        if (entity != null) {
+            this.id = entity.getId();
+            this.tipo = entity.getTipo();
+            this.adicional = entity.getAdicional();
+        }
+    }
     //Métodos
     /**
      * @return el ID del servicio.
@@ -78,6 +95,14 @@ public class ServicioDTO {
      */
     public void setAdicional(Boolean adicional) {
         this.adicional = adicional;
+    }
+    public ServicioEntity toEntity()
+    {
+        ServicioEntity e=new ServicioEntity();
+        e.setAdicional(adicional);
+        e.setId(id);
+        e.setTipo(tipo);
+        return e;
     }
     
 }
