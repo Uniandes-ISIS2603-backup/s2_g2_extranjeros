@@ -189,7 +189,7 @@ public class EstudiantePersistenceTest {
      * Prueba para eliminar un estudiante.
      */
     @Test
-    public void deleteUniversidadTest() {
+    public void deleteEstudianteTest() {
         EstudianteEntity estudiante = data.get(0);
         estudiantePersistence.delete(estudiante.getId());
         EstudianteEntity deleted = em.find(EstudianteEntity.class, estudiante.getId());
@@ -200,7 +200,7 @@ public class EstudiantePersistenceTest {
      * Prueba para actualizar una providencia
      */
     @Test
-    public void updateProvidenciaTest() {
+    public void updateEstudianteTest() {
         EstudianteEntity estudiante1 = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         EstudianteEntity nuevoEstudiante = factory.manufacturePojo(EstudianteEntity.class);
