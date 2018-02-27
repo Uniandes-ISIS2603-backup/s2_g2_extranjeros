@@ -43,7 +43,7 @@ public class ViviendaPersistence {
         LOGGER.info("Vivienda creada");
         return entity;
     }
-
+    
     public ViviendaEntity update(ViviendaEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando vivienda con id={0}", entity.getId());
         return em.merge(entity);
