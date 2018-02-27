@@ -26,6 +26,8 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String clave;
     private String correo;
     private Integer celular;
+    private Integer cedula;
+    private Integer edad;
 
     //---------------------------------------------------
     // Atributos Relacionales
@@ -101,5 +103,69 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
      */
     public void setCelular(Integer newPhone){
         this.celular = newPhone;
+    }
+    
+    /**
+     * @return El numero de cedula de un usuario.
+     */
+    public Integer getCedula() {
+        return cedula;
+    }
+    
+    /**
+     * Crea o modifica el numero de cedula asociado a un usuario.
+     * @param cedula La nueva cedula. 
+     */
+    public void setCedula(Integer cedula) {
+        this.cedula = cedula;
+    }
+
+    /**
+     * @return La edad de un Usuario.
+     */
+    public Integer getEdad() {
+        return edad;
+    }
+    
+    /**
+     * Crea o modifica la edad asociado a un usuario.
+     * @param edad La nueva edad. 
+     */
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+    
+    //---------------------------------------------------
+    // Metodos atributos Relacionales
+    //--------------------------------------------------- 
+    
+    /**
+     * @return La lista de facturas asociadas a un usuario.
+     */
+    public List<FacturaEntity> getFacturas() {
+        return facturas;
+    }
+
+    /**
+     * Crea o modifica la lista de Facturas asociadas a un Usuario.
+     * @param facturas Lista de Facturas.
+     */
+    public void setFacturas(List<FacturaEntity> facturas) {
+        this.facturas = facturas;
+    }
+
+    /**
+     * @return La lista de viviendas asociadas a un usuario.
+     */
+    public List<ViviendaEntity> getViviendas() {
+        return viviendas;
+    }
+
+    /**
+     * Crea o modifica la lista de Viviendas asociadas a un Usuario.
+     * @param viviendas Lista de Facturas. 
+     */
+    public void setViviendas(List<ViviendaEntity> viviendas) {
+        this.viviendas = viviendas;
     }
 }

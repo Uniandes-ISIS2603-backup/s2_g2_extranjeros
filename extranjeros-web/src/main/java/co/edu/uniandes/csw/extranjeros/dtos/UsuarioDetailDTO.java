@@ -17,7 +17,8 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  *      "clave": string,
  *      "correoAsociado": string,
  *      "celular": number,
- *      "id": number
+ *      "id": number,
+ *      "cedula": number,
  *      "viviendas": [  
  *        {
  *              "id": number,
@@ -54,6 +55,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  *      "correoAsociado": "carlmanson@outlook.com",
  *      "celular": 31132867894
  *      "id": 31231,
+ *      "cedula": 2212112,
  *      "viviendas": [  
  *        {
  *           "id": 3312,
@@ -87,6 +89,10 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * @author Jose Pacheco
  */
 
+import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDetailDTO extends UsuarioDTO {
@@ -109,11 +115,67 @@ public class UsuarioDetailDTO extends UsuarioDTO {
     public UsuarioDetailDTO(){
         super();
     }
+    
+    
+    /**
+     * Crea un objeto UsuarioTO a partir de un objeto UsuarioEntity.
+     * @param entity Entidad UsuarioEntity desde la cual se va a crear el nuevo
+     * objeto.
+     */
+        public UsuarioDetailDTO(UsuarioEntity entity) {
+          super(entity);
+          if (entity != null) {
+            facturas = new ArrayList<>();
+            viviendas = new ArrayList<>();
+            
+            for (FacturaEntity facturasEntity : entity.getFacturas()) {
+                //facturas.add(new FacturaDTO(facturasEntity));
+            }
+            
+            for (ViviendaEntity viviendasEntity : entity.getViviendas()){
+                //viviendas.add(new ViviendaDTO(viviendasEntity));
+            }
+
+        }
+    }
 
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
     
+    /**
+     * Convierte un objeto UsuarioDetailDTO a UsuarioEntity incluyendo los
+     * atributos de AuthorDTO (relacionales).
+     * @return Nueva objeto AuthorEntity.
+     */
+    @Override    
+    public UsuarioEntity toEntity(){
+         
+        // Entity
+        UsuarioEntity entity = super.toEntity();
+         
+         // Verificacion relaciones
+         
+         if (facturas != null) {
+            List<FacturaEntity> facturaEntity = new ArrayList<>();
+            for (FacturaDTO DTOFactura : facturas) {
+                //facturaEntity.add(DTOFactura.toEntity());
+            }
+            entity.setFacturas(facturaEntity);
+        }
+         
+         if (viviendas != null) {
+            List<ViviendaEntity> viviendaEntity = new ArrayList<>();
+            for (ViviendaDTO DTOFactura : viviendas) {
+                //viviendaEntity.add(DTOFactura.toEntity());
+            }
+            entity.setViviendas(viviendaEntity);
+        }
+         
+        // Retorno
+        return entity;         
+    }
+        
     /**
      * Obtiene las facturas asociadas al Usuario
      * @return List. Lista con las facturas.
