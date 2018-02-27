@@ -140,10 +140,11 @@ public class ProvidenciaPersistenceTest {
     }
     
     /**
-     * Prueba para consultar todos los estudiantes.
-     */
+     * Prueba para consultar todas las providencias
+     * */
+    
     @Test
-    public void getEstudiantesTest()
+    public void getProvidenciasTest()
     {
         List<ProvidenciaEntity> providenciaPR= providenciaPersistence.findAll();
         Assert.assertEquals(providenciaPR.size(), data.size());
@@ -160,7 +161,7 @@ public class ProvidenciaPersistenceTest {
     }
     
      /**
-     * Prueba para consultar una universidad.
+     * Prueba para consultar una providencia.
      */
     @Test
     public void getProvidenciaTest()
