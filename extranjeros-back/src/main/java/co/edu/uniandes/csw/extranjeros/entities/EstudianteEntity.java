@@ -30,7 +30,7 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
    @OneToOne
     private ProvidenciaEntity providencia;
    
-   @OneToOne
+   @OneToMany
    private TarjetaEntity tarjeta;
    
    @OneToOne 

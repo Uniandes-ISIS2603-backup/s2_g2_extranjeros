@@ -5,11 +5,20 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import java.util.List;
+
 /**
  *
  * @author am.quintero12
  */
 public class EstudianteDetailDTO extends EstudianteDTO {
+    
+    private ProvidenciaDTO providencia;
+    private List<EventoDTO> eventosInvitado;
+    private List<EventoDTO> eventosCreados;
+    private List<TarjetaDTO>  tarjetas;
+    private UniversidadDTO universidad;
+    
     
     public EstudianteDetailDTO()
     {

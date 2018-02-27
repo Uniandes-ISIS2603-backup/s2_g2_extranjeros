@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.extranjeros.persistence;
 
+import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -13,6 +14,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -75,6 +77,29 @@ public class EstudiantePersistence {
     {
         LOGGER.log(Level.INFO, "Borrando el estudiante con el id={0}",id);
         em.remove(find(id));
+    }
+    
+    /**
+     * Busca si hay alguna city con el nombre que se envía de argumento
+     *
+     * @param name: Nombre de la city que se está buscando
+     * @return null si no existe ninguna city con el nombre del argumento. Si
+     * existe alguna devuelve la primera.
+     */
+    public EstudianteEntity findByName(String name) {
+        LOGGER.log(Level.INFO, "Consultando estudiante por nombre ", name);
+
+        // Se crea un query para buscar estudiantes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From EstudianteEntity e where e.name = :name", EstudianteEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter("name", name);
+        // Se invoca el query se obtiene la lista resultado
+        List<EstudianteEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
     }
     
 }

@@ -19,7 +19,7 @@ import javax.inject.Inject;
  */
 
 @Stateless
-public class EstudianteLogic {
+public class EstudianteLogic extends UsuarioLogic {
     
     private static final Logger LOGGER = Logger.getLogger(EstudianteLogic.class.getName());
     
@@ -62,6 +62,7 @@ public class EstudianteLogic {
         LOGGER.log(Level.INFO, "Termina proceso de borrar estudiante con id={0}", id);
     }
 
+    
     
     
     
