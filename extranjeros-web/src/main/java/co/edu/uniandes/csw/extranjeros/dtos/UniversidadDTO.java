@@ -73,11 +73,26 @@ public class UniversidadDTO {
      */
     public UniversidadDTO(UniversidadEntity universidad) {
    
+        if(universidad != null){
         this.nombre = universidad.getNombre();
         this.direccion = universidad.getDireccion();
         this.ubicacionLat =universidad.getUbicacionLat();
         this.ubicacionLon = universidad.getUbicacionLon();
-
+        }
+    }
+    
+      /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public UniversidadEntity toEntity() {
+        UniversidadEntity entity = new UniversidadEntity();
+        entity.setNombre(this.nombre);
+        entity.setDireccion(this.direccion);
+        entity.setUbicacionLat(this.ubicacionLat);
+        entity.setUbicacionLon(this.ubicacionLon);
+        return entity;
     }
     
     //------------------
@@ -167,19 +182,7 @@ public class UniversidadDTO {
         this.id = id;
     }
     
-    /**
-     * Convertir DTO a Entity
-     *
-     * @return Un Entity con los valores del DTO
-     */
-    public UniversidadEntity toEntity() {
-        UniversidadEntity entity = new UniversidadEntity();
-        entity.setNombre(this.nombre);
-        entity.setDireccion(this.direccion);
-        entity.setUbicacionLat(this.ubicacionLat);
-        entity.setUbicacionLon(this.ubicacionLon);
-        return entity;
-    }
+  
     
     
     

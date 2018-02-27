@@ -14,6 +14,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -36,6 +37,29 @@ public class UniversidadPersistence {
     {
         LOGGER.log(Level.INFO, "Consultando universidad con id={0}", id);
         return em.find(UniversidadEntity.class, id);
+    }
+    
+     /**
+     * Busca si hay alguna city con el nombre que se envía de argumento
+     *
+     * @param name: Nombre de la city que se está buscando
+     * @return null si no existe ninguna city con el nombre del argumento. Si
+     * existe alguna devuelve la primera.
+     */
+    public UniversidadEntity findByName(String name) {
+        LOGGER.log(Level.INFO, "Consultando universidad por nombre ", name);
+
+        // Se crea un query para buscar universidades con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From UniversidadEntity e where e.name = :name", UniversidadEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter("name", name);
+        // Se invoca el query se obtiene la lista resultado
+        List<UniversidadEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
     }
     /**
      * Busca las universidades en la base de datos
