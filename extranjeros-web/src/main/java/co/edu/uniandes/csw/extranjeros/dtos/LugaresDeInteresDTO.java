@@ -74,14 +74,14 @@ public class LugaresDeInteresDTO {
      * @param city: Es la entidad que se va a convertir a DTO
      */
     public LugaresDeInteresDTO(LugaresDeInteresEntity lugarDeInteres) {
-   
+        if(lugarDeInteres != null){
         this.nombre = lugarDeInteres.getNombre();
         this.direccion = lugarDeInteres.getDireccion();
         this.telefono = lugarDeInteres.getTelefono();
         this.tipo = lugarDeInteres.getTipo();
         this.ubicacionLat = lugarDeInteres.getUbicacionLat();
         this.ubicacionLon = lugarDeInteres.getUbicacionLon();
-
+        }
     }
     
     
