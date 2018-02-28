@@ -49,17 +49,15 @@ public class UniversidadLogic {
         return persistence.find(id);
     }
 
-    public UniversidadEntity updateUniversidad(UniversidadEntity entity) throws BusinessLogicException  {
-        if (persistence.findByName(entity.getName()) != null) {
-            throw new BusinessLogicException("Ya existe una Universidad con el nombre \"" + entity.getName() + "\"");
-        }
+    public UniversidadEntity updateUniversidad(UniversidadEntity entity)  {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar una universidad");
         return persistence.update(entity);
     }
     
-    public void deleteUniversidad(Long id) throws BusinessLogicException {
+    public void deleteUniversidad(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar universidad con id={0}", id);    
         persistence.delete(id);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar universidad con id={0}", id);
+       
     }
     
 }

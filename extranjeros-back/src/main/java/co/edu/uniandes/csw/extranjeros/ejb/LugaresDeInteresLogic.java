@@ -26,7 +26,7 @@ public class LugaresDeInteresLogic {
     @Inject
     private LugaresDeInteresPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
-    public LugaresDeInteresEntity createlugarDeInteres(LugaresDeInteresEntity entity) throws BusinessLogicException {
+    public LugaresDeInteresEntity createLugarDeInteres(LugaresDeInteresEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de lugar de interes");
         // Verifica la regla de negocio que dice que no puede haber dos lugares de interes con el mismo nombre
         if (persistence.findByName(entity.getName()) != null) {
@@ -50,17 +50,15 @@ public class LugaresDeInteresLogic {
         return persistence.find(id);
     }
 
-    public LugaresDeInteresEntity updateLugarDeInteres(LugaresDeInteresEntity entity) throws BusinessLogicException  {
-        if (persistence.findByName(entity.getName()) != null) {
-            throw new BusinessLogicException("Ya existe un lugar de interes con el nombre \"" + entity.getName() + "\"");
-        }
+    public LugaresDeInteresEntity updateLugarDeInteres(LugaresDeInteresEntity entity)  {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar un lugar de interes");
         return persistence.update(entity);
     }
     
-    public void deleteLugarDeInteres(LugaresDeInteresEntity entity) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar lugar de interes con id={0}", entity.getId());    
-        persistence.delete(entity.getId());
-        LOGGER.log(Level.INFO, "Termina proceso de borrar lugar de interes con id={0}", entity.getId());
+    public void deleteLugarDeInteres(Long id)  {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar lugar de interes con id={0}", id);    
+        persistence.delete(id);
+        
     }
     
 }
