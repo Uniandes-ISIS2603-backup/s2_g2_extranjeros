@@ -46,7 +46,12 @@ public class UniversidadLogicTest {
     private UserTransaction utx;
 
     private List<UniversidadEntity> data = new ArrayList<UniversidadEntity>();
-
+    /**
+     * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
+     * embebido. El jar contiene las clases de servicio, el descriptor de la
+     * base de datos y el archivo benas.xml para resolver la inyección de
+     * dependencias.
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
