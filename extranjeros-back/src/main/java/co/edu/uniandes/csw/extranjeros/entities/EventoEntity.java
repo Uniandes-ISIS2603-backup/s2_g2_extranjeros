@@ -39,6 +39,19 @@ public class EventoEntity extends BaseEntity implements Serializable{
      
     @OneToOne
     private EstudianteEntity responsableEventoP;
+    
+    @OneToOne
+    private LugaresDeInteresEntity lugarDeInteres;
+    
+    public LugaresDeInteresEntity getLugarDeInteres()
+    {
+        return lugarDeInteres;
+    }
+    
+    public void setLugarDeInteres(LugaresDeInteresEntity lugarDeInteres)
+    {
+        this.lugarDeInteres = lugarDeInteres;
+    }
 
     public EstudianteEntity getResponsableEventoP() {
         return responsableEventoP;

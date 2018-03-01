@@ -24,6 +24,8 @@ public class EventoLogic {
     @Inject
     private EventoPersistence persistence;
     
+    //Falta Inject a las asociaciones
+    
     public EventoEntity create(EventoEntity entity)
     {
         return persistence.create(entity);
