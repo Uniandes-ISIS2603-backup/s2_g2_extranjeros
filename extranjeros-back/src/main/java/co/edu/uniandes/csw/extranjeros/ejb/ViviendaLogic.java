@@ -37,14 +37,14 @@ public class ViviendaLogic {
      return persistence.find(id);
  }
  
- public ViviendaEntity createViv(ViviendaEntity vivienda){
+ public ViviendaEntity createVivienda(ViviendaEntity vivienda){
       
      LOGGER.log(Level.INFO, "Inicia proceso de crear la vivienda");
      
      return persistence.create(vivienda);
  }
  
-  public ViviendaEntity updateServicio(ViviendaEntity entity) {
+  public ViviendaEntity updateVivienda(ViviendaEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una vivienda");
         return persistence.update(entity);
     }

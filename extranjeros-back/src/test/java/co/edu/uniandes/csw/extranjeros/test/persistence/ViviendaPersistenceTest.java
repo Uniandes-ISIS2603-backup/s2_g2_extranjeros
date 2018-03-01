@@ -40,7 +40,7 @@ public class ViviendaPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(ViviendaEntity.class.getPackage())
                 .addPackage(ViviendaPersistence.class.getPackage())
-                    .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+               .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
