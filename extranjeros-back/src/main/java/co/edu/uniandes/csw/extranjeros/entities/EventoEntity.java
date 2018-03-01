@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -21,7 +22,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class EventoEntity extends BaseEntity implements Serializable{
     
-    private String responsableEventoP;
     private String nombreEvento;
     private String tipoEvento;
     @Temporal(TemporalType.TIMESTAMP)
@@ -36,12 +36,15 @@ public class EventoEntity extends BaseEntity implements Serializable{
      @PodamExclude
    @ManyToMany
     private List<EstudianteEntity> estudiantesInvitados;
+     
+    @OneToOne
+    private EstudianteEntity responsableEventoP;
 
-    public String getResponsableEventoP() {
+    public EstudianteEntity getResponsableEventoP() {
         return responsableEventoP;
     }
 
-    public void setResponsableEventoP(String responsableEventoP) {
+    public void setResponsableEventoP(EstudianteEntity responsableEventoP) {
         this.responsableEventoP = responsableEventoP;
     }
 
