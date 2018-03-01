@@ -5,6 +5,12 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase que extiende de {@link ArrendatarioDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
@@ -94,6 +100,13 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     
     //---------------------------------------------------
+    // Atributos relacionales
+    //---------------------------------------------------
+    
+    private List <FacturaDTO> facturas;
+    private List <ViviendaDTO> viviendas;
+    
+    //---------------------------------------------------
     // Constructor
     //---------------------------------------------------
     
@@ -103,4 +116,96 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     public ArrendatarioDetailDTO(){
         super();
     }
+    
+    /**
+     * Crea un objeto UsuarioTO a partir de un objeto UsuarioEntity.
+     * @param entity Entidad UsuarioEntity desde la cual se va a crear el nuevo
+     * objeto.
+     */
+        public ArrendatarioDetailDTO(ArrendatarioEntity entity) {
+          super(entity);
+          if (entity != null) {
+            facturas = new ArrayList<>();
+            viviendas = new ArrayList<>();
+            
+            for (FacturaEntity facturasEntity : entity.getFacturas()) {
+                facturas.add(new FacturaDTO(facturasEntity));
+            }
+            
+            for (ViviendaEntity viviendasEntity : entity.getViviendas()){
+                //viviendas.add(new ViviendaDTO(viviendasEntity));
+            }
+
+        }
+    }
+
+    //---------------------------------------------------
+    // Metodos
+    //---------------------------------------------------
+        
+    /**
+     * Convierte un objeto ArrendatarioDetailDTO a ArrendatarioEntity incluyendo los
+     * atributos de ArrendatarioDTO (relacionales).
+     * @return Nueva objeto AuthorEntity.
+     */
+    @Override    
+    public ArrendatarioEntity toEntity(){
+         
+        // Entity
+        ArrendatarioEntity entity = super.toEntity();
+         
+         // Verificacion relaciones
+         
+         if (facturas != null) {
+            List<FacturaEntity> facturaEntity = new ArrayList<>();
+            for (FacturaDTO DTOFactura : facturas) {
+                //facturaEntity.add(DTOFactura.toEntity());
+            }
+            entity.setFacturas(facturaEntity);
+        }
+         
+         if (viviendas != null) {
+            List<ViviendaEntity> viviendaEntity = new ArrayList<>();
+            for (ViviendaDTO DTOFactura : viviendas) {
+                //viviendaEntity.add(DTOFactura.toEntity());
+            }
+            entity.setViviendas(viviendaEntity);
+        }
+         
+        // Retorno
+        return entity;         
+    }
+        
+    /**
+     * Obtiene las facturas asociadas al Usuario
+     * @return List. Lista con las facturas.
+     */
+    public List<FacturaDTO> getFacturas() {
+        return facturas;
+    }
+    
+     /**
+     * Genera una lista de las Facturas a asociar con un usuario. 
+     * @param pFacturas La nueva lista de Facturas. 
+     */
+    public void setFacturas(List<FacturaDTO> pFacturas) {
+        this.facturas = pFacturas;
+    }
+    
+     /**
+     * Obtiene las Viviendas asociadas al Usuario
+     * @return List. Lista con las facturas.
+     */
+    public List<ViviendaDTO> getViviendas(){
+        return viviendas;
+    }
+    
+    /**
+     * Genera una lista de las Viviendas a asociar con un usuario. 
+     * @param pViviendas La nueva lista de Viviendas. 
+     */
+    public void setViviendas (List<ViviendaDTO> pViviendas) {
+        this.viviendas = pViviendas;
+    }
+        
 }

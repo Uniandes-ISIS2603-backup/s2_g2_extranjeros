@@ -93,6 +93,7 @@ public class FacturaDetailDTO extends FacturaDTO {
         e.setServiciosAdicionales(servicioDTOAServicioEntity(serviciosExtra));
         e.setVivienda(vivienda.toEntity());
         e.setServiciosIncluidos(servicioDTOAServicioEntity(serviciosIncluidos));
+        return e;
     }
     
     

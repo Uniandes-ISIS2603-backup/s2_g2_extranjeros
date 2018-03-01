@@ -45,12 +45,12 @@ public class UsuarioDTO {
     // Atributos
     //---------------------------------------------------
     
-    private String usuario;
-    private String clave;
-    private String correo;
-    private int celular;
-    private int cedula;
-    private int edad;
+    protected String usuario;
+    protected String clave;
+    protected String correo;
+    protected int celular;
+    protected int cedula;
+    protected int edad;
     
     private Long id;
 
@@ -88,7 +88,7 @@ public class UsuarioDTO {
     public UsuarioEntity toEntity() {
         
         // Genera
-        UsuarioEntity entity = new UsuarioEntity();
+        UsuarioEntity entity = new UsuarioEntity() {};
         
         // Asocia atributos
         entity.setId(this.getId());
@@ -96,6 +96,8 @@ public class UsuarioDTO {
         entity.setClave(this.getClave());
         entity.setCorreo(this.getCorreo());
         entity.setCelular(this.getCelular());
+        entity.setEdad(this.edad);
+        entity.setCedula(this.cedula);
         
         // Return
         return entity;

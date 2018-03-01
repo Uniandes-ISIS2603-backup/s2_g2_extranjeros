@@ -145,7 +145,7 @@ public class UsuarioDetailDTO extends UsuarioDTO {
     
     /**
      * Convierte un objeto UsuarioDetailDTO a UsuarioEntity incluyendo los
-     * atributos de AuthorDTO (relacionales).
+     * atributos de ArrendatarioDTO (relacionales).
      * @return Nueva objeto AuthorEntity.
      */
     @Override    

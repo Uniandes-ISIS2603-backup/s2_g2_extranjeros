@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.persistence;
 
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  * @author jr.pacheco10
@@ -36,6 +38,28 @@ public class ArrendatarioPersistence {
     // Metodos
     //---------------------------------------------------
 
+    /**
+     * Busca si hay algun Usuario con el nombre que se envia de argumento.
+     * @param pLogin: Login (nombre de Usuario) del usuario que se esta buscando.
+     * @return null si no existe ningun Usuario con el login del argumento. Si
+     * existe alguno devuelve la primera.
+     */
+    public ArrendatarioEntity findByName (String pLogin){
+        
+        LOGGER.log(Level.INFO, "Consultando el Usuario por login ", pLogin);
+
+        TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.nombre = :nombre", UsuarioEntity.class);
+        query = query.setParameter("name", pLogin);
+        List<ArrendatarioEntity> sameName = query.getResultList();
+        
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
+    
+    
     /**
      * Busca en la Base de Datos si existe un Arrendatario asociado al ID dado por parametro.
      * @param id Id del Arrendatario que se consulta en las relaciones de la BD. 

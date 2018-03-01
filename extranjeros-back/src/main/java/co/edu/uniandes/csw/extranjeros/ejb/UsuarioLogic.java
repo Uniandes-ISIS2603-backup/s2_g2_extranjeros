@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.UsuarioPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -64,9 +66,51 @@ public class UsuarioLogic {
      * Se encarga de crear un Usuario en la base de datos.
      * @param newUser Objeto de UsuarioEntity con los datos nuevos.
      * @return Objeto de UsuarioEntity con los datos nuevos y su ID.
+     * @throws BusinessLogicException Exception cuando las reglas de negocio no se cumplen.
      */
-    public UsuarioEntity createUsuario(UsuarioEntity newUser){
+    public UsuarioEntity createUsuario(UsuarioEntity newUser) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia el proceso de crear un Usuario en la plataforma");
+        
+        UsuarioEntity usuarioBuscado = usuarioPersistence.findByLogin(newUser.getUsuario());
+        if (usuarioBuscado != null){
+            throw new BusinessLogicException("Existe un Usuario con el mismo login");
+        }
+        
+        if (newUser.getEdad() < 18){
+            throw new BusinessLogicException("El Usuario no puede ser menor de edad");
+        }
+        
+        if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
+        }
+        
+        boolean encontradoNumero = false;
+        char[] caracteres = newUser.getClave().toCharArray();
+        for (int i = 0; i < caracteres.length; i++){
+            
+            String m = String.valueOf(caracteres[i]);
+            if( Integer.class.isInstance(Integer.parseInt(m))){
+                encontradoNumero = true;
+            }
+        } 
+        
+        if (encontradoNumero == false){
+            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        }
+        
+        if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
+            throw new BusinessLogicException("Su correo no es válido.");
+        }
+        
+        String celular = String.valueOf(newUser.getCelular());
+        char numeros[] = celular.toCharArray();
+        
+        // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
+        // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.
+        if (numeros.length != 10){
+            throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
+        }
+        
         return usuarioPersistence.create(newUser);
     }
     
@@ -132,7 +176,45 @@ public class UsuarioLogic {
         
         // No existe
         return null;
-    } 
-            
+    }
     
+    
+    //------------------------
+    //  RELACION CON VIVIENDAS:
+    //------------------------
+         
+    //-- GET VIVIENDAS ASOCIADAS:
+    public List<ViviendaEntity> getViviendas(Long userID){
+        LOGGER.log(Level.INFO, "Inicia el proceso para consultar las Viviendas asociadas al usuario con id = {0}", userID);
+        return getUsuario(userID).getViviendas();
+    }
+    
+    //-- GET FACTURA ESPECIFICA ASOCIADO AL USUARIO
+    /**
+     * Obtiene una instancia de FacturaEntity asociada a una instancia de Usuario
+     * @param userID Identificador de la instancia de Usuario.
+     * @param viviendaID Identificador de la instancia de Vivienda.
+     * @return La entidadd de Factura correspondiente al autor.
+     */
+    public ViviendaEntity getVivienda(Long userID, Long viviendaID){
+        LOGGER.log(Level.INFO, "Inicia el proceso para consultar la Vivienda asociada con id = {0}", viviendaID + " " + "del usuario con id = " + userID);
+        
+        // Lista
+        List<ViviendaEntity> viviendasUsuario = getUsuario(userID).getViviendas();
+        
+        // Creacion FacturaEntity para comparacion/busqueda
+        ViviendaEntity viviendaBuscada = new ViviendaEntity();
+        viviendaBuscada.setId(viviendaID);
+        
+        // ¿Existe esa entidad con ID dado en la Lista?
+        int indiceFacturaBuscada = viviendasUsuario.indexOf(viviendaBuscada);
+        
+        // Respuesta en el caso de que exista.
+        if (indiceFacturaBuscada >= 0){
+            return viviendasUsuario.get(indiceFacturaBuscada);
+        } 
+        
+        // No existe
+        return null;
+    }
 }
