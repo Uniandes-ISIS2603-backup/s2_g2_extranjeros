@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.extranjeros.test.logic;
 
+import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ViviendaPersistence;
@@ -106,7 +107,7 @@ public class ViviendaLogicTest {
     @Test
     public void createViviendaTest() throws BusinessLogicException {
         ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
-        ViviendaEntity result = ViviendaLogic.createFactura(newEntity);
+        ViviendaEntity result = viviendaLogicT.createVivienda(newEntity);
       
       
     }
@@ -118,12 +119,7 @@ public class ViviendaLogicTest {
     {
         
     }
-    /**
-     * Prueba para consultar una vivienda.
-     */
-    @Test
-    public void getViviendaTest() {
-           }
+   
     /**
      * Prueba para eliminar un vivienda.
      */
