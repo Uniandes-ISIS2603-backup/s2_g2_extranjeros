@@ -143,7 +143,7 @@ public class EventoPersistenceTest {
         Assert.assertEquals(newEntity.getDistanciaVivienda(), entity.getDistanciaVivienda());
         Assert.assertEquals(newEntity.getUbicacionLon(), entity.getUbicacionLon());
         Assert.assertEquals(newEntity.getUbicacionLat(), entity.getUbicacionLat());
-        Assert.assertEquals(newEntity.getPrivado(), entity.getPrivado());
+        Assert.assertEquals(newEntity.isPrivado(), entity.isPrivado());
         Assert.assertEquals(newEntity.getCapacidad(), entity.getCapacidad());
     }
     
@@ -164,7 +164,7 @@ public class EventoPersistenceTest {
         Assert.assertEquals(newEntity.getDistanciaVivienda(), entity.getDistanciaVivienda());
         Assert.assertEquals(newEntity.getUbicacionLon(), entity.getUbicacionLon());
         Assert.assertEquals(newEntity.getUbicacionLat(), entity.getUbicacionLat());
-        Assert.assertEquals(newEntity.getPrivado(), entity.getPrivado());
+        Assert.assertEquals(newEntity.isPrivado(), entity.isPrivado());
         Assert.assertEquals(newEntity.getCapacidad(), entity.getCapacidad());
     }
     
@@ -225,7 +225,7 @@ public class EventoPersistenceTest {
         Assert.assertEquals(newEntity.getDistanciaVivienda(), resp.getDistanciaVivienda());
         Assert.assertEquals(newEntity.getUbicacionLon(), resp.getUbicacionLon());
         Assert.assertEquals(newEntity.getUbicacionLat(), resp.getUbicacionLat());
-        Assert.assertEquals(newEntity.getPrivado(), resp.getPrivado());
+        Assert.assertEquals(newEntity.isPrivado(), resp.isPrivado());
         Assert.assertEquals(newEntity.getCapacidad(), resp.getCapacidad());
     }
     

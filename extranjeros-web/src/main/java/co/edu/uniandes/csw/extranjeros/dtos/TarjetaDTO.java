@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
+import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
 
 /**
  * TarjetaDTO Objeto de transferencia de datos de Cities. Los DTO contienen las
@@ -65,6 +66,18 @@ public class TarjetaDTO {
      */
     public TarjetaDTO() {
     }
+    
+    /**
+     * Constructor que recibe un TarjetaEntity
+     */
+    public TarjetaDTO(TarjetaEntity entity) {
+        this.banco = entity.getBanco();
+        this.numero = entity.getNumero();
+        this.fechaCaducidad = entity.getFechaCaducidad();
+        this.id = entity.getId();
+    }
+    
+    
 
 
     /**
@@ -128,11 +141,12 @@ public class TarjetaDTO {
      *
      * @return Un Entity con los valores del DTO
      */
-    //public CityEntity toEntity() {
-    //    CityEntity entity = new CityEntity();
-    //    entity.setId(this.id);
-    //    entity.setName(this.banco);
-    //    entity.setZipcode(this.fechaCaducidad);
-    //    return entity;
-    //}
+    public TarjetaEntity toEntity() {
+        TarjetaEntity entity = new TarjetaEntity();
+        entity.setId(this.id);
+        entity.setBanco(this.banco);
+        entity.setFechaCaducidad(this.fechaCaducidad);
+        entity.setNumero(this.numero);
+        return entity;
+    }
 }

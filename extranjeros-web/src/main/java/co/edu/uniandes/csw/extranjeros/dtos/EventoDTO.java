@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
+import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
 import java.util.Date;
 
 /**
@@ -72,6 +73,7 @@ public class EventoDTO {
     private Date fechaEvento;
     private String ubicacionLon;
     private String ubicacionLat;
+    private Integer distanciaVivienda;
     private boolean privado;
     private int capacidad;
     private Long id;
@@ -80,6 +82,21 @@ public class EventoDTO {
      * Constructor por defecto
      */
     public EventoDTO() {
+    }
+    
+    /**
+     * Constructor que recibe un EventoEntity
+     */
+    public EventoDTO(EventoEntity entity) {
+        this.responsableEventoP = entity.getResponsableEventoP();
+        this.nombreEvento = entity.getNombreEvento();
+        this.tipoEvento = entity.getTipoEvento();
+        this.fechaEvento = entity.getFechaEvento();
+        this.ubicacionLat = entity.getUbicacionLat();
+        this.ubicacionLon = entity.getUbicacionLon();
+        this.privado = entity.isPrivado();
+        this.capacidad = entity.getCapacidad();
+        this.id = entity.getId();
     }
 
 
@@ -209,6 +226,14 @@ public class EventoDTO {
         this.capacidad = cap;
     }
     
+    public Integer getDistanciaVivienda() {
+        return distanciaVivienda;
+    }
+
+    public void setDistanciaVivienda(Integer distanciaVivienda) {
+        this.distanciaVivienda = distanciaVivienda;
+    }
+    
     
 
     /**
@@ -216,11 +241,18 @@ public class EventoDTO {
      *
      * @return Un Entity con los valores del DTO
      */
-    //public CityEntity toEntity() {
-    //    CityEntity entity = new CityEntity();
-    //    entity.setId(this.id);
-    //    entity.setName(this.banco);
-    //    entity.setZipcode(this.fechaCaducidad);
-    //    return entity;
-    //}
+    public EventoEntity toEntity() {
+        EventoEntity entity = new EventoEntity();
+        entity.setId(this.id);
+        entity.setCapacidad(this.capacidad);
+        entity.setDistanciaVivienda(this.distanciaVivienda);
+        entity.setFechaEvento(this.fechaEvento);
+        entity.setNombreEvento(this.nombreEvento);
+        entity.setPrivado(this.privado);
+        entity.setTipoEvento(this.tipoEvento);
+        entity.setResponsableEventoP(this.responsableEventoP);
+        entity.setUbicacionLat(this.ubicacionLat);
+        entity.setUbicacionLon(this.ubicacionLon);
+        return entity;
+    }
 }

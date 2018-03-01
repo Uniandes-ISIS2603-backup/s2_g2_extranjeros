@@ -93,7 +93,7 @@ public class EventoEntity extends BaseEntity implements Serializable{
         this.ubicacionLat = ubicacionLat;
     }
 
-    public Boolean getPrivado() {
+    public Boolean isPrivado() {
         return privado;
     }
 
