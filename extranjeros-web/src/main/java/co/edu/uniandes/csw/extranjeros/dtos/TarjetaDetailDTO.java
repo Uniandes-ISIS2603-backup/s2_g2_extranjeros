@@ -23,12 +23,13 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.extranjeros.dtos;
 import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
+import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
 
 /**
  * Clase que extiende de {@link TarjetaDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
  * contenido de la tarjeta vaya a la documentacion de {@link TarjetaDTO}
- * @author ISIS2603
+ * @author la.ruiz967
  */
 public class TarjetaDetailDTO extends TarjetaDTO {
 
@@ -43,19 +44,19 @@ public class TarjetaDetailDTO extends TarjetaDTO {
      *
      * @param entity La entidad de ciudad a partir de la cual se construye el objeto
      */
-    //public TarjetaDetailDTO(CityEntity entity) {
-      //  super(entity);
-    //}
+    public TarjetaDetailDTO(TarjetaEntity entity) {
+        super(entity);
+    }
 
     /**
      * Transformar un DTO a un Entity
      *
      * @return  La entidad construida a partir del DTO.
      */
-   // @Override
-    //public CityEntity toEntity() {
-    //    CityEntity cityE = super.toEntity();
-    //    return cityE;
-    //}
+   @Override
+    public TarjetaEntity toEntity() {
+        TarjetaEntity tarjetaE = super.toEntity();
+        return tarjetaE;
+    }
 
 }
