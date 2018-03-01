@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
+
 /**
  *
  * @author am.quintero12
@@ -18,6 +20,12 @@ public class ProvidenciaDTO {
     {
         
     }
+    
+    public ProvidenciaDTO(ProvidenciaEntity providencia)
+     {
+        this.pais = providencia.getPais();
+        this.region = providencia.getRegion();
+    }       
 
     public void setPais(String pais) {
         this.pais = pais;
@@ -35,4 +43,11 @@ public class ProvidenciaDTO {
         return region;
     }
     
+    public ProvidenciaEntity toEntity(){
+        ProvidenciaEntity entity= new ProvidenciaEntity();
+        entity.setRegion(region);
+        entity.setPais(pais);
+        return entity;
+    }
+            
 }

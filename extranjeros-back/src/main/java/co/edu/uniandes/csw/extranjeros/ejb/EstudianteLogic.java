@@ -19,7 +19,7 @@ import javax.inject.Inject;
  */
 
 @Stateless
-public class EstudianteLogic extends UsuarioLogic {
+public class EstudianteLogic  {
     
     private static final Logger LOGGER = Logger.getLogger(EstudianteLogic.class.getName());
     
