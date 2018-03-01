@@ -53,8 +53,8 @@ import javax.ws.rs.Produces;
  * Produces/Consumes: indica que los servicios definidos en este recurso reciben y devuelven objetos en formato JSON
  * RequestScoped: Inicia una transacción desde el llamado de cada método (servicio). 
  * </pre>
- * @author ISIS2603  
- * @version 1.0
+ * 
+ * @author la.ruiz967
  */
 @Path("tarjeta")
 @Produces("application/json")
@@ -89,7 +89,7 @@ public class TarjetaResource {
     }
 
     /**
-     * <h1>GET /api/tarjetas : Obtener todas las tarjetas.</h1>
+     * <h1>GET /api/tarjeta : Obtener todas las tarjetas.</h1>
      * 
      * <pre>Busca y devuelve todas las tarjetas que existen en la aplicacion.
      * 
@@ -105,7 +105,7 @@ public class TarjetaResource {
     }
 
     /**
-     * <h1>GET /api/tarjetas/{id} : Obtener tarjeta por id.</h1>
+     * <h1>GET /api/tarjeta/{id} : Obtener tarjeta por id.</h1>
      * 
      * <pre>Busca la tarjeta con el id asociado recibido en la URL y la devuelve.
      * 
@@ -127,7 +127,7 @@ public class TarjetaResource {
     }
     
     /**
-     * <h1>PUT /api/tarjetas/{id} : Actualizar tarjeta con el id dado.</h1>
+     * <h1>PUT /api/tarjeta/{id} : Actualizar tarjeta con el id dado.</h1>
      * <pre>Cuerpo de petición: JSON {@link TarjetaDetailDTO}.
      * 
      * Actualiza la tarjeta con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
@@ -151,7 +151,7 @@ public class TarjetaResource {
     }
     
     /**
-     * <h1>DELETE /api/tarjetas/{id} : Borrar ciudad por id.</h1>
+     * <h1>DELETE /api/tarjeta/{id} : Borrar ciudad por id.</h1>
      * 
      * <pre>Borra la tarjeta con el id asociado recibido en la URL.
      * 

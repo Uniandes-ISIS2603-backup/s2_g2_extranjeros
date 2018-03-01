@@ -56,14 +56,14 @@ import javax.ws.rs.Produces;
  * @author ISIS2603  
  * @version 1.0
  */
-@Path("evento")
+@Path("eventos")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class EventoResource {
 
     /**
-     * <h1>POST /api/evento : Crear un evento.</h1>
+     * <h1>POST /api/eventos : Crear un evento.</h1>
      * 
      * <pre>Cuerpo de petición: JSON {@link EventoDTO}.
      * 
@@ -105,7 +105,7 @@ public class EventoResource {
     }
 
     /**
-     * <h1>GET /api/eventoss/{id} : Obtener eventos por id.</h1>
+     * <h1>GET /api/eventos/{id} : Obtener eventos por id.</h1>
      * 
      * <pre>Busca el evento con el id asociado recibido en la URL y la devuelve.
      * 
