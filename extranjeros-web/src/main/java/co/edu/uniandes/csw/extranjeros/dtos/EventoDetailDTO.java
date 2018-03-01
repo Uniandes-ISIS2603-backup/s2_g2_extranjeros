@@ -37,6 +37,7 @@ public class EventoDetailDTO extends EventoDTO {
     
     private LugaresDeInteresDTO lugarDeInteres;
     private List<EstudianteDTO> estudiantes;
+    private EstudianteDTO responsableEventoP;
 
     /**
      * Constructor por defecto
@@ -75,6 +76,24 @@ public class EventoDetailDTO extends EventoDTO {
      */
     public void setEstudiantes(List<EstudianteDTO> estudiantes) {
         this.estudiantes = estudiantes;
+    }
+    
+    /**
+     * Retorna el responsable del evento
+     * @return Responsable del evento
+     */
+    private EstudianteDTO getResponsableEventoP()
+    {
+        return responsableEventoP;
+    }
+    
+    /**
+     * Cambia el responsable del evento
+     * @param responsableEventoP El nuevo responsable
+     */
+    private void setResponsableEventoP(EstudianteDTO responsableEventoP)
+    {
+        this.responsableEventoP = responsableEventoP;
     }
 
     /**
