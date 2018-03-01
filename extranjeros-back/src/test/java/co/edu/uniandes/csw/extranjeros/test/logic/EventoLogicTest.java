@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.extranjeros.test.logic;
 
 import co.edu.uniandes.csw.extranjeros.ejb.EventoLogic;
 import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
-import co.edu.uniandes.csw.extranjeros.persistence.EventoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -70,7 +69,6 @@ public class EventoLogicTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(EventoEntity.class.getPackage())
                 .addPackage(EventoLogic.class.getPackage())
-                .addPackage(EventoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
