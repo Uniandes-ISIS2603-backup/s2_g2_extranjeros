@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
+
 /**
  * Clase que extiende de {@link ValoracionDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
@@ -15,5 +17,8 @@ public class ValoracionDetailDTO  extends ValoracionDTO {
    
     public ValoracionDetailDTO(){
         super();
+    }
+    public ValoracionEntity toEntity(){
+        return super.toEntity();
     }
 }

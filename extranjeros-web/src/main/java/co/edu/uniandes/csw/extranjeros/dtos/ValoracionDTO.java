@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
+
 /**
  * ValoracionDTO Objeto que representa una valoracion de una vivienda. 
  * 
@@ -84,6 +86,12 @@ public class ValoracionDTO {
     public void setId(long id) {
         this.id = id;
     }
-            
+          
+    public ValoracionEntity toEntity(){
+        ValoracionEntity e = new ValoracionEntity();
+        e.setId(id);
+        e.setValoracion(valoracion);
+        return e;
+    }
             
 }

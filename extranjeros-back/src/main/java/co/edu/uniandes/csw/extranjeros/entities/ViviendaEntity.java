@@ -40,6 +40,12 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     private String longitud;
 
     private String tipoAlojamiento;
+    
+     private List<ServicioEntity> serviciosFijos;
+   
+    private List<ServicioEntity> serviciosAdicionales;
+    
+    private List<ValoracionEntity> valoraciones;
 
     /**
      * @return the disponible
@@ -123,6 +129,48 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
      */
     public void setTipoAlojamiento(String tipoAlojamiento) {
         this.tipoAlojamiento = tipoAlojamiento;
+    }
+
+    /**
+     * @return the serviciosFijos
+     */
+    public List<ServicioEntity> getServiciosFijos() {
+        return serviciosFijos;
+    }
+
+    /**
+     * @param serviciosFijos the serviciosFijos to set
+     */
+    public void setServiciosFijos(List<ServicioEntity> serviciosFijos) {
+        this.serviciosFijos = serviciosFijos;
+    }
+
+    /**
+     * @return the serviciosAdicionales
+     */
+    public List<ServicioEntity> getServiciosAdicionales() {
+        return serviciosAdicionales;
+    }
+
+    /**
+     * @param serviciosAdicionales the serviciosAdicionales to set
+     */
+    public void setServiciosAdicionales(List<ServicioEntity> serviciosAdicionales) {
+        this.serviciosAdicionales = serviciosAdicionales;
+    }
+
+    /**
+     * @return the valoraciones
+     */
+    public List<ValoracionEntity> getValoraciones() {
+        return valoraciones;
+    }
+
+    /**
+     * @param valoraciones the valoraciones to set
+     */
+    public void setValoraciones(List<ValoracionEntity> valoraciones) {
+        this.valoraciones = valoraciones;
     }
     
     

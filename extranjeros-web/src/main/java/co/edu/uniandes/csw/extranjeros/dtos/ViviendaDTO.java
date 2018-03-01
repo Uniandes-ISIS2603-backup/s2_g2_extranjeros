@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import java.util.List;
 /**
  * ViviendaDTO: Objeto que representa las viviendas fisicas del mundo, como una casa o un apartamento.
@@ -51,13 +52,7 @@ public class ViviendaDTO {
     private boolean disponible;
     
     private String direccion;
-    
-    private List<ServicioDTO> serviciosFijos;
-   
-    private List<ServicioDTO> serviciosAdicionales;
-    
-    private List<ValoracionDTO> valoraciones;
-    
+      
     private double valoracionPromedio;
     
     private Integer capacidad;
@@ -72,6 +67,21 @@ public class ViviendaDTO {
         
     }
     
+    public ViviendaDTO(ViviendaEntity entity){
+      this.id =entity.getId();
+    
+      this.disponible =entity.isDisponible();
+    
+      this.direccion = entity.getDireccion();
+      
+     this. valoracionPromedio = 0;
+    
+     this. capacidad =entity.getCapacidad();
+    
+      this.latitud = entity.getLatitud();
+    
+      this.longitud =entity.getLongitud();
+    }
     /**
      * @return the disponible
      */
@@ -100,33 +110,7 @@ public class ViviendaDTO {
         this.direccion = direccion;
     }
 
-    /**
-     * @return the serviciosFijos
-     */
-    public List<ServicioDTO> getServiciosFijos() {
-        return serviciosFijos;
-    }
-
-    /**
-     * @param serviciosFijos the serviciosFijos to set
-     */
-    public void setServiciosFijos(List<ServicioDTO> serviciosFijos) {
-        this.serviciosFijos = serviciosFijos;
-    }
-
-    /**
-     * @return the serviciosAdicionales
-     */
-    public List<ServicioDTO> getServiciosAdicionales() {
-        return serviciosAdicionales;
-    }
-
-    /**
-     * @param serviciosAdicionales the serviciosAdicionales to set
-     */
-    public void setServiciosAdicionales(List<ServicioDTO> serviciosAdicionales) {
-        this.serviciosAdicionales = serviciosAdicionales;
-    }
+    
 
     /**
      * @return the capacidad
@@ -198,6 +182,20 @@ public class ViviendaDTO {
         this.id = id;
     }
     
+    public ViviendaEntity toEntity(){
+        ViviendaEntity en = new ViviendaEntity();
+        
+        en.setCapacidad(capacidad);
+        en.setDireccion(direccion);
+        en.setDisponible(disponible);
+        en.setId(id);
+        en.setLatitud(latitud);
+        en.setLongitud(longitud);
+        en.setTipoAlojamiento(tipoAlojamiento);
+        
+        return en;
+        
+    }
     
     
    
