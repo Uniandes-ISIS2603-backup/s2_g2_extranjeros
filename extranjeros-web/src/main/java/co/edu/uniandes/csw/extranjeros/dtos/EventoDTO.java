@@ -36,7 +36,6 @@ import java.util.Date;
  * <pre>
  *   {
  *      "id": number,
- *      "responsableEventoP": string,
  *      "nombreEvento": string,
  *      "tipoEvento": string,
  *      "fechaEvento": Date,
@@ -52,7 +51,6 @@ import java.util.Date;
  * 
  *   {
  *      "id": 139028,
- *      "responsableEventoP": "pedro",
  *      "nombreEvento": "fiesta",
  *      "tipoEvento": "fiesta",
  *      "fechaEvento": Date,
@@ -67,7 +65,6 @@ import java.util.Date;
  */
 public class EventoDTO {
 
-    private String responsableEventoP;
     private String nombreEvento;
     private String tipoEvento;
     private Date fechaEvento;
@@ -88,7 +85,6 @@ public class EventoDTO {
      * Constructor que recibe un EventoEntity
      */
     public EventoDTO(EventoEntity entity) {
-        this.responsableEventoP = entity.getResponsableEventoP();
         this.nombreEvento = entity.getNombreEvento();
         this.tipoEvento = entity.getTipoEvento();
         this.fechaEvento = entity.getFechaEvento();
@@ -112,20 +108,6 @@ public class EventoDTO {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     * @return El responsable del evento
-     */
-    public String getResponsable() {
-        return responsableEventoP;
-    }
-
-    /**
-     * @param resp El nuevo responsable
-     */
-    public void setResponsable(String resp) {
-        this.responsableEventoP = resp;
     }
 
     /**
@@ -250,7 +232,6 @@ public class EventoDTO {
         entity.setNombreEvento(this.nombreEvento);
         entity.setPrivado(this.privado);
         entity.setTipoEvento(this.tipoEvento);
-        entity.setResponsableEventoP(this.responsableEventoP);
         entity.setUbicacionLat(this.ubicacionLat);
         entity.setUbicacionLon(this.ubicacionLon);
         return entity;
