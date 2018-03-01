@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.extranjeros.test.persistence;
+package co.edu.uniandes.csw.extranjeros.test.logic;
 
+import co.edu.uniandes.csw.extranjeros.ejb.EventoLogic;
 import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
-import co.edu.uniandes.csw.extranjeros.persistence.EventoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,30 +29,14 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author la.ruiz967
  */
 @RunWith(Arquillian.class)
-public class EventoPersistenceTest {
-    
-    /**
-     *
-     * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
-     * embebido. El jar contiene las clases de Eventos, el descriptor de la
-     * base de datos y el archivo benas.xml para resolver la inyección de
-     * dependencias.
-     */
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(EventoEntity.class.getPackage())
-                .addPackage(EventoPersistence.class.getPackage())
-                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
-                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
-    }
+public class EventoLogicTest {
     
     /**
      * Inyección de la dependencia a la clase EventoPersistence cuyos métodos
      * se van a probar.
      */
     @Inject
-    private EventoPersistence eventoPersistence;
+    private EventoLogic eventoLogic;
     
     /**
      * Contexto de Persostencia que se va autilizar para acceder a la Base de
@@ -67,7 +51,29 @@ public class EventoPersistenceTest {
      */
     @Inject
     UserTransaction utx;
+    
+    /**
+     *
+     */
+    private List<EventoEntity> data = new ArrayList<EventoEntity>();
 
+    /**
+     *
+     * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
+     * embebido. El jar contiene las clases de Eventos, el descriptor de la
+     * base de datos y el archivo benas.xml para resolver la inyección de
+     * dependencias.
+     */
+    @Deployment
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(EventoEntity.class.getPackage())
+                .addPackage(EventoLogic.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
+    
+    
     /**
      * Configuración inicial de la prueba.
      *
@@ -99,11 +105,6 @@ public class EventoPersistenceTest {
     private void clearData() {
         em.createQuery("delete from EventoEntity").executeUpdate();
     }
-    
-    /**
-     *
-     */
-    private List<EventoEntity> data = new ArrayList<EventoEntity>();
 
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
@@ -130,13 +131,12 @@ public class EventoPersistenceTest {
     public void createEventoTest() {
         PodamFactory factory = new PodamFactoryImpl();
         EventoEntity newEntity = factory.manufacturePojo(EventoEntity.class);
-        EventoEntity result = eventoPersistence.create(newEntity);
+        EventoEntity result = eventoLogic.create(newEntity);
 
         Assert.assertNotNull(result);
 
         EventoEntity entity = em.find(EventoEntity.class, result.getId());
 
-        Assert.assertEquals(newEntity.getResponsableEventoP(), entity.getResponsableEventoP());
         Assert.assertEquals(newEntity.getNombreEvento(), entity.getNombreEvento());
         Assert.assertEquals(newEntity.getTipoEvento(), entity.getTipoEvento());
         Assert.assertEquals(newEntity.getFechaEvento(), entity.getFechaEvento());
@@ -155,9 +155,8 @@ public class EventoPersistenceTest {
     @Test
     public void getEventoTest() {
         EventoEntity entity = data.get(0);
-        EventoEntity newEntity = eventoPersistence.find(entity.getId());
+        EventoEntity newEntity = eventoLogic.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(newEntity.getResponsableEventoP(), entity.getResponsableEventoP());
         Assert.assertEquals(newEntity.getNombreEvento(), entity.getNombreEvento());
         Assert.assertEquals(newEntity.getTipoEvento(), entity.getTipoEvento());
         Assert.assertEquals(newEntity.getFechaEvento(), entity.getFechaEvento());
@@ -175,7 +174,7 @@ public class EventoPersistenceTest {
      */
     @Test
     public void getEventosTest() {
-        List<EventoEntity> list = eventoPersistence.findAll();
+        List<EventoEntity> list = eventoLogic.findAll();
         Assert.assertEquals(data.size(), list.size());
         for (EventoEntity ent : list) {
             boolean found = false;
@@ -196,7 +195,7 @@ public class EventoPersistenceTest {
     @Test
     public void deleteEventoTest() {
         EventoEntity entity = data.get(0);
-        eventoPersistence.delete(entity.getId());
+        eventoLogic.delete(entity.getId());
         EventoEntity deleted = em.find(EventoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -214,11 +213,10 @@ public class EventoPersistenceTest {
 
         newEntity.setId(entity.getId());
 
-        eventoPersistence.update(newEntity);
+        eventoLogic.update(newEntity);
 
         EventoEntity resp = em.find(EventoEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getResponsableEventoP(), resp.getResponsableEventoP());
         Assert.assertEquals(newEntity.getNombreEvento(), resp.getNombreEvento());
         Assert.assertEquals(newEntity.getTipoEvento(), resp.getTipoEvento());
         Assert.assertEquals(newEntity.getFechaEvento(), resp.getFechaEvento());

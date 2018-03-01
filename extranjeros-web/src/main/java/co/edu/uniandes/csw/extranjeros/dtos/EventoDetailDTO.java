@@ -23,23 +23,77 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.extranjeros.dtos;
 import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
+import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase que extiende de {@link EventoDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
  * contenido de la evento vaya a la documentacion de {@link EventoDTO}
- * @author ISIS2603
+ * @author la.ruiz967
  */
 public class EventoDetailDTO extends EventoDTO {
     
     private LugaresDeInteresDTO lugarDeInteres;
-    private ArrayList<EstudianteDTO> estudiantes;
+    private List<EstudianteDTO> estudiantes;
+    private EstudianteDTO responsableEventoP;
 
     /**
      * Constructor por defecto
      */
     public EventoDetailDTO() {
+        super();
+    }
+    
+    /**
+     * Retorna el lugar de interés asociado
+     * @return El lugar de interés del evento.
+     */
+    public LugaresDeInteresDTO getLugarDeInteres() {
+        return lugarDeInteres;
+    }
+
+    /**
+     * Modifica el lugar de interés
+     * @param lugarDeInteres El nuevo lugar
+     */
+    public void setLugarDeInteres(LugaresDeInteresDTO lugarDeInteres) {
+        this.lugarDeInteres = lugarDeInteres;
+    }
+
+    /**
+     * Retorna la lista de estudiantes participantes del evento.
+     * @return lista de asistentes.
+     */
+    public List<EstudianteDTO> getEstudiantes() {
+        return estudiantes;
+    }
+
+    /**
+     * Modifica la lista de asistentes
+     * @param estudiantes La nueva lista de asistentes
+     */
+    public void setEstudiantes(List<EstudianteDTO> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+    
+    /**
+     * Retorna el responsable del evento
+     * @return Responsable del evento
+     */
+    private EstudianteDTO getResponsableEventoP()
+    {
+        return responsableEventoP;
+    }
+    
+    /**
+     * Cambia el responsable del evento
+     * @param responsableEventoP El nuevo responsable
+     */
+    private void setResponsableEventoP(EstudianteDTO responsableEventoP)
+    {
+        this.responsableEventoP = responsableEventoP;
     }
 
     /**
@@ -47,19 +101,19 @@ public class EventoDetailDTO extends EventoDTO {
      *
      * @param entity La entidad de ciudad a partir de la cual se construye el objeto
      */
-    //public EventoDetailDTO(CityEntity entity) {
-      //  super(entity);
-    //}
+    public EventoDetailDTO(EventoEntity entity) {
+        super(entity);
+    }
 
     /**
      * Transformar un DTO a un Entity
      *
      * @return  La entidad construida a partir del DTO.
      */
-   // @Override
-    //public CityEntity toEntity() {
-    //    CityEntity cityE = super.toEntity();
-    //    return cityE;
-    //}
+    @Override
+    public EventoEntity toEntity() {
+        EventoEntity eventoE = super.toEntity();
+        return eventoE;
+    }
 
 }
