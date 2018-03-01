@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import java.util.List;
 
 /**
@@ -25,19 +26,7 @@ public class EstudianteDTO extends UsuarioDTO {
     private Boolean estadoArrendamiento;
     
     /**
-     * Modela la providencia del estudiante
-     */
-    private ProvidenciaDTO providencia;
-    
-    /*
-    * Modela la universidad del estudiante
-    */
-    private UniversidadDTO universidad;
-    
-    /**
-     * Tarjeta de crédito del estudiante 
-     */
-    private TarjetaDTO tarjeta;
+   
     
     //_______________________________________________
     //METODOS 
@@ -51,9 +40,36 @@ public class EstudianteDTO extends UsuarioDTO {
         
     }
     
+     /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param city: Es la entidad que se va a convertir a DTO
+     */
+    public EstudianteDTO(EstudianteEntity estudiante) {
+        //super(estudiante);
+        this.nombre = estudiante.getNombre();
+       this.usuario = estudiante.getUsuario();
+       this.clave = estudiante.getClave();
+       this.cedula = estudiante.getCedula();
+       this.celular = estudiante.getCelular();
+       this.estadoArrendamiento = estudiante.isEstadoArrendamiento();
+       this.edad = this.getEdad();
+       this.correo = estudiante.getCorreo();
+
+    }
+    
+    public EstudianteEntity toEntity(){
+       EstudianteEntity entity = new EstudianteEntity();
+       
+       
+       
+       return entity;
+    }
+            
  
 
-    //GETTERS
+ 
     public String getNombre() {
         return nombre;
     }
@@ -62,19 +78,7 @@ public class EstudianteDTO extends UsuarioDTO {
         return estadoArrendamiento;
     }
 
-    public ProvidenciaDTO getProvidencia() {
-        return providencia;
-    }
-
-    public UniversidadDTO getUniversidad() {
-        return universidad;
-    }
-
-    public TarjetaDTO getTarjeta() {
-        return tarjeta;
-    }
-
-    //SETTERS
+ 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -82,21 +86,6 @@ public class EstudianteDTO extends UsuarioDTO {
     public void setEstadoArrendamiento(Boolean estadoArrendamiento) {
         this.estadoArrendamiento = estadoArrendamiento;
     }
-
-    public void setProvidencia(ProvidenciaDTO providencia) {
-        this.providencia = providencia;
-    }
-
-    public void setUniversidad(UniversidadDTO universidad) {
-        this.universidad = universidad;
-    }
-
-    public void setTarjeta(TarjetaDTO tarjeta) {
-        this.tarjeta = tarjeta;
-    }
-    
-    
-    
-            
+         
          
 }

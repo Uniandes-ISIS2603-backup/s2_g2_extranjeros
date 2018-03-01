@@ -23,7 +23,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class EstudianteEntity extends UsuarioEntity implements Serializable{
     
     private String nombre;
-    private String estadoArrendamiento;
+    private boolean estadoArrendamiento;
     
     //RELACIONES
    @PodamExclude
@@ -110,7 +110,7 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
      *Método que retorna el estado de arrendaiento del estudiante 
      * @return El estado de arrendamiento del estudiante
      */
-    public String getEstadoArrendamiento() {
+    public boolean isEstadoArrendamiento() {
         return estadoArrendamiento;
     }
 
@@ -118,8 +118,17 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
      * Asigna el estado de arrentamiento
      * @param estadoArrendamiento 
      */
-    public void setEstadoArrendamiento(String estadoArrendamiento) {
+    public void setEstadoArrendamiento(Boolean estadoArrendamiento) {
         this.estadoArrendamiento = estadoArrendamiento;
+    }
+    
+    public void agregarEventoCreado(EventoEntity e)
+    {
+        this.eventosCreados.add(e);
+    }
+    public void agregarEventoInvitado(EventoEntity e)
+    {
+        this.eventosInvitado.add(e);
     }
     
 }

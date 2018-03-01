@@ -139,7 +139,7 @@ public class EstudiantePersistenceTest {
         Assert.assertEquals(estudiante1.getClave(), estudiante2.getClave());
         Assert.assertEquals(estudiante1.getCorreo(), estudiante2.getCorreo());
         Assert.assertEquals(estudiante1.getCelular(), estudiante2.getCelular());
-         Assert.assertEquals(estudiante1.getEstadoArrendamiento(), estudiante2.getEstadoArrendamiento());
+         Assert.assertEquals(estudiante1.isEstadoArrendamiento(), estudiante2.isEstadoArrendamiento());
         Assert.assertEquals(estudiante1.getId(), estudiante2.getId());
 
     }
@@ -179,7 +179,7 @@ public class EstudiantePersistenceTest {
         Assert.assertEquals(estudiante1.getClave(), estudiante2.getClave());
         Assert.assertEquals(estudiante1.getCorreo(), estudiante2.getCorreo());
         Assert.assertEquals(estudiante1.getCelular(), estudiante2.getCelular());
-        Assert.assertEquals(estudiante1.getEstadoArrendamiento(), estudiante2.getEstadoArrendamiento());
+        Assert.assertEquals(estudiante1.isEstadoArrendamiento(), estudiante2.isEstadoArrendamiento());
         Assert.assertEquals(estudiante1.getId(), estudiante2.getId());
         
           
@@ -216,7 +216,7 @@ public class EstudiantePersistenceTest {
         Assert.assertEquals(estudiante1.getClave(), estudiante2.getClave());
         Assert.assertEquals(estudiante1.getCorreo(), estudiante2.getCorreo());
         Assert.assertEquals(estudiante1.getCelular(), estudiante2.getCelular());
-        Assert.assertEquals(estudiante1.getEstadoArrendamiento(), estudiante2.getEstadoArrendamiento());
+        Assert.assertEquals(estudiante1.isEstadoArrendamiento(), estudiante2.isEstadoArrendamiento());
         Assert.assertEquals(estudiante1.getId(), estudiante2.getId());
         
     }
