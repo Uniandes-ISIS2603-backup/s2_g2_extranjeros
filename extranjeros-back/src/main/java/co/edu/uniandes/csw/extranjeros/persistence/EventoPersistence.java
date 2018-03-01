@@ -45,7 +45,7 @@ public class EventoPersistence {
      * @return null si no existe ningun evento con el nombre del argumento. Si
      * existe alguno devuelve el primera.
      */
-    public EventoEntity findByNamer(String nombre) {
+    public EventoEntity findByName(String nombre) {
         LOGGER.log(Level.INFO, "Consultando Evento por nombre ", nombre);
 
         // Se crea un query para buscar eventos con el nombre que recibe el método como argumento. ":nombre" es un placeholder que debe ser remplazado
