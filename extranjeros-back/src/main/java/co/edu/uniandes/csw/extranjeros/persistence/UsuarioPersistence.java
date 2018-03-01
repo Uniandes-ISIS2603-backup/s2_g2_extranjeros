@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  * @author jr.pacheco10
@@ -36,6 +37,29 @@ public class UsuarioPersistence {
     // Metodos
     //---------------------------------------------------
 
+
+    /**
+     * Busca si hay algun Usuario con el nombre que se envia de argumento.
+     * @param pLogin: Login (nombre de Usuario) del usuario que se esta buscando.
+     * @return null si no existe ningun Usuario con el login del argumento. Si
+     * existe alguno devuelve la primera.
+     */
+    public UsuarioEntity findByLogin (String pLogin){
+        
+        LOGGER.log(Level.INFO, "Consultando el Usuario por login ", pLogin);
+
+        TypedQuery query = em.createQuery("Select e From UsuarioEntity e where e.usuario = :usuario", UsuarioEntity.class);
+        query = query.setParameter("name", pLogin);
+        List<UsuarioEntity> sameName = query.getResultList();
+        
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
+    
+    
     /**
      * Busca en la Base de Datos si existe un Usuario asociado al ID dado por parametro.
      * @param id Id del Usuario que se consulta en las relaciones de la BD. 

@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
+
 /**
  * ArrendatarioDTO Objeto de transferencia de datos de Arrendatario. Los DTO contienen las
  * representaciones de los JSON que se transfieren entre el cliente y el
@@ -47,11 +50,56 @@ public class ArrendatarioDTO extends UsuarioDTO {
      */
     public ArrendatarioDTO(){
     }
+        /**
+     * Crea un objeto UsuarioTO a partir de un objeto UsuarioEntity.
+     * @param entity Entidad UsuarioEntity desde la cual se va a crear el nuevo
+     * objeto.
+     */
+        public ArrendatarioDTO (ArrendatarioEntity entity) {
+        if (entity != null) {
+            this.id = entity.getId();
+            this.usuario = entity.getUsuario();
+            this.clave = entity.getClave();
+            this.correo = entity.getCorreo();
+            this.celular = entity.getCelular();
+            this.cedula = entity.getCedula();
+            this.edad = entity.getEdad();
+            this.nombre = entity.getNombre();
+        }
+    }
     
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
 
+     /**
+     * Convierte un objeto UsuarioDTO a UsuarioEntity.
+     * @return Nueva objeto UsuarioEntity.
+     */
+    @Override
+    public ArrendatarioEntity toEntity() {
+        
+        // UsuarioEntity
+        UsuarioEntity userEntity = super.toEntity();
+        
+        // Genera
+        ArrendatarioEntity entity = new ArrendatarioEntity();
+        
+        // Asocia atributos
+        entity.setId(this.getId());
+        entity.setNombre(this.nombre);
+        
+        entity.setUsuario(userEntity.getUsuario());
+        entity.setClave(userEntity.getClave());
+        entity.setCorreo(userEntity.getCorreo());
+        entity.setCelular(userEntity.getCelular());
+        entity.setEdad(this.edad);
+        entity.setCedula(this.cedula);
+        
+        // Return
+        return entity;
+    }
+    
     /**
      * @return Obtiene el nombre del arrendatario
      */
@@ -83,7 +131,4 @@ public class ArrendatarioDTO extends UsuarioDTO {
     public void setId(Long id) {
         this.id = id;
     }
-    
-
-    
 }

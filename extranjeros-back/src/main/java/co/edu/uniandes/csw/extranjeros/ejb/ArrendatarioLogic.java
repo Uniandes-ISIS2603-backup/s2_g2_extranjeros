@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ArrendatarioPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -61,9 +62,17 @@ public class ArrendatarioLogic {
      * Se encarga de crear un Arrendatario en la base de datos.
      * @param newUser Objeto de ArrendatarioEntity con los datos nuevos.
      * @return Objeto de ArrendatarioEntity con los datos nuevos y su ID.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
-    public ArrendatarioEntity createArrendatario (ArrendatarioEntity newUser){
+    public ArrendatarioEntity createArrendatario (ArrendatarioEntity newUser) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma");
+        
+        ArrendatarioEntity buscado = persistence.findByName(newUser.getNombre());
+        if (buscado != null){
+            throw new BusinessLogicException("Hay un arrendatario con el mismo nombre");
+        }
+        
+        
         return persistence.create(newUser);
     }
     
