@@ -19,6 +19,7 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +38,7 @@ public class ViviendaLogicTest {
      * se van a probar.
      */
     @Inject
-    private ViviendaLogic viviendaLogicT;
+    private ViviendaLogic viviendaLogic;
     /**
      * Contexto de persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -102,35 +103,98 @@ public class ViviendaLogicTest {
         }
     }
     /**
-     * Prueba para crear una Factura.
+     * Prueba para crear una vivienda.
      */
     @Test
     public void createViviendaTest() throws BusinessLogicException {
+           PodamFactory factory = new PodamFactoryImpl();
         ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
-        ViviendaEntity result = viviendaLogicT.createVivienda(newEntity);
-      
+        ViviendaEntity result = viviendaLogic.createVivienda(newEntity);
+
+        Assert.assertNotNull(result);
+
+        ViviendaEntity entity = em.find(ViviendaEntity.class, result.getId());
+
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getCapacidad(), entity.getCapacidad());
+        Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
+        Assert.assertEquals(newEntity.getLatitud(), entity.getLatitud());
+        Assert.assertEquals(newEntity.getLongitud(), entity.getLongitud());
+        Assert.assertEquals(newEntity.getTipoAlojamiento(), entity.getTipoAlojamiento());
+   
       
     }
     /**
-     * Prueba para consultar la lista de Facturas.
+     * Prueba para consultar la lista de viviendas.
      */
     @Test
-    public void getViviendaTest() 
+    public void getViviendasTest() 
     {
-        
+          List<ViviendaEntity> list = viviendaLogic.getViviendas();
+        Assert.assertEquals(data.size(), list.size());
+        for (ViviendaEntity ent : list) {
+            boolean found = false;
+            for (ViviendaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
     }
    
+      /**
+     * Prueba para consultar una vivienda.
+     *
+     */
+    @Test
+    public void getViviendaTest() {
+        ViviendaEntity entity = data.get(0);
+        ViviendaEntity newEntity = viviendaLogic.getVivienda(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getCapacidad(), entity.getCapacidad());
+        Assert.assertEquals(newEntity.getDireccion(), entity.getDireccion());
+        Assert.assertEquals(newEntity.getLatitud(), entity.getLatitud());
+        Assert.assertEquals(newEntity.getLongitud(), entity.getLongitud());
+        Assert.assertEquals(newEntity.getTipoAlojamiento(), entity.getTipoAlojamiento());
+    }
     /**
      * Prueba para eliminar un vivienda.
      */
     @Test
     public void deleteViviendaTest() {
-          }
+          ViviendaEntity entity = data.get(0);
+        viviendaLogic.deleteVivienda(entity.getId());
+        ViviendaEntity deleted = em.find(ViviendaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
     /**
-     * Prueba para actualizar un vivienda.
+     * Prueba para actualizar una vivienda.
+     *
+     *
      */
     @Test
-    public void updateviviendaTest() throws BusinessLogicException {
-     
-    }
+    public void updateViviendaTest() throws BusinessLogicException {
+        ViviendaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        viviendaLogic.updateVivienda(newEntity);
+
+        ViviendaEntity resp = em.find(ViviendaEntity.class, entity.getId());
+
+         Assert.assertNotNull(newEntity);
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getCapacidad(), resp.getCapacidad());
+        Assert.assertEquals(newEntity.getDireccion(), resp.getDireccion());
+        Assert.assertEquals(newEntity.getLatitud(), resp.getLatitud());
+        Assert.assertEquals(newEntity.getLongitud(), resp.getLongitud());
+        Assert.assertEquals(newEntity.getTipoAlojamiento(), resp.getTipoAlojamiento());
+   
+          }
+   
 }
