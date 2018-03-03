@@ -43,19 +43,21 @@ public class FacturaEntity extends BaseEntity implements Serializable
     /**
      * Vivienda que se factura.
      */
+    @PodamExclude
     @OneToOne
-    @JoinColumn(name="V_ID")
     private ViviendaEntity vivienda;
     
     /**
      * Lista de servicios que ya estan incluidos en el precio base.
      */
+    @PodamExclude
     @OneToMany
     private List<ServicioEntity> serviciosIncluidos;
     
     /**
      * Lista de servicios adicionales.
      */
+    @PodamExclude
     @OneToMany
     private List<ServicioEntity> serviciosAdicionales;
      /**

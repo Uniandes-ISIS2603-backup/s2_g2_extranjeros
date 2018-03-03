@@ -32,7 +32,9 @@ public class FacturaLogic {
      */
     public List<FacturaEntity> getFacturas() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los servicios");
-        return persistence.findAll();
+         List<FacturaEntity> facs= persistence.findAll();
+         LOGGER.info("Termina proceso de consultar todos los libros");
+         return facs;
     }
     /**
      * Obtiene los datos de una instancia de Factura a partir de su ID.
