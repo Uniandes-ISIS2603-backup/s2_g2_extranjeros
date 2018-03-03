@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,13 +34,15 @@ public class EventoEntity extends BaseEntity implements Serializable{
     private Integer capacidad;
     
     //Faltan asociaciones. Falta la lista de estudiantes.
-     @PodamExclude
-   @ManyToMany
+    @PodamExclude
+    @ManyToMany
     private List<EstudianteEntity> estudiantesInvitados;
      
-    @OneToOne
+    @PodamExclude
+    @ManyToOne
     private EstudianteEntity responsableEventoP;
     
+    @PodamExclude
     @OneToOne
     private LugaresDeInteresEntity lugarDeInteres;
     
