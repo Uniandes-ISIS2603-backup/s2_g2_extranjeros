@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -41,10 +42,14 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
 
     private String tipoAlojamiento;
     
-     private List<ServicioEntity> serviciosFijos;
-   
+    @OneToMany
+    @PodamExclude
+    private List<ServicioEntity> serviciosFijos;
+    @OneToMany
+    @PodamExclude
     private List<ServicioEntity> serviciosAdicionales;
-    
+    @OneToMany
+    @PodamExclude
     private List<ValoracionEntity> valoraciones;
 
     /**

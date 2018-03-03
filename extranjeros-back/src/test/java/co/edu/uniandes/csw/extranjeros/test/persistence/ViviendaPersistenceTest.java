@@ -180,42 +180,38 @@ public class ViviendaPersistenceTest {
      */
     @Test
     public void deleteViviendaTest() {
-        ViviendaEntity entity = data.get(0);
-        viviendaPersistence.delete(entity.getId());
-        ViviendaEntity deleted = em.find(ViviendaEntity.class, entity.getId());
-        Assert.assertNull(deleted);
+            ViviendaEntity entity = data.get(0);
+            viviendaPersistence.delete(entity.getId());
+            ViviendaEntity deleted = em.find(ViviendaEntity.class, entity.getId());
+            Assert.assertNull(deleted);
+        }
+
+        /**
+         * Prueba para actualizar un Employee.
+         *
+         *
+         */
+        @Test
+        public void updateViviendaTest() {
+            ViviendaEntity entity = data.get(0);
+            PodamFactory factory = new PodamFactoryImpl();
+            ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+
+            newEntity.setId(entity.getId());
+
+            viviendaPersistence.update(newEntity);
+
+            ViviendaEntity resp = em.find(ViviendaEntity.class, entity.getId());
+
+             Assert.assertNotNull(newEntity);
+            Assert.assertEquals(newEntity.getName(), resp.getName());
+            Assert.assertEquals(newEntity.getCapacidad(), resp.getCapacidad());
+            Assert.assertEquals(newEntity.getDireccion(), resp.getDireccion());
+            Assert.assertEquals(newEntity.getLatitud(), resp.getLatitud());
+            Assert.assertEquals(newEntity.getLongitud(), resp.getLongitud());
+            Assert.assertEquals(newEntity.getTipoAlojamiento(), resp.getTipoAlojamiento());
+
     }
 
-    /**
-     * Prueba para actualizar un Employee.
-     *
-     *
-     */
-    @Test
-    public void updateViviendaTest() {
-        ViviendaEntity entity = data.get(0);
-        PodamFactory factory = new PodamFactoryImpl();
-        ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
-
-        newEntity.setId(entity.getId());
-
-        viviendaPersistence.update(newEntity);
-
-        ViviendaEntity resp = em.find(ViviendaEntity.class, entity.getId());
-
-         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(newEntity.getName(), resp.getName());
-        Assert.assertEquals(newEntity.getCapacidad(), resp.getCapacidad());
-        Assert.assertEquals(newEntity.getDireccion(), resp.getDireccion());
-        Assert.assertEquals(newEntity.getLatitud(), resp.getLatitud());
-        Assert.assertEquals(newEntity.getLongitud(), resp.getLongitud());
-        Assert.assertEquals(newEntity.getTipoAlojamiento(), resp.getTipoAlojamiento());
-   
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+ 
 }
