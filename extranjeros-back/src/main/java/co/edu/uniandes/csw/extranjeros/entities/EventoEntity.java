@@ -33,13 +33,15 @@ public class EventoEntity extends BaseEntity implements Serializable{
     private Integer capacidad;
     
     //Faltan asociaciones. Falta la lista de estudiantes.
-     @PodamExclude
-   @ManyToMany
+    @PodamExclude
+    @ManyToMany
     private List<EstudianteEntity> estudiantesInvitados;
      
+    @PodamExclude
     @OneToOne
     private EstudianteEntity responsableEventoP;
     
+    @PodamExclude
     @OneToOne
     private LugaresDeInteresEntity lugarDeInteres;
     
