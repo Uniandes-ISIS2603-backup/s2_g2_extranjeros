@@ -43,6 +43,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
     /**
      * Vivienda que se factura.
      */
+    @PodamExclude
     @OneToOne
     private ViviendaEntity vivienda;
     
