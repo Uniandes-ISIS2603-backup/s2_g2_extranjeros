@@ -13,7 +13,10 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
- *      "nombre": String,
+ *      "numeroCuenta": number,
+ *      "saldoCuenta": number,
+ *      "tipoCuenta": String,
+ *      "bancoAsociado": String,
  *      "id": number
  *   }
  * </pre>
@@ -22,7 +25,10 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * <pre>
  * 
  *   {
- *      "nombre": "Carlos Hugo" 
+ *      "numeroCuenta": 12312312312132,
+ *      "saldoCuenta": 3333.333333,
+ *      "tipoCuenta": Ahorros,
+ *      "bancoAsociado": Banco Caja Social, 
  *      "id": 4323
  *   }
  *
@@ -30,5 +36,107 @@ package co.edu.uniandes.csw.extranjeros.dtos;
  * @author Jose Pacheco
  */
 public class CuentaBancariaDTO {
+
+    //---------------------------------------------------
+    // Atributos
+    //---------------------------------------------------
     
+    private Long id;
+    private Long numeroCuenta;
+    private double saldoCuenta;
+    private String tipoCuenta;
+    private String bancoAsociado;
+
+    //---------------------------------------------------
+    // Constructor
+    //---------------------------------------------------
+    
+    /**
+     * Constructor por defecto de la Clase.
+     */
+    public CuentaBancariaDTO(){
+        
+    }
+    
+    //---------------------------------------------------
+    // Metodos
+    //---------------------------------------------------
+
+    
+    
+    
+    /**
+     * @return Obtiene el Identificador una Cuenta de Banco.
+     */
+    public Long getId() {
+        return id;
+    }
+    
+    /**
+     * Le asgina un identificador a una Cuenta Bancaria.
+     * @param id Identificador que se asociara.
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return Obtiene el numero de una Cuenta de Banco.
+     */
+    public Long getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    /**
+     * Le asgina un numero a una Cuenta Bancaria.
+     * @param numeroCuenta Numero de cuenta que se asociara.
+     */
+    public void setNumeroCuenta(Long numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    /**
+     * @return Obtiene el saldo existente en una Cuenta de Banco.
+     */
+    public double getSaldoCuenta() {
+        return saldoCuenta;
+    }
+
+    /**
+     * Le asgina un saldo a una Cuenta Bancaria.
+     * @param saldoCuenta Saldo que se asociara.
+     */
+    public void setSaldoCuenta(double saldoCuenta) {
+        this.saldoCuenta = saldoCuenta;
+    }
+
+    /**
+     * @return Obtiene el tipo de cuenta bancaria (Ahorros o Corriente).
+     */
+    public String getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    /**
+     * Le asgina un tipo a una Cuenta Bancaria.
+     * @param tipoCuenta Tipo de cuenta que se asociara.
+     */
+    public void setTipoCuenta(String tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
+    }
+
+    /**
+     * @return Obtiene el banco encargado de administrar la cuenta bancaria.
+     */
+    public String getBancoAsociado() {
+        return bancoAsociado;
+    }
+    
+    /**
+     * Le asgina un banco a una Cuenta Bancaria.
+     * @param bancoAsociado Banc que se asociara a una cuenta.
+     */
+    public void setBancoAsociado(String bancoAsociado) {
+        this.bancoAsociado = bancoAsociado;
+    }
 }
