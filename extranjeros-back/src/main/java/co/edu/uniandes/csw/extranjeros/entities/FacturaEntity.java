@@ -60,6 +60,19 @@ public class FacturaEntity extends BaseEntity implements Serializable
     @PodamExclude
     @OneToMany
     private List<ServicioEntity> serviciosAdicionales;
+    
+    /**
+     * Lista de estudiantes asociados.
+     */
+    @PodamExclude
+    @ManyToMany
+    private List<EstudianteEntity> estudiantesAsociados;
+    /**
+     * Lista de arrendatarios asociados.
+     */
+    @PodamExclude
+    @ManyToMany
+    private List<EstudianteEntity> arrendatariosAsociados;
      /**
      * @return costo fijo del arriendo.
      */
