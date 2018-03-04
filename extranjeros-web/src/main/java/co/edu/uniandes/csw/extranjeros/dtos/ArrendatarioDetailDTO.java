@@ -133,7 +133,7 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
             }
             
             for (ViviendaEntity viviendasEntity : entity.getViviendas()){
-                //viviendas.add(new ViviendaDTO(viviendasEntity));
+                viviendas.add(new ViviendaDTO(viviendasEntity));
             }
 
         }
@@ -159,7 +159,7 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
          if (facturas != null) {
             List<FacturaEntity> facturaEntity = new ArrayList<>();
             for (FacturaDTO DTOFactura : facturas) {
-                //facturaEntity.add(DTOFactura.toEntity());
+                facturaEntity.add(DTOFactura.toEntity());
             }
             entity.setFacturas(facturaEntity);
         }
@@ -167,7 +167,7 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
          if (viviendas != null) {
             List<ViviendaEntity> viviendaEntity = new ArrayList<>();
             for (ViviendaDTO DTOFactura : viviendas) {
-                //viviendaEntity.add(DTOFactura.toEntity());
+                viviendaEntity.add(DTOFactura.toEntity());
             }
             entity.setViviendas(viviendaEntity);
         }
@@ -207,5 +207,4 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     public void setViviendas (List<ViviendaDTO> pViviendas) {
         this.viviendas = pViviendas;
     }
-        
 }

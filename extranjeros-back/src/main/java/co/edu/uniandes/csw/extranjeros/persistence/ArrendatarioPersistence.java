@@ -38,6 +38,28 @@ public class ArrendatarioPersistence {
     // Metodos
     //---------------------------------------------------
 
+
+    /**
+     * Busca si hay algun Usuario con el nombre que se envia de argumento.
+     * @param pLogin: Login (nombre de Usuario) del usuario que se esta buscando.
+     * @return null si no existe ningun Usuario con el login del argumento. Si
+     * existe alguno devuelve la primera.
+     */
+    public ArrendatarioEntity findByLogin (String pLogin){
+        
+        LOGGER.log(Level.INFO, "Consultando el Arrendatario por login ", pLogin);
+
+        TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.usuario = :usuario", ArrendatarioEntity.class);
+        query = query.setParameter("name", pLogin);
+        List<ArrendatarioEntity> sameName = query.getResultList();
+        
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
+
     /**
      * Busca si hay algun Usuario con el nombre que se envia de argumento.
      * @param pLogin: Login (nombre de Usuario) del usuario que se esta buscando.

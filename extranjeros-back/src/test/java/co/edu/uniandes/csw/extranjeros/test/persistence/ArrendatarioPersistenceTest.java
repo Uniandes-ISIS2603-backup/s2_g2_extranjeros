@@ -137,6 +137,12 @@ public class ArrendatarioPersistenceTest {
         
         // AssertEquals
         Assert.assertEquals(usuarioUno.getNombre(), usuarioDos.getNombre());
+        Assert.assertEquals(usuarioUno.getUsuario(), usuarioDos.getUsuario());
+        Assert.assertEquals(usuarioUno.getClave(), usuarioDos.getClave());
+        Assert.assertEquals(usuarioUno.getCorreo(), usuarioDos.getCorreo());
+        Assert.assertEquals(usuarioUno.getCelular(), usuarioDos.getCelular());
+        Assert.assertEquals(usuarioUno.getCedula(), usuarioDos.getCedula());
+        Assert.assertEquals(usuarioUno.getEdad(), usuarioDos.getEdad());
     }
     
     /**
@@ -178,6 +184,12 @@ public class ArrendatarioPersistenceTest {
         
         // Assert
         Assert.assertEquals(usuarioUno.getNombre(), usuarioDos.getNombre());
+        Assert.assertEquals(usuarioUno.getUsuario(), usuarioDos.getUsuario());
+        Assert.assertEquals(usuarioUno.getClave(), usuarioDos.getClave());
+        Assert.assertEquals(usuarioUno.getCorreo(), usuarioDos.getCorreo());
+        Assert.assertEquals(usuarioUno.getCelular(), usuarioDos.getCelular());
+        Assert.assertEquals(usuarioUno.getCedula(), usuarioDos.getCedula());
+        Assert.assertEquals(usuarioUno.getEdad(), usuarioDos.getEdad());
     }
     
     /**
@@ -202,6 +214,12 @@ public class ArrendatarioPersistenceTest {
 
         // Assert
         Assert.assertEquals(usuarioDos.getNombre(), resp.getNombre());
+        Assert.assertEquals(usuarioDos.getUsuario(), resp.getUsuario());
+        Assert.assertEquals(usuarioDos.getClave(), resp.getClave());
+        Assert.assertEquals(usuarioDos.getCorreo(), resp.getCorreo());
+        Assert.assertEquals(usuarioDos.getCelular(), resp.getCelular());
+        Assert.assertEquals(usuarioDos.getCedula(), resp.getCedula());
+        Assert.assertEquals(usuarioDos.getEdad(), resp.getEdad());
     }
     
     /**

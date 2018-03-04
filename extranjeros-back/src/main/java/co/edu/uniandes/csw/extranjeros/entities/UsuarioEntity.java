@@ -5,18 +5,25 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import uk.co.jemos.podam.common.PodamExclude;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  * @author jr.pacheco10
  */
 
-@Entity
-public class UsuarioEntity extends BaseEntity implements Serializable {
+@MappedSuperclass
+public abstract class UsuarioEntity implements Serializable {
+
+    //----------------------------------------------------------
+    // ID: Usuario pasa a ser Padre de Arrendatario y Estudiante
+    //----------------------------------------------------------
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     //---------------------------------------------------
     // Atributos
@@ -29,18 +36,6 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private Integer cedula;
     private Integer edad;
 
-    //---------------------------------------------------
-    // Atributos Relacionales
-    //---------------------------------------------------
-    
-    @PodamExclude
-    @ManyToMany(mappedBy = "usuariosAsociados")
-    private List <FacturaEntity> facturas;
-    
-    @PodamExclude
-    @ManyToMany(mappedBy = "usuarioInquilinos", cascade = CascadeType.ALL)
-    private List <ViviendaEntity> viviendas;
-    
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
@@ -134,38 +129,32 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     public void setEdad(Integer edad) {
         this.edad = edad;
     }
+
+    //----------------------------------------------------------
+    // Métodos para emular una MappedSuperClass
+    //----------------------------------------------------------
     
-    //---------------------------------------------------
-    // Metodos atributos Relacionales
-    //--------------------------------------------------- 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
-    /**
-     * @return La lista de facturas asociadas a un usuario.
-     */
-    public List<FacturaEntity> getFacturas() {
-        return facturas;
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
+            return this.getId().equals(((BaseEntity) obj).getId());
+        }
+        return super.equals(obj);
     }
 
-    /**
-     * Crea o modifica la lista de Facturas asociadas a un Usuario.
-     * @param facturas Lista de Facturas.
-     */
-    public void setFacturas(List<FacturaEntity> facturas) {
-        this.facturas = facturas;
-    }
-
-    /**
-     * @return La lista de viviendas asociadas a un usuario.
-     */
-    public List<ViviendaEntity> getViviendas() {
-        return viviendas;
-    }
-
-    /**
-     * Crea o modifica la lista de Viviendas asociadas a un Usuario.
-     * @param viviendas Lista de Facturas. 
-     */
-    public void setViviendas(List<ViviendaEntity> viviendas) {
-        this.viviendas = viviendas;
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
     }
 }

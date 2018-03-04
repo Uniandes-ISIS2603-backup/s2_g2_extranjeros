@@ -39,6 +39,7 @@ import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
  * </pre>
  * @author Jose Pacheco
  */
+
 public class UsuarioDTO {
     
     //---------------------------------------------------
@@ -52,7 +53,7 @@ public class UsuarioDTO {
     protected int cedula;
     protected int edad;
     
-    private Long id;
+    //private Long id;
 
     //---------------------------------------------------
     // Constructor
@@ -70,7 +71,6 @@ public class UsuarioDTO {
      */
         public UsuarioDTO(UsuarioEntity entity) {
         if (entity != null) {
-            this.id = entity.getId();
             this.usuario = entity.getUsuario();
             this.clave = entity.getClave();
             this.correo = entity.getCorreo();
@@ -91,7 +91,6 @@ public class UsuarioDTO {
         UsuarioEntity entity = new UsuarioEntity() {};
         
         // Asocia atributos
-        entity.setId(this.getId());
         entity.setUsuario(this.getUsuario());
         entity.setClave(this.getClave());
         entity.setCorreo(this.getCorreo());
@@ -163,21 +162,6 @@ public class UsuarioDTO {
         this.celular = newPhone;
     }
     
-    /**
-     * @return El identificador de un usuario.
-     */ 
-    public Long getId(){
-        return id;
-    }
-    
-    /**
-     * Crea o modifica el identificador de un usuario.
-     * @param id El nuevo correo. 
-     */ 
-       public void setId(Long id) {
-        this.id = id;
-    }
-
     /**
      * @return El numero de cedula de un usuario.
      */   
