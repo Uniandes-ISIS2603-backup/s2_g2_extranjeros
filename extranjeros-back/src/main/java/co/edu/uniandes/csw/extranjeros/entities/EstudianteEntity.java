@@ -41,7 +41,7 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
    private UniversidadEntity universidad;
    
    @PodamExclude
-   @OneToMany(mappedBy = "resposableEventoP",cascade = CascadeType.ALL)
+   @OneToMany(mappedBy = "responsableEventoP",cascade = CascadeType.ALL)
    private List<EventoEntity> eventosCreados;
    
    @PodamExclude
