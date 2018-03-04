@@ -32,10 +32,10 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaEntrada;
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaSalida;
     
     private Double IVA;
