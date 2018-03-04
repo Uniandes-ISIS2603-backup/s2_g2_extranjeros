@@ -30,14 +30,16 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
    @OneToOne
     private ProvidenciaEntity providencia;
    
-   @OneToMany
+   @PodamExclude
+   @OneToOne
    private TarjetaEntity tarjeta;
    
+   @PodamExclude
    @OneToOne 
    private UniversidadEntity universidad;
    
    @PodamExclude
-   @OneToMany
+   @OneToMany(mappedBy = "resposableEventoP")
    private List<EventoEntity> eventosCreados;
    
    @PodamExclude
