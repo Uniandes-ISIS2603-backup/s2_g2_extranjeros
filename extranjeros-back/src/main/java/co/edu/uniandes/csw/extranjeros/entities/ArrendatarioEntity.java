@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -27,7 +28,7 @@ public class ArrendatarioEntity extends UsuarioEntity implements Serializable {
     private List <FacturaEntity> facturas;
     
     @PodamExclude
-    @ManyToMany(mappedBy = "arrendatariosPropietarios", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "arrendatariosPropietarios", cascade = CascadeType.ALL)
     private List <ViviendaEntity> viviendas;
     
     
