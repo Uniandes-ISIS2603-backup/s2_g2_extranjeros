@@ -7,10 +7,12 @@ package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -31,7 +33,7 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
     private ProvidenciaEntity providencia;
    
    @PodamExclude
-   @OneToOne
+   @OneToOne (cascade = CascadeType.ALL)
    private TarjetaEntity tarjeta;
    
    @PodamExclude
@@ -39,15 +41,39 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
    private UniversidadEntity universidad;
    
    @PodamExclude
-   @OneToMany(mappedBy = "resposableEventoP")
+   @OneToMany(mappedBy = "resposableEventoP",cascade = CascadeType.ALL)
    private List<EventoEntity> eventosCreados;
    
    @PodamExclude
    @ManyToMany
    private List<EventoEntity> eventosInvitado;
    
-   
+   @PodamExclude
+   @ManyToMany
+    private List <FacturaEntity> facturas;
+    
+    @PodamExclude
+    @ManyToOne
+    private ViviendaEntity vivienda;
 
+    
+    
+    public List<FacturaEntity> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<FacturaEntity> facturas) {
+        this.facturas = facturas;
+    }
+
+    public ViviendaEntity getViviendas() {
+        return vivienda;
+    }
+
+    public void setViviendas(ViviendaEntity viviendas) {
+        this.vivienda = viviendas;
+    }
+    
     public TarjetaEntity getTarjeta() {
         return tarjeta;
     }

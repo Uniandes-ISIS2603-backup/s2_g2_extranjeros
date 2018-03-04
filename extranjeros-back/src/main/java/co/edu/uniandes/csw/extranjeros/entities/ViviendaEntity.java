@@ -25,7 +25,11 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @ManyToOne
-    private List <ArrendatarioEntity> arrendatariosPropietarios;
+    private ArrendatarioEntity arrendatariosPropietarios;
+    
+    @PodamExclude
+    @OneToMany (mappedBy = "vivienda")
+    private List <EstudianteEntity> estudiantes;
     
      //---------------------------------------------------
     // Atributos
