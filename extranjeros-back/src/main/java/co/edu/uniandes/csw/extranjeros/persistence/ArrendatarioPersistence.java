@@ -38,7 +38,6 @@ public class ArrendatarioPersistence {
     // Metodos
     //---------------------------------------------------
 
-
     /**
      * Busca si hay algun Usuario con el nombre que se envia de argumento.
      * @param pLogin: Login (nombre de Usuario) del usuario que se esta buscando.

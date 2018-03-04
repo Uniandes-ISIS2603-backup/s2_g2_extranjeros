@@ -103,6 +103,7 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     // Atributos relacionales
     //---------------------------------------------------
     
+    private CuentaBancariaDTO cuentaBancaria;
     private List <FacturaDTO> facturas;
     private List <ViviendaDTO> viviendas;
     
@@ -125,6 +126,9 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
         public ArrendatarioDetailDTO(ArrendatarioEntity entity) {
           super(entity);
           if (entity != null) {
+            
+            //cuentaBancaria = (new CuentaBancariaDTO(entity.getCuentaBancaria());
+              
             facturas = new ArrayList<>();
             viviendas = new ArrayList<>();
             
@@ -206,5 +210,20 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
      */
     public void setViviendas (List<ViviendaDTO> pViviendas) {
         this.viviendas = pViviendas;
+    }
+
+    /**
+     * @return La cuenta bancaria asociadas a un arrendatario.
+     */
+    public CuentaBancariaDTO getCuentaBancaria() {
+        return cuentaBancaria;
+    }
+
+    /**
+     * Crea o modifica la cuenta de banco asociada a un Arrendatario.
+     * @param cuentaBancaria Cuenta de Banco. 
+     */
+    public void setCuentaBancaria(CuentaBancariaDTO cuentaBancaria) {
+        this.cuentaBancaria = cuentaBancaria;
     }
 }
