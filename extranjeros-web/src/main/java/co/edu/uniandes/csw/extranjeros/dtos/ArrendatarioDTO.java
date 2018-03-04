@@ -50,13 +50,19 @@ public class ArrendatarioDTO extends UsuarioDTO {
      */
     public ArrendatarioDTO(){
     }
-        /**
+    
+    /**
      * Crea un objeto UsuarioTO a partir de un objeto UsuarioEntity.
      * @param entity Entidad UsuarioEntity desde la cual se va a crear el nuevo
      * objeto.
      */
         public ArrendatarioDTO (ArrendatarioEntity entity) {
         if (entity != null) {
+            
+            // De Arrendatario
+            this.nombre = entity.getNombre();
+            
+            // De Usuario
             this.id = entity.getId();
             this.usuario = entity.getUsuario();
             this.clave = entity.getClave();
@@ -64,7 +70,7 @@ public class ArrendatarioDTO extends UsuarioDTO {
             this.celular = entity.getCelular();
             this.cedula = entity.getCedula();
             this.edad = entity.getEdad();
-            this.nombre = entity.getNombre();
+            
         }
     }
     
@@ -118,7 +124,6 @@ public class ArrendatarioDTO extends UsuarioDTO {
      /**
      * @return Retorna el ID de un Usuario. 
      */
-    @Override
     public Long getId() {
         return id;
     }
@@ -127,7 +132,6 @@ public class ArrendatarioDTO extends UsuarioDTO {
      * Le asgina un identificador a un Usuario
      * @param id Identificador que se asociara
      */
-    @Override
     public void setId(Long id) {
         this.id = id;
     }

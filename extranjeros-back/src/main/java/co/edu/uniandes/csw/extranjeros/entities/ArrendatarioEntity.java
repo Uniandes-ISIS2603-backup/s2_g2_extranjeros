@@ -5,7 +5,11 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @author jr.pacheco10
@@ -13,6 +17,19 @@ import javax.persistence.Entity;
 
 @Entity
 public class ArrendatarioEntity extends UsuarioEntity implements Serializable {
+    
+    //---------------------------------------------------
+    // Atributos Relacionales
+    //---------------------------------------------------
+    
+    @PodamExclude
+    @ManyToMany(mappedBy = "arrendatariosAsociados")
+    private List <FacturaEntity> facturas;
+    
+    @PodamExclude
+    @ManyToMany(mappedBy = "arrendatariosPropietarios", cascade = CascadeType.ALL)
+    private List <ViviendaEntity> viviendas;
+    
     
     //---------------------------------------------------
     // Atributos
@@ -37,6 +54,41 @@ public class ArrendatarioEntity extends UsuarioEntity implements Serializable {
      */
     public void setNombre(String pNombre) {
         this.nombre = pNombre;
+    }
+    
+        
+    //---------------------------------------------------
+    // Metodos atributos Relacionales
+    //--------------------------------------------------- 
+    
+    /**
+     * @return La lista de facturas asociadas a un usuario.
+     */
+    public List<FacturaEntity> getFacturas() {
+        return facturas;
+    }
+
+    /**
+     * Crea o modifica la lista de Facturas asociadas a un Usuario.
+     * @param facturas Lista de Facturas.
+     */
+    public void setFacturas(List<FacturaEntity> facturas) {
+        this.facturas = facturas;
+    }
+
+    /**
+     * @return La lista de viviendas asociadas a un usuario.
+     */
+    public List<ViviendaEntity> getViviendas() {
+        return viviendas;
+    }
+
+    /**
+     * Crea o modifica la lista de Viviendas asociadas a un Usuario.
+     * @param viviendas Lista de Facturas. 
+     */
+    public void setViviendas(List<ViviendaEntity> viviendas) {
+        this.viviendas = viviendas;
     }
     
 }
