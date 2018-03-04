@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.entities;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -18,7 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class ArrendatarioEntity extends UsuarioEntity implements Serializable {
-    
+       
     //---------------------------------------------------
     // Atributos Relacionales
     //---------------------------------------------------
@@ -30,7 +33,12 @@ public class ArrendatarioEntity extends UsuarioEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "arrendatariosPropietarios", cascade = CascadeType.ALL)
     private List <ViviendaEntity> viviendas;
-    
+
+
+    @PodamExclude
+    @OneToOne (mappedBy = "arrendatarioTitular", cascade = CascadeType.ALL)
+    @JoinColumn(name = "cuentaBancaria_ID")
+    private CuentaBancariaEntity cuentaBancaria;
     
     //---------------------------------------------------
     // Atributos
@@ -92,4 +100,18 @@ public class ArrendatarioEntity extends UsuarioEntity implements Serializable {
         this.viviendas = viviendas;
     }
     
-}
+    /**
+     * @return La cuenta bancaria asociadas a un arrendatario.
+     */
+    public CuentaBancariaEntity getCuentaBancaria() {
+        return cuentaBancaria;
+    }
+
+    /**
+     * Crea o modifica la cuenta de banco asociada a un Arrendatario.
+     * @param cuentaBancaria Cuenta de Banco. 
+     */
+    public void setCuentaBancaria(CuentaBancariaEntity cuentaBancaria) {
+        this.cuentaBancaria = cuentaBancaria;
+    } 
+} 

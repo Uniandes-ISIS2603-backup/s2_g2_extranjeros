@@ -80,8 +80,4 @@ public class EventoPersistence {
         TypedQuery query = em.createQuery("select u from EventoEntity u", EventoEntity.class);
         return query.getResultList();
     }
-    
-    
-    
-    
 }

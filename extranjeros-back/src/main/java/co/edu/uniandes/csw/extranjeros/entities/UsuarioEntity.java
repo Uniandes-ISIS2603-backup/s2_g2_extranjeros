@@ -5,16 +5,16 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 
 /**
  * @author jr.pacheco10
  */
 
-@MappedSuperclass
+@Entity
 public abstract class UsuarioEntity implements Serializable {
 
     //----------------------------------------------------------
