@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ProvidenciaPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,7 +27,7 @@ public class ProvidenciaLogic {
     private ProvidenciaPersistence persistence;
     
     /**
-     * Devuelve todos los libros que hay en la base de datos.
+     * Devuelve todas las providencias que hay en la base de datos.
      * @return Lista de entidades de tipo libro.
      */
     public List<ProvidenciaEntity> getProvidencias() {
@@ -41,7 +42,7 @@ public class ProvidenciaLogic {
      * @param id El id de la providencia a buscar
      * @return La providencia encontrado, null si no lo encuentra.
      */
-    public ProvidenciaEntity getBook(Long id) {
+    public ProvidenciaEntity getProvidencia(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar providencia con id={0}", id);
         ProvidenciaEntity providencia = persistence.find(id);
         if (providencia == null) {
@@ -60,4 +61,20 @@ public class ProvidenciaLogic {
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar providencia con id={0}", id);
     }
+    
+    public ProvidenciaEntity createProvidencia(ProvidenciaEntity entity) throws BusinessLogicException  
+    {
+         LOGGER.info("Inicia proceso de creación de city");
+        // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
+        if (!((entity.getPais()!=null)&& (entity.getRegion()!=null))) {
+            throw new BusinessLogicException("No se cumplen con los datos requeridos para crear una providencia");
+        }
+        // Invoca la persistencia para crear la city
+        persistence.create(entity);
+        LOGGER.info("Termina proceso de creación de providencia");
+        return entity;
+        
+    }
+    
+    
 }
