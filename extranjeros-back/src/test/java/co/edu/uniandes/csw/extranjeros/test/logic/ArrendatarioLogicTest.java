@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.extranjeros.test.logic;
 import co.edu.uniandes.csw.extranjeros.ejb.ArrendatarioLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.extranjeros.persistence.ArrendatarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,7 +35,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class ArrendatarioLogicTest {
     
-/**
+    /**
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
      * embebido. El jar contiene las clases de facturas, el descriptor de la
      * base de datos y el archivo benas.xml para resolver la inyección de
@@ -45,6 +46,7 @@ public class ArrendatarioLogicTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(ArrendatarioEntity.class.getPackage())
                 .addPackage(ArrendatarioLogic.class.getPackage())
+                .addPackage(ArrendatarioPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
