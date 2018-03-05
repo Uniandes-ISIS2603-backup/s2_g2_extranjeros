@@ -38,7 +38,7 @@ public class ArrendatarioLogic {
     // Metodos Usuario(DTO) - Resource: sin relaciones
     //---------------------------------------------------
      
-     //-- GET ONE
+    //-- GET ONE
     /**
      * Obtiene los datos de una instancia de Arrendatario a partir de su ID (identificador).
      * @param id Identificador de la instancia a consultar.
@@ -70,16 +70,15 @@ public class ArrendatarioLogic {
         
         LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma");
         
-        ArrendatarioEntity buscado = persistence.findByName(newUser.getNombre());
-        if (buscado != null){
-            throw new BusinessLogicException("Hay un arrendatario con el mismo nombre");
-        }
+//        ArrendatarioEntity buscado = persistence.findByName(newUser.getNombre());
+//        if (buscado != null){
+//            throw new BusinessLogicException("Hay un arrendatario con el mismo nombre");
+//        }
         
-        ArrendatarioEntity buscadoPorLogin = persistence.findByLogin(newUser.getUsuario());
-        if (buscadoPorLogin != null){
-            throw new BusinessLogicException("Existe un Usuario con el mismo login");
-        }
-        
+//        ArrendatarioEntity buscadoPorLogin = persistence.findByLogin(newUser.getUsuario());
+//        if (buscadoPorLogin != null){
+//            throw new BusinessLogicException("Existe un Usuario con el mismo login");
+//        }
         
         if (newUser.getEdad() < 18){
             throw new BusinessLogicException("El Usuario no puede ser menor de edad");
@@ -88,18 +87,10 @@ public class ArrendatarioLogic {
         if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
             throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
         }
-        
-        boolean encontradoNumero = false;
-        char[] caracteres = newUser.getClave().toCharArray();
-        for (int i = 0; i < caracteres.length; i++){
             
-            String m = String.valueOf(caracteres[i]);
-            if( Integer.class.isInstance(Integer.parseInt(m))){
-                encontradoNumero = true;
-            }
-        } 
-        
-        if (encontradoNumero == false){
+        if (!(newUser.getClave().contains("1") | newUser.getClave().contains("2") | newUser.getClave().contains("3") | newUser.getClave().contains("4") |
+                    newUser.getClave().contains("5") | newUser.getClave().contains("6") | newUser.getClave().contains("7") | newUser.getClave().contains("8") 
+                            | newUser.getClave().contains("9") | newUser.getClave().contains("0"))){
             throw new BusinessLogicException("Su clave debe contener al menos un numero");
         }
         
@@ -115,7 +106,6 @@ public class ArrendatarioLogic {
         if (numeros.length != 10){
             throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
         }
-        
         
         return persistence.create(newUser);
     }

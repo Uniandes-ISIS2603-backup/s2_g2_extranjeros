@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.extranjeros.persistence;
 
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
-import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,7 +68,7 @@ public class ArrendatarioPersistence {
         
         LOGGER.log(Level.INFO, "Consultando el Usuario por login ", pLogin);
 
-        TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.nombre = :nombre", UsuarioEntity.class);
+        TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.nombre = :nombre", ArrendatarioEntity.class);
         query = query.setParameter("name", pLogin);
         List<ArrendatarioEntity> sameName = query.getResultList();
         

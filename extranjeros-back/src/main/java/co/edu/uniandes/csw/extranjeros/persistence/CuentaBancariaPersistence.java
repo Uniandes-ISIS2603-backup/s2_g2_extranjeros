@@ -39,7 +39,7 @@ public class CuentaBancariaPersistence {
      * Busca en la Base de Datos si existe una cuenta de banco asociada al ID dado por parametro.
      * @param cuentaId ID de la cuenta bancaria que se consulta en las relaciones de la BD.
      * @param arrendatarioID Id del Arrendatario que se consulta en las relaciones de la BD. 
-     * @return Retorna el Arrendatario al que corresponde la ID dada.
+     * @return Retorna la cuenta de banco a la que corresponde la ID dada.
      */
     public CuentaBancariaEntity find(Long cuentaId, Long arrendatarioID) {
         LOGGER.log(Level.INFO, "Consultando la cuenta de banco con id = {0}", cuentaId);
