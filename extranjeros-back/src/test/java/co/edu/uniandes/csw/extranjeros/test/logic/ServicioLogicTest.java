@@ -118,7 +118,7 @@ public class ServicioLogicTest
         Assert.assertNotNull(result);
         ServicioEntity entity = em.find(ServicioEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getAdicional(),entity.getTipo());
+        Assert.assertEquals(newEntity.getAdicional(),entity.getAdicional());
         Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
     }
     /**
