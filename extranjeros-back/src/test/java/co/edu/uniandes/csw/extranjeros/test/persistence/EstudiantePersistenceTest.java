@@ -45,7 +45,7 @@ public class EstudiantePersistenceTest {
     public static JavaArchive createDeployment()
     {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(EstudiantePersistence.class.getPackage())
+                .addPackage(EstudianteEntity.class.getPackage())
                 .addPackage(EstudiantePersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");              
@@ -201,23 +201,23 @@ public class EstudiantePersistenceTest {
      */
     @Test
     public void updateEstudianteTest() {
-        EstudianteEntity estudiante1 = data.get(0);
+       EstudianteEntity estudiante1 = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        EstudianteEntity nuevoEstudiante = factory.manufacturePojo(EstudianteEntity.class);
+        EstudianteEntity estudiante2 = factory.manufacturePojo(EstudianteEntity.class);
 
-        nuevoEstudiante.setId(estudiante1.getId());
+        estudiante2.setId(estudiante1.getId());
 
-        estudiantePersistence.update(nuevoEstudiante);
+       estudiantePersistence.update(estudiante2);
 
-        EstudianteEntity estudiante2 = em.find(EstudianteEntity.class, estudiante1.getId());
-
-        Assert.assertEquals(estudiante1.getNombre(), estudiante2.getNombre());
-        Assert.assertEquals(estudiante1.getUsuario(), estudiante2.getUsuario());
-        Assert.assertEquals(estudiante1.getClave(), estudiante2.getClave());
-        Assert.assertEquals(estudiante1.getCorreo(), estudiante2.getCorreo());
-        Assert.assertEquals(estudiante1.getCelular(), estudiante2.getCelular());
-        Assert.assertEquals(estudiante1.isEstadoArrendamiento(), estudiante2.isEstadoArrendamiento());
-        Assert.assertEquals(estudiante1.getId(), estudiante2.getId());
+        EstudianteEntity resp = em.find(EstudianteEntity.class, estudiante1.getId());
+        
+        Assert.assertEquals(resp.getNombre(), estudiante2.getNombre());
+        Assert.assertEquals(resp.getUsuario(), estudiante2.getUsuario());
+        Assert.assertEquals(resp.getClave(), estudiante2.getClave());
+        Assert.assertEquals(resp.getCorreo(), estudiante2.getCorreo());
+        Assert.assertEquals(resp.getCelular(), estudiante2.getCelular());
+        Assert.assertEquals(resp.isEstadoArrendamiento(), estudiante2.isEstadoArrendamiento());
+        Assert.assertEquals(resp.getId(), estudiante2.getId());
         
     }
     

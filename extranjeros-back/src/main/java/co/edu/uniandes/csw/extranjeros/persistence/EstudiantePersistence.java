@@ -44,7 +44,7 @@ public class EstudiantePersistence {
     public List<EstudianteEntity> findAll()
     {
         LOGGER.info("Consultando todos los estudiantes");
-        Query q=em.createQuery("select u from estudiantes u");
+        Query q=em.createQuery("select u from EstudianteEntity u");
         return q.getResultList();
     }
     /**
