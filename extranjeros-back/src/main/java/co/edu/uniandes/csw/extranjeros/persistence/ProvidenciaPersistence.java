@@ -42,7 +42,7 @@ public class ProvidenciaPersistence {
     public List<ProvidenciaEntity> findAll()
     {
         LOGGER.info("Consultando todas las providencias");
-        Query q=em.createQuery("select u from providencia u");
+        Query q= em.createQuery("select u from ProvidenciaEntity u");
         return q.getResultList();
     }
     /**

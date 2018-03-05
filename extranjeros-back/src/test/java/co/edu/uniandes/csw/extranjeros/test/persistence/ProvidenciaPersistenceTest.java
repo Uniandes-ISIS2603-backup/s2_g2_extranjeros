@@ -194,17 +194,17 @@ public class ProvidenciaPersistenceTest {
     public void updateProvidenciaTest() {
         ProvidenciaEntity providencia1 = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        ProvidenciaEntity nuevaProvidencia = factory.manufacturePojo(ProvidenciaEntity.class);
+        ProvidenciaEntity providencia2 = factory.manufacturePojo(ProvidenciaEntity.class);
 
-        nuevaProvidencia.setId(providencia1.getId());
+        providencia2.setId(providencia1.getId());
 
-        providenciaPersistence.update(nuevaProvidencia);
+       providenciaPersistence.update(providencia2);
 
-        ProvidenciaEntity providencia2 = em.find(ProvidenciaEntity.class, providencia1.getId());
+        ProvidenciaEntity resp = em.find(ProvidenciaEntity.class, providencia1.getId());
 
-        Assert.assertEquals(providencia1.getPais(), providencia2.getPais());
-        Assert.assertEquals(providencia1.getRegion(), providencia2.getRegion());
-        Assert.assertEquals(providencia1.getId(), providencia2.getId());
+        Assert.assertEquals(resp.getPais(), providencia2.getPais());
+        Assert.assertEquals(resp.getRegion(), providencia2.getRegion());
+        Assert.assertEquals(resp.getId(), providencia2.getId());
     }
     
     
