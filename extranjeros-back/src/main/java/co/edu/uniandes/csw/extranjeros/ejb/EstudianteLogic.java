@@ -56,7 +56,7 @@ public class EstudianteLogic  {
      * Eliminar un estudiante por ID
      * @param id El ID del estudiante a eliminar
      */
-    public void deleteBook(Long id) {
+    public void deleteEstudiante(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar estudiante con id={0}", id);
         estudiantePersistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar estudiante con id={0}", id);
