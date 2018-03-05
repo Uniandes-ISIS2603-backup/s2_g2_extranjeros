@@ -25,6 +25,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import uk.co.jemos.podam.api.PodamFactory;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 /**
@@ -67,6 +68,25 @@ public class ValoracionLogicTest {
     }
     
  
+     /**
+     * Configuración inicial de la prueba.
+     */
+    @Before
+    public void configTest() {
+        try {
+            utx.begin();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
 
     /**
      * Limpia las tablas que están implicadas en la prueba.
