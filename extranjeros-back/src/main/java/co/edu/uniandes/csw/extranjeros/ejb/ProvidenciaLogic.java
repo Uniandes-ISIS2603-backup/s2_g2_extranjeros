@@ -62,9 +62,15 @@ public class ProvidenciaLogic {
         LOGGER.log(Level.INFO, "Termina proceso de borrar providencia con id={0}", id);
     }
     
+    /**
+     * Guardar una nueva providencia
+     * @param entity La entidad de tipo providencia  a persistir.
+     * @return La entidad luego de persistirla
+     * @throws BusinessLogicException Si no se tiene región o pais .
+     */
     public ProvidenciaEntity createProvidencia(ProvidenciaEntity entity) throws BusinessLogicException  
     {
-         LOGGER.info("Inicia proceso de creación de city");
+         LOGGER.info("Inicia proceso de creación de providencia");
         // Verifica la regla de negocio que dice que no puede haber dos cityes con el mismo nombre
         if (!((entity.getPais()!=null)&& (entity.getRegion()!=null))) {
             throw new BusinessLogicException("No se cumplen con los datos requeridos para crear una providencia");
@@ -74,6 +80,23 @@ public class ProvidenciaLogic {
         LOGGER.info("Termina proceso de creación de providencia");
         return entity;
         
+    }
+    
+    
+    /**
+     * Actualizar un libro por ID
+     * @param entity La entidad de la providencia con los cambios deseados
+     * @return La entidad de la providencia luego de actualizarla
+     * @throws BusinessLogicException Si no existe la providencia ingresada
+     */
+     public ProvidenciaEntity updatProvidencia(ProvidenciaEntity entity) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar libro con id={0}", entity.getId());
+        if (!(persistence.find(entity.getId())!=null)) {
+            throw new BusinessLogicException("No existe la providencia ingresada");
+        }
+        ProvidenciaEntity newEntity = persistence.update(entity);
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar providencia con id={0}", entity.getId());
+        return newEntity;
     }
     
     
