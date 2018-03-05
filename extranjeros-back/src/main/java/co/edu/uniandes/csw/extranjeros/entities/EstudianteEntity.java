@@ -26,6 +26,7 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
     
     private String nombre;
     private boolean estadoArrendamiento;
+    private int edad;
     
     //RELACIONES
    @PodamExclude
@@ -57,6 +58,8 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
     private ViviendaEntity vivienda;
 
     
+    
+   
     
     public List<FacturaEntity> getFacturas() {
         return facturas;

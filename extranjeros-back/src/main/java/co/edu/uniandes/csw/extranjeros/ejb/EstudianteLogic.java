@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.EstudiantePersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -61,7 +62,68 @@ public class EstudianteLogic  {
         estudiantePersistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar estudiante con id={0}", id);
     }
-
+    
+  
+    /**
+     * Actualiza la información de un estudiante
+     * @param newUser Instancia de EstudianteEntityy con los nuevos datos.
+     * @return Instancia de EstudianteEntityy con los datos actualizados.
+     */
+    public EstudianteEntity updateEstudiante (EstudianteEntity newUser){
+        LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
+        return estudiantePersistence.update(newUser);
+    }
+    
+     public EstudianteEntity createArrendatario (EstudianteEntity newUser) throws BusinessLogicException{
+        
+        LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma");
+       
+        EstudianteEntity buscado = estudiantePersistence.findByUser(newUser.getUsuario());
+        if (buscado != null){
+            throw new BusinessLogicException("Hay un arrendatario con el mismo usuario");
+        }
+        
+        if (newUser.getEdad() < 18){
+            throw new BusinessLogicException("El Usuario no puede ser menor de edad");
+        }
+        
+        if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
+        }
+        
+         
+        boolean encontradoNumero = false;
+        char[] caracteres = newUser.getClave().toCharArray();
+        for (int i = 0; i < caracteres.length; i++){
+            
+            String m = String.valueOf(caracteres[i]);
+            if( Integer.class.isInstance(Integer.parseInt(m))){
+                encontradoNumero = true;
+            }
+        } 
+        
+        if (encontradoNumero == false){
+            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        }
+        
+         if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
+            throw new BusinessLogicException("Su correo no es válido.");
+        }
+        
+        String celular = String.valueOf(newUser.getCelular());
+        char numeros[] = celular.toCharArray();
+        
+        // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
+        // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.
+        if (numeros.length != 10){
+            throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
+        }
+        
+        
+        return estudiantePersistence.create(newUser);
+    
+   
+     }
     
     
     
