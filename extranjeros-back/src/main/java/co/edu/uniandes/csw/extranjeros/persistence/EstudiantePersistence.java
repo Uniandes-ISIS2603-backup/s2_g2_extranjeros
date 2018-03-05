@@ -86,13 +86,13 @@ public class EstudiantePersistence {
      * @return null si no existe ninguna city con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
-    public EstudianteEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando estudiante por nombre ", name);
+    public EstudianteEntity findByUser(String usuario) {
+        LOGGER.log(Level.INFO, "Consultando estudiante por usuario ", usuario);
 
         // Se crea un query para buscar estudiantes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From EstudianteEntity e where e.name = :name", EstudianteEntity.class);
+        TypedQuery query = em.createQuery("Select e From EstudianteEntity e where e.usuario = :usuario", EstudianteEntity.class);
         // Se remplaza el placeholder ":name" con el valor del argumento 
-        query = query.setParameter("name", name);
+        query = query.setParameter("usuario", usuario);
         // Se invoca el query se obtiene la lista resultado
         List<EstudianteEntity> sameName = query.getResultList();
         if (sameName.isEmpty()) {
@@ -101,5 +101,6 @@ public class EstudiantePersistence {
             return sameName.get(0);
         }
     }
+    
     
 }
