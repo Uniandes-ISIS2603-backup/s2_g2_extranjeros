@@ -8,7 +8,10 @@
     <packaging>pom</packaging>
     <name>s2_g2_extranjeros</name>
  
-    <modules></modules>
+    <modules>
+        <module>extranjeros-back</module>
+        <module>extranjeros-web</module>
+    </modules>
     <repositories>
         <repository>
             <id>csw-releases</id>
