@@ -88,9 +88,9 @@ public class ArrendatarioLogic {
             throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
         }
             
-        if (!(newUser.getClave().contains("1") | newUser.getClave().contains("2") | newUser.getClave().contains("3") | newUser.getClave().contains("4") |
-                    newUser.getClave().contains("5") | newUser.getClave().contains("6") | newUser.getClave().contains("7") | newUser.getClave().contains("8") 
-                            | newUser.getClave().contains("9") | newUser.getClave().contains("0"))){
+        if (!(newUser.getClave().contains("1") || newUser.getClave().contains("2") || newUser.getClave().contains("3") || newUser.getClave().contains("4") ||
+                    newUser.getClave().contains("5") || newUser.getClave().contains("6") || newUser.getClave().contains("7") || newUser.getClave().contains("8") 
+                            || newUser.getClave().contains("9") || newUser.getClave().contains("0"))){
             throw new BusinessLogicException("Su clave debe contener al menos un numero");
         }
         
