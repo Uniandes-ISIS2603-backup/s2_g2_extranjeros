@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
-import java.util.List;
+
 
 /**
  *
@@ -35,6 +35,7 @@ public class EstudianteDTO extends UsuarioDTO {
     //Constructor
     /**
      * Constructor
+     * Empty por defecto
      */
     public EstudianteDTO(){
         
@@ -47,7 +48,7 @@ public class EstudianteDTO extends UsuarioDTO {
      * @param city: Es la entidad que se va a convertir a DTO
      */
     public EstudianteDTO(EstudianteEntity estudiante) {
-        //super(estudiante);
+     
         this.nombre = estudiante.getNombre();
        this.usuario = estudiante.getUsuario();
        this.clave = estudiante.getClave();
@@ -60,11 +61,9 @@ public class EstudianteDTO extends UsuarioDTO {
     }
     
     public EstudianteEntity toEntity(){
-       EstudianteEntity entity = new EstudianteEntity();
+      return  new EstudianteEntity();
        
-       
-       
-       return entity;
+  
     }
             
  
