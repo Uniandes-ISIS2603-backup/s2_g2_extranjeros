@@ -14,7 +14,7 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class ProvidenciaEntity extends BaseEntity implements Serializable {
+public class ProvidenciaEntity extends BaseEntity{
     
    private String pais;
    private String region;

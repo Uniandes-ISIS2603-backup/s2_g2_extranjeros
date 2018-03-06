@@ -22,7 +22,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 
 @Entity
-public class EstudianteEntity extends UsuarioEntity implements Serializable{
+public class EstudianteEntity extends UsuarioEntity {
     
     private String nombre;
     private boolean estadoArrendamiento;
