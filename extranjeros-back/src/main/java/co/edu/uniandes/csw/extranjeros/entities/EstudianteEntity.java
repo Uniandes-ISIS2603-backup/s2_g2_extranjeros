@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -22,7 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 
 @Entity
-public class EstudianteEntity extends UsuarioEntity implements Serializable{
+public class EstudianteEntity extends UsuarioEntity {
     
     private String nombre;
     private boolean estadoArrendamiento;
@@ -161,5 +160,23 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
     {
         this.eventosInvitado.add(e);
     }
+
+    public Integer  getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public ViviendaEntity getVivienda() {
+        return vivienda;
+    }
+
+    public void setVivienda(ViviendaEntity vivienda) {
+        this.vivienda = vivienda;
+    }
+    
+    
     
 }

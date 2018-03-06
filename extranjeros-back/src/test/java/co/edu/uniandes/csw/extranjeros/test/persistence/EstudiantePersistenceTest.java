@@ -6,10 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.test.persistence;
 
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
-import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
-import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
 import co.edu.uniandes.csw.extranjeros.persistence.EstudiantePersistence;
-import co.edu.uniandes.csw.extranjeros.persistence.ServicioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
