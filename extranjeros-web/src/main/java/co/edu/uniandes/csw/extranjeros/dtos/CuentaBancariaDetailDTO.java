@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
+import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
 
 /**
  * Clase que extiende de {@link CuentaBancariaDTO} para manejar la transformacion entre
@@ -14,6 +15,12 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 public class CuentaBancariaDetailDTO extends CuentaBancariaDTO {
 
     //---------------------------------------------------
+    // Atributos relacionales
+    //---------------------------------------------------
+    
+    private ArrendatarioDTO arrendatarioTitular;
+    
+    //---------------------------------------------------
     // Constructor
     //---------------------------------------------------
     
@@ -21,12 +28,50 @@ public class CuentaBancariaDetailDTO extends CuentaBancariaDTO {
      * Constructor por defecto de la Clase.
      */
     public CuentaBancariaDetailDTO(){
-        
+        super();
     }
-
-
+    
+      /**
+     * Crea un objeto ArrendatarioDetailDTO a partir de un objeto ArrendatarioEntity.
+     * @param entity Entidad ArrendatarioEntity desde la cual se va a crear el nuevo
+     * objeto.
+     */
+     public CuentaBancariaDetailDTO(CuentaBancariaEntity entity) {
+          super(entity);
+          if (entity != null) {
+              this.arrendatarioTitular = (new ArrendatarioDTO(entity.getArrendatarioTitular()));
+        }
+    }
+     
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
+
+      /**
+     * Convierte un objeto CuentaBancariaDetailDTO a CuentaBancariaEntity incluyendo los
+     * atributos de CuentaBancariaDTO (relacionales).
+     * @return Nueva objeto CuentaBancariaEntity.
+     */
+    @Override    
+    public CuentaBancariaEntity toEntity(){
+         
+        // Entity
+        CuentaBancariaEntity entity = super.toEntity();
+         
+        // Verificacion relaciones
+        if (arrendatarioTitular != null){
+             entity.setArrendatarioTitular(arrendatarioTitular.toEntity());
+         }
+         
+        // Retorno
+        return entity;         
+    }
     
+    public ArrendatarioDTO getArrendatarioTitular() {
+        return arrendatarioTitular;
+    }
+
+    public void setArrendatarioTitular(ArrendatarioDTO arrendatarioTitular) {
+        this.arrendatarioTitular = arrendatarioTitular;
+    }
 }

@@ -5,6 +5,10 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
+
 /**
  * CuentaBancariaDTO Objeto de transferencia de datos de Cuenta Bancaria. Los DTO contienen las
  * representaciones de los JSON que se transfieren entre el cliente y el
@@ -58,13 +62,47 @@ public class CuentaBancariaDTO {
         
     }
     
+    /**
+     * Crea un objeto CuentaBancariaDTO a partir de un objeto CuentaBancariaEntity.
+     * @param entity Entidad CuentaBancariaEntity desde la cual se va a crear el nuevo
+     * objeto.
+     */
+    public CuentaBancariaDTO (CuentaBancariaEntity entity) {
+        
+        if (entity != null) {
+            
+            this.id = entity.getId();
+            this.numeroCuenta = entity.getNumeroCuenta();
+            this.saldoCuenta = entity.getSaldoCuenta();
+            this.tipoCuenta = entity.getTipoCuenta();
+            this.bancoAsociado = entity.getBancoAsociado();
+        }
+    }
+
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
 
-    
-    
-    
+    /**
+     * Convierte un objeto CuentaBancariaDTO a CuentaBancariaEntity.
+     * @return Nueva objeto CuentaBancariaEntity.
+     */
+    public CuentaBancariaEntity toEntity() {
+
+        // Genera
+        CuentaBancariaEntity entity = new CuentaBancariaEntity();
+        
+        // Asocia atributos
+        entity.setId(this.getId());
+        entity.setNumeroCuenta(this.numeroCuenta);
+        entity.setSaldoCuenta(this.saldoCuenta);
+        entity.setTipoCuenta(this.tipoCuenta);
+        entity.setBancoAsociado(this.bancoAsociado);
+        
+        // Return
+        return entity;
+    }
+ 
     /**
      * @return Obtiene el Identificador una Cuenta de Banco.
      */

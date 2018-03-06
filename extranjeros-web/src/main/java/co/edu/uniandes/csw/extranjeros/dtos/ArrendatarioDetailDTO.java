@@ -119,16 +119,15 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     }
     
     /**
-     * Crea un objeto UsuarioTO a partir de un objeto UsuarioEntity.
-     * @param entity Entidad UsuarioEntity desde la cual se va a crear el nuevo
+     * Crea un objeto ArrendatarioDetailDTO a partir de un objeto ArrendatarioEntity.
+     * @param entity Entidad ArrendatarioEntity desde la cual se va a crear el nuevo
      * objeto.
      */
-        public ArrendatarioDetailDTO(ArrendatarioEntity entity) {
+     public ArrendatarioDetailDTO(ArrendatarioEntity entity) {
           super(entity);
           if (entity != null) {
             
-            //cuentaBancaria = (new CuentaBancariaDTO(entity.getCuentaBancaria());
-              
+            this.cuentaBancaria = (new CuentaBancariaDTO(entity.getCuentaBancaria()));
             facturas = new ArrayList<>();
             viviendas = new ArrayList<>();
             
@@ -139,7 +138,7 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
             for (ViviendaEntity viviendasEntity : entity.getViviendas()){
                 viviendas.add(new ViviendaDTO(viviendasEntity));
             }
-
+            
         }
     }
 
@@ -159,6 +158,10 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
         ArrendatarioEntity entity = super.toEntity();
          
          // Verificacion relaciones
+
+         if (cuentaBancaria != null){
+             entity.setCuentaBancaria(cuentaBancaria.toEntity());
+         }
          
          if (facturas != null) {
             List<FacturaEntity> facturaEntity = new ArrayList<>();

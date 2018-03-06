@@ -7,7 +7,10 @@ package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.CuentaBancariaPersistence;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -34,6 +37,23 @@ public class CuentaBancariaLogic {
     @Inject
     private ArrendatarioLogic arrendatarioLogic;
 
+    //---------------------------------------------------
+    // Metodos necesario - Estructura
+    //---------------------------------------------------    
+    
+    public List <CuentaBancariaEntity> getCuentasBancarias(Long arrendatarioID) throws BusinessLogicException{
+         LOGGER.info("Inicia proceso de consultar las cuentas bancarias del Usuario");
+         ArrendatarioEntity arrendEntity = arrendatarioLogic.getArrendatario(arrendatarioID);
+         
+        if (arrendEntity.getCuentaBancaria()== null) {
+            throw new BusinessLogicException("El libro que consulta aún no tiene reviews"); 
+        }
+        
+        List <CuentaBancariaEntity> retorno = new ArrayList<>();
+        retorno.add(arrendEntity.getCuentaBancaria());
+        return retorno;
+    }
+    
     //---------------------------------------------------
     // Metodos Usuario(DTO) - Resource: sin relaciones
     //---------------------------------------------------
