@@ -24,6 +24,8 @@ public class EventoLogic {
     @Inject
     private EventoPersistence persistence;
     
+    //Falta validar las reglas de negocio.
+    
     public EventoEntity create(EventoEntity entity)
     {
         return persistence.create(entity);
