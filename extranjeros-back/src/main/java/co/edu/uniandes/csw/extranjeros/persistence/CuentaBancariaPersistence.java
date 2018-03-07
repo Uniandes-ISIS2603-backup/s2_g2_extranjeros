@@ -51,8 +51,13 @@ public class CuentaBancariaPersistence {
         CuentaBancariaEntity resultado = query.getSingleResult();
         CuentaBancariaEntity retorno = null;
         
-        if(resultado == null){return retorno;}
-        else { retorno = resultado; return retorno;}
+        if(resultado == null){
+            return retorno;
+        }
+        else { 
+            retorno = resultado; 
+            return retorno;
+        }
     }
     
     /**

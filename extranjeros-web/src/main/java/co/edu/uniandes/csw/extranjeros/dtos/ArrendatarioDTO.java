@@ -49,6 +49,7 @@ public class ArrendatarioDTO extends UsuarioDTO {
      * Constructor por defecto de la Clase.
      */
     public ArrendatarioDTO(){
+        /* Constructor vacío por defecto*/
     }
     
     /**

@@ -39,7 +39,7 @@ public class CuentaBancariaDetailDTO extends CuentaBancariaDTO {
      public CuentaBancariaDetailDTO(CuentaBancariaEntity entity) {
           super(entity);
           if (entity != null) {
-              this.arrendatarioTitular = (new ArrendatarioDTO(entity.getArrendatarioTitular()));
+              this.arrendatarioTitular = new ArrendatarioDTO(entity.getArrendatarioTitular());
         }
     }
      

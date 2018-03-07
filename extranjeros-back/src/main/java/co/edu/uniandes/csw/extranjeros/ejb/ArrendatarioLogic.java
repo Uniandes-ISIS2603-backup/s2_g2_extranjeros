@@ -68,38 +68,44 @@ public class ArrendatarioLogic {
      */
     public ArrendatarioEntity createArrendatario (ArrendatarioEntity newUser) throws BusinessLogicException{
         
-        LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma");
+        LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma.");
         
-//        ArrendatarioEntity buscado = persistence.findByName(newUser.getNombre());
-//        if (buscado != null){
-//            throw new BusinessLogicException("Hay un arrendatario con el mismo nombre");
-//        }
-        
-//        ArrendatarioEntity buscadoPorLogin = persistence.findByLogin(newUser.getUsuario());
-//        if (buscadoPorLogin != null){
-//            throw new BusinessLogicException("Existe un Usuario con el mismo login");
-//        }
-        
-        if (newUser.getEdad() < 18){
-            throw new BusinessLogicException("El Usuario no puede ser menor de edad");
+        // Verificacion: no existe un arrendatario con el mismo nombre.
+        if(persistence.findByName(newUser.getNombre()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con el mismo nombre.");
         }
         
-        if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
-            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
+        // Verificacion: no existe un arrendatario con el mismo usuario (login).
+        if (persistence.findByLogin(newUser.getUsuario()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con el mismo login.");
         }
-            
-        if (!(newUser.getClave().contains("1") || newUser.getClave().contains("2") || newUser.getClave().contains("3") || newUser.getClave().contains("4") ||
-                    newUser.getClave().contains("5") || newUser.getClave().contains("6") || newUser.getClave().contains("7") || newUser.getClave().contains("8") 
-                            || newUser.getClave().contains("9") || newUser.getClave().contains("0"))){
-            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        
+        // Verificacion: no existe un arrendatario con la misma cedula.
+        if (persistence.findByCedula(newUser.getCedula()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con la misma cedula.");
         }
         
         if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
             throw new BusinessLogicException("Su correo no es válido.");
         }
         
+        if (newUser.getEdad() < 18){
+            throw new BusinessLogicException("El arrendatario no puede ser menor de edad");
+        }
+
+        
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 17){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 17.");
+        }
+        
+        if (!(newUser.getClave().contains("1") || newUser.getClave().contains("2") || newUser.getClave().contains("3") || newUser.getClave().contains("4") ||
+                    newUser.getClave().contains("5") || newUser.getClave().contains("6") || newUser.getClave().contains("7") || newUser.getClave().contains("8") 
+                            || newUser.getClave().contains("9") || newUser.getClave().contains("0"))){
+            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        }
+        
         String celular = String.valueOf(newUser.getCelular());
-        char numeros[] = celular.toCharArray();
+        char[] numeros = celular.toCharArray();
         
         // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
         // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.

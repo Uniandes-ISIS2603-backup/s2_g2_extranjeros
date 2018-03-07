@@ -7,9 +7,12 @@ package co.edu.uniandes.csw.extranjeros.resources;
 
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.dtos.*;
+import co.edu.uniandes.csw.extranjeros.ejb.ArrendatarioLogic;
+import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 
 /**
@@ -45,6 +49,30 @@ import javax.ws.rs.Produces;
 public class ArrendatarioResource {
     
     
+    //---------------------------------------------------
+    // Inject: Logica
+    //---------------------------------------------------
+    
+    @Inject 
+    private ArrendatarioLogic logica;
+    
+    //---------------------------------------------------
+    // Lista de conversion
+    //---------------------------------------------------
+    
+    
+    private List<ArrendatarioDetailDTO> listEntity2DTO (List<ArrendatarioEntity> entityList) {
+        List<ArrendatarioDetailDTO> list = new ArrayList<>();
+        for (ArrendatarioEntity entity : entityList) {
+            list.add(new ArrendatarioDetailDTO(entity));
+        }
+        return list;
+    }
+
+    //---------------------------------------------------
+    // Metodos
+    //---------------------------------------------------
+
     /**
      * <h1> GET /api/arrendatarios/{id} : Obtener arrendatario por ID.</h1>
      * <pre> Busca el arrendatario al cual corresponde la ID ingresada en la URL y lo devuelve.
@@ -64,7 +92,11 @@ public class ArrendatarioResource {
     @GET
     @Path("{id: \\d+}")
     public ArrendatarioDetailDTO getArrendatario(@PathParam("id")Long id){
-        return null;
+        ArrendatarioEntity entidadBuscada = logica.getArrendatario(id);
+        if(entidadBuscada == null){
+            throw new WebApplicationException("El recurso /arrendatarios/" + id + " no existe.", 404);
+        }
+        return new ArrendatarioDetailDTO(entidadBuscada);
     }
     
     
@@ -83,8 +115,7 @@ public class ArrendatarioResource {
      */
     @GET
     public List<ArrendatarioDetailDTO> getArrendatarios(){
-        List<ArrendatarioDetailDTO> retorno = new ArrayList<>();
-        return retorno;
+        return listEntity2DTO(logica.getArrendatarios());
     }
     
     
@@ -112,7 +143,7 @@ public class ArrendatarioResource {
      */
     @POST
     public ArrendatarioDetailDTO createArrendatario(ArrendatarioDetailDTO arrendatarioElement) throws BusinessLogicException{
-        return arrendatarioElement;
+        return new ArrendatarioDetailDTO(logica.createArrendatario(arrendatarioElement.toEntity()));
     }
     
     
@@ -138,7 +169,13 @@ public class ArrendatarioResource {
     @PUT
     @Path("{id: \\d+}")
     public ArrendatarioDetailDTO updateArrendatario (@PathParam ("id") Long id, ArrendatarioDetailDTO pArrendatario) throws BusinessLogicException {
-        return pArrendatario;
+        
+        pArrendatario.setId(id);
+        ArrendatarioEntity entidadActu = logica.getArrendatario(id);
+        if(entidadActu == null){
+            throw new WebApplicationException("El recurso /arrendatarios/" + id + " no existe.", 404);
+        }
+        return new ArrendatarioDetailDTO(logica.updateArrendatario(entidadActu));
     }
     
     
@@ -158,5 +195,10 @@ public class ArrendatarioResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteUser(@PathParam ("id") Long id){
+        ArrendatarioEntity entidadEliminar = logica.getArrendatario(id);
+        if(entidadEliminar == null){
+            throw new WebApplicationException("El recurso /arrendatarios/" + id + " no existe.", 404);
+        }
+        logica.deleteArrendatario(id);
     }
 }

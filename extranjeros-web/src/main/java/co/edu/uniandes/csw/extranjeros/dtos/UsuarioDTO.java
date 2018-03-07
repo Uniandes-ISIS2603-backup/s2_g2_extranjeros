@@ -49,12 +49,10 @@ public class UsuarioDTO {
     protected String usuario;
     protected String clave;
     protected String correo;
-    protected int celular;
-    protected int cedula;
+    protected String celular;
+    protected String cedula;
     protected int edad;
     
-    //private Long id;
-
     //---------------------------------------------------
     // Constructor
     //---------------------------------------------------
@@ -62,6 +60,7 @@ public class UsuarioDTO {
      * Metodo para modelar el constructor por defecto.
      */
     public UsuarioDTO() {
+        /* Constructor vacío por defecto*/
     }
     
     /**
@@ -94,7 +93,7 @@ public class UsuarioDTO {
         entity.setUsuario(this.getUsuario());
         entity.setClave(this.getClave());
         entity.setCorreo(this.getCorreo());
-        entity.setCelular(this.getCelular());
+        entity.setCelular(this.getCelular()); 
         entity.setEdad(this.edad);
         entity.setCedula(this.cedula);
         
@@ -150,7 +149,7 @@ public class UsuarioDTO {
     /**
      * @return El numero de un usuario.
      */
-    public int getCelular(){
+    public String getCelular(){
         return celular;
     }
     
@@ -158,14 +157,14 @@ public class UsuarioDTO {
      * Crea o modifica el numero asociado a un usuario.
      * @param newPhone El nuevo correo. 
      */
-    public void setCelular(int newPhone){
+    public void setCelular(String newPhone){
         this.celular = newPhone;
     }
     
     /**
      * @return El numero de cedula de un usuario.
      */   
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
@@ -173,7 +172,7 @@ public class UsuarioDTO {
      * Crea o modifica el numero de cedula asociado a un usuario.
      * @param cedula El nuevo correo. 
      */
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }   
     
