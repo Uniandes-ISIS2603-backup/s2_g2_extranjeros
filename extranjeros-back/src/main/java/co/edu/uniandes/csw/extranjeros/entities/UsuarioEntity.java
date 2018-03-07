@@ -47,6 +47,7 @@ public abstract class UsuarioEntity implements Serializable {
     
     private String cedula;
     
+    
     @PodamStrategyValue(IntegerStrategy.class)
     private Integer edad;
 
