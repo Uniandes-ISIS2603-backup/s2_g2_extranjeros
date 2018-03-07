@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
+import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
@@ -207,7 +208,7 @@ public class EstudianteLogic  {
        return  getEstudiante(userID).getUniversidad();
    }
     
-     public TarjetaEntity getTarjeta(Long userID){
+    public TarjetaEntity getTarjeta(Long userID){
         LOGGER.log(Level.INFO, "Inicia el proceso para consultar la tarjeta asociada del estudiante con id = {0}");
         return getEstudiante(userID).getTarjeta();
     }
@@ -217,12 +218,63 @@ public class EstudianteLogic  {
        LOGGER.log(Level.INFO, "Inicia el proceso para actualizar la providencia asociada del estudiante con id = {0}");
        if(Objects.equals(getEstudiante(userID).getTarjeta().getId(), tarjeta.getId()))
        {
-           throw new BusinessLogicException("Se esta asignando la misma universidad que tenía el estudiante ");
+           throw new BusinessLogicException("Se esta asignando la misma vivienda que tenía el estudiante ");
        }
        getEstudiante(userID).setTarjeta(tarjeta);
        return  getEstudiante(userID).getTarjeta();
    }
-    
+   
+   
+    public ViviendaEntity getVivienda(Long userID){
+        LOGGER.log(Level.INFO, "Inicia el proceso para consultar la vivienda asociada del estudiante con id = {0}");
+        return getEstudiante(userID).getVivienda();
+    }
+     
+   public  ViviendaEntity updateVivienda(Long userID,ViviendaEntity vivienda)throws BusinessLogicException
+   {
+       LOGGER.log(Level.INFO, "Inicia el proceso para actualizar la providencia asociada del estudiante con id = {0}");
+       if(Objects.equals(getEstudiante(userID).getVivienda().getId(), vivienda.getId()))
+       {
+           throw new BusinessLogicException("Se esta asignando la misma vivienda que tenía el estudiante ");
+       }
+       getEstudiante(userID).setVivienda(vivienda);
+       return  getEstudiante(userID).getVivienda();
+   }
   
+   public List<EventoEntity> getEventosCreados(Long userID)
+   {
+       LOGGER.log(Level.INFO, "Inicia el proceso para consultar los eventos creados del estudiante con id = {0}");
+       return getEstudiante(userID).getEventosCreados();
+   }
+   
+   public EventoEntity addEventoCreado(Long userID, EventoEntity evento) throws BusinessLogicException
+   {
+        LOGGER.log(Level.INFO, "Inicia el proceso para agregar un evento a creados del estudiante con id = {0}");
+        if(!getEstudiante(userID).isEstadoArrendamiento())
+        {
+            throw new BusinessLogicException("El estudiante no puede crear un evento si no se encuentra activo ");
+        }
+        getEstudiante(userID).addEventosCreados(evento);
+        return getEstudiante(userID).getEventosCreados().get(getEstudiante(userID).getEventosCreados().size() -1);
+    }
     
+   public List<EventoEntity> getEventosInvitado(Long userID)
+   {
+       LOGGER.log(Level.INFO, "Inicia el proceso para consultar los eventos a los que asistirá del estudiante con id = {0}");
+       return getEstudiante(userID).getEventosInvitado();
+   }
+   
+   public EventoEntity addEventoInvitado(Long userID, EventoEntity evento) throws BusinessLogicException
+   {
+        LOGGER.log(Level.INFO, "Inicia el proceso para agregar un evento a los que asistirá del estudiante con id = {0}");
+        if(evento.isPrivado())
+        {
+            if (getEstudiante(userID).getProvidencia() == evento.getResponsableEventoP().getProvidencia())
+            {
+            throw new BusinessLogicException("El evento es privado y el estudiante no puede asistir");
+            }
+        }
+        getEstudiante(userID).addEventosInvitado(evento);
+        return getEstudiante(userID).getEventosInvitado().get(getEstudiante(userID).getEventosInvitado().size() -1);
+    }
 }
