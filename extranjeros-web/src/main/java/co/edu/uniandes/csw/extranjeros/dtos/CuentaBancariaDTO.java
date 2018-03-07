@@ -5,9 +5,7 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
-import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
-import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
 
 /**
  * CuentaBancariaDTO Objeto de transferencia de datos de Cuenta Bancaria. Los DTO contienen las
@@ -59,7 +57,7 @@ public class CuentaBancariaDTO {
      * Constructor por defecto de la Clase.
      */
     public CuentaBancariaDTO(){
-        
+        /* Constructor vacío por defecto*/
     }
     
     /**

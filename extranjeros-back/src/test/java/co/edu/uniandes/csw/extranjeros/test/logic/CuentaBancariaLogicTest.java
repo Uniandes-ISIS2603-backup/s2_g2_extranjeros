@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.extranjeros.ejb.CuentaBancariaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.CuentaBancariaPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,8 +113,7 @@ public class CuentaBancariaLogicTest {
     private List<CuentaBancariaEntity> data = new ArrayList<>();
     private List<ArrendatarioEntity> dataArrendatario = new ArrayList<>();
     private List<FacturaEntity> dataFactura = new ArrayList<>();
-    
-    
+  
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
@@ -173,6 +173,27 @@ public class CuentaBancariaLogicTest {
         Assert.assertEquals(entity.getSaldoCuenta(), resultEntity.getSaldoCuenta());
     }
     
+    /**
+     * Prueba para consultar una o mas cuentas de banco.
+     */
+    @Test
+    public void getReviewsTest() throws BusinessLogicException {
+        List<CuentaBancariaEntity> list = logic.getCuentasBancarias(dataArrendatario.get(1).getId());        
+        
+        // Como la relacion es OneToOne, list debe tener un tamanio de 1.
+        Assert.assertEquals(1, list.size());
+        
+        for (CuentaBancariaEntity entity : list) {
+            boolean encontrado = false;
+            for (CuentaBancariaEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    encontrado = true;
+                }
+            }
+            Assert.assertTrue(encontrado);
+        }
+    }
+
     /**
      * Prueba para eliminar una Cuenta bancaria.
      */

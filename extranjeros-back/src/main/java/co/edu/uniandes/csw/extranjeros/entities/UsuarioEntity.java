@@ -4,11 +4,16 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.entities;
+import co.edu.uniandes.csw.extranjeros.podam.CelularStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.ClaveStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.CorreoStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.IntegerStrategy;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  * @author jr.pacheco10
@@ -30,10 +35,20 @@ public abstract class UsuarioEntity implements Serializable {
     //---------------------------------------------------
     
     private String usuario;
-    private String clave;
+    
+    @PodamStrategyValue(CorreoStrategy.class)
     private String correo;
-    private Integer celular;
-    private Integer cedula;
+    
+    @PodamStrategyValue(ClaveStrategy.class)
+    private String clave;
+    
+    @PodamStrategyValue(CelularStrategy.class)
+    private String celular;
+    
+    private String cedula;
+    
+    
+    @PodamStrategyValue(IntegerStrategy.class)
     private Integer edad;
 
     //---------------------------------------------------
@@ -88,7 +103,7 @@ public abstract class UsuarioEntity implements Serializable {
     /**
      * @return El numero de un usuario.
      */
-    public Integer getCelular(){
+    public String getCelular(){
         return celular;
     }
     
@@ -96,14 +111,14 @@ public abstract class UsuarioEntity implements Serializable {
      * Crea o modifica el numero asociado a un usuario.
      * @param newPhone El nuevo correo. 
      */
-    public void setCelular(Integer newPhone){
+    public void setCelular(String newPhone){
         this.celular = newPhone;
     }
     
     /**
      * @return El numero de cedula de un usuario.
      */
-    public Integer getCedula() {
+    public String getCedula() {
         return cedula;
     }
     
@@ -111,7 +126,7 @@ public abstract class UsuarioEntity implements Serializable {
      * Crea o modifica el numero de cedula asociado a un usuario.
      * @param cedula La nueva cedula. 
      */
-    public void setCedula(Integer cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 

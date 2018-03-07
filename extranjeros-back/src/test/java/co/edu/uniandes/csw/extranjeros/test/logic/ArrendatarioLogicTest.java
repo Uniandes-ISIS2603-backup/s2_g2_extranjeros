@@ -11,8 +11,6 @@ import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ArrendatarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -123,11 +121,11 @@ public class ArrendatarioLogicTest {
     
     /**
      * Prueba para generar/crear un Arrendatario.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
     @Test
-    public void createArrendatarioTest(){
+    public void createArrendatarioTest() throws BusinessLogicException{
         
-        try {
             PodamFactory factory = new PodamFactoryImpl();
             
             // Genera
@@ -142,9 +140,6 @@ public class ArrendatarioLogicTest {
             
             // AssertEquals
             Assert.assertEquals(usuarioUno.getNombre(), usuarioDos.getNombre());
-        } catch (BusinessLogicException ex) {
-            Logger.getLogger(ArrendatarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     /**

@@ -127,7 +127,7 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
           super(entity);
           if (entity != null) {
             
-            this.cuentaBancaria = (new CuentaBancariaDTO(entity.getCuentaBancaria()));
+            this.cuentaBancaria = new CuentaBancariaDTO(entity.getCuentaBancaria());
             facturas = new ArrayList<>();
             viviendas = new ArrayList<>();
             

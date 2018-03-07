@@ -46,7 +46,7 @@ public class CuentaBancariaLogic {
          ArrendatarioEntity arrendEntity = arrendatarioLogic.getArrendatario(arrendatarioID);
          
         if (arrendEntity.getCuentaBancaria()== null) {
-            throw new BusinessLogicException("El libro que consulta aún no tiene reviews"); 
+            throw new BusinessLogicException("El arrendatario que se esta consultando aún no tiene una cuenta bancaria."); 
         }
         
         List <CuentaBancariaEntity> retorno = new ArrayList<>();
@@ -94,7 +94,9 @@ public class CuentaBancariaLogic {
     public CuentaBancariaEntity updateCuentaDeBanco(Long arrendID, CuentaBancariaEntity entity) {
         LOGGER.info("Inicia proceso de actualizar una cuenta de banco.");
         ArrendatarioEntity arrendatario = arrendatarioLogic.getArrendatario(arrendID);
-        if(arrendatario!= null){entity.setArrendatarioTitular(arrendatario);}
+        if(arrendatario!= null){
+            entity.setArrendatarioTitular(arrendatario);
+        }
         return persistence.update(entity);
     }
 
