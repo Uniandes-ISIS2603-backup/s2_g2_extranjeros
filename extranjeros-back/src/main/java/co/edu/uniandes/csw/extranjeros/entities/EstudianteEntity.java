@@ -96,16 +96,16 @@ public class EstudianteEntity extends UsuarioEntity {
         return eventosCreados;
     }
 
-    public void setEventosCreados(List<EventoEntity> eventosCreados) {
-        this.eventosCreados = eventosCreados;
+    public void addEventosCreados(EventoEntity evento) {
+        this.eventosCreados.add(evento);
     }
 
     public List <EventoEntity> getEventosInvitado() {
         return eventosInvitado;
     }
 
-    public void setEventosInvitado(List<EventoEntity> eventosInvitado) {
-        this.eventosInvitado = eventosInvitado;
+    public void addEventosInvitado(EventoEntity evento) {
+        this.eventosInvitado.add(evento);
     }
    
    
