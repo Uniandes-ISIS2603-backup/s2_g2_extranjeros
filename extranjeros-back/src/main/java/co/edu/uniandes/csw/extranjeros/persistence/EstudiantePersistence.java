@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.extranjeros.persistence;
 
-import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import java.util.List;
 import java.util.logging.Level;

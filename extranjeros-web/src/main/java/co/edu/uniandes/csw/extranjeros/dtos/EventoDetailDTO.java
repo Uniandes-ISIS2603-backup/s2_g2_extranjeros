@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 package co.edu.uniandes.csw.extranjeros.dtos;
-import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
 import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
 import java.util.ArrayList;
 import java.util.List;
