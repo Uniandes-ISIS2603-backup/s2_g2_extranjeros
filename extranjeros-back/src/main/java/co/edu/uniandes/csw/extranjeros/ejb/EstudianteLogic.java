@@ -82,22 +82,7 @@ public class EstudianteLogic  {
        
         
         if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
-            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
-        }
-        
-         
-        boolean encontradoNumero = false;
-        char[] caracteres = newUser.getClave().toCharArray();
-        for (int i = 0; i < caracteres.length; i++){
-            
-            String m = String.valueOf(caracteres[i]);
-            if( Integer.class.isInstance(Integer.parseInt(m))){
-                encontradoNumero = true;
-            }
-        } 
-        
-        if (encontradoNumero == false){
-            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 20");
         }
         
          if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
@@ -137,25 +122,11 @@ public class EstudianteLogic  {
             throw new BusinessLogicException("El Usuario no puede ser menor de edad");
         }
         
-        if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
-            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
+        if(newUser.getClave().length() < 8 || newUser.getClave().length() >17){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 17");
         }
         
          
-        boolean encontradoNumero = false;
-        char[] caracteres = newUser.getClave().toCharArray();
-        for (int i = 0; i < caracteres.length; i++){
-            
-            String m = String.valueOf(caracteres[i]);
-            if( Integer.class.isInstance(Integer.parseInt(m))){
-                encontradoNumero = true;
-            }
-        } 
-        
-        if (encontradoNumero == false){
-            throw new BusinessLogicException("Su clave debe contener al menos un numero");
-        }
-        
          if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
             throw new BusinessLogicException("Su correo no es válido.");
         }
@@ -277,4 +248,5 @@ public class EstudianteLogic  {
         getEstudiante(userID).addEventosInvitado(evento);
         return getEstudiante(userID).getEventosInvitado().get(getEstudiante(userID).getEventosInvitado().size() -1);
     }
+   
 }

@@ -161,10 +161,7 @@ public class EstudianteEntity extends UsuarioEntity {
         this.eventosInvitado.add(e);
     }
 
-    public Integer  getEdad() {
-        return edad;
-    }
-
+    
     public void setEdad(int edad) {
         this.edad = edad;
     }
