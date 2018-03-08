@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.entities;
+import co.edu.uniandes.csw.extranjeros.podam.InDateStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.OutDateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
  * @author s.rodriguezm
@@ -33,9 +36,11 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private Boolean dividirCuentaServicios;
     
     @Temporal(TemporalType.TIMESTAMP)
+    @PodamStrategyValue(InDateStrategy.class)
     private Date fechaEntrada;
     
     @Temporal(TemporalType.TIMESTAMP)
+    @PodamStrategyValue(OutDateStrategy.class)
     private Date fechaSalida;
     
     private Double IVA;
