@@ -185,9 +185,10 @@ public class ArrendatarioLogicTest {
     
     /**
      * Prueba para actualizar un Arrendatario.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
     @Test
-    public void updateArrendatarioTest()
+    public void updateArrendatarioTest() throws BusinessLogicException
     {
         // Obtiene Uno
         ArrendatarioEntity usuarioUno = data.get(0);

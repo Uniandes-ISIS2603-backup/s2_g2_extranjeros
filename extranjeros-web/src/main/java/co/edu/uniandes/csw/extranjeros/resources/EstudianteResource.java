@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.extranjeros.resources;
 
-import co.edu.uniandes.csw.extranjeros.dtos.CityDetailDTO;
 import co.edu.uniandes.csw.extranjeros.dtos.EstudianteDetailDTO;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import java.util.ArrayList;

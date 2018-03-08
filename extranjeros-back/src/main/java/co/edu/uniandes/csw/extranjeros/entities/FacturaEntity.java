@@ -72,7 +72,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @ManyToMany
-    private List<EstudianteEntity> arrendatariosAsociados;
+    private List<ArrendatarioEntity> arrendatariosAsociados;
      /**
      * @return costo fijo del arriendo.
      */

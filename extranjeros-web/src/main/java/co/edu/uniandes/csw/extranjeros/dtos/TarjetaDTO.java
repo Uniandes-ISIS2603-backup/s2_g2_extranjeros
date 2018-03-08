@@ -23,7 +23,6 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
-import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
 import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
 
 /**

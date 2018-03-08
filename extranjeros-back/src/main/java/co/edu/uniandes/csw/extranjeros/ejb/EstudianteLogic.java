@@ -79,9 +79,7 @@ public class EstudianteLogic  {
         
         LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
         
-       
-        
-        if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 17){
             throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 20");
         }
         
