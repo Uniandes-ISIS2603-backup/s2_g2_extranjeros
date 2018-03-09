@@ -167,7 +167,8 @@ public class ArrendatarioLogic {
             throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
         }
         
-        return persistence.update(newUser);
+        ArrendatarioEntity newEntity = persistence.update(newUser);
+        return newEntity;
     }
     
     //-- DELETE
