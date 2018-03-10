@@ -160,7 +160,7 @@ public class FacturaLogicTest {
      * Prueba para eliminar un Factura.
      */
     @Test
-    public void deleteServicioTest() {
+    public void deleteFacturaTest() {
         FacturaEntity entity = data.get(0);
         facturaLogic.deleteFactura(entity.getId());
         FacturaEntity deleted = em.find(FacturaEntity.class, entity.getId());
@@ -170,7 +170,7 @@ public class FacturaLogicTest {
      * Prueba para actualizar un Factura.
      */
     @Test
-    public void updateServicioTest() throws BusinessLogicException {
+    public void updateFacturaTest() throws BusinessLogicException {
         FacturaEntity entity = data.get(0);
         FacturaEntity pojoEntity = factory.manufacturePojo(FacturaEntity.class);
 
