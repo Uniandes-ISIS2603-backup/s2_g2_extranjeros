@@ -79,8 +79,8 @@ public class EstudianteLogic  {
         
         LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
         
-        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 17){
-            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 20");
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 15){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15");
         }
         
          if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
@@ -106,43 +106,42 @@ public class EstudianteLogic  {
      * @return Objeto de EstudianteEntity con los datos nuevos y su ID.
      * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
-     public EstudianteEntity createEstudiante (EstudianteEntity newUser) throws BusinessLogicException{
+    public EstudianteEntity createEstudiante (EstudianteEntity newUser) throws BusinessLogicException{
         
-        LOGGER.log(Level.INFO, "Inicia el proceso de crear un estudiante en la plataforma");
-       
+        LOGGER.log(Level.INFO, "Inicia el proceso de crear un estudiante en la plataforma.");
         
-        EstudianteEntity buscado = estudiantePersistence.findByUser(newUser.getUsuario());
-        if (buscado != null){
-            throw new BusinessLogicException("Hay un estudiante con el mismo usuario");
+  
+        if (estudiantePersistence.findByUsuario(newUser.getUsuario()) != null){
+            throw new BusinessLogicException("Existe un estudiante con el mismo usuario.");
         }
         
-        if (newUser.getEdad() < 18){
-            throw new BusinessLogicException("El Usuario no puede ser menor de edad");
+        // Verificacion: no existe un arrendatario con la misma cedula.
+        if (estudiantePersistence.findByCedula(newUser.getCedula()) != null){
+            throw new BusinessLogicException("Existe un estudiante con la misma cedula.");
         }
         
-        if(newUser.getClave().length() < 8 || newUser.getClave().length() >17){
-            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 17");
-        }
-        
-         
-         if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
+        if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
             throw new BusinessLogicException("Su correo no es válido.");
         }
         
-        String celular = String.valueOf(newUser.getCelular());
-        char numeros[] = celular.toCharArray();
+        if (newUser.getEdad() < 18){
+            throw new BusinessLogicException("El estudiante no puede ser menor de edad");
+        }
+
         
-        // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
-        // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 15){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15.");
+        }
+      
+        String celular = String.valueOf(newUser.getCelular());
+        char[] numeros = celular.toCharArray();
+        
         if (numeros.length != 10){
             throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
         }
         
-        
         return estudiantePersistence.create(newUser);
-    
-   
-     }
+    }
      
     public ProvidenciaEntity getProvidencia(Long userID){
         LOGGER.log(Level.INFO, "Inicia el proceso para consultar la providencia asociada del estudiante con id = {0}");
