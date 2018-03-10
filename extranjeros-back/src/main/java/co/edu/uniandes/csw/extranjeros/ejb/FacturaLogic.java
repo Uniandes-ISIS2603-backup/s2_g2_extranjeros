@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.extranjeros.persistence.FacturaPersistence;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -101,11 +102,30 @@ public class FacturaLogic {
     /**
      * Determina si la fecha2 pasada por parametro es anterior a la fecha1.
      * @param fecha1 fecha a la que se debe ser mayor o igual.
+     * @param fecha2 fecha que se va a comparar.
      * 
      */
     private boolean isFechaMenor(Date fecha1, Date fecha2) 
     {
-     return fecha2.before(fecha1);
+        boolean resp=false;
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(fecha1);
+        int day = cal1.get(Calendar.DAY_OF_MONTH);
+        int month = cal1.get(Calendar.MONTH);
+        int year = cal1.get(Calendar.YEAR);
+        
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(fecha2);
+        int day2 = cal2.get(Calendar.DAY_OF_MONTH);
+        int month2 = cal2.get(Calendar.MONTH);
+        int year2 = cal2.get(Calendar.YEAR);
+        if(year>year2)
+            resp=true;
+        else if(year==year2&&month>month2)
+            resp=true;
+        else if(year==year2&&month==month2&&day>day2)
+            resp=true;
+        return resp;
     }
     /**
      * Determina si la fecha de salida esta a al menos un mes de la fecha de entrada.
