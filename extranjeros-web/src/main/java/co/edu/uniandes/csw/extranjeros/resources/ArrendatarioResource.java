@@ -167,15 +167,15 @@ public class ArrendatarioResource {
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar el Usuario porque ya existe una con ese nombre.
      */
     @PUT
-    @Path("{id: \\d+}")
-    public ArrendatarioDetailDTO updateArrendatario (@PathParam ("id") Long id, ArrendatarioDetailDTO pArrendatario) throws BusinessLogicException {
+    @Path("{idArr: \\d+}")
+    public ArrendatarioDetailDTO updateArrendatario (@PathParam ("idArr") Long id, ArrendatarioDetailDTO pArrendatario) throws BusinessLogicException {
         
         pArrendatario.setId(id);
         ArrendatarioEntity entidadActu = logica.getArrendatario(id);
         if(entidadActu == null){
             throw new WebApplicationException("El recurso /arrendatarios/" + id + " no existe.", 404);
         }
-        return new ArrendatarioDetailDTO(logica.updateArrendatario(entidadActu));
+        return new ArrendatarioDetailDTO(logica.updateArrendatario(pArrendatario.toEntity()));
     }
     
     
