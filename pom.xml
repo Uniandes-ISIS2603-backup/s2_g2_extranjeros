@@ -10,7 +10,6 @@
  
     <modules>
         <module>extranjeros-back</module>
-        <module>extranjeros-web</module>
     </modules>
     <repositories>
         <repository>

@@ -18,17 +18,7 @@ public class InDateStrategy implements AttributeStrategy <Date> {
 
     @Override
     public Date getValue() {
-        Random r = new Random();
-        Calendar c = Calendar.getInstance();
-        Date now=new Date();
-        int nextInt = r.nextInt();
-        if(nextInt>21)
-        {
-            nextInt=0;
-        }
-        c.setTime(now);
-        c.add(Calendar.MONTH,nextInt);
-        return c.getTime();
+        return new Date();
     }
     
 }

@@ -18,15 +18,10 @@ public class OutDateStrategy implements AttributeStrategy <Date> {
 
     @Override
     public Date getValue() {
-        Random r = new Random();
         Calendar c = Calendar.getInstance();
         Date now=new Date();
         int max_year = 2025;
-        int nextInt = r.nextInt();
-        if(nextInt>93)
-        {
-            nextInt=22;
-        }
+        int nextInt = (int)Math.random()*100+3;
         c.setTime(now);
         c.add(Calendar.MONTH,nextInt);
         return c.getTime();
