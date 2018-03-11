@@ -6,7 +6,10 @@
 package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,12 +19,20 @@ import javax.persistence.Entity;
 @Entity
 public class LugaresDeInteresEntity extends BaseEntity implements Serializable {
     
+    //Atributos
     private String tipo;
     private String nombre;
     private String direccion;
     private Integer telefono;
     private String ubicacionLat;
     private String ubicacionLon;
+    
+    //Atributos relacionales
+    @PodamExclude
+    @ManyToOne
+    private ViviendaEntity viviendaConectada;
+    
+    
     
     //------------------
     //Metodos
@@ -124,6 +135,20 @@ public class LugaresDeInteresEntity extends BaseEntity implements Serializable {
 
     public void setUbicacionLon(String ubicacionLon) {
         this.ubicacionLon = ubicacionLon;
+    }
+    
+    /**
+     * @return the viviendaConectada
+     */
+    public ViviendaEntity getViviendaConectada() {
+        return viviendaConectada;
+    }
+
+    /**
+     * @param arrendatariosPropietarios the viviendaConectada to set
+     */
+    public void setArrendatariosPropietarios(ViviendaEntity viviendaConectada) {
+        this.viviendaConectada = viviendaConectada;
     }
     
 }
