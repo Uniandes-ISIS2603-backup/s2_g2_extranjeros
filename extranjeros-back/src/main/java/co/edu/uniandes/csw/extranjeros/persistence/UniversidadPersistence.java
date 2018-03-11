@@ -40,10 +40,10 @@ public class UniversidadPersistence {
     }
     
      /**
-     * Busca si hay alguna city con el nombre que se envía de argumento
+     * Busca si hay alguna universidad con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la city que se está buscando
-     * @return null si no existe ninguna city con el nombre del argumento. Si
+     * @param name: Nombre de la universidad que se está buscando
+     * @return null si no existe ninguna universidad con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
     public UniversidadEntity findByName(String name) {
