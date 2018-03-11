@@ -114,13 +114,23 @@ public class EventoDetailDTO extends EventoDTO {
     public EventoEntity toEntity() {
         EventoEntity eventoE = super.toEntity();
         List<EstudianteEntity> lista = new ArrayList<>();
-        for(EstudianteDTO es: estudiantes)
+        if(estudiantes != null)
         {
-            lista.add(es.toEntity());
+            for(EstudianteDTO es: estudiantes)
+            {
+                lista.add(es.toEntity());
+            }
         }
+        
         eventoE.setEstudiantesInvitados(lista);
-        eventoE.setResponsableEventoP(responsableEventoP.toEntity());
-        eventoE.setLugarDeInteres(lugarDeInteres.toEntity());
+        if(responsableEventoP != null)
+        {
+           eventoE.setResponsableEventoP(responsableEventoP.toEntity()); 
+        }
+        if(lugarDeInteres != null)
+        {
+           eventoE.setLugarDeInteres(lugarDeInteres.toEntity()); 
+        }
         return eventoE;
     }
 

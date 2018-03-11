@@ -98,119 +98,46 @@ public class EventoDTO {
         }
     }
 
-
-    /**
-     * @return El ID del evento
-     */
-    public Long getId() {
-        return id;
+    public String getNombreEvento() {
+        return nombreEvento;
     }
 
-    /**
-     * @param id El nuevo ID
-     */
-    public void setId(Long id) {
-        this.id = id;
+    public void setNombreEvento(String nombreEvento) {
+        this.nombreEvento = nombreEvento;
     }
 
-    /**
-     * @return la fecha del evento
-     */
-    public Date getFechaCaducidad() {
+    public String getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public void setTipoEvento(String tipoEvento) {
+        this.tipoEvento = tipoEvento;
+    }
+
+    public Date getFechaEvento() {
         return fechaEvento;
     }
 
-    /**
-     * @param fecha La nueva fecha
-     */
-    public void setFecha(Date fecha) {
-        this.fechaEvento = fecha;
+    public void setFechaEvento(Date fechaEvento) {
+        this.fechaEvento = fechaEvento;
     }
-    
-    /**
-     * @return El nombre del evento
-     */
-    public String getNombre() {
-        return nombreEvento;
-    }
-    
-    /**
-     * @param name El nuevo nombre
-     */
-    public void setNumero(String name) {
-        this.nombreEvento = name;
-    }
-    
-    /**
-     * @return El tipo del evento
-     */
-    public String getTipo() {
-        return tipoEvento;
-    }
-    
-    /**
-     * @param tipo El nuevo tipo
-     */
-    public void setTipo(String tipo) {
-        this.tipoEvento = tipo;
-    }
-    
-    /**
-     * @return La ubicacion Lon del evento
-     */
-    public String getLon() {
+
+    public String getUbicacionLon() {
         return ubicacionLon;
     }
-    
-    /**
-     * @param lon La nueva ubicacion Lon
-     */
-    public void setLon(String lon) {
-        this.ubicacionLon = lon;
+
+    public void setUbicacionLon(String ubicacionLon) {
+        this.ubicacionLon = ubicacionLon;
     }
-    
-    /**
-     * @return La ubicacion Lat del evento
-     */
-    public String getLat() {
+
+    public String getUbicacionLat() {
         return ubicacionLat;
     }
-    
-    /**
-     * @param lat La nueva ubicacion Lat
-     */
-    public void setLat(String lat) {
-        this.ubicacionLat = lat;
+
+    public void setUbicacionLat(String ubicacionLat) {
+        this.ubicacionLat = ubicacionLat;
     }
-    
-    /**
-     * @return La privacidad del evento
-     */
-    public boolean getPrivacidad() {
-        return privado;
-    }
-    
-    /**
-     * @param bool La nueva privacidad del evento
-     */
-    public void setPrivacidad(boolean bool) {
-        this.privado = bool;
-    }
-    
-    /**
-     * @return La capacidad Lon del evento
-     */
-    public int getCapacidad() {
-        return capacidad;
-    }
-    
-    /**
-     * @param cap La nueva capacidad del evento
-     */
-    public void setCapacidad(int cap) {
-        this.capacidad = cap;
-    }
-    
+
     public Integer getDistanciaVivienda() {
         return distanciaVivienda;
     }
@@ -218,6 +145,24 @@ public class EventoDTO {
     public void setDistanciaVivienda(Integer distanciaVivienda) {
         this.distanciaVivienda = distanciaVivienda;
     }
+
+    public boolean isPrivado() {
+        return privado;
+    }
+
+    public void setPrivado(boolean privado) {
+        this.privado = privado;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+
     
     
 
