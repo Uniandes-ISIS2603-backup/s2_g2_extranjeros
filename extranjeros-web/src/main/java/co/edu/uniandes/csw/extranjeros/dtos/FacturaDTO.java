@@ -20,7 +20,6 @@ import java.util.Date;
  *    "costoFijo": number,
  *    "costosAdicionales": number,
  *    "formaDePago": string,
- *    "numerodeInquilinos": number,
  *    "dividirCuentaServicios": boolean,
  *    "fechaEntrada": string,
  *    "fechaSalida":string,
@@ -36,10 +35,9 @@ import java.util.Date;
  *    "costoFijo": 120000.0,
  *    "costosAdicionales": 5000.0,
  *    "formaDePago": "efectivo",
- *    "numerodeInquilinos": 3,
  *    "dividirCuentaServicios": true,
- *    "fechaEntrada": "16/01/2018",
- *    "fechaSalida":"18/02/2018",
+ *    "fechaEntrada": "2018-03-11T20:38:54.973-05:00",
+ *    "fechaSalida": "2019-02-22T20:38:54.973-05:00",
  *    "iva": 0.013
  *  }
  *
