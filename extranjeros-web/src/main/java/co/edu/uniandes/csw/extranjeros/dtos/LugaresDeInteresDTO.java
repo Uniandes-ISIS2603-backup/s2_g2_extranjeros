@@ -53,6 +53,8 @@ public class LugaresDeInteresDTO {
     private EventoDTO eventos;
     private String ubicacionLat;
     private String ubicacionLon;
+    private Long id;
+
     
     
     //------------------
@@ -204,6 +206,15 @@ public class LugaresDeInteresDTO {
     public void setUbicacionLon(String ubicacionLon) {
         this.ubicacionLon = ubicacionLon;
     }
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     
     /**
      * Convertir DTO a Entity
