@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 
+import co.edu.uniandes.csw.extranjeros.podam.CapacidadStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.InquilinosStrategy;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -12,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -43,6 +46,7 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     
     private String direccion;
      
+    @PodamStrategyValue(CapacidadStrategy.class)
     private Integer capacidad;
     
     private String latitud;
@@ -51,6 +55,7 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
 
     private String tipoAlojamiento;
     
+    @PodamStrategyValue(InquilinosStrategy.class)
     private Integer inquilinos;
     
     @OneToMany
