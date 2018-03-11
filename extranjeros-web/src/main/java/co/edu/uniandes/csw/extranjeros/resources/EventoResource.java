@@ -25,11 +25,14 @@ package co.edu.uniandes.csw.extranjeros.resources;
 
 
 import co.edu.uniandes.csw.extranjeros.dtos.EventoDetailDTO;
+import co.edu.uniandes.csw.extranjeros.ejb.EventoLogic;
+import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -39,6 +42,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * <pre>Clase que implementa el recurso "Evento".
@@ -62,6 +66,8 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class EventoResource {
 
+    @Inject
+    EventoLogic eventoLogic;
     /**
      * <h1>POST /api/eventos : Crear un evento.</h1>
      * 
@@ -85,7 +91,8 @@ public class EventoResource {
      */
     @POST
     public EventoDetailDTO createEvento(EventoDetailDTO evento) throws BusinessLogicException {
-        return evento;
+        EventoEntity eventoE = eventoLogic.create(evento.toEntity());
+        return new EventoDetailDTO(eventoE);
     }
 
     /**
@@ -101,7 +108,13 @@ public class EventoResource {
      */
     @GET
     public List<EventoDetailDTO> getEventos() {
-        return new ArrayList<>();
+        List<EventoEntity> evens = eventoLogic.findAll();
+        List<EventoDetailDTO> res = new ArrayList<>();
+        for(EventoEntity eve:evens)
+        {
+            res.add(new EventoDetailDTO(eve));
+        }
+        return res;
     }
 
     /**
@@ -118,12 +131,18 @@ public class EventoResource {
      * </code> 
      * </pre>
      * @param id Identificador del evento que se esta buscando. Este debe ser una cadena de dígitos.
-     * @return JSON {@link EventoDetailDTO} - El evento buscada
+     * @return JSON {@link EventoDetailDTO} - El evento buscado
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra el evento.
      */
     @GET
     @Path("{id: \\d+}")
-    public EventoDetailDTO getEvento(@PathParam("id") Long id) {
-        return null;
+    public EventoDetailDTO getEvento(@PathParam("id") Long id) throws WebApplicationException{
+        EventoEntity ev = eventoLogic.find(id);
+        if(ev == null)
+        {
+            throw new WebApplicationException("El evento no existe", 404);
+        }
+        return new EventoDetailDTO(ev);
     }
     
     /**
@@ -138,16 +157,27 @@ public class EventoResource {
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found. No existe un evento con el id dado.
      * </code> 
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 412 Precondition Failed. No se puede actualizar el evento con el id dado.
+     * </code> 
      * </pre>
      * @param id Identificador del evento que se desea actualizar.Este debe ser una cadena de dígitos.
      * @param evento {@link EventoDetailDTO} El evento que se desea guardar.
      * @return JSON {@link EventoDetailDTO} - El Evento guardada.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la tarjeta porque ya existe una con ese nombre.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar el evento.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra el evento a actualizar.
      */
     @PUT
     @Path("{id: \\d+}")
-    public EventoDetailDTO updateEvento(@PathParam("id") Long id, EventoDetailDTO evento) throws BusinessLogicException {
-        return evento;
+    public EventoDetailDTO updateEvento(@PathParam("id") Long id, EventoDetailDTO evento) throws BusinessLogicException, WebApplicationException  {
+        EventoEntity eve = evento.toEntity();
+        eve.setId(id);
+        if(eventoLogic.find(id) == null)
+        {
+            throw new WebApplicationException("El evento no existe", 404);
+        }
+        EventoEntity res = eventoLogic.update(eve);
+        return new EventoDetailDTO(res);
     }
     
     /**
@@ -163,10 +193,15 @@ public class EventoResource {
      * </code>
      * </pre>
      * @param id Identificador del evento que se desea borrar. Este debe ser una cadena de dígitos.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra el evento a eliminar.
      */
     @DELETE
     @Path("{id: \\d+}")
-     public void deleteEvento(@PathParam("id") Long id) {
-        // Void
+     public void deleteEvento(@PathParam("id") Long id) throws WebApplicationException {
+        if(eventoLogic.find(id)== null)
+        {
+            throw new WebApplicationException("El evento no existe", 404);
+        }
+        eventoLogic.delete(id);
     }
 }

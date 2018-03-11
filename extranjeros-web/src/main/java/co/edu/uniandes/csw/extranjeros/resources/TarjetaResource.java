@@ -131,9 +131,6 @@ public class TarjetaResource {
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found No existe una tarjeta con el id dado.
      * </code> 
-     * * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 412 Precondition Failed. No se puede actualizar la tarjeta con el id dado.
-     * </code> 
      * </pre>
      * @param id Identificador de la tarjeta que se esta buscando. Este debe ser una cadena de dígitos.
      * @return JSON {@link TarjetaDetailDTO} - La tarjeta buscada
@@ -163,7 +160,7 @@ public class TarjetaResource {
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found. No existe una tarjeta con el id dado.
      * </code> 
-     * * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 412 Precondition Failed. No se puede actualizar la tarjeta con el id dado.
      * </code> 
      * </pre>
