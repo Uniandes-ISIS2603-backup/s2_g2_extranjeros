@@ -45,6 +45,12 @@ public class ValoracionDTO {
         
     }
     
+    public ValoracionDTO(ValoracionEntity entity){
+        this.comentario = entity.getComentario();
+        this.id= entity.getId();
+        this.valoracion = entity.getValoracion();
+    }
+    
     /**
      * @return the valoracion
      */
@@ -91,6 +97,7 @@ public class ValoracionDTO {
         ValoracionEntity e = new ValoracionEntity();
         e.setId(id);
         e.setValoracion(valoracion);
+        e.setComentario(comentario);
         return e;
     }
             

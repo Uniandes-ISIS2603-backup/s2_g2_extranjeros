@@ -62,6 +62,8 @@ public class ViviendaDTO {
     private String longitud;
 
     private String tipoAlojamiento;
+    
+    private Integer inquilinos;
 
     public ViviendaDTO(){
         
@@ -81,6 +83,10 @@ public class ViviendaDTO {
       this.latitud = entity.getLatitud();
     
       this.longitud =entity.getLongitud();
+      
+      this.tipoAlojamiento = entity.getTipoAlojamiento(); 
+   
+      this.inquilinos = entity.getInquilinos();
     }
     /**
      * @return the disponible
@@ -192,9 +198,23 @@ public class ViviendaDTO {
         en.setLatitud(latitud);
         en.setLongitud(longitud);
         en.setTipoAlojamiento(tipoAlojamiento);
-        
+        en.setInquilinos(inquilinos);
         return en;
         
+    }
+
+    /**
+     * @return the inquilinos
+     */
+    public int getInquilinos() {
+        return inquilinos;
+    }
+
+    /**
+     * @param inquilinos the inquilinos to set
+     */
+    public void setInquilinos(int inquilinos) {
+        this.inquilinos = inquilinos;
     }
     
     

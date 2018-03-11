@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,6 +32,10 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     @OneToMany (mappedBy = "vivienda")
     private List <EstudianteEntity> estudiantes;
     
+    @PodamExclude
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<FacturaEntity> facturas;
+    
      //---------------------------------------------------
     // Atributos
     //---------------------------------------------------
@@ -45,6 +50,8 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     private String longitud;
 
     private String tipoAlojamiento;
+    
+    private Integer inquilinos;
     
     @OneToMany
     @PodamExclude
@@ -180,6 +187,62 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
      */
     public void setValoraciones(List<ValoracionEntity> valoraciones) {
         this.valoraciones = valoraciones;
+    }
+
+    /**
+     * @return the inquilinos
+     */
+    public Integer getInquilinos() {
+        return inquilinos;
+    }
+
+    /**
+     * @param inquilinos the inquilinos to set
+     */
+    public void setInquilinos(Integer inquilinos) {
+        this.inquilinos = inquilinos;
+    }
+
+    /**
+     * @return the arrendatariosPropietarios
+     */
+    public ArrendatarioEntity getArrendatariosPropietarios() {
+        return arrendatariosPropietarios;
+    }
+
+    /**
+     * @param arrendatariosPropietarios the arrendatariosPropietarios to set
+     */
+    public void setArrendatariosPropietarios(ArrendatarioEntity arrendatariosPropietarios) {
+        this.arrendatariosPropietarios = arrendatariosPropietarios;
+    }
+
+    /**
+     * @return the estudiantes
+     */
+    public List <EstudianteEntity> getEstudiantes() {
+        return estudiantes;
+    }
+
+    /**
+     * @param estudiantes the estudiantes to set
+     */
+    public void setEstudiantes(List <EstudianteEntity> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    /**
+     * @return the facturas
+     */
+    public List<FacturaEntity> getFacturas() {
+        return facturas;
+    }
+
+    /**
+     * @param facturas the facturas to set
+     */
+    public void setFacturas(List<FacturaEntity> facturas) {
+        this.facturas = facturas;
     }
     
     
