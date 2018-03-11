@@ -6,9 +6,12 @@
 package co.edu.uniandes.csw.extranjeros.resources;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.dtos.*;
+import co.edu.uniandes.csw.extranjeros.ejb.LugaresDeInteresLogic;
+import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -18,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * <pre> Clase que implementa el recurso "lugares de interes".
@@ -42,6 +46,27 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class LugaresDeInteresResource {
+    
+    //---------------------------------------------------
+    // Inject: Logica
+    //---------------------------------------------------
+    
+    @Inject 
+    private LugaresDeInteresLogic logica;
+    
+    //---------------------------------------------------
+    // Lista de conversion
+    //---------------------------------------------------
+    
+    
+    private List<LugaresDeInteresDetailDTO> listEntity2DTO (List<LugaresDeInteresEntity> entityList) {
+        List<LugaresDeInteresDetailDTO> list = new ArrayList<>();
+        for (LugaresDeInteresEntity entity : entityList) {
+            list.add(new LugaresDeInteresDetailDTO(entity));
+        }
+        return list;
+    }
+    
      /**
      * <h1> GET /api/lugaresdeinteres/{id} : Obtener lugar de interes por id.</h1>
      * <pre> Busca el Lugar de Interes al cual corresponde la ID ingresada en la URL y lo devuelve.
@@ -61,7 +86,11 @@ public class LugaresDeInteresResource {
     @GET
    @Path("{id: \\d+}")
    public LugaresDeInteresDetailDTO getLugar(@PathParam("id")Long id){
-        return null;
+        LugaresDeInteresEntity entidadBuscada = logica.getLugarDeInteres(id);
+        if(entidadBuscada == null){
+            throw new WebApplicationException("El recurso /lugaresdeinteres/" + id + " no existe.", 404);
+        }
+        return new LugaresDeInteresDetailDTO(entidadBuscada);
     }
    /**
      * <h1> GET /api/lugaresdeinteres : Obtener todos los lugares de interes. </h1>
@@ -79,7 +108,7 @@ public class LugaresDeInteresResource {
    @GET
     public List<LugaresDeInteresDetailDTO> getLugares()
     {
-        return new ArrayList<>();
+        return listEntity2DTO(logica.getLugaresDeInteres());
     }
     /**
      * <h1> POST /api/lugaresdeinteres : Crear un lugar de interes. </h1>
@@ -106,7 +135,7 @@ public class LugaresDeInteresResource {
     @POST
     public LugaresDeInteresDetailDTO createLugar(LugaresDeInteresDetailDTO lugar)throws BusinessLogicException
     {
-        return lugar;
+        return new LugaresDeInteresDetailDTO(logica.createLugarDeInteres(lugar.toEntity()));
     }
     /**
      * <h1> PUT /api/lugaresdeinteres/{id} : Actualiza un lugar de interes asociado con el ID asociado/dado. </h1>
@@ -131,7 +160,12 @@ public class LugaresDeInteresResource {
     @Path("{id: \\d+}")
     public LugaresDeInteresDetailDTO updateLugar(@PathParam("id") Long id, LugaresDeInteresDetailDTO lugar)
     {
-        return null;
+        lugar.setId(id);
+        LugaresDeInteresEntity entidad = logica.getLugarDeInteres(id);
+        if(entidad == null){
+            throw new WebApplicationException("El recurso /lugaresdeinteres/" + id + " no existe.", 404);
+        }
+        return new LugaresDeInteresDetailDTO(logica.updateLugarDeInteres(lugar.toEntity()));
     }
     /**
      * <h1> DELETE /api/lugaresdeinteres/{id} : Borrar lugar de interes por id.</h1>
@@ -150,6 +184,11 @@ public class LugaresDeInteresResource {
     @Path("{id: \\d+}")
     public void deleteLugar(@PathParam("id") Long id)
     {
+        LugaresDeInteresEntity entidadAEliminar = logica.getLugarDeInteres(id);
+        if(entidadAEliminar == null){
+            throw new WebApplicationException("El recurso /lugaresdeinteres/" + id + " no existe.", 404);
+        }
+        logica.deleteLugarDeInteres(id);
     }
     
 }
