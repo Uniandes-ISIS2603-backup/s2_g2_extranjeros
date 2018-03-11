@@ -34,8 +34,10 @@ public class FacturaDetailDTO extends FacturaDTO {
     public FacturaDetailDTO(FacturaEntity entity)
     {
         super(entity);
-        serviciosExtra=servicioEntityAServicioDTO(entity.getServiciosAdicionales());
-        serviciosIncluidos=servicioEntityAServicioDTO(entity.getServiciosIncluidos());
+        if(entity.getServiciosAdicionales()!=null)
+            serviciosExtra=servicioEntityAServicioDTO(entity.getServiciosAdicionales());
+        if(entity.getServiciosIncluidos()!=null)
+            serviciosIncluidos=servicioEntityAServicioDTO(entity.getServiciosIncluidos());
     }
     /**
      * @return la lista de servicios incluidos.
@@ -92,8 +94,10 @@ public class FacturaDetailDTO extends FacturaDTO {
     public FacturaEntity toEntity()
     {
         FacturaEntity e=super.toEntity();
-        e.setServiciosAdicionales(servicioDTOAServicioEntity(serviciosExtra));
-        e.setServiciosIncluidos(servicioDTOAServicioEntity(serviciosIncluidos));
+        if(e.getServiciosAdicionales()!=null)
+            e.setServiciosAdicionales(servicioDTOAServicioEntity(serviciosExtra));
+        if(e.getServiciosIncluidos()!=null)
+            e.setServiciosIncluidos(servicioDTOAServicioEntity(serviciosIncluidos));
         return e;
     }
     
