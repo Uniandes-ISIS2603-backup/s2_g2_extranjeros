@@ -181,9 +181,9 @@ public class ArrendatarioLogic {
         persistence.delete(id);
     }
     
-    //---------------------------------------------------
-    // Metodos UsuarioDetail - Resource: con relaciones
-    //---------------------------------------------------
+    //------------------------------------------------------
+    // Metodos ArrendatarioDetail - Resource: con relaciones
+    //------------------------------------------------------
     
     //------------------------
     //  RELACION CON FACTURAS:
@@ -224,6 +224,49 @@ public class ArrendatarioLogic {
         return null;
     }
     
+    /**
+     * Asocia una factura con un arrendatario existente en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param facturaId Identificador de la instancia de Factura.
+     * @return Instancia de FacturaEntity que fue asociada a un Arrendatario.
+     */
+    public FacturaEntity createFacturaIn (Long arrendatarioId, Long facturaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar una factura al arrendatario con id = {0}", arrendatarioId);
+        
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        FacturaEntity facturEntity = new FacturaEntity();
+        facturEntity.setId(facturaId);
+        arrendEntity.getFacturas().add(facturEntity);
+        
+        return getFactura(arrendatarioId, facturaId);
+    }
+    
+    /**
+     * Remplaza las instancias de Factura asociadas a una instancia de Arrendatario.
+     * @param arrendatarioId Identificador de la instancia de arrendatario.
+     * @param list Colección de instancias de FacturaEntity a asociar a instancia de Arrendatario.
+     * @return Nueva colección de FacturaEntity asociada a la instancia de un arrendatario.
+     */
+    public List<FacturaEntity> updateFacturas(Long arrendatarioId, List<FacturaEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una factura del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        arrendEntity.setFacturas(list);
+        return arrendEntity.getFacturas();
+    }
+
+    /**
+     * Desasocia una Factura existente de un arrendatario en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param facturaId Identificador de la instancia de Factura.
+     */
+    public void removeFactura (Long arrendatarioId, Long facturaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una factura del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity entity = getArrendatario(arrendatarioId);
+        FacturaEntity factEntity = new FacturaEntity();
+        factEntity.setId(facturaId);
+        
+        entity.getFacturas().remove(factEntity);
+    }
     
     //------------------------
     //  RELACION CON VIVIENDAS:
@@ -262,5 +305,49 @@ public class ArrendatarioLogic {
         
         // No existe
         return null;
+    }
+    
+    /**
+     * Asocia una vivienda con un arrendatario existente en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param viviendaId Identificador de la instancia de Vivienda.
+     * @return Instancia de ViviendaEntity que fue asociada a un Arrendatario.
+     */
+    public ViviendaEntity createViviendaIn (Long arrendatarioId, Long viviendaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar una vivienda al arrendatario con id = {0}", arrendatarioId);
+        
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        ViviendaEntity viviendaEntity = new ViviendaEntity();
+        viviendaEntity.setId(viviendaId);
+        arrendEntity.getViviendas().add(viviendaEntity);
+        
+        return getVivienda(arrendatarioId, viviendaId);
+    }
+    
+    /**
+     * Remplaza las instancias de Vivienda asociadas a una instancia de Arrendatario.
+     * @param arrendatarioId Identificador de la instancia de arrendatario.
+     * @param list Colección de instancias de ViviendaEntity a asociar a instancia de Arrendatario.
+     * @return Nueva colección de ViviendaEntity asociada a la instancia de un arrendatario.
+     */
+    public List<ViviendaEntity> updateViviendas(Long arrendatarioId, List<ViviendaEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una vivienda del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        arrendEntity.setViviendas(list);
+        return arrendEntity.getViviendas();
+    }
+
+    /**
+     * Desasocia una Vivienda existente de un arrendatario en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param viviendaId Identificador de la instancia de Vivienda.
+     */
+    public void removeVivienda (Long arrendatarioId, Long viviendaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una vivienda del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity entity = getArrendatario(arrendatarioId);
+        ViviendaEntity vivEntity = new ViviendaEntity();
+        vivEntity.setId(viviendaId);
+        
+        entity.getViviendas().remove(vivEntity);
     }
 }

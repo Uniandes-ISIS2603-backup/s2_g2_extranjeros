@@ -8,7 +8,9 @@ package co.edu.uniandes.csw.extranjeros.resources;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.dtos.*;
 import co.edu.uniandes.csw.extranjeros.ejb.ArrendatarioLogic;
+import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -55,6 +57,12 @@ public class ArrendatarioResource {
     
     @Inject 
     private ArrendatarioLogic logica;
+    
+    @Inject
+    private ViviendaLogic logicVivienda;
+    
+    @Inject
+    private ViviendaResource viviendas;
     
     //---------------------------------------------------
     // Lista de conversion
@@ -201,4 +209,39 @@ public class ArrendatarioResource {
         }
         logica.deleteArrendatario(id);
     }
+    
+    /**
+     * Conexión con el servicio de cuentas bancarias asociadas a un libro. {@link CuentaBancariaResource}
+     * Este método conecta la ruta de /arrendatarios con las rutas de /cuentasBancarias que dependen
+     * del arrendatario, es una redirección al servicio que maneja el segmento de la 
+     * URL que se encarga de las reseñas.
+     * @param arrendatarioId El ID del arrendatario con respecto al cual se accede al servicio.
+     * @return El servicio de cuentas de banco para ese libro en paricular.
+     */
+    @Path("{idArrendatario: \\d+}/cuentasBancarias")
+    public Class<CuentaBancariaResource> getCuentaBancariaResource(@PathParam("idArrendatario") Long arrendatarioId) {
+        ArrendatarioEntity entity = logica.getArrendatario(arrendatarioId);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /arrendatarios/" + arrendatarioId + "/cuentasBancarias no existe.", 404);
+        }
+        return CuentaBancariaResource.class;
+    }
+    
+    @PUT
+    @Path("{idArrendatario: \\d+}/viviendas/{idVivienda: \\d+}")
+    public ArrendatarioDetailDTO updateArrendatarioVivienda (@PathParam ("idArrendatario") Long id, ArrendatarioDetailDTO pArrendatario, @PathParam("idVivienda") Long idVivienda) throws BusinessLogicException {
+        
+        pArrendatario.setId(id);
+        ArrendatarioEntity entidadActu = logica.getArrendatario(id);
+        if(entidadActu == null){
+            throw new WebApplicationException("El recurso /arrendatarios/" + id + " no existe.", 404);
+        }
+        
+        ArrendatarioEntity actualizar = pArrendatario.toEntity();
+        List<ViviendaEntity> viviendasEnt = actualizar.getViviendas();
+        viviendasEnt.add(logicVivienda.getVivienda(idVivienda));
+        actualizar.setViviendas(viviendasEnt);
+        
+        return new ArrendatarioDetailDTO(logica.updateArrendatario(actualizar));
+    }   
 }

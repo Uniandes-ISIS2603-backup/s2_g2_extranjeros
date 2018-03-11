@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.persistence;
 
 import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -45,19 +46,24 @@ public class CuentaBancariaPersistence {
         LOGGER.log(Level.INFO, "Consultando la cuenta de banco con id = {0}", cuentaId);
         
         TypedQuery<CuentaBancariaEntity> query = em.createQuery("select p from CuentaBancariaEntity p where (p.arrendatarioTitular.id = :arrendatarioID) and (p.id = :cuentaId)", CuentaBancariaEntity.class);
-        query.setParameter("cuentaId", cuentaId);
         query.setParameter("arrendatarioID", arrendatarioID);
+        query.setParameter("cuentaId", cuentaId);
         
-        CuentaBancariaEntity resultado = query.getSingleResult();
+        
+        List <CuentaBancariaEntity> resultado = query.getResultList();
         CuentaBancariaEntity retorno = null;
         
         if(resultado == null){
             return retorno;
         }
-        else { 
-            retorno = resultado; 
+        
+        else if (resultado.isEmpty()){
             return retorno;
         }
+        else if (resultado.size() >= 1){ 
+            retorno = resultado.get(0);
+        }
+        return retorno;
     }
     
     /**
