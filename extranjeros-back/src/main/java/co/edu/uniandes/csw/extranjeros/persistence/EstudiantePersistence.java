@@ -55,7 +55,7 @@ public class EstudiantePersistence {
     {
         LOGGER.info("Creando una nuevo estudiante");
         em.persist(estudiante);
-        LOGGER.info("Universidad creada");
+        LOGGER.info("Estudiante creado");
         return estudiante;
     }
     /**
