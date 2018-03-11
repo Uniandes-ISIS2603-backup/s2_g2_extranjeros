@@ -29,10 +29,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 
 /**
- *
+ *"arrendatarios/{arrendatarioId: \\\\d+}/viviendas"
  * @author jd.arango
  */
-@Path("arrendatarios/{arrendatarioId: \\\\d+}/viviendas")
+@Path("viviendas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
