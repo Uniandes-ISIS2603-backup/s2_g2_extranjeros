@@ -79,11 +79,7 @@ public class ViviendaResource {
      * @return JSON {@link ViviendaDetailDTO}  - La vivienda guardada con el atributo id autogenerado.
      */
     @POST
-    public ViviendaDetailDTO createVivienda(ViviendaDetailDTO vivi,@PathParam("arrendatarioId") Long id) throws BusinessLogicException{
-        if(arrendatarioLO.getArrendatario(id)==null){
-            throw new BusinessLogicException("el usuario no existe");
-        }
-        
+    public ViviendaDetailDTO createVivienda(ViviendaDetailDTO vivi) {
         return new ViviendaDetailDTO(logic.createVivienda(vivi.toEntity()));
     }
       /**
