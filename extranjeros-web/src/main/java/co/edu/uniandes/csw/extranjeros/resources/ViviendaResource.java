@@ -8,7 +8,9 @@ package co.edu.uniandes.csw.extranjeros.resources;
 import co.edu.uniandes.csw.extranjeros.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.extranjeros.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.extranjeros.ejb.ArrendatarioLogic;
+import co.edu.uniandes.csw.extranjeros.ejb.ServicioLogic;
 import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
+import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -40,6 +42,9 @@ public class ViviendaResource {
     
    @Inject
    private ArrendatarioLogic arrendatarioLO;
+  
+   @Inject
+   private ServicioLogic serviLogic;
    /**
      * Convierte una lista de ViviendaEntity a una lista de ViviendaDetailDTO.
      *
@@ -144,15 +149,31 @@ public class ViviendaResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public ViviendaDetailDTO updateVivienda(@PathParam("id") Long id, ViviendaDetailDTO vivienda) {
+    public ViviendaDetailDTO updateVivienda(@PathParam("id") Long id, ViviendaDetailDTO vivienda) throws BusinessLogicException {
         ViviendaEntity entity = vivienda.toEntity();
         entity.setId(id);
         ViviendaEntity oldEntity = logic.getVivienda(id);
         if (oldEntity == null) {
             throw new WebApplicationException("La vivienda no existe", 404);
         }
-        entity.setServiciosAdicionales(oldEntity.getServiciosAdicionales());
-        entity.setServiciosFijos(oldEntity.getServiciosFijos());
+        List<ServicioEntity> adicional = new ArrayList<>();
+        for (int i = 0; i < oldEntity.getServiciosAdicionales().size(); i++) {
+           ServicioEntity ser = (serviLogic.getServicio(oldEntity.getServiciosAdicionales().get(i).getId()));
+           if(ser == null){
+               throw new BusinessLogicException("El servicio no existe");
+           }
+           adicional.add(ser);
+        }
+        List<ServicioEntity> fijos = new ArrayList<>();
+        for (int i = 0; i < oldEntity.getServiciosFijos().size(); i++) {
+           ServicioEntity ser = (serviLogic.getServicio(oldEntity.getServiciosFijos().get(i).getId()));
+           if(ser == null){
+               throw new BusinessLogicException("El servicio no existe");
+           }
+           fijos.add(ser);
+        }
+        entity.setServiciosAdicionales(adicional);
+        entity.setServiciosFijos(fijos);
         entity.setValoraciones(oldEntity.getValoraciones());
         return new ViviendaDetailDTO(logic.updateVivienda(entity));
     }

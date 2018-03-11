@@ -214,7 +214,7 @@ public class ViviendaPersistenceTest {
             Assert.assertEquals(newEntity.getLatitud(), resp.getLatitud());
             Assert.assertEquals(newEntity.getLongitud(), resp.getLongitud());
             Assert.assertEquals(newEntity.getTipoAlojamiento(), resp.getTipoAlojamiento());
-            Assert.assertEquals(newEntity.getInquilinos(), entity.getInquilinos());
+            Assert.assertEquals(newEntity.getInquilinos(), resp.getInquilinos());
   
     }
 
