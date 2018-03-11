@@ -37,7 +37,7 @@ public class EventoEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @ManyToMany
     private List<EstudianteEntity> estudiantesInvitados;
-     
+    
     @PodamExclude
     @ManyToOne
     private EstudianteEntity responsableEventoP;
@@ -45,6 +45,16 @@ public class EventoEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @OneToOne
     private LugaresDeInteresEntity lugarDeInteres;
+    
+    
+    public List<EstudianteEntity> getEstudiantesInvitados() {
+        return estudiantesInvitados;
+    }
+
+    public void setEstudiantesInvitados(List<EstudianteEntity> estudiantesInvitados) {
+        this.estudiantesInvitados = estudiantesInvitados;
+    }
+   
     
     public LugaresDeInteresEntity getLugarDeInteres()
     {
