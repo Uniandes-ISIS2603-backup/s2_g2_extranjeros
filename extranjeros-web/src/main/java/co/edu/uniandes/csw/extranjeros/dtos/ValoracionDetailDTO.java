@@ -18,6 +18,9 @@ public class ValoracionDetailDTO  extends ValoracionDTO {
     public ValoracionDetailDTO(){
         super();
     }
+     public ValoracionDetailDTO(ValoracionEntity entity){
+        super(entity);
+    }
     public ValoracionEntity toEntity(){
         return super.toEntity();
     }

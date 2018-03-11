@@ -121,6 +121,7 @@ public class ViviendaLogicTest {
         Assert.assertEquals(newEntity.getLatitud(), entity.getLatitud());
         Assert.assertEquals(newEntity.getLongitud(), entity.getLongitud());
         Assert.assertEquals(newEntity.getTipoAlojamiento(), entity.getTipoAlojamiento());
+        Assert.assertEquals(newEntity.getInquilinos(), entity.getInquilinos());
    
       
     }
@@ -158,6 +159,8 @@ public class ViviendaLogicTest {
         Assert.assertEquals(newEntity.getLatitud(), entity.getLatitud());
         Assert.assertEquals(newEntity.getLongitud(), entity.getLongitud());
         Assert.assertEquals(newEntity.getTipoAlojamiento(), entity.getTipoAlojamiento());
+        Assert.assertEquals(newEntity.getInquilinos(), entity.getInquilinos());
+   
     }
     /**
      * Prueba para eliminar un vivienda.
@@ -194,6 +197,7 @@ public class ViviendaLogicTest {
         Assert.assertEquals(newEntity.getLatitud(), resp.getLatitud());
         Assert.assertEquals(newEntity.getLongitud(), resp.getLongitud());
         Assert.assertEquals(newEntity.getTipoAlojamiento(), resp.getTipoAlojamiento());
+        Assert.assertEquals(newEntity.getInquilinos(), resp.getInquilinos());
    
           }
    
