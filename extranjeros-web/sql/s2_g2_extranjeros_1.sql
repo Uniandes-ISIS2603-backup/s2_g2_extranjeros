@@ -1,0 +1,12 @@
+delete from ArrendatarioEntity;
+delete from CuentaBancariaEntity;
+delete from EstudianteEntity;
+delete from EventoEntity;
+delete from FacturaEntity;
+delete from LugaresDeInteresEntity;
+delete from ProvidenciaEntity;
+delete from ServicioEntity;
+delete from TarjetaEntity;
+delete from UniversidadEntity;a
+delete from ValoracionEntity;
+delete from ViviendaEntity;
