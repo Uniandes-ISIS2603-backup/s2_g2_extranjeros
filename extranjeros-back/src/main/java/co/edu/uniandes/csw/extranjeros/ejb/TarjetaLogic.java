@@ -29,7 +29,21 @@ public class TarjetaLogic {
     @Inject
     private TarjetaPersistence persistence;
     
-    
+    public boolean verificarNumero(Long num)
+    {
+        boolean rta = false;
+        String tar = num+"";
+        char[] chars = tar.toCharArray();
+        if((chars[0]=='4' || chars[0]=='5') && chars.length == 16)
+        {
+            rta = true;
+        }
+        if (chars[0]=='3' && chars.length == 15)
+        {
+            rta = true;
+        }
+        return rta;
+    }
     public boolean verificarBanco(String pBanco)
     {
         if(pBanco.equals("MasterCard") || pBanco.equals("VISA") || pBanco.equals("American Express"))
@@ -73,7 +87,15 @@ public class TarjetaLogic {
         {
             if(verificarFecha(tarjeta.getFechaCaducidad()))
             {
-                return persistence.create(tarjeta);
+                if(verificarNumero(tarjeta.getNumero()))
+                {
+                    return persistence.create(tarjeta);
+                }
+                else
+                {
+                    throw new BusinessLogicException("El nùmero de digitos no concuerda");
+                }
+                
             }
             else
             {
@@ -93,7 +115,14 @@ public class TarjetaLogic {
         {
            if(verificarFecha(tarjeta.getFechaCaducidad()))
             {
-                return persistence.update(tarjeta);
+                if(verificarNumero(tarjeta.getNumero()))
+                {
+                    return persistence.update(tarjeta);
+                }
+                else
+                {
+                    throw new BusinessLogicException("El nùmero de digitos no concuerda");
+                }
             }
             else
             {
