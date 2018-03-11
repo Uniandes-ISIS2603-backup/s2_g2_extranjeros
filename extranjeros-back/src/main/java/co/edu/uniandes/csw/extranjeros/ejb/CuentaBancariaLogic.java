@@ -64,9 +64,13 @@ public class CuentaBancariaLogic {
      * @param cuentaID ID de la cuenta bancaria que se consulta en las relaciones de la BD.
      * @param titularID Id del Arrendatario que se consulta en las relaciones de la BD. 
      * @return Retorna la cuenta bancaria al que corresponde la ID dada.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
-    public CuentaBancariaEntity getCuentaBancaria(Long titularID, Long cuentaID ){
+    public CuentaBancariaEntity getCuentaBancaria(Long titularID, Long cuentaID ) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la cuenta de Banco con id = {0}", cuentaID);
+        if(persistence.find(cuentaID, titularID) == null){
+            throw new BusinessLogicException("El arrendatario que se esta consultando aún no tiene una cuenta bancaria o esta no existe."); 
+        }
         return persistence.find(cuentaID, titularID);
     }
     
@@ -77,7 +81,7 @@ public class CuentaBancariaLogic {
      * @return Objeto de CuentaBancariaEntity con los datos nuevos y su ID.
      * 
      */
-    public CuentaBancariaEntity createReview(Long titularID, CuentaBancariaEntity entity) {
+    public CuentaBancariaEntity createCuentaBancaria(Long titularID, CuentaBancariaEntity entity) {
         LOGGER.info("Inicia proceso de crear una Cuenta Bancaria.");
         ArrendatarioEntity arrendatario = arrendatarioLogic.getArrendatario(titularID);
         entity.setArrendatarioTitular(arrendatario);
@@ -90,13 +94,15 @@ public class CuentaBancariaLogic {
      * @param entity Instancia de CuentaBancariaEntity con los nuevos datos.
      * @param arrendID id del Arrendatario el cual sera padre del Cuenta Bancaria actualizado.
      * @return Instancia de CuentaBancariaEntity con los datos actualizados.
+     * @throws BusinessLogicException En caso de que el arrendatario no exista. 
      */
-    public CuentaBancariaEntity updateCuentaDeBanco(Long arrendID, CuentaBancariaEntity entity) {
+    public CuentaBancariaEntity updateCuentaDeBanco(Long arrendID, CuentaBancariaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de actualizar una cuenta de banco.");
         ArrendatarioEntity arrendatario = arrendatarioLogic.getArrendatario(arrendID);
-        if(arrendatario!= null){
-            entity.setArrendatarioTitular(arrendatario);
+        if(arrendatario == null){
+           throw new BusinessLogicException("El arrendatario que se esta consultando no existe.");  
         }
+        entity.setArrendatarioTitular(arrendatario);
         return persistence.update(entity);
     }
 
@@ -106,9 +112,12 @@ public class CuentaBancariaLogic {
      * @param cuentaID ID de la cuenta bancaria que se consulta en las relaciones de la BD.
      * @param titularID Id del Arrendatario que se consulta en las relaciones de la BD. 
      */
-    public void deleteReview(Long titularID, Long cuentaID) {
+    public void deleteReview(Long titularID, Long cuentaID) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de borrar una cuenta de banco.");
         CuentaBancariaEntity old = getCuentaBancaria(titularID, cuentaID);
+        if(old == null){
+          throw new BusinessLogicException("El arrendatario que se esta consultando no existe o aún no tiene una cuenta de banco.");   
+        }
         persistence.delete(old.getId());
     }
 }

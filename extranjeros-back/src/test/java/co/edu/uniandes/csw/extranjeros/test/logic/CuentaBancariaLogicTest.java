@@ -146,7 +146,7 @@ public class CuentaBancariaLogicTest {
     @Test
     public void createCuentaBancaria() {
         CuentaBancariaEntity newEntity = factory.manufacturePojo(CuentaBancariaEntity.class);
-        CuentaBancariaEntity result = logic.createReview(data.get(0).getArrendatarioTitular().getId(), newEntity);
+        CuentaBancariaEntity result = logic.createCuentaBancaria(data.get(0).getArrendatarioTitular().getId(), newEntity);
         Assert.assertNotNull(result);
         
         CuentaBancariaEntity entity = em.find(CuentaBancariaEntity.class, result.getId());
@@ -159,9 +159,10 @@ public class CuentaBancariaLogicTest {
     
     /**
      * Prueba para consultar una Cuenta de Banco.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
     @Test
-    public void getCuentaBancaria() {
+    public void getCuentaBancaria() throws BusinessLogicException {
         CuentaBancariaEntity entity = data.get(0);
         CuentaBancariaEntity resultEntity = logic.getCuentaBancaria(dataArrendatario.get(1).getId(), entity.getId());
         
@@ -175,6 +176,7 @@ public class CuentaBancariaLogicTest {
     
     /**
      * Prueba para consultar una o mas cuentas de banco.
+     * @throws BusinessLogicException en caso de que se violen las reglas de negocio.
      */
     @Test
     public void getReviewsTest() throws BusinessLogicException {
@@ -196,9 +198,10 @@ public class CuentaBancariaLogicTest {
 
     /**
      * Prueba para eliminar una Cuenta bancaria.
+     * @throws BusinessLogicException en caso de que se violen las reglas de negocio.
      */
     @Test
-    public void deleteCuentaBancaria() {
+    public void deleteCuentaBancaria() throws BusinessLogicException {
         CuentaBancariaEntity entity = data.get(0);
         logic.deleteReview(dataArrendatario.get(1).getId(), entity.getId());
         
@@ -207,10 +210,11 @@ public class CuentaBancariaLogicTest {
     }
     
     /**
-     * Prueba para actualizar un Review
+     * Prueba para actualizar una cuenta bancaria.
+     * @throws BusinessLogicException En caso de que haya violacion en las reglas de negocio. 
      */
     @Test
-    public void updateReviewTest() {
+    public void updateReviewTest() throws BusinessLogicException {
         
         CuentaBancariaEntity entity = data.get(0);
         CuentaBancariaEntity pojoEntity = factory.manufacturePojo(CuentaBancariaEntity.class);

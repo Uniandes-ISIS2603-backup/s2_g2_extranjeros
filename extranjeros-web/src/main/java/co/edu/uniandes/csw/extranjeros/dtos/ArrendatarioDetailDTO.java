@@ -127,7 +127,8 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
           super(entity);
           if (entity != null) {
             
-            this.cuentaBancaria = new CuentaBancariaDTO(entity.getCuentaBancaria());
+            CuentaBancariaDTO buscadaFromEnt = new CuentaBancariaDTO(entity.getCuentaBancaria());
+            this.cuentaBancaria = buscadaFromEnt;
             facturas = new ArrayList<>();
             viviendas = new ArrayList<>();
             
@@ -158,7 +159,6 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
         ArrendatarioEntity entity = super.toEntity();
          
          // Verificacion relaciones
-
          if (cuentaBancaria != null){
              entity.setCuentaBancaria(cuentaBancaria.toEntity());
          }

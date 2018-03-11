@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.resources;
 
 import co.edu.uniandes.csw.extranjeros.dtos.ArrendatarioDetailDTO;
-import co.edu.uniandes.csw.extranjeros.dtos.CuentaBancariaDetailDTO;
+import co.edu.uniandes.csw.extranjeros.dtos.CuentaBancariaDTO;
 import co.edu.uniandes.csw.extranjeros.ejb.CuentaBancariaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
@@ -60,10 +60,10 @@ public class CuentaBancariaResource {
     // Lista de conversion
     //---------------------------------------------------
 
-    private List<CuentaBancariaDetailDTO> listEntity2DTO (List<CuentaBancariaEntity> entityList) {
-        List<CuentaBancariaDetailDTO> list = new ArrayList<>();
+    private List<CuentaBancariaDTO> listEntity2DTO (List<CuentaBancariaEntity> entityList) {
+        List<CuentaBancariaDTO> list = new ArrayList<>();
         for (CuentaBancariaEntity entity : entityList) {
-            list.add(new CuentaBancariaDetailDTO(entity));
+            list.add(new CuentaBancariaDTO(entity));
         }
         return list;
     }
@@ -91,12 +91,12 @@ public class CuentaBancariaResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public CuentaBancariaDetailDTO getCuentaBancaria(@PathParam("idArrendatario") Long idArrendatario, @PathParam("id") Long id){
+    public CuentaBancariaDTO getCuentaBancaria(@PathParam("idArrendatario") Long idArrendatario, @PathParam("id") Long id) throws BusinessLogicException{
         CuentaBancariaEntity entidadCuenta = cuentaLogic.getCuentaBancaria(idArrendatario, id);
         if (entidadCuenta == null){
             throw new WebApplicationException("El recurso /arrendatarios/" + idArrendatario + "/cuentasBancarias/" + id + " no existe.", 404);
         }
-        return new CuentaBancariaDetailDTO(entidadCuenta);
+        return new CuentaBancariaDTO(entidadCuenta);
     }
     
 
@@ -115,7 +115,7 @@ public class CuentaBancariaResource {
      * (nadie se ha registrado como arrendatario) se retorna una lista vacía.
      */
     @GET
-    public List<CuentaBancariaDetailDTO> getCuentasBancarias(@PathParam("idArrendatario") Long idArrendatario) throws BusinessLogicException{
+    public List<CuentaBancariaDTO> getCuentasBancarias(@PathParam("idArrendatario") Long idArrendatario) throws BusinessLogicException{
         return listEntity2DTO(cuentaLogic.getCuentasBancarias(idArrendatario)); 
     }
     
@@ -137,14 +137,14 @@ public class CuentaBancariaResource {
      * </code>
      * </pre>
      * 
-     * @param id
+     * @param idArrendatario Arrendatario titular. 
      * @param cBElement {@link CuentaBancariaDetailDTO} - La cuenta de banco que se desea guardar.
      * @return JSON {@link CuentaBancariaDetailDTO}  - La cuenta de banco guardado con el atributo id autogenerado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe el arrendatario.
      */
     @POST
-    public CuentaBancariaDetailDTO createCuentaBancaria (@PathParam ("id") Long id,CuentaBancariaDetailDTO cBElement) throws BusinessLogicException{
-        return new CuentaBancariaDetailDTO(cuentaLogic.createReview(id, cBElement.toEntity()));
+    public CuentaBancariaDTO createCuentaBancaria (@PathParam ("idArrendatario") Long idArrendatario, CuentaBancariaDTO cBElement) throws BusinessLogicException{
+        return new CuentaBancariaDTO(cuentaLogic.createCuentaBancaria(idArrendatario, cBElement.toEntity()));
     }
     
     /**
@@ -169,14 +169,14 @@ public class CuentaBancariaResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public CuentaBancariaDetailDTO updateCuentaBancaria (@PathParam("idArrendatario") Long idArrendatario, @PathParam("id") Long id, CuentaBancariaDetailDTO cuentaBancaria) throws BusinessLogicException {
+    public CuentaBancariaDTO updateCuentaBancaria (@PathParam("idArrendatario") Long idArrendatario, @PathParam("id") Long id, CuentaBancariaDTO cuentaBancaria) throws BusinessLogicException {
         
         cuentaBancaria.setId(id);
         CuentaBancariaEntity entidad = cuentaLogic.getCuentaBancaria(idArrendatario, id);
         if (entidad == null) {
             throw new WebApplicationException("El recurso /arrendatarios/" + idArrendatario + "/cuentasBancarias/" + id + " no existe.", 404);
         }
-        return new CuentaBancariaDetailDTO(cuentaLogic.updateCuentaDeBanco(idArrendatario, cuentaBancaria.toEntity()));
+        return new CuentaBancariaDTO(cuentaLogic.updateCuentaDeBanco(idArrendatario, cuentaBancaria.toEntity()));
     }
     
     /**
@@ -192,10 +192,11 @@ public class CuentaBancariaResource {
      * </pre>
      * @param idArrendatario
      * @param id Identificador de la cuenta de banco que se desea borrar. Este debe ser una cadena de dígitos.
+     * @throws BusinessLogicException En caso de que una regla de negocio no se cumpla. 
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteCuentaBancaria (@PathParam("idArrendatario") Long idArrendatario, @PathParam ("id") Long id){
+    public void deleteCuentaBancaria (@PathParam("idArrendatario") Long idArrendatario, @PathParam ("id") Long id) throws BusinessLogicException{
         CuentaBancariaEntity entidad = cuentaLogic.getCuentaBancaria(idArrendatario, id);
         if(entidad == null){
             throw new WebApplicationException("El recurso /arrendatarios/" + idArrendatario + "/cuentasBancarias/" + id + " no existe.", 404);

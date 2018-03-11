@@ -35,12 +35,12 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
     private List <FacturaEntity> facturas;
     
     @PodamExclude
-    @OneToMany(mappedBy = "arrendatariosPropietarios", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "arrendatariosPropietarios")
     private List <ViviendaEntity> viviendas;
 
 
     @PodamExclude
-    @OneToOne (mappedBy = "arrendatarioTitular", cascade = CascadeType.ALL)
+    @OneToOne (mappedBy = "arrendatarioTitular", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private CuentaBancariaEntity cuentaBancaria;
     
     //---------------------------------------------------
