@@ -96,11 +96,6 @@ public class EstudianteLogic  {
             throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
         }
         
-        if(!(newUser.getTarjeta()!= null))
-        {
-            throw new BusinessLogicException("Su cuenta debe tener una tarjeta asociada");
-        }
-        
         if(!(newUser.getVivienda()!=null))
         {
             newUser.setEstadoArrendamiento(false);

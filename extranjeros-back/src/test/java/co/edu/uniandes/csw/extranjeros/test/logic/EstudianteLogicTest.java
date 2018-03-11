@@ -144,7 +144,7 @@ public class EstudianteLogicTest {
      * Prueba para consultar todas los estudiantes 
      */
     @Test
-    public void getArrendatariosTest() {
+    public void getEstudiantesTest() {
         
         // Lista
         List<EstudianteEntity> usuariosAll =  estudianteLogic.getEstudiantes();
@@ -168,7 +168,7 @@ public class EstudianteLogicTest {
      * Prueba para consultar  un Estudiante.
      */
     @Test
-    public void getArrendatarioTest() {
+    public void getEstudianteTest() {
         
         EstudianteEntity usuario1 = data.get(0);
         EstudianteEntity usuario2 = estudianteLogic.getEstudiante(usuario1.getId());
@@ -177,11 +177,11 @@ public class EstudianteLogicTest {
     }
     
      /**
-     * Prueba para actualizar un Arrendatario.
+     * Prueba para actualizar un estudiante.
      * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
     @Test
-    public void updateArrendatarioTest() throws BusinessLogicException
+    public void updateEstudianteTest() throws BusinessLogicException
     {
         
         EstudianteEntity estudiante1 = data.get(0);
@@ -198,10 +198,10 @@ public class EstudianteLogicTest {
     
     
     /**
-     * Prueba para borrar una Arrendatario.
+     * Prueba para borrar una Estudiante.
      */
     @Test
-    public void deleteArrendatarioTest() {
+    public void deleteEstudianteTest() {
         Long id = data.get(0).getId();
         estudianteLogic.deleteEstudiante(id);
         EstudianteEntity estudiante1 = estudianteLogic.getEstudiante(id);

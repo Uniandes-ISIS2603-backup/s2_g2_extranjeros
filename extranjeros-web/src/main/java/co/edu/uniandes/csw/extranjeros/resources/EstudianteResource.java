@@ -26,7 +26,7 @@ import javax.ws.rs.Produces;
  */
 /**
  * <pre>Clase que implementa el recurso "Estudiante".
- * URL: /api/evento
+ * URL: /api/estudiante
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "Evento".</i>
@@ -40,7 +40,7 @@ import javax.ws.rs.Produces;
  * @author ISIS2603  
  * @version 1.0
  */
-@Path("estudiantes")
+@Path("estudiante")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
