@@ -35,11 +35,6 @@ public class TarjetaLogic {
         return persistence.update(tarjeta);
     }
     
-    public TarjetaEntity findByNumber(Long numero)
-    {
-        return persistence.findByNumber(numero);
-    }
-    
     public TarjetaEntity find(Long id)
     {
         return persistence.find(id);

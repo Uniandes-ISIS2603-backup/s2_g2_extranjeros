@@ -31,11 +31,6 @@ public class EventoLogic {
         return persistence.create(entity);
     }
     
-    public EventoEntity findByName(String name)
-    {
-        return persistence.findByName(name);
-    }
-    
     public EventoEntity find(Long id)
     {
         return persistence.find(id);

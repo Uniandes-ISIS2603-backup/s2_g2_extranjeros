@@ -38,29 +38,6 @@ public class TarjetaPersistence {
         return entity;
     }
     
-    /**
-     * Busca si hay alguna tarjeta con el numero que se envía de argumento
-     *
-     * @param numero: Numero de la tarjeta que se está buscando
-     * @return null si no existe ninguna tarjeta con el numero del argumento. Si
-     * existe alguna devuelve la primera.
-     */
-    public TarjetaEntity findByNumber(Long numero) {
-        LOGGER.log(Level.INFO, "Consultando tarjeta por numero ", numero);
-
-        // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From TarjetaEntity e where e.numero = :numero", TarjetaEntity.class);
-        // Se remplaza el placeholder ":numero" con el valor del argumento 
-        query = query.setParameter("numero", numero);
-        // Se invoca el query se obtiene la lista resultado
-        List<TarjetaEntity> sameName = query.getResultList();
-        if (sameName.isEmpty()) {
-            return null;
-        } else {
-            return sameName.get(0);
-        }
-    }
-    
     public TarjetaEntity find(Long id) {
         return em.find(TarjetaEntity.class, id);
     }

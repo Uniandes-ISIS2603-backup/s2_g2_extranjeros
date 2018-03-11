@@ -38,29 +38,6 @@ public class EventoPersistence {
         return entity;
     }
     
-    /**
-     * Busca si hay algun evento con el nombre que se envía de argumento
-     *
-     * @param nombre: Nombre del evento que se está buscando
-     * @return null si no existe ningun evento con el nombre del argumento. Si
-     * existe alguno devuelve el primera.
-     */
-    public EventoEntity findByName(String nombre) {
-        LOGGER.log(Level.INFO, "Consultando Evento por nombre ", nombre);
-
-        // Se crea un query para buscar eventos con el nombre que recibe el método como argumento. ":nombre" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From EventoEntity e where e.nombreEvento = :nombre", EventoEntity.class);
-        // Se remplaza el placeholder ":nombre" con el valor del argumento 
-        query = query.setParameter("nombre", nombre);
-        // Se invoca el query se obtiene la lista resultado
-        List<EventoEntity> sameName = query.getResultList();
-        if (sameName.isEmpty()) {
-            return null;
-        } else {
-            return sameName.get(0);
-        }
-    }
-    
     public EventoEntity find(Long id) {
         return em.find(EventoEntity.class, id);
     }
