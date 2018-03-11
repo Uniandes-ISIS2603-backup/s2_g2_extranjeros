@@ -1,0 +1,280 @@
+{
+	"info": {
+		"name": "collectionServicios",
+		"_postman_id": "719e0831-0e8c-7b72-acf0-8be2d3e8ea65",
+		"description": "Collection de pruebas de servicioResource.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get todos los servicios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "01532f00-bc64-4576-8eb3-6eb1df553dc8",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id\": 1,\r\n   \"tipo\": \"television\",\r\n   \"adicional\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post servicio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6da59b6-c765-4a5f-aeb6-01fa6fc39315",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"tipo\": \"WI-Fi\",\r\n   \"adicional\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put servicio exitoso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45957566-2e22-434d-921d-0cb60088bd61",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"tipo\": \"HBO\",\r\n   \"adicional\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios",
+						"5"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put servicio incorrecto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b074133-8b22-4f1c-9286-c20d469c5c90",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"tipo\": \"Wi-Fi\",\r\n   \"adicional\": true\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Exitoso",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios",
+						"13"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete con error",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get servicio exitoso",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"adicional\": false,\n        \"tipo\": \"television\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios",
+						"7"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
