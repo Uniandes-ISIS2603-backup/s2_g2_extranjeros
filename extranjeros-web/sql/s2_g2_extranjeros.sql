@@ -25,11 +25,11 @@ insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
 insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
 insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
 
-insert into EstudianteEntity (id, name) values (100,'Oveja Negra');
-insert into EstudianteEntity (id, name) values (100,'Oveja Negra');
-insert into EstudianteEntity (id, name) values (100,'Oveja Negra');
-insert into EstudianteEntity (id, name) values (100,'Oveja Negra');
-insert into EstudianteEntity (id, name) values (100,'Oveja Negra');
+insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201616977,'Ana',1020889765,'ana123','ana123@gmail.com','clave111',3102312132,18);
+insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201736899,'Daniel',1020976897,'dani123','daniel123@gmail.com','empanada',3214879822,19);
+insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201568972,'Juan', 10208,76567,'juanito','juanmail@gmail.com', 'hola123', 3145678769, 20 );
+insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201687345,'Jose', 1020789654, 'eljose','granjose@hotmail.com','miclave',3128976543, 21);
+insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201789373,'Laura', 1020654287,'lauris1','lau2018@gmail.com','laulau',3208362548,20);
 
 insert into EventoEntity (id, name) values (100,'Oveja Negra');
 insert into EventoEntity (id, name) values (100,'Oveja Negra');
@@ -47,11 +47,11 @@ insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacio
 insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (2,'Bar','La Pola','Carrera 3 # 19 - 30',6626333,'4.669595','-74.059950"');
 insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (3,'Entretenimiento','Cinema Uniandes','Carrera 19 # 71 - 85',3226574,'4.654693','-74.055516');
 
-insert into ProvidenciaEntity (id, name) values (100,'Oveja Negra');
-insert into ProvidenciaEntity (id, name) values (100,'Oveja Negra');
-insert into ProvidenciaEntity (id, name) values (100,'Oveja Negra');
-insert into ProvidenciaEntity (id, name) values (100,'Oveja Negra');
-insert into ProvidenciaEntity (id, name) values (100,'Oveja Negra');
+insert into ProvidenciaEntity (id, pais, region) values (571,'Colombia','Medellin');
+insert into ProvidenciaEntity (id, pais, region) values (572,'Colombia','Cali');
+insert into ProvidenciaEntity (id, pais, region) values (573,'Colombia','Cartagena');
+insert into ProvidenciaEntity (id, pais, region) values (341,'España','Madrid');
+insert into ProvidenciaEntity (id, pais, region) values (342,'España','Barcelona');
 
 insert into ServicioEntity (id, name, adicional) values (100,'Agua',false);
 insert into ServicioEntity (id, name, adicional) values (232,'Gas',false);
