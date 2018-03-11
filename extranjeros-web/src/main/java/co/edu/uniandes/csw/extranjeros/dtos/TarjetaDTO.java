@@ -34,10 +34,9 @@ import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
- *      "id": number,
- *      "numero: number,
+ *      "numero": number,
  *      "banco": string,
- *      "fechaCaducidad: string
+ *      "fechaCaducidad": string
  *   }
  * </pre>
  * Por ejemplo una tarjeta se representa asi:<br>
@@ -45,7 +44,6 @@ import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
  * <pre>
  * 
  *   {
- *      "id": 91852,
  *      "numero: 123456789,
  *      "banco": "davivienda",
  *      "fechaCaducidad: "2018/20/02"        

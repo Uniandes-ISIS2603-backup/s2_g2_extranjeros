@@ -206,7 +206,7 @@ public class TarjetaResource {
      public void deleteTarjeta(@PathParam("id") Long id) throws WebApplicationException {
         if(tarjetaLogic.find(id)== null)
         {
-            throw new WebApplicationException("La factura no existe", 404);
+            throw new WebApplicationException("La tarjeta no existe", 404);
         }
         tarjetaLogic.delete(id);
     }
