@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
@@ -13,6 +15,7 @@ import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.OneToMany;
 
 /**
  * Clase que extiende de {@link ViviendaDTO} para manejar la transformacion entre
@@ -29,6 +32,11 @@ public class ViviendaDetailDTO extends ViviendaDTO {
     private List<ValoracionDTO> valoraciones;
     
     private List<FacturaDTO> facturas;
+    
+    private ArrendatarioDTO arrendatariosPropietarios;
+    
+    private List <EstudianteDTO> estudiantes;
+    
  
     public ViviendaDetailDTO(){
         super();
@@ -39,10 +47,17 @@ public class ViviendaDetailDTO extends ViviendaDTO {
          serviciosAdicionales = new ArrayList<>();
          serviciosFijos = new ArrayList<>();
          valoraciones = new ArrayList<>();
+         estudiantes = new ArrayList();
          facturas = new ArrayList<>();
+         arrendatariosPropietarios = new ArrendatarioDTO(entity.getArrendatariosPropietarios());
           if(entity.getFacturas()!=null){
              for (int i = 0; i < entity.getServiciosAdicionales().size(); i++) {
                  facturas.add(new FacturaDTO(entity.getFacturas().get(i)));
+             }
+         }
+          if(entity.getEstudiantes()!=null){
+             for (int i = 0; i < entity.getEstudiantes().size(); i++) {
+                 estudiantes.add(new EstudianteDTO(entity.getEstudiantes().get(i)));
              }
          }
          if(entity.getServiciosAdicionales()!=null){
@@ -76,10 +91,20 @@ public class ViviendaDetailDTO extends ViviendaDTO {
         
         List<FacturaEntity> PFacturas = new ArrayList<>();
         
+        List<EstudianteEntity> PEstudiantes = new ArrayList<>();
+        
+        e.setArrendatariosPropietarios(arrendatariosPropietarios.toEntity());
+        
         if(getValoraciones()!=null){
         for (int i = 0; i < getValoraciones().size(); i++) {
             ValoracionEntity get = getValoraciones().get(i).toEntity();
             Pvaloraciones.add(get);
+        }
+        }
+         if(getEstudiantes()!=null){
+        for (int i = 0; i < getEstudiantes().size(); i++) {
+            EstudianteEntity get = getEstudiantes().get(i).toEntity();
+            PEstudiantes.add(get);
         }
         }
          if(getFacturas()!=null){
@@ -104,7 +129,7 @@ public class ViviendaDetailDTO extends ViviendaDTO {
            e.setValoraciones(Pvaloraciones);
            e.setServiciosAdicionales(PserviciosAdicionales);
            e.setServiciosFijos(PserviciosFijos);
-        
+           e.setEstudiantes(PEstudiantes);
       return e;
     }
     
@@ -162,6 +187,34 @@ public class ViviendaDetailDTO extends ViviendaDTO {
      */
     public void setFacturas(List<FacturaDTO> facturas) {
         this.facturas = facturas;
+    }
+
+    /**
+     * @return the arrendatariosPropietarios
+     */
+    public ArrendatarioDTO getArrendatariosPropietarios() {
+        return arrendatariosPropietarios;
+    }
+
+    /**
+     * @param arrendatariosPropietarios the arrendatariosPropietarios to set
+     */
+    public void setArrendatariosPropietarios(ArrendatarioDTO arrendatariosPropietarios) {
+        this.arrendatariosPropietarios = arrendatariosPropietarios;
+    }
+
+    /**
+     * @return the estudiantes
+     */
+    public List <EstudianteDTO> getEstudiantes() {
+        return estudiantes;
+    }
+
+    /**
+     * @param estudiantes the estudiantes to set
+     */
+    public void setEstudiantes(List <EstudianteDTO> estudiantes) {
+        this.estudiantes = estudiantes;
     }
 }
 

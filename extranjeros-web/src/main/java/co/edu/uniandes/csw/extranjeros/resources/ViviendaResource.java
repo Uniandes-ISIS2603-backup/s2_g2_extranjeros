@@ -153,16 +153,16 @@ public class ViviendaResource {
             throw new WebApplicationException("La vivienda no existe", 404);
         }
         List<ServicioEntity> adicional = new ArrayList<>();
-        for (int i = 0; i < oldEntity.getServiciosAdicionales().size(); i++) {
-           ServicioEntity ser = (serviLogic.getServicio(oldEntity.getServiciosAdicionales().get(i).getId()));
+        for (int i = 0; i < vivienda.getServiciosAdicionales().size(); i++) {
+           ServicioEntity ser = (serviLogic.getServicio(vivienda.getServiciosAdicionales().get(i).toEntity().getId()));
            if(ser == null){
                throw new BusinessLogicException("El servicio no existe");
            }
            adicional.add(ser);
         }
         List<ServicioEntity> fijos = new ArrayList<>();
-        for (int i = 0; i < oldEntity.getServiciosFijos().size(); i++) {
-           ServicioEntity ser = (serviLogic.getServicio(oldEntity.getServiciosFijos().get(i).getId()));
+        for (int i = 0; i < vivienda.getServiciosFijos().size(); i++) {
+           ServicioEntity ser = (serviLogic.getServicio(vivienda.getServiciosFijos().get(i).toEntity().getId()));
            if(ser == null){
                throw new BusinessLogicException("El servicio no existe");
            }

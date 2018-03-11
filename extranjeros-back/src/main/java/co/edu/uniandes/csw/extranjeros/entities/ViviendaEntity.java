@@ -249,6 +249,7 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     public void setFacturas(List<FacturaEntity> facturas) {
         this.facturas = facturas;
     }
+   
     
     
     
