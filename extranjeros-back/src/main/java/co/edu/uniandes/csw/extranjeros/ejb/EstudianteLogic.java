@@ -74,10 +74,12 @@ public class EstudianteLogic  {
      * Actualiza la información de un estudiante
      * @param newUser Instancia de EstudianteEntityy con los nuevos datos.
      * @return Instancia de EstudianteEntityy con los datos actualizados.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
     public EstudianteEntity updateEstudiante (EstudianteEntity newUser) throws BusinessLogicException{
         
         LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
+        
         
         if(newUser.getClave().length() < 8 && newUser.getClave().length() > 15){
             throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15");
@@ -90,11 +92,20 @@ public class EstudianteLogic  {
         String celular = String.valueOf(newUser.getCelular());
         char numeros[] = celular.toCharArray();
         
-        // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
-        // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.
         if (numeros.length != 10){
             throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
         }
+        
+        if(!(newUser.getTarjeta()!= null))
+        {
+            throw new BusinessLogicException("Su cuenta debe tener una tarjeta asociada");
+        }
+        
+        if(!(newUser.getVivienda()!=null))
+        {
+            newUser.setEstadoArrendamiento(false);
+        }
+        
         
         return estudiantePersistence.update(newUser);
     }
@@ -140,110 +151,11 @@ public class EstudianteLogic  {
             throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
         }
         
+        if(!(newUser.getVivienda()!=null))
+        {
+            newUser.setEstadoArrendamiento(false);
+        }
         return estudiantePersistence.create(newUser);
     }
      
-    public ProvidenciaEntity getProvidencia(Long userID){
-        LOGGER.log(Level.INFO, "Inicia el proceso para consultar la providencia asociada del estudiante con id = {0}");
-        return getEstudiante(userID).getProvidencia();
-    }
-     
-   public  ProvidenciaEntity updateProvidencia(Long userID,ProvidenciaEntity nuevaProvidencia )throws BusinessLogicException
-   {
-       LOGGER.log(Level.INFO, "Inicia el proceso para actualizar la providencia asociada del estudiante con id = {0}");
-       if(Objects.equals(getEstudiante(userID).getProvidencia().getId(), nuevaProvidencia.getId()))
-       {
-           throw new BusinessLogicException("Se esta asignando la misma providencia que tenía el estudiante ");
-       }
-       
-       getEstudiante(userID).setProvidencia(nuevaProvidencia);
-       return  getEstudiante(userID).getProvidencia();
-   }
-    
-  public UniversidadEntity getUniversidad(Long userID){
-        LOGGER.log(Level.INFO, "Inicia el proceso para consultar la universidad asociada del estudiante con id = {0}");
-        return getEstudiante(userID).getUniversidad();
-    }
-     
-   public  UniversidadEntity updateUniversidad(Long userID,UniversidadEntity universidad)throws BusinessLogicException
-   {
-       LOGGER.log(Level.INFO, "Inicia el proceso para actualizar la universidad asociada del estudiante con id = {0}");
-       if(Objects.equals(getEstudiante(userID).getUniversidad().getId(), universidad.getId()))
-       {
-           throw new BusinessLogicException("Se esta asignando la misma universidad que tenía el estudiante ");
-       }
-       getEstudiante(userID).setUniversidad(universidad);
-       return  getEstudiante(userID).getUniversidad();
-   }
-    
-    public TarjetaEntity getTarjeta(Long userID){
-        LOGGER.log(Level.INFO, "Inicia el proceso para consultar la tarjeta asociada del estudiante con id = {0}");
-        return getEstudiante(userID).getTarjeta();
-    }
-     
-   public  TarjetaEntity updateTarjeta(Long userID,TarjetaEntity tarjeta)throws BusinessLogicException
-   {
-       LOGGER.log(Level.INFO, "Inicia el proceso para actualizar la providencia asociada del estudiante con id = {0}");
-       if(Objects.equals(getEstudiante(userID).getTarjeta().getId(), tarjeta.getId()))
-       {
-           throw new BusinessLogicException("Se esta asignando la misma vivienda que tenía el estudiante ");
-       }
-       getEstudiante(userID).setTarjeta(tarjeta);
-       return  getEstudiante(userID).getTarjeta();
-   }
-   
-   
-    public ViviendaEntity getVivienda(Long userID){
-        LOGGER.log(Level.INFO, "Inicia el proceso para consultar la vivienda asociada del estudiante con id = {0}");
-        return getEstudiante(userID).getVivienda();
-    }
-     
-   public  ViviendaEntity updateVivienda(Long userID,ViviendaEntity vivienda)throws BusinessLogicException
-   {
-       LOGGER.log(Level.INFO, "Inicia el proceso para actualizar la providencia asociada del estudiante con id = {0}");
-       if(Objects.equals(getEstudiante(userID).getVivienda().getId(), vivienda.getId()))
-       {
-           throw new BusinessLogicException("Se esta asignando la misma vivienda que tenía el estudiante ");
-       }
-       getEstudiante(userID).setVivienda(vivienda);
-       return  getEstudiante(userID).getVivienda();
-   }
-  
-   public List<EventoEntity> getEventosCreados(Long userID)
-   {
-       LOGGER.log(Level.INFO, "Inicia el proceso para consultar los eventos creados del estudiante con id = {0}");
-       return getEstudiante(userID).getEventosCreados();
-   }
-   
-   public EventoEntity addEventoCreado(Long userID, EventoEntity evento) throws BusinessLogicException
-   {
-        LOGGER.log(Level.INFO, "Inicia el proceso para agregar un evento a creados del estudiante con id = {0}");
-        if(!getEstudiante(userID).isEstadoArrendamiento())
-        {
-            throw new BusinessLogicException("El estudiante no puede crear un evento si no se encuentra activo ");
-        }
-        getEstudiante(userID).addEventosCreados(evento);
-        return getEstudiante(userID).getEventosCreados().get(getEstudiante(userID).getEventosCreados().size() -1);
-    }
-    
-   public List<EventoEntity> getEventosInvitado(Long userID)
-   {
-       LOGGER.log(Level.INFO, "Inicia el proceso para consultar los eventos a los que asistirá del estudiante con id = {0}");
-       return getEstudiante(userID).getEventosInvitado();
-   }
-   
-   public EventoEntity addEventoInvitado(Long userID, EventoEntity evento) throws BusinessLogicException
-   {
-        LOGGER.log(Level.INFO, "Inicia el proceso para agregar un evento a los que asistirá del estudiante con id = {0}");
-        if(evento.isPrivado())
-        {
-            if (getEstudiante(userID).getProvidencia() == evento.getResponsableEventoP().getProvidencia())
-            {
-            throw new BusinessLogicException("El evento es privado y el estudiante no puede asistir");
-            }
-        }
-        getEstudiante(userID).addEventosInvitado(evento);
-        return getEstudiante(userID).getEventosInvitado().get(getEstudiante(userID).getEventosInvitado().size() -1);
-    }
-   
 }
