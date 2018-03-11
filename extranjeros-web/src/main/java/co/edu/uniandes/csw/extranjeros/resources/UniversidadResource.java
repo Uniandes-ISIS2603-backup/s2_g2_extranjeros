@@ -30,7 +30,7 @@ import javax.ws.rs.WebApplicationException;
  * </pre>
  * 
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
- * este recurso tiene la ruta "cities".</i>
+ * este recurso tiene la ruta "universidad".</i>
  *
  * <h2> Anotaciones </h2>
  * <pre>
@@ -163,7 +163,7 @@ public class UniversidadResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public UniversidadDetailDTO updateUniversidad(@PathParam("id") Long id, UniversidadDetailDTO universidad)
+    public UniversidadDetailDTO updateUniversidad(@PathParam("id") Long id, UniversidadDetailDTO universidad) throws BusinessLogicException
     {
         universidad.setId(id);
         UniversidadEntity entidad = logica.getUniversidad(id);

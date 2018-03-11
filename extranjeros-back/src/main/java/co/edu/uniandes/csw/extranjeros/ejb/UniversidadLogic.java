@@ -50,16 +50,27 @@ public class UniversidadLogic {
      */
     public List<UniversidadEntity> getUniversidades() {
         LOGGER.info("Inicia proceso de consultar todas las universidades");
-        // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<UniversidadEntity> editorials = persistence.findAll();
-        LOGGER.info("Termina proceso de consultar todas las universidades");
-        return editorials;
+        return persistence.findAll();
+        
     }
 
+    //-- GET ONE
+    /**
+     * Obtiene los datos de una instancia de Universidad a partir de su ID (identificador).
+     * @param id Identificador de la instancia a consultar.
+     * @return Instancia de UniversidadEntity con los datos del Usuario consultado.
+     */
     public UniversidadEntity getUniversidad(Long id) {
         return persistence.find(id);
     }
-
+    
+    
+    //-- UPDATE
+    /**
+     * Actualiza la información de una instancia de Universidad.
+     * @param entity Instancia de UniversidadEntity con los nuevos datos.
+     * @return Instancia de UniversidadEntity con los datos actualizados.
+     */
     public UniversidadEntity updateUniversidad(UniversidadEntity entity) throws BusinessLogicException  {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una universidad");
         if(persistence.findByName(entity.getNombre()) != null){
@@ -68,6 +79,11 @@ public class UniversidadLogic {
         return persistence.update(entity);
     }
     
+    //-- DELETE
+    /**
+     * Elimina una instancia de Universidad de la base de datos.
+     * @param id Identificador de la instancia a eliminar.
+     */
     public void deleteUniversidad(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar universidad con id={0}", id);
         
