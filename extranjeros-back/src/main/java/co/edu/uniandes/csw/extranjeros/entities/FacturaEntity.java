@@ -31,7 +31,6 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private Double costoFijo;
     private Double costosAdicionales;
     private String formaDePago;
-    private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
     
     @Temporal(TemporalType.TIMESTAMP)
@@ -105,18 +104,6 @@ public class FacturaEntity extends BaseEntity implements Serializable
      */
     public void setFormaDePago(String formaDePago) {
         this.formaDePago = formaDePago;
-    }
-     /**
-     * @return Número de nquilinos en la vivienda.
-     */
-    public Integer getNumerodeInquilinos() {
-        return numerodeInquilinos;
-    }
-    /**
-     * @param numerodeInquilinos Nuevo número de inquilinos en la vivienda.
-     */
-    public void setNumerodeInquilinos(Integer numerodeInquilinos) {
-        this.numerodeInquilinos = numerodeInquilinos;
     }
     /**
      * @return Si se va a dividir o no el pago de los servicios.
