@@ -71,10 +71,14 @@ public class TarjetaDTO {
      * Constructor que recibe un TarjetaEntity
      */
     public TarjetaDTO(TarjetaEntity entity) {
-        this.banco = entity.getBanco();
-        this.numero = entity.getNumero();
-        this.fechaCaducidad = entity.getFechaCaducidad();
-        this.id = entity.getId();
+        if(entity != null)
+        {
+            this.banco = entity.getBanco();
+            this.numero = entity.getNumero();
+            this.fechaCaducidad = entity.getFechaCaducidad();
+            this.id = entity.getId();
+        }
+
     }
     
     

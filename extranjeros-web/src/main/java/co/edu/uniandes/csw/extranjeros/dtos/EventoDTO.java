@@ -23,7 +23,6 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
-import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
 import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
 import java.util.Date;
 
@@ -83,16 +82,20 @@ public class EventoDTO {
     
     /**
      * Constructor que recibe un EventoEntity
+     * @param entity Entidad a convertir
      */
     public EventoDTO(EventoEntity entity) {
-        this.nombreEvento = entity.getNombreEvento();
-        this.tipoEvento = entity.getTipoEvento();
-        this.fechaEvento = entity.getFechaEvento();
-        this.ubicacionLat = entity.getUbicacionLat();
-        this.ubicacionLon = entity.getUbicacionLon();
-        this.privado = entity.isPrivado();
-        this.capacidad = entity.getCapacidad();
-        this.id = entity.getId();
+        if(entity != null)
+        {
+            this.nombreEvento = entity.getNombreEvento();
+            this.tipoEvento = entity.getTipoEvento();
+            this.fechaEvento = entity.getFechaEvento();
+            this.ubicacionLat = entity.getUbicacionLat();
+            this.ubicacionLon = entity.getUbicacionLon();
+            this.privado = entity.isPrivado();
+            this.capacidad = entity.getCapacidad();
+            this.id = entity.getId();
+        }
     }
 
 

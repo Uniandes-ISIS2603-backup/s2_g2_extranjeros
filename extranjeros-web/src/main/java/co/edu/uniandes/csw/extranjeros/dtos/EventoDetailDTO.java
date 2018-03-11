@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 package co.edu.uniandes.csw.extranjeros.dtos;
-import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
+import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +99,7 @@ public class EventoDetailDTO extends EventoDTO {
     /**
      * Constructor para transformar un Entity a un DTO
      *
-     * @param entity La entidad de ciudad a partir de la cual se construye el objeto
+     * @param entity La entidad a partir de la cual se construye el objeto
      */
     public EventoDetailDTO(EventoEntity entity) {
         super(entity);
@@ -113,6 +113,14 @@ public class EventoDetailDTO extends EventoDTO {
     @Override
     public EventoEntity toEntity() {
         EventoEntity eventoE = super.toEntity();
+        List<EstudianteEntity> lista = new ArrayList<>();
+        for(EstudianteDTO es: estudiantes)
+        {
+            lista.add(es.toEntity());
+        }
+        eventoE.setEstudiantesInvitados(lista);
+        eventoE.setResponsableEventoP(responsableEventoP.toEntity());
+        eventoE.setLugarDeInteres(lugarDeInteres.toEntity());
         return eventoE;
     }
 
