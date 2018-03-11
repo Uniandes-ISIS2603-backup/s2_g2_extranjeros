@@ -70,6 +70,7 @@ public class UniversidadLogic {
      * Actualiza la información de una instancia de Universidad.
      * @param entity Instancia de UniversidadEntity con los nuevos datos.
      * @return Instancia de UniversidadEntity con los datos actualizados.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
     public UniversidadEntity updateUniversidad(UniversidadEntity entity) throws BusinessLogicException  {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una universidad");
