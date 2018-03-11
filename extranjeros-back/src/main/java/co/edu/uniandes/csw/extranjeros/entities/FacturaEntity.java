@@ -45,13 +45,6 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private Double iva;
     
     /**
-     * Vivienda que se factura.
-     */
-    @PodamExclude
-    @OneToOne
-    private ViviendaEntity vivienda;
-    
-    /**
      * Lista de servicios que ya estan incluidos en el precio base.
      */
     @PodamExclude
@@ -173,15 +166,6 @@ public class FacturaEntity extends BaseEntity implements Serializable
     public void setIVA(Double IVA) {
         this.iva = IVA;
     }
-
-    public ViviendaEntity getVivienda() {
-        return vivienda;
-    }
-
-    public void setVivienda(ViviendaEntity vivienda) {
-        this.vivienda = vivienda;
-    }
-
     public List<ServicioEntity> getServiciosIncluidos() {
         return serviciosIncluidos;
     }
