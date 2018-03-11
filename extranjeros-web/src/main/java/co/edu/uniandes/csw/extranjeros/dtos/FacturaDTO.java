@@ -24,7 +24,7 @@ import java.util.Date;
  *    "dividirCuentaServicios": boolean,
  *    "fechaEntrada": string,
  *    "fechaSalida":string,
- *    "IVA": number
+ *    "iva": number
  *  }
  * </pre>
  * Por ejemplo una factura se representa asi:<br>
@@ -40,7 +40,7 @@ import java.util.Date;
  *    "dividirCuentaServicios": true,
  *    "fechaEntrada": "16/01/2018",
  *    "fechaSalida":"18/02/2018",
- *    "IVA": 0.013
+ *    "iva": 0.013
  *  }
  *
  * </pre>
@@ -52,11 +52,10 @@ public class FacturaDTO {
     private Double costoFijo;
     private Double costosAdicionales;
     private String formaDePago;
-    private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
     private Date fechaEntrada;
     private Date fechaSalida;
-    private Double IVA;
+    private Double iva;
     
     
     /**
@@ -73,11 +72,10 @@ public class FacturaDTO {
         costoFijo=entity.getCostoFijo();
         costosAdicionales=entity.getCostosAdicionales();
         formaDePago=entity.getFormaDePago();
-        numerodeInquilinos=entity.getNumerodeInquilinos();
         dividirCuentaServicios=entity.isDividirCuentaServicios();
         fechaEntrada=entity.getFechaEntrada();
         fechaSalida=entity.getFechaSalida();
-        IVA=entity.getIVA();
+        iva=entity.getIVA();
     }
     //Métodos
     /**
@@ -129,18 +127,6 @@ public class FacturaDTO {
         this.formaDePago = formaDePago;
     }
     /**
-     * @return numero inquilinos.
-     */
-    public Integer getNumerodeInquilinos() {
-        return numerodeInquilinos;
-    }
-    /**
-     * @param numerodeInquilinos nuevo numero inquilinos.
-     */
-    public void setNumerodeInquilinos(Integer numerodeInquilinos) {
-        this.numerodeInquilinos = numerodeInquilinos;
-    }
-    /**
      * @return si se divide la cuenta o no.
      */
     public boolean isDividirCuentaServicios() {
@@ -180,13 +166,13 @@ public class FacturaDTO {
      * @return IVA.
      */
     public Double getIVA() {
-        return IVA;
+        return iva;
     }
      /**
      * @param IVA nuevo IVA.
      */
     public void setIVA(Double IVA) {
-        this.IVA = IVA;
+        this.iva = IVA;
     }
     /**
      * Convierte un objeto FacturaDTO a FacturaEntity incluyendo los
@@ -205,8 +191,7 @@ public class FacturaDTO {
         e.setFechaEntrada(fechaEntrada);
         e.setFechaSalida(fechaSalida);
         e.setFormaDePago(formaDePago);
-        e.setNumerodeInquilinos(numerodeInquilinos);
-        e.setIVA(IVA);
+        e.setIVA(iva);
         return e;
     }
     

@@ -37,11 +37,11 @@ insert into EventoEntity (id, name) values (100,'Oveja Negra');
 insert into EventoEntity (id, name) values (100,'Oveja Negra');
 insert into EventoEntity (id, name) values (100,'Oveja Negra');
 
-insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (1234,350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
-insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (54321,350.200,150.500,'cargo único',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
-insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (6969696,350.200,122.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2022-05-04 15:52:25'},0.890);
-insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (78945,350.200,10.500,'cargo único',true,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
-insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (141454,350.200,203.500,'cobros mensuales',true,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (1234,350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (54321,350.200,150.500,'cargo único',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (6969696,350.200,122.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2022-05-04 15:52:25'},0.890);
+insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (78945,350.200,10.500,'cargo único',true,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (141454,350.200,203.500,'cobros mensuales',true,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 
 insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (1,'Centro Comercial','Unicentro','Carrera 15 # 127 - 30',6622732,'4.644277','-74.071385"');
 insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (2,'Bar','La Pola','Carrera 3 # 19 - 30',6626333,'4.669595','-74.059950"');
