@@ -37,11 +37,11 @@ insert into EventoEntity (id, name) values (100,'Oveja Negra');
 insert into EventoEntity (id, name) values (100,'Oveja Negra');
 insert into EventoEntity (id, name) values (100,'Oveja Negra');
 
-insert into FacturaEntity (id, name,costoFijo,costosAdicionales,) values (100,'Oveja Negra');
-insert into FacturaEntity (id, name) values (100,'Oveja Negra');
-insert into FacturaEntity (id, name) values (100,'Oveja Negra');
-insert into FacturaEntity (id, name) values (100,'Oveja Negra');
-insert into FacturaEntity (id, name) values (100,'Oveja Negra');
+insert into FacturaEntity (id, name,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id, name,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id, name,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id, name,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
+insert into FacturaEntity (id, name,costoFijo,costosAdicionales,formaDePago,numerodeInquilinos,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 
 insert into LugaresDeInteresEntity (id, name) values (100,'Oveja Negra');
 insert into LugaresDeInteresEntity (id, name) values (100,'Oveja Negra');

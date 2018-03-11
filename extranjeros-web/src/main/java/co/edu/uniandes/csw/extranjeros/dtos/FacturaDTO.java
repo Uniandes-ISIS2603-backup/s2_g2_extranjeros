@@ -20,7 +20,6 @@ import java.util.Date;
  *    "costoFijo": number,
  *    "costosAdicionales": number,
  *    "formaDePago": string,
- *    "mesesAPagar": number,
  *    "numerodeInquilinos": number,
  *    "dividirCuentaServicios": boolean,
  *    "fechaEntrada": string,
@@ -37,11 +36,10 @@ import java.util.Date;
  *    "costoFijo": 120000.0,
  *    "costosAdicionales": 5000.0,
  *    "formaDePago": "efectivo",
- *    "mesesAPagar": 12,
  *    "numerodeInquilinos": 3,
  *    "dividirCuentaServicios": true,
- *    "fechaEntrada": "16 enero",
- *    "fechaSalida":"18 febrero",
+ *    "fechaEntrada": "16/01/2018",
+ *    "fechaSalida":"18/02/2018",
  *    "IVA": 0.013
  *  }
  *
@@ -54,7 +52,6 @@ public class FacturaDTO {
     private Double costoFijo;
     private Double costosAdicionales;
     private String formaDePago;
-    private Integer mesesAPagar;
     private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
     private Date fechaEntrada;
@@ -76,7 +73,6 @@ public class FacturaDTO {
         costoFijo=entity.getCostoFijo();
         costosAdicionales=entity.getCostosAdicionales();
         formaDePago=entity.getFormaDePago();
-        mesesAPagar=entity.getMesesAPagar();
         numerodeInquilinos=entity.getNumerodeInquilinos();
         dividirCuentaServicios=entity.isDividirCuentaServicios();
         fechaEntrada=entity.getFechaEntrada();
@@ -131,18 +127,6 @@ public class FacturaDTO {
      */
     public void setFormaDePago(String formaDePago) {
         this.formaDePago = formaDePago;
-    }
-    /**
-     * @return los meses a pagar del arriendo.
-     */
-    public Integer getMesesAPagar() {
-        return mesesAPagar;
-    }
-    /**
-     * @param mesesAPagar los nuevos meses a pagar del arriendo.
-     */
-    public void setMesesAPagar(Integer mesesAPagar) {
-        this.mesesAPagar = mesesAPagar;
     }
     /**
      * @return numero inquilinos.
@@ -222,7 +206,6 @@ public class FacturaDTO {
         e.setFechaSalida(fechaSalida);
         e.setFormaDePago(formaDePago);
         e.setNumerodeInquilinos(numerodeInquilinos);
-        e.setMesesAPagar(mesesAPagar);
         e.setIVA(IVA);
         return e;
     }
