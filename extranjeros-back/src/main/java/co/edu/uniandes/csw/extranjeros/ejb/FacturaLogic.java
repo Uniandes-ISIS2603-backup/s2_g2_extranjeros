@@ -71,6 +71,8 @@ public class FacturaLogic {
             throw new BusinessLogicException("La fecha de salida no puede ser menor a la de entrada.");
         if(!fechaSalidaAlMenosUnMes(entity))
             throw new BusinessLogicException("La fecha de salida no es de al menos un m despues de la de entrada.");
+        if(!hayEspacio(vivienda))
+            throw new BusinessLogicException("La factura no se puede realizar, la vivienda esta llena.");
         return persistence.create(entity);
     }
     /**
@@ -146,7 +148,7 @@ public class FacturaLogic {
      */
     private boolean hayEspacio(ViviendaEntity entity)
     {
-        return true;
+        return (entity.getCapacidad()-entity.getInquilinos())>0;
     }
     
 }
