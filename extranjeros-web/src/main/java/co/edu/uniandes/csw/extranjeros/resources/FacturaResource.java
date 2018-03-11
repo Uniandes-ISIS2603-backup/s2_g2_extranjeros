@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.extranjeros.mappers.BusinessLogicExceptionMapper;
 import co.edu.uniandes.csw.extranjeros.dtos.*;
 import co.edu.uniandes.csw.extranjeros.ejb.FacturaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -40,7 +41,7 @@ import javax.ws.rs.WebApplicationException;
  * @author s.rodriguezm
  * @version 1.0
  */
-@Path("facturas")
+@Path("viviendas/{viviendaId: \\d+}/facturas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
@@ -49,6 +50,9 @@ public class FacturaResource
     @Inject
     FacturaLogic facturaLogic;
     
+    @Inject
+    ViviendaLogic viviendaLogic;
+
     /**
      * Convierte una lista de FacturaEntity a una lista de FacturaDetailDTO.
      *
@@ -81,13 +85,16 @@ public class FacturaResource
      * </code>
      * </pre>
      * @param fac{@link FacturaDetailDTO} - la factura que se desea guardar.
+     * @param id Identificador de la vivienda sobre al que se va a hacer la factura. Este debe ser una cadena de dígitos.
      * @return JSON {@link FacturaDetailDTO}  - la factura guardada con el atributo id autogenerado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la factura.
      */
     @POST
-    public FacturaDetailDTO createFactura(FacturaDetailDTO fac)throws BusinessLogicException
+    public FacturaDetailDTO createFactura(FacturaDetailDTO fac,@PathParam("viviendaId") Long id)throws BusinessLogicException
     {
-        return new FacturaDetailDTO(facturaLogic.createFactura(fac.toEntity()));
+        if(viviendaLogic.getVivienda(id)==null)
+            throw new BusinessLogicException("La factura debe ser sobre una vivienda pre-existente.");
+        return new FacturaDetailDTO(facturaLogic.createFactura(fac.toEntity(),viviendaLogic.getVivienda(id)));
     }
     /**
      * <h1>GET /api/facturas : Obtener todos las facturas.</h1>

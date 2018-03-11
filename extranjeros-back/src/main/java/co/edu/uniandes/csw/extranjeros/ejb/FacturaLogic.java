@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.FacturaPersistence;
 import java.time.LocalDate;
@@ -57,10 +58,11 @@ public class FacturaLogic {
      * Se encarga de crear un Factura en la base de datos.
      *
      * @param entity Objeto de FacturaEntity con los datos nuevos
+     * @param vivienda Objeto de ViviendaEntity relacionada con la factura.
      * @return Objeto de FacturaEntity con los datos nuevos y su ID.
      * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException si alguna regla de negocio es incumplida.
      */
-    public FacturaEntity createFactura(FacturaEntity entity)throws BusinessLogicException
+    public FacturaEntity createFactura(FacturaEntity entity, ViviendaEntity vivienda)throws BusinessLogicException
     {
         LOGGER.log(Level.INFO,"Inicia proceso de crear un servicio");
         if(isFechaMenor(new Date(),entity.getFechaEntrada())||isFechaMenor(new Date(),entity.getFechaSalida()))
@@ -137,6 +139,14 @@ public class FacturaLogic {
     LocalDate lin = in.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     LocalDate lout = out.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     return ChronoUnit.MONTHS.between(lin, lout)>=1;
+    }
+    /**
+     * Determina si la factura se puede hacer segun los cupos disponibles de la vivienda.
+     * @param entity ViviendaEntity a revisar.
+     */
+    private boolean hayEspacio(ViviendaEntity entity)
+    {
+        return true;
     }
     
 }

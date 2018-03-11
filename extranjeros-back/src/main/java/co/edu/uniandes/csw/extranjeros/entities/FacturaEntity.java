@@ -31,7 +31,6 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private Double costoFijo;
     private Double costosAdicionales;
     private String formaDePago;
-    private Integer mesesAPagar;
     private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
     
@@ -43,7 +42,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
     @PodamStrategyValue(OutDateStrategy.class)
     private Date fechaSalida;
     
-    private Double IVA;
+    private Double iva;
     
     /**
      * Vivienda que se factura.
@@ -115,18 +114,6 @@ public class FacturaEntity extends BaseEntity implements Serializable
         this.formaDePago = formaDePago;
     }
      /**
-     * @return Número de meses a pagar.
-     */
-    public Integer getMesesAPagar() {
-        return mesesAPagar;
-    }
-    /**
-     * @param mesesAPagar Nuevo número de meses a pagar.
-     */
-    public void setMesesAPagar(Integer mesesAPagar) {
-        this.mesesAPagar = mesesAPagar;
-    }
-     /**
      * @return Número de nquilinos en la vivienda.
      */
     public Integer getNumerodeInquilinos() {
@@ -178,13 +165,13 @@ public class FacturaEntity extends BaseEntity implements Serializable
      * @return Valor del IVA.
      */
     public Double getIVA() {
-        return IVA;
+        return iva;
     }
     /**
     * @param IVA Nuevo valor del IVA.
     */
     public void setIVA(Double IVA) {
-        this.IVA = IVA;
+        this.iva = IVA;
     }
 
     public ViviendaEntity getVivienda() {
