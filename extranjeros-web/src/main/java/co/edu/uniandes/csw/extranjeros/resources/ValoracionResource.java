@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.extranjeros.resources;
 
 import co.edu.uniandes.csw.extranjeros.dtos.ValoracionDetailDTO;
 import co.edu.uniandes.csw.extranjeros.ejb.ValoracionLogic;
+import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -27,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
  * 
  * @author jd.arango
  */
-@Path("valoracion")
+@Path("viviendas/{viviendaId: \\d+}/valoraciones")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
@@ -35,6 +37,9 @@ public class ValoracionResource {
     
     @Inject
    private ValoracionLogic logic; 
+    
+    @Inject 
+   private ViviendaLogic viviendaLogic; 
     
    /**
      * Convierte una lista de ValoracionEntity a una lista de ValoracionDetailDTO.
@@ -70,8 +75,12 @@ public class ValoracionResource {
      * @return JSON {@link ValoracionDetailDTO}  - La valoracion guardada con el atributo id autogenerado.
      */
     @POST
-    public ValoracionDetailDTO createValoracion(ValoracionDetailDTO vivi) {
-        return new ValoracionDetailDTO(logic.createValoracion(vivi.toEntity()));
+    public ValoracionDetailDTO createValoracion(ValoracionDetailDTO vivi,@PathParam("viviendaId") Long id) throws BusinessLogicException {
+       if(viviendaLogic.getVivienda(id)==null){
+          throw new BusinessLogicException("La vivienda asociada no existe");
+       }
+       ValoracionDetailDTO val = new ValoracionDetailDTO(logic.createValoracion(vivi.toEntity()));
+       return val;
     }
       /**
      * <h1>GET /api/valoraciones : Obtener todas las valoraciones.</h1>
