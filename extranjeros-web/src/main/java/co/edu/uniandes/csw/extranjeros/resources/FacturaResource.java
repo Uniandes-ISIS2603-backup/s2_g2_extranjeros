@@ -41,7 +41,7 @@ import javax.ws.rs.WebApplicationException;
  * @author s.rodriguezm
  * @version 1.0
  */
-@Path("viviendas/{viviendaId: \\d+}/facturas")
+@Path("arrendatarios/{arrendatarioId: \\d+}/viviendas/{viviendaId: \\d+}/facturas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
