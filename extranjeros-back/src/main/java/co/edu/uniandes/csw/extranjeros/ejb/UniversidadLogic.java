@@ -38,7 +38,7 @@ public class UniversidadLogic {
         LOGGER.info("Inicia proceso de creación de universidad");
         // Verifica la regla de negocio que dice que no puede haber dos universidades con el mismo nombre
         if (persistence.findByName(entity.getNombre()) != null) {
-            throw new BusinessLogicException("Ya existe una Universidad con el nombre \"" + entity.getName() + "\"");
+            throw new BusinessLogicException("Ya existe una Universidad con el nombre \"" + entity.getNombre() + "\"");
         }
         // Invoca la persistencia para crear la universidad
         return persistence.create(entity);

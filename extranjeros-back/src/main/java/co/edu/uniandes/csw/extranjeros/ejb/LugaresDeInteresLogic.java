@@ -37,8 +37,8 @@ public class LugaresDeInteresLogic {
     public LugaresDeInteresEntity createLugarDeInteres(LugaresDeInteresEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de lugar de interes");
         // Verifica la regla de negocio que dice que no puede haber dos lugares de interes con el mismo nombre
-        if (persistence.findByName(entity.getName()) != null) {
-            throw new BusinessLogicException("Ya existe un Lugar de Interes con el nombre \"" + entity.getName() + "\"");
+        if (persistence.findByName(entity.getNombre()) != null) {
+            throw new BusinessLogicException("Ya existe un Lugar de Interes con el nombre \"" + entity.getNombre() + "\"");
         }
         // Invoca la persistencia para crear el lugar de interes
         return persistence.create(entity);
