@@ -1,0 +1,88 @@
+{
+	"info": {
+		"name": "CollectionUniversidad",
+		"_postman_id": "d29bd53d-cc85-fadb-b0b2-9fa114d89541",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetCorrect",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33658c24-6068-4a96-abb5-13d226255919",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PostCorrect",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3992d025-c1ca-42a8-8f61-d915a0d265df",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"nombre\": \"Universidad de los Andes\",\r\n        \"direccion\": \"Carrera 1 # 19 - 30\",\r\n        \"ubicacionLat\": \"64.5256854\",\r\n        \"ubicacionLon\": \"-75.5487412\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

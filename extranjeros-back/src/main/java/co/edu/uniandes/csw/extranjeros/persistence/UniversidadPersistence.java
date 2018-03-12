@@ -42,17 +42,17 @@ public class UniversidadPersistence {
      /**
      * Busca si hay alguna universidad con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la universidad que se está buscando
+     * @param nombre: Nombre de la universidad que se está buscando
      * @return null si no existe ninguna universidad con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
-    public UniversidadEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando universidad por nombre ", name);
+    public UniversidadEntity findByName(String nombre) {
+        LOGGER.log(Level.INFO, "Consultando universidad por nombre ", nombre);
 
         // Se crea un query para buscar universidades con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From UniversidadEntity e where e.name = :name", UniversidadEntity.class);
+        TypedQuery query = em.createQuery("Select e From UniversidadEntity e where e.nombre = :nombre", UniversidadEntity.class);
         // Se remplaza el placeholder ":name" con el valor del argumento 
-        query = query.setParameter("name", name);
+        query = query.setParameter("nombre", nombre);
         // Se invoca el query se obtiene la lista resultado
         List<UniversidadEntity> sameName = query.getResultList();
         if (sameName.isEmpty()) {
