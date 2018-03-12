@@ -1,0 +1,289 @@
+{
+	"info": {
+		"name": "Arrendatario",
+		"_postman_id": "e1957624-3fe7-d6b7-3ae4-b98fe23ecd2e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/extranjeros-web/api/arrendatarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c7d9212-1f40-4f0d-bdb9-2e9aa6366e47",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"123456789\",\n    \"celular\": \"3223854596\",\n    \"clave\": \"PRUEBAAAA5\",\n    \"correo\": \"pruebaUno@hotmail.com\",\n    \"edad\": 20,\n    \"id\": 16,\n    \"nombre\": \"Nombre aleatorio Hola\",\n    \"usuario\": \"hola35\",\n    \"cuentaBancaria\": [{\"saldoCuenta\": 50000,\n    \"tipoCuenta\": \"Ahorros\",\n    \t\"bancoAsociado\": \"Banco gatuno X\"\n    }],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Arrendatario con id: 14000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c7d9212-1f40-4f0d-bdb9-2e9aa6366e47",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"123456789\",\n    \"celular\": \"3223854596\",\n    \"clave\": \"PRUEBAAAA5\",\n    \"correo\": \"pruebaUno@hotmail.com\",\n    \"edad\": 20,\n    \"id\": 16,\n    \"nombre\": \"Nombre aleatorio Hola\",\n    \"usuario\": \"hola35\",\n    \"cuentaBancaria\": [{\"saldoCuenta\": 50000,\n    \"tipoCuenta\": \"Ahorros\",\n    \t\"bancoAsociado\": \"Banco gatuno X\"\n    }],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/140001",
+				"description": "Se busca el arrendatario con id dada en la base de datos."
+			},
+			"response": []
+		},
+		{
+			"name": "POST arrendatario igual nombre.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f18f0a8-cefc-49d3-b6b5-3c2ba0e5627d",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"123456789\",\n    \"celular\": \"3223854596\",\n    \"clave\": \"PRUEBAAAA5\",\n    \"correo\": \"pruebaUno@hotmail.com\",\n    \"edad\": 20,\n    \"id\": 16,\n    \"nombre\": \"Nombre aleatorio Hola\",\n    \"usuario\": \"hola35\",\n    \"cuentaBancaria\": [{\"saldoCuenta\": 50000,\n    \"tipoCuenta\": \"Ahorros\",\n    \t\"bancoAsociado\": \"Banco gatuno X\"\n    }],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios",
+				"description": "412: Error en la regla de negocio que valida que no existan arrendatarios con el mismo nombre."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT: violación de regla de negocio.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9744dc8-b2b5-4b86-a951-bed42d021040",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"102084062920313323223\",\n    \"celular\": \"3223854596\",\n    \"clave\": \"estoEs123\",\n    \"correo\": \"pruebaDos@hotmail.com\",\n    \"edad\": 20,\n    \"id\": 24,\n    \"nombre\": \"Un nombre aleta 122121dsadasd\",\n    \"usuario\": \"aletaJeje221312312dsadsadas\",\n    \"cuentaBancaria\": [],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/24",
+				"description": "EL PUT desea modificar el arrendatario con ID 140000 y darle un nombre de Usuario ya existente en la BD."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT exitoso: no hay violaciones en las reglas de negocio.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08db9f0e-5c38-4fdb-b8f6-87ea783df4c9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"10208406292031344334433\",\n    \"celular\": \"3223854596\",\n    \"clave\": \"estoEs123\",\n    \"correo\": \"pruebaDos@hotmail.com\",\n    \"edad\": 20,\n    \"nombre\": \"Un nombre aleta 12212143434343434343\",\n    \"usuario\": \"aletaJeje221312312434434433443\",\n    \"cuentaBancaria\": [],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/140001",
+				"description": "Las reglas de negocio fueron cumplidas."
+			},
+			"response": []
+		},
+		{
+			"name": "POST exitoso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08db9f0e-5c38-4fdb-b8f6-87ea783df4c9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t    \"type\": \"arrendatarioDetailDTO\",\n        \"cedula\": \"1\",\n        \"celular\": \"3223854596\",\n        \"clave\": \"estoEs123\",\n        \"correo\": \"pruebaDos@hotmail.com\",\n        \"edad\": 20,\n        \"nombre\": \"Un nombre aleta 82\",\n        \"usuario\": \"unUsuarioCasual\",\n        \"cuentaBancaria\": [],\n        \"facturas\": [],\n        \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios",
+				"description": "El arrendatario fue creado de acuerdo a las reglas de negocio establecidas."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE exitoso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d8efdcc-e5a6-4e7f-84f6-729a117eb56a",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/140000",
+				"description": "Se borra el Arrendatario y se retorna un void."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a un Arrendatario ya eliminado. ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "edee3aee-fa35-4016-b73f-cfc954d07ec0",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/21",
+				"description": "DELETE no encuentra el Arrendatario. "
+			},
+			"response": []
+		},
+		{
+			"name": "GET a un arrendatario eliminado.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "edee3aee-fa35-4016-b73f-cfc954d07ec0",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/21",
+				"description": "El arrendatario fue eliminado, por ende no existe. "
+			},
+			"response": []
+		}
+	]
+}
