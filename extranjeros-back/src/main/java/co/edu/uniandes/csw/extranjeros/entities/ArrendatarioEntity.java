@@ -13,9 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
@@ -31,17 +29,16 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
     //---------------------------------------------------
     
     @PodamExclude
-    @ManyToMany(mappedBy = "arrendatariosAsociados")
+    @OneToMany(mappedBy = "arrendatariosAsociados")
     private List <FacturaEntity> facturas;
     
     @PodamExclude
     @OneToMany(mappedBy = "arrendatariosPropietarios")
     private List <ViviendaEntity> viviendas;
-
-
+    
     @PodamExclude
-    @OneToOne (mappedBy = "arrendatarioTitular", cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private CuentaBancariaEntity cuentaBancaria;
+    @OneToMany(mappedBy = "arrendatarioTitular", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<CuentaBancariaEntity> cuentasBancarias;
     
     //---------------------------------------------------
     // Atributos
@@ -211,15 +208,15 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
     /**
      * @return La cuenta bancaria asociadas a un arrendatario.
      */
-    public CuentaBancariaEntity getCuentaBancaria() {
-        return cuentaBancaria;
+    public List<CuentaBancariaEntity> getCuentasBancarias() {
+        return cuentasBancarias;
     }
 
     /**
      * Crea o modifica la cuenta de banco asociada a un Arrendatario.
      * @param cuentaBancaria Cuenta de Banco. 
      */
-    public void setCuentaBancaria(CuentaBancariaEntity cuentaBancaria) {
-        this.cuentaBancaria = cuentaBancaria;
+    public void setCuentasBancarias(List<CuentaBancariaEntity> cuentaBancaria) {
+        this.cuentasBancarias = cuentaBancaria;
     } 
 } 

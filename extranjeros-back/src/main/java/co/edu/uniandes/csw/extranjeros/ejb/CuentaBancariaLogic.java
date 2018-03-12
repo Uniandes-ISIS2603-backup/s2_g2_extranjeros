@@ -45,13 +45,15 @@ public class CuentaBancariaLogic {
          LOGGER.info("Inicia proceso de consultar las cuentas bancarias del Usuario");
          ArrendatarioEntity arrendEntity = arrendatarioLogic.getArrendatario(arrendatarioID);
          
-        if (arrendEntity.getCuentaBancaria()== null) {
+        if (arrendEntity.getCuentasBancarias()== null) {
             throw new BusinessLogicException("El arrendatario que se esta consultando aún no tiene una cuenta bancaria."); 
         }
         
-        List <CuentaBancariaEntity> retorno = new ArrayList<>();
-        retorno.add(arrendEntity.getCuentaBancaria());
-        return retorno;
+        if (arrendEntity.getCuentasBancarias().isEmpty()) {
+            throw new BusinessLogicException("El arrendatario que se esta consultando aún no tiene una cuenta bancaria."); 
+        }
+        
+        return arrendEntity.getCuentasBancarias();
     }
     
     //---------------------------------------------------
