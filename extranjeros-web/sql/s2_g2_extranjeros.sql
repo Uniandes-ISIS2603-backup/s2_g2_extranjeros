@@ -43,38 +43,34 @@ insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCue
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (78945,350.200,10.500,'cargo único',true,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (141454,350.200,203.500,'cobros mensuales',true,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 
-insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (1,'Centro Comercial','Unicentro','Carrera 15 # 127 - 30',6622732,'4.644277','-74.071385"');
-insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (2,'Bar','La Pola','Carrera 3 # 19 - 30',6626333,'4.669595','-74.059950"');
-insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (3,'Entretenimiento','Cinema Uniandes','Carrera 19 # 71 - 85',3226574,'4.654693','-74.055516');
+insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (132212,'Centro Comercial','Unicentro','Carrera 15 # 127 - 30',6622732,'4.644277','-74.071385"');
+insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (2241322,'Bar','La Pola','Carrera 3 # 19 - 30',6626333,'4.669595','-74.059950"');
+insert into LugaresDeInteresEntity (id, tipol,nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (3342361,'Entretenimiento','Cinema Uniandes','Carrera 19 # 71 - 85',3226574,'4.654693','-74.055516');
 
-insert into ProvidenciaEntity (id, pais, region) values (571,'Colombia','Medellin');
-insert into ProvidenciaEntity (id, pais, region) values (572,'Colombia','Cali');
-insert into ProvidenciaEntity (id, pais, region) values (573,'Colombia','Cartagena');
-insert into ProvidenciaEntity (id, pais, region) values (341,'España','Madrid');
-insert into ProvidenciaEntity (id, pais, region) values (342,'España','Barcelona');
+insert into ProvidenciaEntity (id, pais, region) values (5324671,'Colombia','Medellin');
+insert into ProvidenciaEntity (id, pais, region) values (5764572,'Colombia','Cali');
+insert into ProvidenciaEntity (id, pais, region) values (4234423,'Colombia','Cartagena');
+insert into ProvidenciaEntity (id, pais, region) values (3423441,'España','Madrid');
+insert into ProvidenciaEntity (id, pais, region) values (3454532,'España','Barcelona');
 
-insert into ServicioEntity (id, name, adicional) values (100,'Agua',false);
-insert into ServicioEntity (id, name, adicional) values (232,'Gas',false);
-insert into ServicioEntity (id, name, adicional) values (45,'Wi-Fi',true);
-insert into ServicioEntity (id, name, adicional) values (687,'Luz',false);
-insert into ServicioEntity (id, name, adicional) values (101,'Televisión',true);
+insert into ServicioEntity (id, tipo, adicional) values (100,'Agua',false);
+insert into ServicioEntity (id, tipo, adicional) values (233422,'Gas',false);
+insert into ServicioEntity (id, tipo, adicional) values (434235,'Wi-Fi',true);
+insert into ServicioEntity (id, tipo, adicional) values (687,'Luz',false);
+insert into ServicioEntity (id, tipo, adicional) values (101,'Televisión',true);
 
-insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (10111,'','Oveja Negra');
-insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
-insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
-insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
-insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
+insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (10111,'VISA',4789215346878546,'10/2018','Oveja Negra');
+insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (10111,'MasterCard',5789215346878546,'10/2018','Oveja Negra');
+insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (10111,'VISA',378921534687854,'10/2018','Oveja Negra');
 
-insert into UniversidadEntity (id, name) values (100,'Oveja Negra');
-insert into UniversidadEntity (id, name) values (232,'Oveja Negra');
-insert into UniversidadEntity (id, name) values (45,'Oveja Negra');
-insert into UniversidadEntity (id, name) values (687,'Oveja Negra');
-insert into UniversidadEntity (id, name) values (101,'Oveja Negra');
+insert into UniversidadEntity (id, nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (100,'Universidad de los Andes','Cra 1 Nº 18A - 12',3394999,'4.602135','-74.066245');
+insert into UniversidadEntity (id, nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (101,'Universidad Jorge Tadeo Lozano','Cra 4 Nº 22 - 61',2427030,'4.606727','-74.067585');
+insert into UniversidadEntity (id, nombre,direccion,telefono,ubicacionLat,ubicacionLon) values (102,'Pontificia Universidad Javeriana','Cra 7 Nº 40 - 50',3208320,'4.628464','-74.065118');
 
 insert into ValoracionEntity (id, valoracion,comentario) values (3124,3,'habia mucho ruido');
 insert into ValoracionEntity (id, valoracion,comentario) values (3125,4,'muy caliente');
 insert into ValoracionEntity (id, valoracion,comentario) values (3126,2,'terrible');
 
-insert into ViviendaEntity (id,dirección,capacidad,disponible,latitud,longitud,tipoAlojamiento) values (1001,'carrera 12 7609',1,false,'4.643998','-74.071531','A');
-insert into ViviendaEntity (id,dirección,capacidad,disponible,latitud,longitud,tipoAlojamiento) values (1002,'calle 189 2345',2,true,'4.668502','-74.058386',p'C');
-insert into ViviendaEntity (id,dirección,capacidad,disponible,latitud,longitud,tipoAlojamiento) values (2,'calle 21 1307',3,true,'4.652762','-74.056516','B');
+insert into ViviendaEntity (id,dirección,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (1001,'carrera 12 7609',1,false,34,'4.643998','-74.071531','A');
+insert into ViviendaEntity (id,dirección,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (1002,'calle 189 2345',2,true,22,'4.668502','-74.058386','C');
+insert into ViviendaEntity (id,dirección,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (2,'calle 21 1307',3,true,3'4.652762','-74.056516','B');

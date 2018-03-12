@@ -1,0 +1,690 @@
+{
+	"info": {
+		"name": "collectionFactura",
+		"_postman_id": "da47775e-df73-8d0e-6bad-efa2c1790add",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Creación vivienda que tendra facturas.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df4e1e20-3e95-4cf1-b1bc-3dbcbbc8e663",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"viviendaDetailDTO\",\n        \"direccion\": \"carrera 50A\",\n        \"disponible\": false,\n        \"inquilinos\": 3,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"tipoAlojamiento\": \"B\",\n        \"capacidad\":34,\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": []\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post exitoso de factura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e960a84-a81e-4704-a580-5ee6e554128f",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post exitoso de factura copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e960a84-a81e-4704-a580-5ee6e554128f",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post exitoso de factura copy copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e960a84-a81e-4704-a580-5ee6e554128f",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post exitoso de factura copy copy copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e960a84-a81e-4704-a580-5ee6e554128f",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Segundo post exitoso de factura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c8459a48-1431-4885-b97d-ebb5a353d4ba",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cobros mensuales\",\n   \"dividirCuentaServicios\": false,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"5",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get exitoso de factura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d07a7fd-413a-4c5d-a798-e80228e2de20",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cobros mensuales\",\n   \"dividirCuentaServicios\": false,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"5",
+						"facturas",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete exitoso de factura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3049e191-d355-426c-930c-18e76b121c4a",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"5",
+						"facturas",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get de todas las facturas de la vivienda exitoso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f397f5b1-dbf1-4e0a-9698-1c5f6a572385",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"5",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post factura 412",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ddadb993-89d0-45e9-acc0-d931ebe959ff",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": true,\n        \"fechaEntrada\": \"2018-02-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cargo Ãºnico\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"5",
+						"facturas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get de factura 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24f5a773-67da-4697-b738-388d14e64bf4",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": true,\n        \"fechaEntrada\": \"2018-02-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cargo Ãºnico\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas",
+						"20"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put fallido 412",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d5f8e7a-b710-4045-a58c-7e12168518e4",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": false,\n        \"fechaEntrada\": \"2018-02-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cobros mensuales\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put exitoso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4f52e00-bf13-420a-ab6c-def63ad5411a",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": false,\n        \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cobros mensuales\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put fallido 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e891fa16-00e6-4f44-bce2-70d604980f72",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": false,\n        \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cobros mensuales\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas",
+						"18"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete test 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee984d91-6b36-4125-827f-6159aba16666",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"viviendas",
+						"1",
+						"facturas",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
