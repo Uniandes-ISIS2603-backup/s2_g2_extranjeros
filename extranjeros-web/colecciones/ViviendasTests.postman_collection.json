@@ -1,0 +1,421 @@
+{
+	"id": "aca64bcf-f363-b6df-6846-23ecae92d600",
+	"name": "ViviendasTests",
+	"description": "",
+	"order": [
+		"a6cf30c7-3c03-bc1f-b4df-03f8b8136526",
+		"f11df3f9-be65-5b4e-b75a-a14c5a079229",
+		"b3a33033-e413-151a-743e-fdb7d3364d42",
+		"f5a6370f-f45a-d595-3539-60c031ca4984",
+		"575a93bd-db25-0648-a84b-d80d13b9e9cd",
+		"f0bd5076-4a56-a2bc-702c-303f8d6efcf8",
+		"c08cd274-e97a-09ef-010d-dfe9ed2886b7",
+		"5fa4ee7a-dd72-2103-87a9-64541361990f",
+		"565de663-2468-ed90-9817-7d83b8c50b07"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1520826536613,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "565de663-2468-ed90-9817-7d83b8c50b07",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/11",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50f6c7a7-a4cd-464b-8f8a-9a3171779e5a",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "GET",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "GET la vivienda eliminada",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520828104456,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		},
+		{
+			"id": "575a93bd-db25-0648-a84b-d80d13b9e9cd",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/15",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbfc3bca-05c4-466e-a757-2c122d23fa41",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "GET",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "GET una vivienda no existente",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520826692381,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		},
+		{
+			"id": "5fa4ee7a-dd72-2103-87a9-64541361990f",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/11",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50f6c7a7-a4cd-464b-8f8a-9a3171779e5a",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "DELETE",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "DELETE una vivienda",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520828081164,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		},
+		{
+			"id": "a6cf30c7-3c03-bc1f-b4df-03f8b8136526",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "529c5130-63dc-4197-a144-26d03fe7ba94",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "POST",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST vivienda",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520826538283,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\r\n        \"direccion\": \"calle 21 1307\",\r\n        \"disponible\": true,\r\n         \"inquilinos\":5,\r\n        \"latitud\": \"32\",\r\n        \"longitud\": \"456\",\r\n        \"capacidad\": 34,\r\n        \"tipoAlojamiento\": \"B\",\r\n        \"facturas\": [],\r\n        \"serviciosAdicionales\": [],\r\n        \"serviciosFijos\": [],\r\n        \"valoraciones\": [],\r\n         \"estudiantes\": []\r\n      \r\n}\r\n"
+		},
+		{
+			"id": "b3a33033-e413-151a-743e-fdb7d3364d42",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e0dd445-f3c4-421e-a7cf-1a89f29e9d15",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "POST",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST una vivienda",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520826578033,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "\r\n\t{\r\n        \"direccion\": \"carrera 20 107 54\",\r\n        \"disponible\": true,\r\n        \"inquilinos\":0,\r\n        \"latitud\": \"543\",\r\n        \"longitud\": \"344\",\r\n        \"capacidad\": 2,\r\n        \"tipoAlojamiento\": \"D\",\r\n        \"facturas\": [],\r\n        \"serviciosAdicionales\": [],\r\n        \"serviciosFijos\": [],\r\n        \"valoraciones\": [],\r\n         \"estudiantes\": []\r\n      \r\n}"
+		},
+		{
+			"id": "c08cd274-e97a-09ef-010d-dfe9ed2886b7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/11",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98385ea9-ec8f-415a-8a59-76c77d950f58",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520828381476,
+			"name": "PUTno valido",
+			"description": "",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 400\"] = responseCode.code === 400;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "\t{\r\n        \"direccion\": \"carrera 20 107 54\",\r\n        \"disponible\": buenas,\r\n        \"inquilinos\":0,\r\n        \"latitud\": \"543\",\r\n        \"longitud\": \"344\",\r\n        \"capacidad\": 2,\r\n        \"tipoAlojamiento\": \"D\",\r\n        \"facturas\": [],\r\n        \"serviciosAdicionales\": [],\r\n        \"serviciosFijos\": [],\r\n        \"valoraciones\": [],\r\n         \"estudiantes\": []\r\n      \r\n}"
+		},
+		{
+			"id": "f0bd5076-4a56-a2bc-702c-303f8d6efcf8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/11",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "baa32c01-c85d-4d9d-8f4f-c08893398304",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "PUT",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "PUT valido",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520826738376,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "\r\n\t{\r\n        \"direccion\": \"carrera 20 107 54\",\r\n        \"disponible\": false,\r\n        \"inquilinos\":2,\r\n        \"latitud\": \"543\",\r\n        \"longitud\": \"344\",\r\n        \"capacidad\": 2,\r\n        \"tipoAlojamiento\": \"D\",\r\n        \"facturas\": [],\r\n        \"serviciosAdicionales\": [],\r\n        \"serviciosFijos\": [],\r\n        \"valoraciones\": [],\r\n         \"estudiantes\": []\r\n      \r\n}"
+		},
+		{
+			"id": "f11df3f9-be65-5b4e-b75a-a14c5a079229",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e0dd445-f3c4-421e-a7cf-1a89f29e9d15",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "POST",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "POST una vivienda",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520826568743,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "\r\n{\r\n        \"direccion\": \"calle 23 2978\",\r\n        \"disponible\": true,\r\n        \"inquilinos\":0,\r\n        \"latitud\": \"32\",\r\n        \"longitud\": \"456\",\r\n        \"capacidad\": 1,\r\n        \"tipoAlojamiento\": \"A\",\r\n        \"facturas\": [],\r\n        \"serviciosAdicionales\": [],\r\n        \"serviciosFijos\": [],\r\n        \"valoraciones\": [],\r\n         \"estudiantes\": []\r\n      \r\n}"
+		},
+		{
+			"id": "f5a6370f-f45a-d595-3539-60c031ca4984",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/9",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e0dd445-f3c4-421e-a7cf-1a89f29e9d15",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"auth": null,
+			"method": "GET",
+			"collectionId": "aca64bcf-f363-b6df-6846-23ecae92d600",
+			"data": [],
+			"dataMode": "raw",
+			"name": "GET una vivienda existente",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520826602279,
+			"version": 2,
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		}
+	]
+}
