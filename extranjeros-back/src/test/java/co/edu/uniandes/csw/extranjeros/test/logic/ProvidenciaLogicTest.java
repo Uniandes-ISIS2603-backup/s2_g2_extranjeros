@@ -194,7 +194,7 @@ public class ProvidenciaLogicTest {
         pojoEntity.setId(entity.getId());
 
         try {
-            providenciaLogic.updatProvidencia(pojoEntity);
+            providenciaLogic.updateProvidencia(pojoEntity);
         } catch (BusinessLogicException ex) {
             Logger.getLogger(ProvidenciaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }

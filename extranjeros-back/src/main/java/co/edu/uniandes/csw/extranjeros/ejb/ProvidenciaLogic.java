@@ -89,7 +89,7 @@ public class ProvidenciaLogic {
      * @return La entidad de la providencia luego de actualizarla
      * @throws BusinessLogicException Si no existe la providencia ingresada
      */
-     public ProvidenciaEntity updatProvidencia(ProvidenciaEntity entity) throws BusinessLogicException {
+     public ProvidenciaEntity updateProvidencia(ProvidenciaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar libro con id={0}", entity.getId());
         if (!(persistence.find(entity.getId())!=null)) {
             throw new BusinessLogicException("No existe la providencia ingresada");
