@@ -38,20 +38,38 @@ public class TarjetaPersistence {
         return entity;
     }
     
+    /**
+     * Retorna la tarjeta con el id dado por parámetro
+     * @param id
+     * @return 
+     */
     public TarjetaEntity find(Long id) {
         return em.find(TarjetaEntity.class, id);
     }
 
+    /**
+     * Actualiza la tarjeta con la tarjeta que llega por parámetro
+     * @param entity
+     * @return 
+     */
     public TarjetaEntity update(TarjetaEntity entity) {
          return em.merge(entity);
     }
     
+    /**
+     * Elimina la tarjeta con el identificador dado
+     * @param id 
+     */
     public void delete(Long id)
     {
         LOGGER.log(Level.INFO, "Borrando Tarjeta con el id={0}",id);
         em.remove(find(id));
     }
     
+    /**
+     * Retorna todas las tarjetas
+     * @return 
+     */
     public List<TarjetaEntity> findAll() {
         LOGGER.info("Consultando todas las tarjetas");
         TypedQuery query = em.createQuery("select u from TarjetaEntity u", TarjetaEntity.class);

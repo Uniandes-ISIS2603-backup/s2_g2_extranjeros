@@ -44,9 +44,9 @@ import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
  * <pre>
  * 
  *   {
- *      "numero: 123456789,
- *      "banco": "davivienda",
- *      "fechaCaducidad: "2018/20/02"        
+ *      "numero": 4123456789012345,
+ *      "banco": "VISA",
+ *      "fechaCaducidad: "12/2018"        
  *   }
  *
  * </pre>
@@ -55,8 +55,20 @@ import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
 public class TarjetaDTO {
 
     private Long id;
+    
+    /**
+     * Número de la tarjeta
+     */
     private Long numero;
+    
+    /**
+     * Franquicia de la tarjeta
+     */
     private String banco;
+    
+    /**
+     * Fecha de caducidad de la tarjeta
+     */
     private String fechaCaducidad;
 
     /**

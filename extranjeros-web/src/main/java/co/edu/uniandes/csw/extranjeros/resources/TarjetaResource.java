@@ -45,8 +45,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 
 /**
- * <pre>Clase que implementa el recurso "Tarjeta".
- * URL: /api/tarjeta
+ * <pre>Clase que implementa el recurso "Tarjetas".
+ * URL: /api/tarjetas
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "Tarjeta".</i>
@@ -60,7 +60,7 @@ import javax.ws.rs.WebApplicationException;
  * 
  * @author la.ruiz967
  */
-@Path("tarjeta")
+@Path("tarjetas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
@@ -98,7 +98,7 @@ public class TarjetaResource {
     }
 
     /**
-     * <h1>GET /api/tarjeta : Obtener todas las tarjetas.</h1>
+     * <h1>GET /api/tarjetas : Obtener todas las tarjetas.</h1>
      * 
      * <pre>Busca y devuelve todas las tarjetas que existen en la aplicacion.
      * 
@@ -120,7 +120,7 @@ public class TarjetaResource {
     }
 
     /**
-     * <h1>GET /api/tarjeta/{id} : Obtener tarjeta por id.</h1>
+     * <h1>GET /api/tarjetas/{id} : Obtener tarjeta por id.</h1>
      * 
      * <pre>Busca la tarjeta con el id asociado recibido en la URL y la devuelve.
      * 
@@ -149,7 +149,7 @@ public class TarjetaResource {
     }
     
     /**
-     * <h1>PUT /api/tarjeta/{id} : Actualizar tarjeta con el id dado.</h1>
+     * <h1>PUT /api/tarjetas/{id} : Actualizar tarjeta con el id dado.</h1>
      * <pre>Cuerpo de petición: JSON {@link TarjetaDetailDTO}.
      * 
      * Actualiza la tarjeta con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
@@ -184,7 +184,7 @@ public class TarjetaResource {
     }
     
     /**
-     * <h1>DELETE /api/tarjeta/{id} : Borrar ciudad por id.</h1>
+     * <h1>DELETE /api/tarjetas/{id} : Borrar ciudad por id.</h1>
      * 
      * <pre>Borra la tarjeta con el id asociado recibido en la URL.
      * 

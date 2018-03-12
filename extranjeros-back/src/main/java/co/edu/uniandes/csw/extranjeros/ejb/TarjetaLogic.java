@@ -29,6 +29,11 @@ public class TarjetaLogic {
     @Inject
     private TarjetaPersistence persistence;
     
+    /**
+     * Método que verifica que el número de la tarjeta cumpla con la longitud establecida por la franquicia.
+     * @param num
+     * @return 
+     */
     public boolean verificarNumero(Long num)
     {
         boolean rta = false;
@@ -44,6 +49,12 @@ public class TarjetaLogic {
         }
         return rta;
     }
+    
+    /**
+     * Verifica que la franquicia sea alguna de las 3 seleccionadas.
+     * @param pBanco
+     * @return 
+     */
     public boolean verificarBanco(String pBanco)
     {
         if(pBanco.equals("MasterCard") || pBanco.equals("VISA") || pBanco.equals("American Express"))
@@ -53,6 +64,11 @@ public class TarjetaLogic {
         return false;
     }
     
+    /**
+     * Verifica que la fecha de vencimiento de la tarjeta sea como mínimo, 1 mes calendario después de la fecha de registro.
+     * @param fecha
+     * @return 
+     */
     public boolean verificarFecha(String fecha)
     {
         boolean rta = false;
@@ -81,6 +97,12 @@ public class TarjetaLogic {
         
     }
     
+    /**
+     * Método que crea una tarjeta verificando las reglas anteriormente descritas.
+     * @param tarjeta
+     * @return
+     * @throws BusinessLogicException 
+     */
     public TarjetaEntity create(TarjetaEntity tarjeta) throws BusinessLogicException
     {
         if(verificarBanco(tarjeta.getBanco()))
@@ -109,6 +131,12 @@ public class TarjetaLogic {
         }
     }
     
+    /**
+     * Método que actualiza una tarjeta validando las condiciones anteriormente mencionadas.
+     * @param tarjeta
+     * @return
+     * @throws BusinessLogicException 
+     */
     public TarjetaEntity update(TarjetaEntity tarjeta) throws BusinessLogicException
     {
         if(verificarBanco(tarjeta.getBanco()))
@@ -135,16 +163,29 @@ public class TarjetaLogic {
         }
     }
     
+    /**
+     * Método que encuentra una tarjeta dado su identificador.
+     * @param id
+     * @return 
+     */
     public TarjetaEntity find(Long id)
     {
         return persistence.find(id);
     }
     
+    /**
+     * Método que retorna todas las tarjetas. 
+     * @return 
+     */
     public List<TarjetaEntity> findAll()
     {
         return persistence.findAll();
     }
     
+    /**
+     * Método que elimina una tarjeta dado su identificador.
+     * @param id 
+     */
     public void delete(Long id)
     {
         persistence.delete(id);

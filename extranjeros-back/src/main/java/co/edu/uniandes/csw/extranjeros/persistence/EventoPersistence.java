@@ -38,20 +38,38 @@ public class EventoPersistence {
         return entity;
     }
     
+    /**
+     * Encuentra elemento con el id dado por parámetro
+     * @param id
+     * @return 
+     */
     public EventoEntity find(Long id) {
         return em.find(EventoEntity.class, id);
     }
 
+    /**
+     * Actualiza el elemento de la base de datos por el que llega por parámetro
+     * @param entity
+     * @return 
+     */
     public EventoEntity update(EventoEntity entity) {
          return em.merge(entity);
     }
     
+    /**
+     * Borra de la base de datos el elemento con el id dado. 
+     * @param id 
+     */
     public void delete(Long id)
     {
         LOGGER.log(Level.INFO, "Borrando Evento con el id={0}",id);
         em.remove(find(id));
     }
     
+    /**
+     * Retorna la lista de elementos en la base de datos.
+     * @return 
+     */
     public List<EventoEntity> findAll() {
         LOGGER.info("Consultando todos los eventos");
         TypedQuery query = em.createQuery("select u from EventoEntity u", EventoEntity.class);
