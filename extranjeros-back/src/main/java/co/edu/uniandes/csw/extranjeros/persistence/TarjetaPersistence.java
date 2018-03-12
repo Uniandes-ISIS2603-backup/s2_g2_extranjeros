@@ -39,42 +39,37 @@ public class TarjetaPersistence {
     }
     
     /**
-     * Busca si hay alguna tarjeta con el numero que se envía de argumento
-     *
-     * @param numero: Numero de la tarjeta que se está buscando
-     * @return null si no existe ninguna tarjeta con el numero del argumento. Si
-     * existe alguna devuelve la primera.
+     * Retorna la tarjeta con el id dado por parámetro
+     * @param id
+     * @return 
      */
-    public TarjetaEntity findByNumber(Long numero) {
-        LOGGER.log(Level.INFO, "Consultando tarjeta por numero ", numero);
-
-        // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From TarjetaEntity e where e.numero = :numero", TarjetaEntity.class);
-        // Se remplaza el placeholder ":numero" con el valor del argumento 
-        query = query.setParameter("numero", numero);
-        // Se invoca el query se obtiene la lista resultado
-        List<TarjetaEntity> sameName = query.getResultList();
-        if (sameName.isEmpty()) {
-            return null;
-        } else {
-            return sameName.get(0);
-        }
-    }
-    
     public TarjetaEntity find(Long id) {
         return em.find(TarjetaEntity.class, id);
     }
 
+    /**
+     * Actualiza la tarjeta con la tarjeta que llega por parámetro
+     * @param entity
+     * @return 
+     */
     public TarjetaEntity update(TarjetaEntity entity) {
          return em.merge(entity);
     }
     
+    /**
+     * Elimina la tarjeta con el identificador dado
+     * @param id 
+     */
     public void delete(Long id)
     {
         LOGGER.log(Level.INFO, "Borrando Tarjeta con el id={0}",id);
         em.remove(find(id));
     }
     
+    /**
+     * Retorna todas las tarjetas
+     * @return 
+     */
     public List<TarjetaEntity> findAll() {
         LOGGER.info("Consultando todas las tarjetas");
         TypedQuery query = em.createQuery("select u from TarjetaEntity u", TarjetaEntity.class);

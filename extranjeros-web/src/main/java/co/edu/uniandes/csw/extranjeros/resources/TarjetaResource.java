@@ -25,11 +25,14 @@ package co.edu.uniandes.csw.extranjeros.resources;
 
 
 import co.edu.uniandes.csw.extranjeros.dtos.TarjetaDetailDTO;
+import co.edu.uniandes.csw.extranjeros.ejb.TarjetaLogic;
+import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -39,10 +42,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
- * <pre>Clase que implementa el recurso "Tarjeta".
- * URL: /api/tarjeta
+ * <pre>Clase que implementa el recurso "Tarjetas".
+ * URL: /api/tarjetas
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "Tarjeta".</i>
@@ -56,12 +60,15 @@ import javax.ws.rs.Produces;
  * 
  * @author la.ruiz967
  */
-@Path("tarjeta")
+@Path("tarjetas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class TarjetaResource {
 
+    @Inject
+    TarjetaLogic tarjetaLogic;
+    
     /**
      * <h1>POST /api/tarjeta : Crear una tarjeta.</h1>
      * 
@@ -85,11 +92,13 @@ public class TarjetaResource {
      */
     @POST
     public TarjetaDetailDTO createTarjeta(TarjetaDetailDTO tarjeta) throws BusinessLogicException {
-        return tarjeta;
+        TarjetaEntity rta = tarjetaLogic.create(tarjeta.toEntity());
+        TarjetaDetailDTO res = new TarjetaDetailDTO(rta);
+        return res;
     }
 
     /**
-     * <h1>GET /api/tarjeta : Obtener todas las tarjetas.</h1>
+     * <h1>GET /api/tarjetas : Obtener todas las tarjetas.</h1>
      * 
      * <pre>Busca y devuelve todas las tarjetas que existen en la aplicacion.
      * 
@@ -101,11 +110,17 @@ public class TarjetaResource {
      */
     @GET
     public List<TarjetaDetailDTO> getTarjetas() {
-        return new ArrayList<>();
+        List<TarjetaEntity> tars = tarjetaLogic.findAll();
+        List<TarjetaDetailDTO> res = new ArrayList<>();
+        for(TarjetaEntity en: tars)
+        {
+            res.add(new TarjetaDetailDTO(en));
+        }
+        return res;
     }
 
     /**
-     * <h1>GET /api/tarjeta/{id} : Obtener tarjeta por id.</h1>
+     * <h1>GET /api/tarjetas/{id} : Obtener tarjeta por id.</h1>
      * 
      * <pre>Busca la tarjeta con el id asociado recibido en la URL y la devuelve.
      * 
@@ -119,15 +134,22 @@ public class TarjetaResource {
      * </pre>
      * @param id Identificador de la tarjeta que se esta buscando. Este debe ser una cadena de dígitos.
      * @return JSON {@link TarjetaDetailDTO} - La tarjeta buscada
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra la tarjeta.
      */
     @GET
     @Path("{id: \\d+}")
-    public TarjetaDetailDTO getTarjeta(@PathParam("id") Long id) {
-        return null;
+    public TarjetaDetailDTO getTarjeta(@PathParam("id") Long id) throws WebApplicationException
+    {
+        TarjetaEntity tar = tarjetaLogic.find(id);
+        if(tar == null)
+        {
+            throw new WebApplicationException("La tarjeta no existe", 404);
+        }
+        return new TarjetaDetailDTO(tar);
     }
     
     /**
-     * <h1>PUT /api/tarjeta/{id} : Actualizar tarjeta con el id dado.</h1>
+     * <h1>PUT /api/tarjetas/{id} : Actualizar tarjeta con el id dado.</h1>
      * <pre>Cuerpo de petición: JSON {@link TarjetaDetailDTO}.
      * 
      * Actualiza la tarjeta con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
@@ -138,20 +160,31 @@ public class TarjetaResource {
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found. No existe una tarjeta con el id dado.
      * </code> 
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 412 Precondition Failed. No se puede actualizar la tarjeta con el id dado.
+     * </code> 
      * </pre>
      * @param id Identificador de la tarjeta que se desea actualizar.Este debe ser una cadena de dígitos.
      * @param tarjeta {@link TarjetaDetailDTO} La tarjeta que se desea guardar.
      * @return JSON {@link TarjetaDetailDTO} - La tarjeta guardada.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la tarjeta porque ya existe una con ese nombre.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra la tarjeta a actualizar.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la tarjeta.
      */
     @PUT
     @Path("{id: \\d+}")
-    public TarjetaDetailDTO updateTarjeta(@PathParam("id") Long id, TarjetaDetailDTO tarjeta) throws BusinessLogicException {
-        return tarjeta;
+    public TarjetaDetailDTO updateTarjeta(@PathParam("id") Long id, TarjetaDetailDTO tarjeta) throws BusinessLogicException, WebApplicationException {
+        TarjetaEntity tar = tarjeta.toEntity();
+        tar.setId(id);
+        if(tarjetaLogic.find(id) == null)
+        {
+            throw new WebApplicationException("La factura no existe", 404);
+        }
+        TarjetaEntity res = tarjetaLogic.update(tar);
+        return new TarjetaDetailDTO(res);
     }
     
     /**
-     * <h1>DELETE /api/tarjeta/{id} : Borrar ciudad por id.</h1>
+     * <h1>DELETE /api/tarjetas/{id} : Borrar ciudad por id.</h1>
      * 
      * <pre>Borra la tarjeta con el id asociado recibido en la URL.
      * 
@@ -163,10 +196,15 @@ public class TarjetaResource {
      * </code>
      * </pre>
      * @param id Identificador de la tarjeta que se desea borrar. Este debe ser una cadena de dígitos.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra la tarjeta a eliminar.
      */
     @DELETE
     @Path("{id: \\d+}")
-     public void deleteTarjeta(@PathParam("id") Long id) {
-        // Void
+     public void deleteTarjeta(@PathParam("id") Long id) throws WebApplicationException {
+        if(tarjetaLogic.find(id)== null)
+        {
+            throw new WebApplicationException("La tarjeta no existe", 404);
+        }
+        tarjetaLogic.delete(id);
     }
 }

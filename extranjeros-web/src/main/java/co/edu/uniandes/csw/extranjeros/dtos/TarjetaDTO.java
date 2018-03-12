@@ -33,10 +33,9 @@ import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
- *      "id": number,
- *      "numero: number,
+ *      "numero": number,
  *      "banco": string,
- *      "fechaCaducidad: string
+ *      "fechaCaducidad": string
  *   }
  * </pre>
  * Por ejemplo una tarjeta se representa asi:<br>
@@ -44,10 +43,9 @@ import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
  * <pre>
  * 
  *   {
- *      "id": 91852,
- *      "numero: 123456789,
- *      "banco": "davivienda",
- *      "fechaCaducidad: "2018/20/02"        
+ *      "numero": 4123456789012345,
+ *      "banco": "VISA",
+ *      "fechaCaducidad: "12/2018"        
  *   }
  *
  * </pre>
@@ -56,8 +54,20 @@ import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
 public class TarjetaDTO {
 
     private Long id;
+    
+    /**
+     * Número de la tarjeta
+     */
     private Long numero;
+    
+    /**
+     * Franquicia de la tarjeta
+     */
     private String banco;
+    
+    /**
+     * Fecha de caducidad de la tarjeta
+     */
     private String fechaCaducidad;
 
     /**
@@ -70,10 +80,14 @@ public class TarjetaDTO {
      * Constructor que recibe un TarjetaEntity
      */
     public TarjetaDTO(TarjetaEntity entity) {
-        this.banco = entity.getBanco();
-        this.numero = entity.getNumero();
-        this.fechaCaducidad = entity.getFechaCaducidad();
-        this.id = entity.getId();
+        if(entity != null)
+        {
+            this.banco = entity.getBanco();
+            this.numero = entity.getNumero();
+            this.fechaCaducidad = entity.getFechaCaducidad();
+            this.id = entity.getId();
+        }
+
     }
     
     

@@ -33,13 +33,13 @@ import java.util.Date;
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
- *      "id": number,
  *      "nombreEvento": string,
  *      "tipoEvento": string,
- *      "fechaEvento": Date,
+ *      "fechaEvento": string,
  *      "ubicacionLon": string,
  *      "ubicacionLat": string,
  *      "privado": boolean,
+ *      "distanciaVivienda": int,
  *      "capacidad": int
  *   }
  * </pre>
@@ -48,29 +48,61 @@ import java.util.Date;
  * <pre>
  * 
  *   {
- *      "id": 139028,
  *      "nombreEvento": "fiesta",
  *      "tipoEvento": "fiesta",
- *      "fechaEvento": Date,
+ *      "fechaEvento": "12/12/2018 15:00",
  *      "ubicacionLon": "1.59382829",
  *      "ubicacionLat": "-80.4938392",
  *      "privado": true,
- *      "capacidad": 200        
+ *      "distanciaVivienda": 20,
+ *      "capacidad": 200
  *   }
  *
  * </pre>
- * @author ISIS2603
+ * @author la.ruiz967
  */
 public class EventoDTO {
 
+    /**
+     * nombre del evento
+     */
     private String nombreEvento;
+    
+    /**
+     * tipo del evento
+     */
     private String tipoEvento;
-    private Date fechaEvento;
+    
+    /**
+     * fecha del evento
+     */
+    private String fechaEvento;
+    
+    /**
+     * ubicación del evento en longitud
+     */
     private String ubicacionLon;
+    
+    /**
+     * ubicación del evento en latitud
+     */
     private String ubicacionLat;
+    
+    /**
+     * distancia de la vivienda al evento
+     */
     private Integer distanciaVivienda;
-    private boolean privado;
-    private int capacidad;
+    
+    /**
+     * Indica si el evento es privado o no
+     */
+    private Boolean privado;
+    
+    /**
+     * Capacidad del evento
+     */
+    private Integer capacidad;
+    
     private Long id;
 
     /**
@@ -81,138 +113,152 @@ public class EventoDTO {
     
     /**
      * Constructor que recibe un EventoEntity
+     * @param entity Entidad a convertir
      */
     public EventoDTO(EventoEntity entity) {
-        this.nombreEvento = entity.getNombreEvento();
-        this.tipoEvento = entity.getTipoEvento();
-        this.fechaEvento = entity.getFechaEvento();
-        this.ubicacionLat = entity.getUbicacionLat();
-        this.ubicacionLon = entity.getUbicacionLon();
-        this.privado = entity.isPrivado();
-        this.capacidad = entity.getCapacidad();
-        this.id = entity.getId();
-    }
-
-
-    /**
-     * @return El ID del evento
-     */
-    public Long getId() {
-        return id;
+        if(entity != null)
+        {
+            this.nombreEvento = entity.getNombreEvento();
+            this.tipoEvento = entity.getTipoEvento();
+            this.fechaEvento = entity.getFechaEvento();
+            this.ubicacionLat = entity.getUbicacionLat();
+            this.ubicacionLon = entity.getUbicacionLon();
+            this.privado = entity.isPrivado();
+            this.capacidad = entity.getCapacidad();
+            this.distanciaVivienda = entity.getDistanciaVivienda();
+            this.id = entity.getId();
+        }
     }
 
     /**
-     * @param id El nuevo ID
+     * Retorna el nombre del evento
+     * @return 
      */
-    public void setId(Long id) {
-        this.id = id;
+    public String getNombreEvento() {
+        return nombreEvento;
     }
 
     /**
-     * @return la fecha del evento
+     * Cambia el nombre del evento
+     * @param nombreEvento
      */
-    public Date getFechaCaducidad() {
+    public void setNombreEvento(String nombreEvento) {
+        this.nombreEvento = nombreEvento;
+    }
+
+    /**
+     * retorna el tipo del evento
+     * @return 
+     */
+    public String getTipoEvento() {
+        return tipoEvento;
+    }
+
+    /**
+     * cambia el tipo del evento
+     * @param tipoEvento 
+     */
+    public void setTipoEvento(String tipoEvento) {
+        this.tipoEvento = tipoEvento;
+    }
+
+    /**
+     * retorna la fecha del evento
+     * @return 
+     */
+    public String getFechaEvento() {
         return fechaEvento;
     }
 
     /**
-     * @param fecha La nueva fecha
+     * cambia la fecha del evento
+     * @param fechaEvento
      */
-    public void setFecha(Date fecha) {
-        this.fechaEvento = fecha;
+    public void setFechaEvento(String fechaEvento) {
+        this.fechaEvento = fechaEvento;
     }
-    
+
     /**
-     * @return El nombre del evento
+     * retorna la ubicación en longitud del evento
+     * @return 
      */
-    public String getNombre() {
-        return nombreEvento;
-    }
-    
-    /**
-     * @param name El nuevo nombre
-     */
-    public void setNumero(String name) {
-        this.nombreEvento = name;
-    }
-    
-    /**
-     * @return El tipo del evento
-     */
-    public String getTipo() {
-        return tipoEvento;
-    }
-    
-    /**
-     * @param tipo El nuevo tipo
-     */
-    public void setTipo(String tipo) {
-        this.tipoEvento = tipo;
-    }
-    
-    /**
-     * @return La ubicacion Lon del evento
-     */
-    public String getLon() {
+    public String getUbicacionLon() {
         return ubicacionLon;
     }
-    
+
     /**
-     * @param lon La nueva ubicacion Lon
+     * cambia la longitud del evento
+     * @param ubicacionLon
      */
-    public void setLon(String lon) {
-        this.ubicacionLon = lon;
+    public void setUbicacionLon(String ubicacionLon) {
+        this.ubicacionLon = ubicacionLon;
     }
-    
+
     /**
-     * @return La ubicacion Lat del evento
+     * retorna la ubicación en latitud del evento
+     * @return 
      */
-    public String getLat() {
+    public String getUbicacionLat() {
         return ubicacionLat;
     }
-    
+
     /**
-     * @param lat La nueva ubicacion Lat
+     * cambia la latitud del evento
+     * @param ubicacionLat
      */
-    public void setLat(String lat) {
-        this.ubicacionLat = lat;
+    public void setUbicacionLat(String ubicacionLat) {
+        this.ubicacionLat = ubicacionLat;
     }
-    
+
     /**
-     * @return La privacidad del evento
+     * retorna la distancia a la vivienda del evento
+     * @return 
      */
-    public boolean getPrivacidad() {
-        return privado;
-    }
-    
-    /**
-     * @param bool La nueva privacidad del evento
-     */
-    public void setPrivacidad(boolean bool) {
-        this.privado = bool;
-    }
-    
-    /**
-     * @return La capacidad Lon del evento
-     */
-    public int getCapacidad() {
-        return capacidad;
-    }
-    
-    /**
-     * @param cap La nueva capacidad del evento
-     */
-    public void setCapacidad(int cap) {
-        this.capacidad = cap;
-    }
-    
     public Integer getDistanciaVivienda() {
         return distanciaVivienda;
     }
 
+    /**
+     * cambia la distancia del evento
+     * @param distanciaVivienda
+     */
     public void setDistanciaVivienda(Integer distanciaVivienda) {
         this.distanciaVivienda = distanciaVivienda;
     }
+
+    /**
+     * retorna la privacidad del evento
+     * @return 
+     */
+    public Boolean isPrivado() {
+        return privado;
+    }
+
+    /**
+     * cambia la privacidad del evento
+     * @param privado
+     */
+    public void setPrivado(Boolean privado) {
+        this.privado = privado;
+    }
+
+    /**
+     * retorna la capacidad del evento
+     * @return 
+     */
+    public Integer getCapacidad() {
+        return capacidad;
+    }
+
+    /**
+     * cambia la capacidad del evento
+     * @param capacidad
+     */
+    public void setCapacidad(Integer capacidad) {
+        this.capacidad = capacidad;
+    }
+
+
     
     
 
