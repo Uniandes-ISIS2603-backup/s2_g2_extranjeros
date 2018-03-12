@@ -1,0 +1,413 @@
+{
+	"id": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+	"name": "ValoracionTests",
+	"description": "",
+	"order": [
+		"0ecb493d-efdd-7ae5-f824-e561f2608c26",
+		"0b44e188-b46a-215e-5929-5eb7e842ae3f",
+		"2c59c28a-1c72-a6c0-3dd3-dd510e1fd91d",
+		"50896281-ac50-c2ee-5452-8540309b11ad",
+		"4e6e91e8-953e-c32f-d246-772d234a1a49",
+		"b915bfb8-37bf-31d5-b1be-9e2150670277",
+		"1fe5f6c4-0944-6cf9-a695-ded6a83dd042",
+		"2412ca14-5f50-739b-b144-1242d4dc94e2",
+		"702ef8d5-e8bd-c1eb-a26f-669f1d2c6565"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1520823597273,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "0b44e188-b46a-215e-5929-5eb7e842ae3f",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/8",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e0dd445-f3c4-421e-a7cf-1a89f29e9d15",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824356231,
+			"name": "PUT valoraciones en vivienda",
+			"description": "",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n       \n        \"direccion\": \"calle 21 1307\",\n        \"disponible\": true,\n         \"inquilinos\":5,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"capacidad\": 34,\n        \"tipoAlojamiento\": \"B\",\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": [\n     {\n       \"comentario\": \"habia mucho ruido\",\n        \"valoracion\": 3\n},\n{\n      \"comentario\": \"buena ubicacion\",\n     \"valoracion\": 4.5\n},\n{\n       \"comentario\": \"decente\",\n        \"valoracion\": 2\n},\n{\n      \"comentario\": \"perfecto\",\n     \"valoracion\": 5\n},\n{\n      \"comentario\":\"regular\",\n     \"valoracion\": 3.5\n}\n        \t],\n         \"estudiantes\": []\n        }\n"
+		},
+		{
+			"id": "0ecb493d-efdd-7ae5-f824-e561f2608c26",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "529c5130-63dc-4197-a144-26d03fe7ba94",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824301790,
+			"name": "POST vivienda",
+			"description": "",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n       \n        \"direccion\": \"calle 21 1307\",\n        \"disponible\": true,\n         \"inquilinos\":5,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"capacidad\": 34,\n        \"tipoAlojamiento\": \"B\",\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": [],\n         \"estudiantes\": []\n        }\n"
+		},
+		{
+			"id": "1fe5f6c4-0944-6cf9-a695-ded6a83dd042",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/8/valoraciones/1",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a05c7ae6-0127-4f7c-8db7-fa0aed64f00b",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824425470,
+			"name": "GET la valoracion eliminada",
+			"description": "se espera error 404",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		},
+		{
+			"id": "2412ca14-5f50-739b-b144-1242d4dc94e2",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/6/valoraciones",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50f6c7a7-a4cd-464b-8f8a-9a3171779e5a",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824484743,
+			"name": "Se crea una valoracion en una vivienda existente",
+			"description": "Se espera: la vivienda asociada no existe",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 412\"] = responseCode.code === 412;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n      \"comentario\": \"perfecto\",\n     \"valoracion\": 6\n}"
+		},
+		{
+			"id": "2c59c28a-1c72-a6c0-3dd3-dd510e1fd91d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/8/valoraciones",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8c1652ce-a63b-4473-a8e8-be7658f8d9a3",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824359998,
+			"name": "GET all valoraciones de la vivienda creada",
+			"description": "",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n       \n        \"direccion\": \"calle 21 1307\",\n        \"disponible\": true,\n         \"inquilinos\":5,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"capacidad\": 34,\n        \"tipoAlojamiento\": \"B\",\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": [\n     {\n       \"comentario\": \"habia mucho ruido\",\n        \"valoracion\": 3\n},\n{\n      \"comentario\": \"buena ubicacion\",\n     \"valoracion\": 4.5\n},\n{\n       \"comentario\": \"decente\",\n        \"valoracion\": 2\n},\n{\n      \"comentario\": \"perfecto\",\n     \"valoracion\": 5\n},\n{\n      \"comentario\":\"regular\",\n     \"valoracion\": 3.5\n}\n        \t],\n         \"estudiantes\": []\n        }\n"
+		},
+		{
+			"id": "4e6e91e8-953e-c32f-d246-772d234a1a49",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/8/valoraciones/1",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a85a7827-5d42-4a82-9a28-faf7afcc35b9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824396634,
+			"name": "PUT en una valoracion existente",
+			"description": "",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\n\t\n\t \"comentario\": \"increible\",\n  \n    \"valoracion\": 4\n\t\n}"
+		},
+		{
+			"id": "50896281-ac50-c2ee-5452-8540309b11ad",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/8/valoraciones/27",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c6b6b94-e1a2-4f40-85ef-4aa351b11176",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824379844,
+			"name": "GET una valoracion no existente",
+			"description": "Se espera error 404",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n       \n        \"direccion\": \"calle 21 1307\",\n        \"disponible\": true,\n         \"inquilinos\":5,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"capacidad\": 34,\n        \"tipoAlojamiento\": \"B\",\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": [\n     {\n       \"comentario\": \"habia mucho ruido\",\n        \"valoracion\": 3\n},\n{\n      \"comentario\": \"buena ubicacion\",\n     \"valoracion\": 4.5\n},\n{\n       \"comentario\": \"decente\",\n        \"valoracion\": 2\n},\n{\n      \"comentario\": \"perfecto\",\n     \"valoracion\": 5\n},\n{\n      \"comentario\":\"regular\",\n     \"valoracion\": 3.5\n}\n        \t],\n         \"estudiantes\": []\n        }\n"
+		},
+		{
+			"id": "702ef8d5-e8bd-c1eb-a26f-669f1d2c6565",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/8/valoraciones",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f5150d6-ab08-4fb9-900f-c9ad4062f931",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824494566,
+			"name": "POST en una vivienda existente",
+			"description": "",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n      \"comentario\": \"perfecto\",\n     \"valoracion\": 6\n}"
+		},
+		{
+			"id": "b915bfb8-37bf-31d5-b1be-9e2150670277",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/extranjeros-web/api/viviendas/8/valoraciones/1",
+			"queryParams": [],
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d9322aa-f672-489c-bef3-c916dd06ff6e",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1520824408104,
+			"name": "DELETE una valoracion existente",
+			"description": "",
+			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
+			"responses": [],
+			"preRequestScript": null,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		}
+	]
+}

@@ -9,8 +9,10 @@ import co.edu.uniandes.csw.extranjeros.dtos.ViviendaDTO;
 import co.edu.uniandes.csw.extranjeros.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.extranjeros.ejb.ArrendatarioLogic;
 import co.edu.uniandes.csw.extranjeros.ejb.ServicioLogic;
+import co.edu.uniandes.csw.extranjeros.ejb.ValoracionLogic;
 import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -45,6 +47,9 @@ public class ViviendaResource {
   
    @Inject
    private ServicioLogic serviLogic;
+   
+   @Inject
+   private ValoracionLogic valLogic;
    /**
      * Convierte una lista de ViviendaEntity a una lista de ViviendaDetailDTO.
      *
@@ -168,9 +173,16 @@ public class ViviendaResource {
            }
            fijos.add(ser);
         }
+        List<ValoracionEntity> valo = new ArrayList<>();
+        if(vivienda.getValoraciones()!=null){
+            for (int i = 0; i < vivienda.getValoraciones().size(); i++) {
+                valo.add(vivienda.getValoraciones().get(i).toEntity());
+            }
+        }
+        
         entity.setServiciosAdicionales(adicional);
         entity.setServiciosFijos(fijos);
-        entity.setValoraciones(oldEntity.getValoraciones());
+        entity.setValoraciones(valo);
         return new ViviendaDetailDTO(logic.updateVivienda(entity));
     }
 
