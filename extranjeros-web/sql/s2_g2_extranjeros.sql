@@ -31,11 +31,9 @@ insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celula
 insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201687345,'Jose', 1020789654, 'eljose','granjose@hotmail.com','miclave',3128976543, 21);
 insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201789373,'Laura', 1020654287,'lauris1','lau2018@gmail.com','laulau',3208362548,20);
 
-insert into EventoEntity (id, name) values (100,'Oveja Negra');
-insert into EventoEntity (id, name) values (100,'Oveja Negra');
-insert into EventoEntity (id, name) values (100,'Oveja Negra');
-insert into EventoEntity (id, name) values (100,'Oveja Negra');
-insert into EventoEntity (id, name) values (100,'Oveja Negra');
+insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLon, ubicacionLat, privado, capacidad) values (146841989,'Rumba deliciosa','Fiesta','01/11/2018 17:54',10,'4.669595','-74.059950"', true,200);
+insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLon, ubicacionLat, privado, capacidad) values (416841989,'Mueve el bote','Fiesta','01/04/2018 17:54',10,'4.669595','-74.059950"', true,200);
+insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLon, ubicacionLat, privado, capacidad) values (336841989,'Scooby Do papa','Fiesta','01/05/2018 17:54',10,'4.669595','-74.059950"', true,200);
 
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (1234,350.200,100.500,'cobros mensuales',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (54321,350.200,150.500,'cargo único',false,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
