@@ -5,15 +5,18 @@
  */
 package co.edu.uniandes.csw.extranjeros.dtos;
 
+import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
+
 /**
  *
  * @author am.quintero12
  */
 public class ProvidenciaDetailDTO extends ProvidenciaDTO {
     
-    public ProvidenciaDetailDTO()
+    public ProvidenciaDetailDTO(ProvidenciaEntity entity)
     {
-        
+        super (entity);
     }
+    
     
 }

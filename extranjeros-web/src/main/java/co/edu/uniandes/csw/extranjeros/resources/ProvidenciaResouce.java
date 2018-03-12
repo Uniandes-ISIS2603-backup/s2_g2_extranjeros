@@ -7,10 +7,13 @@ package co.edu.uniandes.csw.extranjeros.resources;
 
 
 import co.edu.uniandes.csw.extranjeros.dtos.ProvidenciaDetailDTO;
+import co.edu.uniandes.csw.extranjeros.ejb.ProvidenciaLogic;
+import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -45,11 +49,21 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class ProvidenciaResouce {
     
+    @Inject
+    ProvidenciaLogic providenciaLogic;
+    
+    
+    private List<ProvidenciaDetailDTO> listEntityToDTO (List<ProvidenciaEntity> entityList) {
+        List<ProvidenciaDetailDTO> list = new ArrayList<>();
+        for (ProvidenciaEntity entity : entityList) {
+            list.add(new ProvidenciaDetailDTO(entity));
+        }
+        return list;
+    }
     
     /**
-     * <h1>POST /api/providencia : Crear una providencia .</h1>
-     * 
-     * <pre>Cuerpo de petición: JSON {@link ProvidenciaDTO}.
+     * <h1> POST /api/providencia : Crear una providencia. </h1>
+     * <pre> Cuerpo de petición: JSON {@link ProvidenciaDetailDTO}.
      * 
      * Crea una nueva providencia con la informacion que se recibe en el cuerpo 
      * de la petición y se regresa un objeto identico con un id auto-generado 
@@ -57,35 +71,42 @@ public class ProvidenciaResouce {
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Creó la nueva providencia .
+     * 200 OK Creó una nueva providencia.
      * </code>
+     * 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 412 Precodition Failed: Ya existe la providencia.
+     * 412 Precodition Failed: Ya existe la Providencia ingresada.
      * </code>
      * </pre>
-     * @param providencia  {@link ProvidenciaDetailDTO} - La providencia que se desea guardar.
-     * @return JSON {@link ProvidenciaDetailDTO}  - La providencia guardada con el atributo id autogenerado.
+     * 
+     * @param providencia
+     * @return JSON {@link ProvidenciaDetailDTO}  - La providencia guardado con el atributo id autogenerado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe la providencia.
      */
+    
     @POST
-     public ProvidenciaDetailDTO createEstudiante(ProvidenciaDetailDTO providencia) throws BusinessLogicException{
-        return providencia;
+    public ProvidenciaDetailDTO createProvidencia(ProvidenciaDetailDTO providencia)throws BusinessLogicException
+    {
+        return new ProvidenciaDetailDTO(providenciaLogic.createProvidencia(providencia.toEntity()));
     }
     
      /**
-     * <h1>GET /api/providencia : Obtener todas las providencias.</h1>
-     * 
-     * <pre>Busca y devuelve todos las providencias que existen en la aplicacion.
-     * 
+     * <h1> GET /api/providencia : Obtener todas las providencias. </h1>
+     * <pre> Busca y devuelve todas las providencias que existen dentro de la aplicacion. 
      * Codigos de respuesta:
+     * 
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve todas las providencias de la aplicacion.</code> 
+     * 200 OK Devuelve todas las providencias de la aplicacion. 
+     * </code> 
      * </pre>
-     * @return JSONArray {@link ProvidenciaDetailDTO} - Las providencias encontrados en la aplicación. Si no hay ninguna retorna una lista vacía.
+     * 
+     * @return JSONArray {@link ProvidenciaDetailDTO} - Las providencias que existen en la aplicación. Si no hay ninguna providencia 
+     * (ninguna se ha registrado) se retorna una lista vacía.
      */
-     @GET
-    public List<ProvidenciaDetailDTO> getProvidencias() {
-        return new ArrayList<>();
+   @GET
+    public List<ProvidenciaDetailDTO> getProvidencias()
+    {
+        return listEntityToDTO(providenciaLogic.getProvidencias());
     }
     
      /**
@@ -106,8 +127,12 @@ public class ProvidenciaResouce {
      */
     @GET
     @Path("{id: \\d+}")
-    public ProvidenciaDetailDTO getEstudiante(@PathParam("id") Long id) {
-        return null;
+    public ProvidenciaDetailDTO getProvidencia(@PathParam("id") Long id) {
+        
+        if(providenciaLogic.getProvidencia(id) == null){
+            throw new WebApplicationException("El recurso /providencia/" + id + " no existe.", 404);
+        }
+        return new ProvidenciaDetailDTO(providenciaLogic.getProvidencia(id));
     }
     
     /**
@@ -130,8 +155,11 @@ public class ProvidenciaResouce {
      */
     @PUT
     @Path("{id: \\d+}")
-     public ProvidenciaDetailDTO updateEstudiante(@PathParam("id") Long id, ProvidenciaDetailDTO providencia) throws BusinessLogicException {
-        return providencia;
+     public ProvidenciaDetailDTO updateProvidencia(@PathParam("id") Long id, ProvidenciaDetailDTO providencia) throws BusinessLogicException {
+        if(providenciaLogic.getProvidencia(providencia.getId()) == null){
+            throw new WebApplicationException("El recurso /providencia/" + id + " no existe.", 404);
+        }
+        return new ProvidenciaDetailDTO(providenciaLogic.updateProvidencia(providencia.toEntity()));
     }
      
       /**
@@ -150,8 +178,12 @@ public class ProvidenciaResouce {
      */
      @DELETE
     @Path("{id: \\d+}")
-     public void deleteEstudiante(@PathParam("id") Long id) {
-        
+     public void deleteProvidencia(@PathParam("id") Long id) {
+        if (providenciaLogic.getProvidencia(id)==null)
+        {
+            throw new WebApplicationException("El recurso /providencia/" + id + " no existe.", 404);
+        }
+        providenciaLogic.deleteProvidencia(id);
     }
     
 }

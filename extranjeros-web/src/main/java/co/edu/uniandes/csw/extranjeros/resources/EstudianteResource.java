@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.extranjeros.resources;
 
 import co.edu.uniandes.csw.extranjeros.dtos.EstudianteDetailDTO;
+import co.edu.uniandes.csw.extranjeros.ejb.EstudianteLogic;
+import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 
 /**
@@ -46,6 +50,16 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class EstudianteResource {
     
+    @Inject 
+    EstudianteLogic logic;
+    
+     private List<EstudianteDetailDTO> listEntityToDTO (List<EstudianteEntity> entityList) {
+        List<EstudianteDetailDTO> list = new ArrayList<>();
+        for (EstudianteEntity entity : entityList) {
+            list.add(new EstudianteDetailDTO(entity));
+        }
+        return list;
+    }
     /**
      * <h1>POST /api/estudiante : Crear un estudiante.</h1>
      * 
@@ -69,7 +83,7 @@ public class EstudianteResource {
      */
     @POST
     public EstudianteDetailDTO createEstudiante(EstudianteDetailDTO estudiante) throws BusinessLogicException{
-        return estudiante;
+        return new EstudianteDetailDTO(logic.createEstudiante(estudiante.toEntity()));
     }
     
      /**
@@ -85,8 +99,9 @@ public class EstudianteResource {
      */
     @GET
     public List<EstudianteDetailDTO> getEstudiantes() {
-        return new ArrayList<>();
+        return listEntityToDTO(logic.getEstudiantes());
     }
+    
     
      /**
      * <h1>GET /api/estudiante/{id} : Obtener estudiantes por id.</h1>
@@ -107,31 +122,40 @@ public class EstudianteResource {
     @GET
     @Path("{id: \\d+}")
     public EstudianteDetailDTO getEstudiante(@PathParam("id") Long id) {
-        return null;
+        if (logic.getEstudiante(id)==null)
+        {
+            throw new WebApplicationException("El recurso /estudiante/" + id + " no existe.", 404);
+        }
+        return new EstudianteDetailDTO(logic.getEstudiante(id));
     }
     
-    /**
-     * <h1>PUT /api/estudiante/{id} : Actualizar estudiante con el id dado.</h1>
-     * <pre>Cuerpo de petición: JSON {@link EstudianteDetailDTO}.
+   /**
+     * <h1> PUT /api/estudiante/{id} : Actualiza un estudiante asociada con el ID asociado/dado. </h1>
+     * <pre> Cuerpo de petición: JSON {@link EstudianteDetailDTO}.
      * 
      * Actualiza el estudiante con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
-     * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Actualiza el estudiante con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> 
+     * 200 OK Se actualizó el estudiante con el ID dado y con la información enviada desde el Body como parámetro. Retorna un objeto identico.</code> 
+     * 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found. No existe un estudiante con el id dado.
      * </code> 
      * </pre>
-     * @param id Identificador del estudiante que se desea actualizar.Este debe ser una cadena de dígitos.
-     * @param estudiante {@link EstudianteDetailDTO} El evento que se desea guardar.
-     * @return JSON {@link EstudianteDetailDTO} - El Evento guardada.
+     * 
+     * @param id Identificador de la estudiante que se desea actualizar. Este debe ser una cadena de dígitos.
+     * @param userUp {@link EstudianteDetailDTO} El estudiante que se desea guardar.
+     * @return JSON {@link EstudianteDetailDTO} - el Estudiante guardado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar el estudiante porque ya existe una con ese nombre.
      */
     @PUT
     @Path("{id: \\d+}")
-     public EstudianteDetailDTO updateEstudiante(@PathParam("id") Long id, EstudianteDetailDTO estudiante) throws BusinessLogicException{
-        return estudiante;
+    public EstudianteDetailDTO updateEstudiante(@PathParam("id") Long id, EstudianteDetailDTO estudiante) throws BusinessLogicException
+    {
+        if(logic.getEstudiante(estudiante.getId()) == null){
+            throw new WebApplicationException("El recurso /estudiante/" + id + " no existe.", 404);
+        }
+        return new EstudianteDetailDTO(logic.updateEstudiante(estudiante.toEntity()));
     }
      
       /**
@@ -151,7 +175,11 @@ public class EstudianteResource {
      @DELETE
     @Path("{id: \\d+}")
      public void deleteEstudiante(@PathParam("id") Long id) {
-        
+        if (logic.getEstudiante(id)==null)
+        {
+            throw new WebApplicationException("El recurso /estudiante/" + id + " no existe.", 404);
+        }
+         logic.deleteEstudiante(id);
     }
     
 }
