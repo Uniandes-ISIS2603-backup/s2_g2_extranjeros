@@ -93,8 +93,9 @@ public class ViviendaDetailDTO extends ViviendaDTO {
         
         List<EstudianteEntity> PEstudiantes = new ArrayList<>();
         
+        if(arrendatariosPropietarios!=null){
         e.setArrendatariosPropietarios(arrendatariosPropietarios.toEntity());
-        
+        }
         if(getValoraciones()!=null){
         for (int i = 0; i < getValoraciones().size(); i++) {
             ValoracionEntity get = getValoraciones().get(i).toEntity();
