@@ -1,0 +1,88 @@
+{
+	"info": {
+		"name": "CollectionLugarDeInteres",
+		"_postman_id": "4a02795e-a189-8c0b-472e-3e8550ef4921",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PostCorrect",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed5c8135-f84c-4003-8117-875aa85dba54",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n       \"id\": 12311,\r\n       \"tipo\": \"Bar\",\r\n       \"nombre\": \"La Pola\",\r\n       \"direccion\": \"Calle 22 # 1 - 15\",\r\n       \"telefono\": 3224593,\r\n       \"ubicacionLon\": \"1.343344\",\r\n       \"ubicacionLat\": \"-44.23233\"       \r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/lugares",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"lugares"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetCorrect",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a8784ecf-98f3-4d08-ac76-845b170e1c95",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/lugares",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"lugares"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
