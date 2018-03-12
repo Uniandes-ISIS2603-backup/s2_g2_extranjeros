@@ -99,8 +99,7 @@ public class EstudianteResource {
      */
     @GET
     public List<EstudianteDetailDTO> getEstudiantes() {
-        if (logic.getEstudiantes().size()==0)
-            return new ArrayList<>();
+        
         return listEntityToDTO(logic.getEstudiantes());
     }
     
