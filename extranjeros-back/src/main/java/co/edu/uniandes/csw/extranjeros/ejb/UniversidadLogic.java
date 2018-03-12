@@ -12,12 +12,14 @@ import co.edu.uniandes.csw.extranjeros.persistence.UniversidadPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author o.amaya724
  */
+@Stateless
 public class UniversidadLogic {
     
     private static final Logger LOGGER = Logger.getLogger(UniversidadLogic.class.getName());
@@ -35,8 +37,8 @@ public class UniversidadLogic {
     public UniversidadEntity createUniversidad(UniversidadEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de universidad");
         // Verifica la regla de negocio que dice que no puede haber dos universidades con el mismo nombre
-        if (persistence.findByName(entity.getName()) != null) {
-            throw new BusinessLogicException("Ya existe una Universidad con el nombre \"" + entity.getName() + "\"");
+        if (persistence.findByName(entity.getNombre()) != null) {
+            throw new BusinessLogicException("Ya existe una Universidad con el nombre \"" + entity.getNombre() + "\"");
         }
         // Invoca la persistencia para crear la universidad
         return persistence.create(entity);
