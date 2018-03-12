@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.extranjeros.ejb;
 
 
 import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.LugaresDeInteresPersistence;
 
@@ -85,5 +86,7 @@ public class LugaresDeInteresLogic {
         persistence.delete(id);
         
     }
+    
+    
     
 }

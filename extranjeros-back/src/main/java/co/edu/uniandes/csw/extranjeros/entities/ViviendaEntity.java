@@ -36,6 +36,10 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     private List <EstudianteEntity> estudiantes;
     
     @PodamExclude
+    @OneToMany(mappedBy = "viviendaConectada")
+    private List <LugaresDeInteresEntity> lugaresDeInteres;
+    
+    @PodamExclude
     @OneToMany(cascade = CascadeType.ALL)
     private List<FacturaEntity> facturas;
     
@@ -165,6 +169,7 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     public void setServiciosFijos(List<ServicioEntity> serviciosFijos) {
         this.serviciosFijos = serviciosFijos;
     }
+    
 
     /**
      * @return the serviciosAdicionales
@@ -234,6 +239,20 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
      */
     public void setEstudiantes(List <EstudianteEntity> estudiantes) {
         this.estudiantes = estudiantes;
+    }
+    
+    /**
+     * @return the lugaresDeInteres
+     */
+    public List <LugaresDeInteresEntity> getLugaresDeInteres() {
+        return lugaresDeInteres;
+    }
+
+    /**
+     * @param lugaresDeInteres the lugaresDeInteres to set
+     */
+    public void setLugaresDeInteres(List <LugaresDeInteresEntity> lugaresDeInteres) {
+        this.lugaresDeInteres = lugaresDeInteres;
     }
 
     /**
