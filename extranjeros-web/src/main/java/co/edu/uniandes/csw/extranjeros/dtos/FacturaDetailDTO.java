@@ -24,6 +24,15 @@ public class FacturaDetailDTO extends FacturaDTO {
      */
     private List<ServicioDTO> serviciosExtra;
     /**
+     * Estudiante asociado a la vivienda.
+     */
+    private EstudianteDTO estudianteAsociado;
+    /**
+     * Arrendatario asociado a la vivienda.
+     */
+    private ArrendatarioDTO arrendatarioAsociado;
+
+    /**
      * Constructor por defecto.
      */
     public FacturaDetailDTO(){}
@@ -38,6 +47,10 @@ public class FacturaDetailDTO extends FacturaDTO {
             serviciosExtra=servicioEntityAServicioDTO(entity.getServiciosAdicionales());
         if(entity.getServiciosIncluidos()!=null)
             serviciosIncluidos=servicioEntityAServicioDTO(entity.getServiciosIncluidos());
+        if(entity.getArrendatarioAsociados()!=null)
+            arrendatarioAsociado=new ArrendatarioDTO(entity.getArrendatarioAsociados());
+        if(entity.getEstudianteAsociados()!=null)
+            estudianteAsociado=new EstudianteDTO(entity.getEstudianteAsociados());
     }
     /**
      * @return la lista de servicios incluidos.
@@ -94,10 +107,14 @@ public class FacturaDetailDTO extends FacturaDTO {
     public FacturaEntity toEntity()
     {
         FacturaEntity e=super.toEntity();
-        if(e.getServiciosAdicionales()!=null)
+        if(serviciosExtra!=null)
             e.setServiciosAdicionales(servicioDTOAServicioEntity(serviciosExtra));
-        if(e.getServiciosIncluidos()!=null)
+        if(serviciosIncluidos!=null)
             e.setServiciosIncluidos(servicioDTOAServicioEntity(serviciosIncluidos));
+        if(estudianteAsociado!=null)
+            e.setEstudianteAsociados(estudianteAsociado.toEntity());
+        if(arrendatarioAsociado!=null)
+            e.setArrendatarioAsociados(arrendatarioAsociado.toEntity());
         return e;
     }
     

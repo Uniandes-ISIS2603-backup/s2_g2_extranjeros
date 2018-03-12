@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -61,14 +62,14 @@ public class FacturaEntity extends BaseEntity implements Serializable
      * Lista de estudiantes asociados.
      */
     @PodamExclude
-    @ManyToMany
-    private List<EstudianteEntity> estudiantesAsociados;
+    @OneToOne
+    private EstudianteEntity estudianteAsociado;
     /**
      * Lista de arrendatarios asociados.
      */
     @PodamExclude
-    @ManyToMany
-    private List<ArrendatarioEntity> arrendatariosAsociados;
+    @ManyToOne
+    private ArrendatarioEntity arrendatarioAsociado;
      /**
      * @return costo fijo del arriendo.
      */
@@ -118,6 +119,30 @@ public class FacturaEntity extends BaseEntity implements Serializable
         this.dividirCuentaServicios = dividirCuentaServicios;
     }
     /**
+    * @return  El estudiante asociado a la factura.
+    */
+    public EstudianteEntity getEstudianteAsociados() {
+        return estudianteAsociado;
+    }
+   /**
+    * @param estudianteAsociados El nuevo estudiante asociado a la factura.
+    */
+    public void setEstudianteAsociados(EstudianteEntity estudianteAsociados) {
+        this.estudianteAsociado = estudianteAsociados;
+    }
+   /**
+    * @return  El arrendatario asociado a la factura.
+    */
+    public ArrendatarioEntity getArrendatarioAsociados() {
+        return arrendatarioAsociado;
+    }
+   /**
+    * @param arrendatarioAsociados El nuevo arrendatario asociado a la factura.
+    */
+    public void setArrendatarioAsociados(ArrendatarioEntity arrendatarioAsociados) {
+        this.arrendatarioAsociado= arrendatarioAsociados;
+    }
+    /**
      * @return Fecha de entrada a la vivienda.
      */
     public Date getFechaEntrada() {
@@ -153,18 +178,27 @@ public class FacturaEntity extends BaseEntity implements Serializable
     public void setIVA(Double IVA) {
         this.iva = IVA;
     }
+    /**
+     * @return servicios inculidos por la vivienda.
+     */
     public List<ServicioEntity> getServiciosIncluidos() {
         return serviciosIncluidos;
     }
-
+    /**
+     * @param serviciosIncluidos nuevos servicios inculidos por la vivienda.
+     */
     public void setServiciosIncluidos(List<ServicioEntity> serviciosIncluidos) {
         this.serviciosIncluidos = serviciosIncluidos;
     }
-
+    /**
+     * @return servicios adicionales por la vivienda.
+     */
     public List<ServicioEntity> getServiciosAdicionales() {
         return serviciosAdicionales;
     }
-
+    /**
+     * @param serviciosAdicionales nuevos servicios adicionales por la vivienda.
+     */
     public void setServiciosAdicionales(List<ServicioEntity> serviciosAdicionales) {
         this.serviciosAdicionales = serviciosAdicionales;
     }
