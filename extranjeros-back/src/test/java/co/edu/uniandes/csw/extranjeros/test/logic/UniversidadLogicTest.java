@@ -187,13 +187,13 @@ public class UniversidadLogicTest {
     
     
     @Test
-    public void updateAuthorTest() {
+    public void updateAuthorTest() throws BusinessLogicException {
         UniversidadEntity entity = data.get(0);
         UniversidadEntity pojoEntity = factory.manufacturePojo(UniversidadEntity.class);
 
         pojoEntity.setId(entity.getId());
 
-        universidadLogic.updateUniversidad(pojoEntity);
+        universidadLogic.updateUniversidad(pojoEntity) ;
 
         UniversidadEntity resp = em.find(UniversidadEntity.class, entity.getId());
 

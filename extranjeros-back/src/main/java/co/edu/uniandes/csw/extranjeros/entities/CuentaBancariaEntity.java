@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -22,7 +23,7 @@ public class CuentaBancariaEntity extends BaseEntity implements Serializable{
     //---------------------------------------------------
     
     @PodamExclude
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private ArrendatarioEntity arrendatarioTitular;
     
     //---------------------------------------------------

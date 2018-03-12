@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import java.util.ArrayList;
@@ -103,7 +104,7 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     // Atributos relacionales
     //---------------------------------------------------
     
-    private CuentaBancariaDTO cuentaBancaria;
+    private List<CuentaBancariaDTO> cuentasBancarias;
     private List <FacturaDTO> facturas;
     private List <ViviendaDTO> viviendas;
     
@@ -119,30 +120,37 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     }
     
     /**
-     * Crea un objeto UsuarioTO a partir de un objeto UsuarioEntity.
-     * @param entity Entidad UsuarioEntity desde la cual se va a crear el nuevo
+     * Crea un objeto ArrendatarioDetailDTO a partir de un objeto ArrendatarioEntity.
+     * @param entity Entidad ArrendatarioEntity desde la cual se va a crear el nuevo
      * objeto.
      */
-        public ArrendatarioDetailDTO(ArrendatarioEntity entity) {
-          super(entity);
-          if (entity != null) {
+     public ArrendatarioDetailDTO(ArrendatarioEntity entity) {
+         
+        super(entity);
             
-            //cuentaBancaria = (new CuentaBancariaDTO(entity.getCuentaBancaria());
-              
-            facturas = new ArrayList<>();
-            viviendas = new ArrayList<>();
-            
-            for (FacturaEntity facturasEntity : entity.getFacturas()) {
+        if(entity.getCuentasBancarias() != null){
+            cuentasBancarias = new ArrayList<>();
+            for (CuentaBancariaEntity cuentasEntity : entity.getCuentasBancarias()){
+                cuentasBancarias.add(new CuentaBancariaDTO(cuentasEntity));
+            }
+        }
+        
+        if(entity.getFacturas() != null){
+             facturas = new ArrayList<>();
+             for (FacturaEntity facturasEntity : entity.getFacturas()) {
                 facturas.add(new FacturaDTO(facturasEntity));
             }
+        }
+        
+        if (entity.getViviendas() != null){           
             
+            viviendas = new ArrayList<>();
             for (ViviendaEntity viviendasEntity : entity.getViviendas()){
                 viviendas.add(new ViviendaDTO(viviendasEntity));
-            }
-
-        }
-    }
-
+            }   
+        }   
+     }
+     
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
@@ -159,6 +167,13 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
         ArrendatarioEntity entity = super.toEntity();
          
          // Verificacion relaciones
+         if (cuentasBancarias != null){
+            List<CuentaBancariaEntity> cuentasEntity = new ArrayList<>();
+            for (CuentaBancariaDTO DTOcuenta: cuentasBancarias){
+                cuentasEntity.add(DTOcuenta.toEntity());
+            }
+            entity.setCuentasBancarias(cuentasEntity);
+         }
          
          if (facturas != null) {
             List<FacturaEntity> facturaEntity = new ArrayList<>();
@@ -215,15 +230,15 @@ public class ArrendatarioDetailDTO extends ArrendatarioDTO {
     /**
      * @return La cuenta bancaria asociadas a un arrendatario.
      */
-    public CuentaBancariaDTO getCuentaBancaria() {
-        return cuentaBancaria;
+    public List<CuentaBancariaDTO> getCuentaBancaria() {
+        return cuentasBancarias;
     }
 
     /**
      * Crea o modifica la cuenta de banco asociada a un Arrendatario.
      * @param cuentaBancaria Cuenta de Banco. 
      */
-    public void setCuentaBancaria(CuentaBancariaDTO cuentaBancaria) {
-        this.cuentaBancaria = cuentaBancaria;
+    public void setCuentaBancaria(List<CuentaBancariaDTO> cuentaBancaria) {
+        this.cuentasBancarias = cuentaBancaria;
     }
 }

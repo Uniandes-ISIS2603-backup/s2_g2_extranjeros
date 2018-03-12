@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.entities;
+import co.edu.uniandes.csw.extranjeros.podam.InDateStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.OutDateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -11,10 +13,12 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
  * @author s.rodriguezm
@@ -28,24 +32,17 @@ public class FacturaEntity extends BaseEntity implements Serializable
     private Double costoFijo;
     private Double costosAdicionales;
     private String formaDePago;
-    private Integer mesesAPagar;
-    private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
     
     @Temporal(TemporalType.TIMESTAMP)
+    @PodamStrategyValue(InDateStrategy.class)
     private Date fechaEntrada;
     
     @Temporal(TemporalType.TIMESTAMP)
+    @PodamStrategyValue(OutDateStrategy.class)
     private Date fechaSalida;
     
-    private Double IVA;
-    
-    /**
-     * Vivienda que se factura.
-     */
-    @PodamExclude
-    @OneToOne
-    private ViviendaEntity vivienda;
+    private Double iva;
     
     /**
      * Lista de servicios que ya estan incluidos en el precio base.
@@ -65,14 +62,14 @@ public class FacturaEntity extends BaseEntity implements Serializable
      * Lista de estudiantes asociados.
      */
     @PodamExclude
-    @ManyToMany
-    private List<EstudianteEntity> estudiantesAsociados;
+    @OneToOne
+    private EstudianteEntity estudianteAsociado;
     /**
      * Lista de arrendatarios asociados.
      */
     @PodamExclude
-    @ManyToMany
-    private List<EstudianteEntity> arrendatariosAsociados;
+    @ManyToOne
+    private ArrendatarioEntity arrendatariosAsociados;
      /**
      * @return costo fijo del arriendo.
      */
@@ -109,30 +106,6 @@ public class FacturaEntity extends BaseEntity implements Serializable
     public void setFormaDePago(String formaDePago) {
         this.formaDePago = formaDePago;
     }
-     /**
-     * @return Número de meses a pagar.
-     */
-    public Integer getMesesAPagar() {
-        return mesesAPagar;
-    }
-    /**
-     * @param mesesAPagar Nuevo número de meses a pagar.
-     */
-    public void setMesesAPagar(Integer mesesAPagar) {
-        this.mesesAPagar = mesesAPagar;
-    }
-     /**
-     * @return Número de nquilinos en la vivienda.
-     */
-    public Integer getNumerodeInquilinos() {
-        return numerodeInquilinos;
-    }
-    /**
-     * @param numerodeInquilinos Nuevo número de inquilinos en la vivienda.
-     */
-    public void setNumerodeInquilinos(Integer numerodeInquilinos) {
-        this.numerodeInquilinos = numerodeInquilinos;
-    }
     /**
      * @return Si se va a dividir o no el pago de los servicios.
      */
@@ -144,6 +117,30 @@ public class FacturaEntity extends BaseEntity implements Serializable
     */
     public void setDividirCuentaServicios(Boolean dividirCuentaServicios) {
         this.dividirCuentaServicios = dividirCuentaServicios;
+    }
+    /**
+    * @return  El estudiante asociado a la factura.
+    */
+    public EstudianteEntity getEstudianteAsociados() {
+        return estudianteAsociado;
+    }
+   /**
+    * @param estudianteAsociados El nuevo estudiante asociado a la factura.
+    */
+    public void setEstudianteAsociados(EstudianteEntity estudianteAsociados) {
+        this.estudianteAsociado = estudianteAsociados;
+    }
+   /**
+    * @return  El arrendatario asociado a la factura.
+    */
+    public ArrendatarioEntity getArrendatarioAsociados() {
+        return arrendatariosAsociados;
+    }
+   /**
+    * @param arrendatarioAsociados El nuevo arrendatario asociado a la factura.
+    */
+    public void setArrendatarioAsociados(ArrendatarioEntity arrendatarioAsociados) {
+        this.arrendatariosAsociados= arrendatarioAsociados;
     }
     /**
      * @return Fecha de entrada a la vivienda.
@@ -173,35 +170,35 @@ public class FacturaEntity extends BaseEntity implements Serializable
      * @return Valor del IVA.
      */
     public Double getIVA() {
-        return IVA;
+        return iva;
     }
     /**
     * @param IVA Nuevo valor del IVA.
     */
     public void setIVA(Double IVA) {
-        this.IVA = IVA;
+        this.iva = IVA;
     }
-
-    public ViviendaEntity getVivienda() {
-        return vivienda;
-    }
-
-    public void setVivienda(ViviendaEntity vivienda) {
-        this.vivienda = vivienda;
-    }
-
+    /**
+     * @return servicios inculidos por la vivienda.
+     */
     public List<ServicioEntity> getServiciosIncluidos() {
         return serviciosIncluidos;
     }
-
+    /**
+     * @param serviciosIncluidos nuevos servicios inculidos por la vivienda.
+     */
     public void setServiciosIncluidos(List<ServicioEntity> serviciosIncluidos) {
         this.serviciosIncluidos = serviciosIncluidos;
     }
-
+    /**
+     * @return servicios adicionales por la vivienda.
+     */
     public List<ServicioEntity> getServiciosAdicionales() {
         return serviciosAdicionales;
     }
-
+    /**
+     * @param serviciosAdicionales nuevos servicios adicionales por la vivienda.
+     */
     public void setServiciosAdicionales(List<ServicioEntity> serviciosAdicionales) {
         this.serviciosAdicionales = serviciosAdicionales;
     }

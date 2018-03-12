@@ -25,7 +25,7 @@ import javax.ws.rs.Produces;
  * @author am.quintero12
  /**
  * <pre>Clase que implementa el recurso "Providencia".
- * URL: /api/evento
+ * URL: /api/providencia
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "Evento".</i>
@@ -84,7 +84,7 @@ public class ProvidenciaResouce {
      * @return JSONArray {@link ProvidenciaDetailDTO} - Las providencias encontrados en la aplicación. Si no hay ninguna retorna una lista vacía.
      */
      @GET
-    public List<ProvidenciaDetailDTO> getEstudiantes() {
+    public List<ProvidenciaDetailDTO> getProvidencias() {
         return new ArrayList<>();
     }
     

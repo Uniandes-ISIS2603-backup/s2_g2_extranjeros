@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
-import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
 
 /**
  * ArrendatarioDTO Objeto de transferencia de datos de Arrendatario. Los DTO contienen las
@@ -32,12 +31,18 @@ import co.edu.uniandes.csw.extranjeros.entities.UsuarioEntity;
  * </pre>
  * @author Jose Pacheco
  */
-public class ArrendatarioDTO extends UsuarioDTO {
+public class ArrendatarioDTO {
     
     //---------------------------------------------------
     // Atributos
     //---------------------------------------------------
     
+    private String usuario;
+    private String clave;
+    private String correo;
+    private String celular;
+    private String cedula;
+    private int edad;
     private String nombre;
     private Long id;
   
@@ -49,6 +54,7 @@ public class ArrendatarioDTO extends UsuarioDTO {
      * Constructor por defecto de la Clase.
      */
     public ArrendatarioDTO(){
+        /* Constructor vacío por defecto*/
     }
     
     /**
@@ -82,11 +88,7 @@ public class ArrendatarioDTO extends UsuarioDTO {
      * Convierte un objeto UsuarioDTO a UsuarioEntity.
      * @return Nueva objeto UsuarioEntity.
      */
-    @Override
     public ArrendatarioEntity toEntity() {
-        
-        // UsuarioEntity
-        UsuarioEntity userEntity = super.toEntity();
         
         // Genera
         ArrendatarioEntity entity = new ArrendatarioEntity();
@@ -95,10 +97,10 @@ public class ArrendatarioDTO extends UsuarioDTO {
         entity.setId(this.getId());
         entity.setNombre(this.nombre);
         
-        entity.setUsuario(userEntity.getUsuario());
-        entity.setClave(userEntity.getClave());
-        entity.setCorreo(userEntity.getCorreo());
-        entity.setCelular(userEntity.getCelular());
+        entity.setUsuario(this.getUsuario());
+        entity.setClave(this.getClave());
+        entity.setCorreo(this.getCorreo());
+        entity.setCelular(this.getCelular());
         entity.setEdad(this.edad);
         entity.setCedula(this.cedula);
         
@@ -135,4 +137,95 @@ public class ArrendatarioDTO extends UsuarioDTO {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    /**
+     * @return El nombre (nickname en la plataforma) del usuario. 
+     */
+    public String getUsuario(){
+        return usuario;
+    }
+    
+    /**
+     * Crea un nombre de usuario. 
+     * @param newUser El nuevo ID
+     */
+    public void setUsuario(String newUser){
+        this.usuario = newUser;
+    }
+    
+    /**
+     * @return La clave del usuario
+     */
+    public String getClave(){
+        return clave;
+    }
+    
+    /**
+     * Crea o cambia una contrasenia. 
+     * @param newPassword La nueva contrasenia.
+     */
+    public void setClave(String newPassword){
+        this.clave = newPassword;
+    }
+    
+    /**
+     * @return El correo de un usuario.
+     */
+    public String getCorreo(){
+        return correo;
+    }
+    
+    /**
+     * Crea o modifica el correo asociado a un usuario.
+     * @param newEmail El nuevo correo. 
+     */
+    public void setCorreo(String newEmail){
+        this.correo = newEmail;
+    }
+    
+    /**
+     * @return El numero de un usuario.
+     */
+    public String getCelular(){
+        return celular;
+    }
+    
+    /**
+     * Crea o modifica el numero asociado a un usuario.
+     * @param newPhone El nuevo correo. 
+     */
+    public void setCelular(String newPhone){
+        this.celular = newPhone;
+    }
+    
+    /**
+     * @return El numero de cedula de un usuario.
+     */   
+    public String getCedula() {
+        return cedula;
+    }
+
+    /**
+     * Crea o modifica el numero de cedula asociado a un usuario.
+     * @param cedula El nuevo correo. 
+     */
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }   
+    
+    /**
+     * @return La edad de un Usuario.
+     */
+    public int getEdad() {
+        return edad;
+    }
+    
+    /**
+     * Crea o modifica la edad asociado a un usuario.
+     * @param edad La nueva edad. 
+     */
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
 }

@@ -20,12 +20,10 @@ import java.util.Date;
  *    "costoFijo": number,
  *    "costosAdicionales": number,
  *    "formaDePago": string,
- *    "mesesAPagar": number,
- *    "numerodeInquilinos": number,
  *    "dividirCuentaServicios": boolean,
  *    "fechaEntrada": string,
  *    "fechaSalida":string,
- *    "IVA": number
+ *    "iva": number
  *  }
  * </pre>
  * Por ejemplo una factura se representa asi:<br>
@@ -37,12 +35,10 @@ import java.util.Date;
  *    "costoFijo": 120000.0,
  *    "costosAdicionales": 5000.0,
  *    "formaDePago": "efectivo",
- *    "mesesAPagar": 12,
- *    "numerodeInquilinos": 3,
  *    "dividirCuentaServicios": true,
- *    "fechaEntrada": "16 enero",
- *    "fechaSalida":"18 febrero",
- *    "IVA": 0.013
+ *    "fechaEntrada": "2018-03-11T20:38:54.973-05:00",
+ *    "fechaSalida": "2019-02-22T20:38:54.973-05:00",
+ *    "iva": 0.013
  *  }
  *
  * </pre>
@@ -54,12 +50,10 @@ public class FacturaDTO {
     private Double costoFijo;
     private Double costosAdicionales;
     private String formaDePago;
-    private Integer mesesAPagar;
-    private Integer numerodeInquilinos;
     private Boolean dividirCuentaServicios;
     private Date fechaEntrada;
     private Date fechaSalida;
-    private Double IVA;
+    private Double iva;
     
     
     /**
@@ -76,12 +70,10 @@ public class FacturaDTO {
         costoFijo=entity.getCostoFijo();
         costosAdicionales=entity.getCostosAdicionales();
         formaDePago=entity.getFormaDePago();
-        mesesAPagar=entity.getMesesAPagar();
-        numerodeInquilinos=entity.getNumerodeInquilinos();
         dividirCuentaServicios=entity.isDividirCuentaServicios();
         fechaEntrada=entity.getFechaEntrada();
         fechaSalida=entity.getFechaSalida();
-        IVA=entity.getIVA();
+        iva=entity.getIVA();
     }
     //Métodos
     /**
@@ -133,30 +125,6 @@ public class FacturaDTO {
         this.formaDePago = formaDePago;
     }
     /**
-     * @return los meses a pagar del arriendo.
-     */
-    public Integer getMesesAPagar() {
-        return mesesAPagar;
-    }
-    /**
-     * @param mesesAPagar los nuevos meses a pagar del arriendo.
-     */
-    public void setMesesAPagar(Integer mesesAPagar) {
-        this.mesesAPagar = mesesAPagar;
-    }
-    /**
-     * @return numero inquilinos.
-     */
-    public Integer getNumerodeInquilinos() {
-        return numerodeInquilinos;
-    }
-    /**
-     * @param numerodeInquilinos nuevo numero inquilinos.
-     */
-    public void setNumerodeInquilinos(Integer numerodeInquilinos) {
-        this.numerodeInquilinos = numerodeInquilinos;
-    }
-    /**
      * @return si se divide la cuenta o no.
      */
     public boolean isDividirCuentaServicios() {
@@ -196,13 +164,13 @@ public class FacturaDTO {
      * @return IVA.
      */
     public Double getIVA() {
-        return IVA;
+        return iva;
     }
      /**
      * @param IVA nuevo IVA.
      */
     public void setIVA(Double IVA) {
-        this.IVA = IVA;
+        this.iva = IVA;
     }
     /**
      * Convierte un objeto FacturaDTO a FacturaEntity incluyendo los
@@ -221,9 +189,7 @@ public class FacturaDTO {
         e.setFechaEntrada(fechaEntrada);
         e.setFechaSalida(fechaSalida);
         e.setFormaDePago(formaDePago);
-        e.setNumerodeInquilinos(numerodeInquilinos);
-        e.setMesesAPagar(mesesAPagar);
-        e.setIVA(IVA);
+        e.setIVA(iva);
         return e;
     }
     

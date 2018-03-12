@@ -24,9 +24,14 @@ public class FacturaDetailDTO extends FacturaDTO {
      */
     private List<ServicioDTO> serviciosExtra;
     /**
-     * vivienda de la factura.
+     * Estudiante asociado a la vivienda.
      */
-    private ViviendaDTO vivienda;
+    private EstudianteDTO estudianteAsociado;
+    /**
+     * Arrendatario asociado a la vivienda.
+     */
+    private ArrendatarioDTO arrendatarioAsociado;
+
     /**
      * Constructor por defecto.
      */
@@ -38,6 +43,14 @@ public class FacturaDetailDTO extends FacturaDTO {
     public FacturaDetailDTO(FacturaEntity entity)
     {
         super(entity);
+        if(entity.getServiciosAdicionales()!=null)
+            serviciosExtra=servicioEntityAServicioDTO(entity.getServiciosAdicionales());
+        if(entity.getServiciosIncluidos()!=null)
+            serviciosIncluidos=servicioEntityAServicioDTO(entity.getServiciosIncluidos());
+        if(entity.getArrendatarioAsociados()!=null)
+            arrendatarioAsociado=new ArrendatarioDTO(entity.getArrendatarioAsociados());
+        if(entity.getEstudianteAsociados()!=null)
+            estudianteAsociado=new EstudianteDTO(entity.getEstudianteAsociados());
     }
     /**
      * @return la lista de servicios incluidos.
@@ -64,17 +77,8 @@ public class FacturaDetailDTO extends FacturaDTO {
         this.serviciosExtra = serviciosExtra;
     }
     /**
-     * @return la vivienda del arriendo.
+     * @return la lista de servicios Entity.
      */
-    public ViviendaDTO getVivienda() {
-        return vivienda;
-    }
-    /**
-     * @param vivienda la nueva vivienda del arriendo.
-     */
-    public void setVivienda(ViviendaDTO vivienda) {
-        this.vivienda = vivienda;
-    }
     
     public List<ServicioEntity> servicioDTOAServicioEntity(List<ServicioDTO> dto)
     {
@@ -85,14 +89,32 @@ public class FacturaDetailDTO extends FacturaDTO {
        }
        return res;
     }
+    /**
+     * @return la lista de servicios DTO.
+     */
+    
+    public List<ServicioDTO> servicioEntityAServicioDTO(List<ServicioEntity> entity)
+    {
+       List<ServicioDTO> res=new ArrayList<>();
+       for(ServicioEntity x: entity)
+       {
+           res.add(new ServicioDTO(x));
+       }
+       return res;
+    }
     
     @Override
     public FacturaEntity toEntity()
     {
         FacturaEntity e=super.toEntity();
-        e.setServiciosAdicionales(servicioDTOAServicioEntity(serviciosExtra));
-        e.setVivienda(vivienda.toEntity());
-        e.setServiciosIncluidos(servicioDTOAServicioEntity(serviciosIncluidos));
+        if(serviciosExtra!=null)
+            e.setServiciosAdicionales(servicioDTOAServicioEntity(serviciosExtra));
+        if(serviciosIncluidos!=null)
+            e.setServiciosIncluidos(servicioDTOAServicioEntity(serviciosIncluidos));
+        if(estudianteAsociado!=null)
+            e.setEstudianteAsociados(estudianteAsociado.toEntity());
+        if(arrendatarioAsociado!=null)
+            e.setArrendatarioAsociados(arrendatarioAsociado.toEntity());
         return e;
     }
     

@@ -36,19 +36,40 @@ public class ArrendatarioPersistence {
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
-
+   
     /**
-     * Busca si hay algun Usuario con el nombre que se envia de argumento.
+     * Busca si hay algun arrendatario con la cedula que se envia de argumento.
+     * @param pCedula: Cedula del arrendatario que se esta buscando.
+     * @return null si no existe ningun arrendatario con la cedula del argumento. Si
+     * existe alguno devuelve el primero.
+     */
+    public ArrendatarioEntity findByCedula (String pCedula){
+        
+        LOGGER.log(Level.INFO, "Consultando el Arrendatario por cedula", pCedula);
+
+        TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.cedula = :cedula", ArrendatarioEntity.class);
+        query = query.setParameter("cedula", pCedula);
+        List<ArrendatarioEntity> sameName = query.getResultList();
+        
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
+    
+    /**
+     * Busca si hay algun arrendatario con el login que se envia de argumento.
      * @param pLogin: Login (nombre de Usuario) del usuario que se esta buscando.
      * @return null si no existe ningun Usuario con el login del argumento. Si
-     * existe alguno devuelve la primera.
+     * existe alguno devuelve el primero.
      */
     public ArrendatarioEntity findByLogin (String pLogin){
         
         LOGGER.log(Level.INFO, "Consultando el Arrendatario por login ", pLogin);
 
         TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.usuario = :usuario", ArrendatarioEntity.class);
-        query = query.setParameter("name", pLogin);
+        query = query.setParameter("usuario", pLogin);
         List<ArrendatarioEntity> sameName = query.getResultList();
         
         if (sameName.isEmpty()) {
@@ -60,16 +81,16 @@ public class ArrendatarioPersistence {
 
     /**
      * Busca si hay algun Usuario con el nombre que se envia de argumento.
-     * @param pLogin: Login (nombre de Usuario) del usuario que se esta buscando.
-     * @return null si no existe ningun Usuario con el login del argumento. Si
-     * existe alguno devuelve la primera.
+     * @param pLogin: Nombre del arrendatario que se esta buscando.
+     * @return null si no existe ningun arrendatario con el login del argumento. Si
+     * existe alguno devuelve el primero.
      */
     public ArrendatarioEntity findByName (String pLogin){
         
         LOGGER.log(Level.INFO, "Consultando el Usuario por login ", pLogin);
 
         TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.nombre = :nombre", ArrendatarioEntity.class);
-        query = query.setParameter("name", pLogin);
+        query = query.setParameter("nombre", pLogin);
         List<ArrendatarioEntity> sameName = query.getResultList();
         
         if (sameName.isEmpty()) {

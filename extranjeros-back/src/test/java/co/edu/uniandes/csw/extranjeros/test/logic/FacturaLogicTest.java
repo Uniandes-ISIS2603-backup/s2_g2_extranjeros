@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.extranjeros.test.logic;
 
 import co.edu.uniandes.csw.extranjeros.ejb.FacturaLogic;
+import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.FacturaPersistence;
 import java.util.ArrayList;
@@ -35,11 +37,16 @@ public class FacturaLogicTest {
     
     private PodamFactory factory = new PodamFactoryImpl();
     /**
-     * Inyección de la dependencia a la clase ServicioLogic cuyos métodos
+     * Inyección de la dependencia a la clase FacturaLogic cuyos métodos
      * se van a probar.
      */
     @Inject
     private FacturaLogic facturaLogic;
+    /**
+     * Inyección de la dependencia a la clase ViviendaLogic para confirmar reglas de negocio.
+     */
+    @Inject
+    private ViviendaLogic viviendaLogic;
     /**
      * Contexto de persistencia que se va a utilizar para acceder a la Base de
      * datos por fuera de los métodos que se están probando.
@@ -109,7 +116,9 @@ public class FacturaLogicTest {
     @Test
     public void createFacturaTest() throws BusinessLogicException {
         FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
-        FacturaEntity result = facturaLogic.createFactura(newEntity);
+        ViviendaEntity vivienda=factory.manufacturePojo(ViviendaEntity.class);
+        viviendaLogic.createVivienda(vivienda);
+        FacturaEntity result = facturaLogic.createFactura(newEntity,vivienda);
         Assert.assertNotNull(result);
         FacturaEntity entity = em.find(FacturaEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
@@ -160,7 +169,7 @@ public class FacturaLogicTest {
      * Prueba para eliminar un Factura.
      */
     @Test
-    public void deleteServicioTest() {
+    public void deleteFacturaTest() {
         FacturaEntity entity = data.get(0);
         facturaLogic.deleteFactura(entity.getId());
         FacturaEntity deleted = em.find(FacturaEntity.class, entity.getId());
@@ -170,7 +179,7 @@ public class FacturaLogicTest {
      * Prueba para actualizar un Factura.
      */
     @Test
-    public void updateServicioTest() throws BusinessLogicException {
+    public void updateFacturaTest() throws BusinessLogicException {
         FacturaEntity entity = data.get(0);
         FacturaEntity pojoEntity = factory.manufacturePojo(FacturaEntity.class);
 

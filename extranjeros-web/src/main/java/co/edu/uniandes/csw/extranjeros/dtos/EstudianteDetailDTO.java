@@ -20,7 +20,9 @@ public class EstudianteDetailDTO extends EstudianteDTO {
     private TarjetaDTO  tarjeta;
     private UniversidadDTO universidad;
     
-    
+    /**
+     * Empty por defecto
+     */
     public EstudianteDetailDTO()
     {
         

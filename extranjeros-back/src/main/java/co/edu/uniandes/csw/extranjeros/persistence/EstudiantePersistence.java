@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.extranjeros.persistence;
 
-import co.edu.uniandes.csw.extranjeros.entities.CityEntity;
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -56,7 +55,7 @@ public class EstudiantePersistence {
     {
         LOGGER.info("Creando una nuevo estudiante");
         em.persist(estudiante);
-        LOGGER.info("Universidad creada");
+        LOGGER.info("Estudiante creado");
         return estudiante;
     }
     /**
@@ -82,11 +81,11 @@ public class EstudiantePersistence {
     /**
      * Busca si hay alguna city con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la city que se está buscando
+     * @param usuario
      * @return null si no existe ninguna city con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
-    public EstudianteEntity findByUser(String usuario) {
+    public EstudianteEntity findByUsuario(String usuario) {
         LOGGER.log(Level.INFO, "Consultando estudiante por usuario ", usuario);
 
         // Se crea un query para buscar estudiantes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
@@ -95,6 +94,27 @@ public class EstudiantePersistence {
         query = query.setParameter("usuario", usuario);
         // Se invoca el query se obtiene la lista resultado
         List<EstudianteEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
+    
+     /**
+     * Busca si hay algun estudiante con la cedula que se envia de argumento.
+     * @param pCedula: Cedula del arrendatario que se esta buscando.
+     * @return null si no existe ningun estudiante con la cedula del argumento. Si
+     * existe alguno devuelve el primero.
+     */
+    public EstudianteEntity findByCedula (String pCedula){
+        
+        LOGGER.log(Level.INFO, "Consultando el Arrendatario por cedula", pCedula);
+
+        TypedQuery query = em.createQuery("Select e From ArrendatarioEntity e where e.cedula = :cedula", EstudianteEntity.class);
+        query = query.setParameter("cedula", pCedula);
+        List<EstudianteEntity> sameName = query.getResultList();
+        
         if (sameName.isEmpty()) {
             return null;
         } else {

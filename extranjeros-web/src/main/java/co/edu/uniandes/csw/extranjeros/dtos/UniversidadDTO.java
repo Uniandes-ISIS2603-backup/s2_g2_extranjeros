@@ -88,6 +88,7 @@ public class UniversidadDTO {
      */
     public UniversidadEntity toEntity() {
         UniversidadEntity entity = new UniversidadEntity();
+        entity.setId(this.getId());
         entity.setNombre(this.nombre);
         entity.setDireccion(this.direccion);
         entity.setUbicacionLat(this.ubicacionLat);

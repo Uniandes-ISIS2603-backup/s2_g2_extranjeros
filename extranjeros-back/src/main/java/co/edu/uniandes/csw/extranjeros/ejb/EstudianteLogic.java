@@ -6,9 +6,15 @@
 package co.edu.uniandes.csw.extranjeros.ejb;
 
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
+import co.edu.uniandes.csw.extranjeros.entities.EventoEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.TarjetaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
+import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.EstudiantePersistence;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -68,42 +74,15 @@ public class EstudianteLogic  {
      * Actualiza la información de un estudiante
      * @param newUser Instancia de EstudianteEntityy con los nuevos datos.
      * @return Instancia de EstudianteEntityy con los datos actualizados.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
-    public EstudianteEntity updateEstudiante (EstudianteEntity newUser){
+    public EstudianteEntity updateEstudiante (EstudianteEntity newUser) throws BusinessLogicException{
+        
         LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
-        return estudiantePersistence.update(newUser);
-    }
-    
-     public EstudianteEntity createArrendatario (EstudianteEntity newUser) throws BusinessLogicException{
         
-        LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma");
-       
-        EstudianteEntity buscado = estudiantePersistence.findByUser(newUser.getUsuario());
-        if (buscado != null){
-            throw new BusinessLogicException("Hay un arrendatario con el mismo usuario");
-        }
         
-        if (newUser.getEdad() < 18){
-            throw new BusinessLogicException("El Usuario no puede ser menor de edad");
-        }
-        
-        if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
-            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
-        }
-        
-         
-        boolean encontradoNumero = false;
-        char[] caracteres = newUser.getClave().toCharArray();
-        for (int i = 0; i < caracteres.length; i++){
-            
-            String m = String.valueOf(caracteres[i]);
-            if( Integer.class.isInstance(Integer.parseInt(m))){
-                encontradoNumero = true;
-            }
-        } 
-        
-        if (encontradoNumero == false){
-            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 15){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15");
         }
         
          if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
@@ -113,19 +92,65 @@ public class EstudianteLogic  {
         String celular = String.valueOf(newUser.getCelular());
         char numeros[] = celular.toCharArray();
         
-        // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
-        // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.
         if (numeros.length != 10){
             throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
         }
         
+        if(!(newUser.getVivienda()!=null))
+        {
+            newUser.setEstadoArrendamiento(false);
+        }
         
+        
+        return estudiantePersistence.update(newUser);
+    }
+    
+      //-- CREATE
+    /**
+     * Se encarga de crear un Estudiante en la base de datos.
+     * @param newUser Objeto de EstudianteEntity con los datos nuevos.
+     * @return Objeto de EstudianteEntity con los datos nuevos y su ID.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
+     */
+    public EstudianteEntity createEstudiante (EstudianteEntity newUser) throws BusinessLogicException{
+        
+        LOGGER.log(Level.INFO, "Inicia el proceso de crear un estudiante en la plataforma.");
+        
+  
+        if (estudiantePersistence.findByUsuario(newUser.getUsuario()) != null){
+            throw new BusinessLogicException("Existe un estudiante con el mismo usuario.");
+        }
+        
+        // Verificacion: no existe un arrendatario con la misma cedula.
+        if (estudiantePersistence.findByCedula(newUser.getCedula()) != null){
+            throw new BusinessLogicException("Existe un estudiante con la misma cedula.");
+        }
+        
+        if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
+            throw new BusinessLogicException("Su correo no es válido.");
+        }
+        
+        if (newUser.getEdad() < 18){
+            throw new BusinessLogicException("El estudiante no puede ser menor de edad");
+        }
+
+        
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 15){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15.");
+        }
+      
+        String celular = String.valueOf(newUser.getCelular());
+        char[] numeros = celular.toCharArray();
+        
+        if (numeros.length != 10){
+            throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
+        }
+        
+        if(!(newUser.getVivienda()!=null))
+        {
+            newUser.setEstadoArrendamiento(false);
+        }
         return estudiantePersistence.create(newUser);
-    
-   
-     }
-    
-    
-    
-    
+    }
+     
 }

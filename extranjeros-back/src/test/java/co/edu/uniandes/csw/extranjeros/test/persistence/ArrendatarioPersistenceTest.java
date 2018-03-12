@@ -143,6 +143,9 @@ public class ArrendatarioPersistenceTest {
         Assert.assertEquals(usuarioUno.getCelular(), usuarioDos.getCelular());
         Assert.assertEquals(usuarioUno.getCedula(), usuarioDos.getCedula());
         Assert.assertEquals(usuarioUno.getEdad(), usuarioDos.getEdad());
+        Assert.assertEquals(usuarioUno.getFacturas(), usuarioDos.getFacturas());
+        Assert.assertEquals(usuarioUno.getViviendas(), usuarioDos.getViviendas());
+        Assert.assertEquals(usuarioUno.getCuentasBancarias(), usuarioDos.getCuentasBancarias());
     }
     
     /**

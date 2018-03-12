@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.extranjeros.ejb;
 
+import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ViviendaPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,8 +42,9 @@ public class ViviendaLogic {
  public ViviendaEntity createVivienda(ViviendaEntity vivienda){
       
      LOGGER.log(Level.INFO, "Inicia proceso de crear la vivienda");
+    
      
-     return persistence.create(vivienda);
+         return persistence.create(vivienda);
  }
  
   public ViviendaEntity updateVivienda(ViviendaEntity entity) {
@@ -55,4 +58,10 @@ public class ViviendaLogic {
         persistence.delete(id);
     }
   
+   
+   //-- GET LUGARES DE INTERES ASOCIADOS:
+    public List<LugaresDeInteresEntity> getFacturas(Long userID){
+        LOGGER.log(Level.INFO, "Inicia el proceso para consultar las Facturas asociadas al Arrendatario con id = {0}", userID);
+        return getVivienda(userID).getLugaresDeInteres();
+    }
 }

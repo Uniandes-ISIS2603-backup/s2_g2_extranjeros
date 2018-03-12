@@ -5,16 +5,19 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 
-import java.io.Serializable;
+import co.edu.uniandes.csw.extranjeros.podam.CelularStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.ClaveStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.CorreoStrategy;
+import co.edu.uniandes.csw.extranjeros.podam.IntegerStrategy;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -22,13 +25,32 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 
 @Entity
-public class EstudianteEntity extends UsuarioEntity implements Serializable{
+public class EstudianteEntity extends BaseEntity {
     
+    //---------------------------------------------------
+    // Atributos
+    //---------------------------------------------------
     private String nombre;
     private boolean estadoArrendamiento;
-    private int edad;
+     private String usuario;
     
-    //RELACIONES
+    @PodamStrategyValue(CorreoStrategy.class)
+    private String correo;
+    
+    @PodamStrategyValue(ClaveStrategy.class)
+    private String clave;
+    
+    @PodamStrategyValue(CelularStrategy.class)
+    private String celular;
+    
+    private String cedula;
+    
+    @PodamStrategyValue(IntegerStrategy.class)
+    private Integer edad;
+    
+    //---------------------------------------------------
+    // Relaciones
+    //---------------------------------------------------
    @PodamExclude
    @OneToOne
     private ProvidenciaEntity providencia;
@@ -97,16 +119,16 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
         return eventosCreados;
     }
 
-    public void setEventosCreados(List<EventoEntity> eventosCreados) {
-        this.eventosCreados = eventosCreados;
+    public void addEventosCreados(EventoEntity evento) {
+        this.eventosCreados.add(evento);
     }
 
     public List <EventoEntity> getEventosInvitado() {
         return eventosInvitado;
     }
 
-    public void setEventosInvitado(List<EventoEntity> eventosInvitado) {
-        this.eventosInvitado = eventosInvitado;
+    public void addEventosInvitado(EventoEntity evento) {
+        this.eventosInvitado.add(evento);
     }
    
    
@@ -161,5 +183,106 @@ public class EstudianteEntity extends UsuarioEntity implements Serializable{
     {
         this.eventosInvitado.add(e);
     }
+
+    public ViviendaEntity getVivienda() {
+        return vivienda;
+    }
+
+    public void setVivienda(ViviendaEntity vivienda) {
+        this.vivienda = vivienda;
+    }
+
+    //---------------------------------------------------
+    // Metodos Anteriores a Usuario
+    //---------------------------------------------------
     
+    /**
+     * @return El nombre (nickname en la plataforma) del usuario. 
+     */
+    public String getUsuario(){
+        return usuario;
+    }
+    
+    /**
+     * Crea un nombre de usuario. 
+     * @param newUser El nuevo ID
+     */
+    public void setUsuario(String newUser){
+        this.usuario = newUser;
+    }
+    
+    /**
+     * @return La clave del usuario
+     */
+    public String getClave(){
+        return clave;
+    }
+    
+    /**
+     * Crea o cambia una contrasenia. 
+     * @param newPassword La nueva contrasenia.
+     */
+    public void setClave(String newPassword){
+        this.clave = newPassword;
+    }
+    
+    /**
+     * @return El correo de un usuario.
+     */
+    public String getCorreo(){
+        return correo;
+    }
+    
+    /**
+     * Crea o modifica el correo asociado a un usuario.
+     * @param newEmail El nuevo correo. 
+     */
+    public void setCorreo(String newEmail){
+        this.correo = newEmail;
+    }
+    
+    /**
+     * @return El numero de un usuario.
+     */
+    public String getCelular(){
+        return celular;
+    }
+    
+    /**
+     * Crea o modifica el numero asociado a un usuario.
+     * @param newPhone El nuevo correo. 
+     */
+    public void setCelular(String newPhone){
+        this.celular = newPhone;
+    }
+    
+    /**
+     * @return El numero de cedula de un usuario.
+     */
+    public String getCedula() {
+        return cedula;
+    }
+    
+    /**
+     * Crea o modifica el numero de cedula asociado a un usuario.
+     * @param cedula La nueva cedula. 
+     */
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    /**
+     * @return La edad de un Usuario.
+     */
+    public Integer getEdad() {
+        return edad;
+    }
+    
+    /**
+     * Crea o modifica la edad asociado a un usuario.
+     * @param edad La nueva edad. 
+     */
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
 }

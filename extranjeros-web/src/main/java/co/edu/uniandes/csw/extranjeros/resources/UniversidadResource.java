@@ -7,9 +7,12 @@ package co.edu.uniandes.csw.extranjeros.resources;
 
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.dtos.*;
+import co.edu.uniandes.csw.extranjeros.ejb.UniversidadLogic;
+import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -19,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * <pre> Clase que implementa el recurso "universidades".
@@ -26,7 +30,7 @@ import javax.ws.rs.Produces;
  * </pre>
  * 
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
- * este recurso tiene la ruta "cities".</i>
+ * este recurso tiene la ruta "universidad".</i>
  *
  * <h2> Anotaciones </h2>
  * <pre>
@@ -44,6 +48,27 @@ import javax.ws.rs.Produces;
 @RequestScoped
 
 public class UniversidadResource {
+    //---------------------------------------------------
+    // Inject: Logica
+    //---------------------------------------------------
+    
+    @Inject 
+    private UniversidadLogic logica;
+    
+    //---------------------------------------------------
+    // Lista de conversion
+    //---------------------------------------------------
+    
+    
+    private List<UniversidadDetailDTO> listEntity2DTO (List<UniversidadEntity> entityList) {
+        List<UniversidadDetailDTO> list = new ArrayList<>();
+        for (UniversidadEntity entity : entityList) {
+            list.add(new UniversidadDetailDTO(entity));
+        }
+        return list;
+    }
+    
+    
     /**
      * <h1> GET /api/universidades/{id} : Obtener universidad por id.</h1>
      * <pre> Busca la Universidad al cual corresponde la ID ingresada en la URL y lo devuelve.
@@ -63,7 +88,11 @@ public class UniversidadResource {
    @GET
    @Path("{id: \\d+}")
    public UniversidadDetailDTO getUniversidad(@PathParam("id")Long id){
-        return null;
+        UniversidadEntity entidadBuscada = logica.getUniversidad(id);
+        if(entidadBuscada == null){
+            throw new WebApplicationException("El recurso /universidades/" + id + " no existe.", 404);
+        }
+        return new UniversidadDetailDTO(entidadBuscada);
     }
    /**
      * <h1> GET /api/universidades : Obtener todas las universidades. </h1>
@@ -81,7 +110,7 @@ public class UniversidadResource {
    @GET
     public List<UniversidadDetailDTO> getUniversidades()
     {
-        return new ArrayList<>();
+        return listEntity2DTO(logica.getUniversidades());
     }
     
     /**
@@ -110,7 +139,7 @@ public class UniversidadResource {
     @POST
     public UniversidadDetailDTO createUniversidad(UniversidadDetailDTO universidad)throws BusinessLogicException
     {
-        return universidad;
+        return new UniversidadDetailDTO(logica.createUniversidad(universidad.toEntity()));
     }
     
     /**
@@ -134,9 +163,14 @@ public class UniversidadResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public UniversidadDetailDTO updateUniversidad(@PathParam("id") Long id, UniversidadDetailDTO universidad)
+    public UniversidadDetailDTO updateUniversidad(@PathParam("id") Long id, UniversidadDetailDTO universidad) throws BusinessLogicException
     {
-        return null;
+        universidad.setId(id);
+        UniversidadEntity entidad = logica.getUniversidad(id);
+        if(entidad == null){
+            throw new WebApplicationException("El recurso /universidades/" + id + " no existe.", 404);
+        }
+        return new UniversidadDetailDTO(logica.updateUniversidad(universidad.toEntity()));
     }
     /**
      * <h1> DELETE /api/universidades/{id} : Borrar Universidad por id.</h1>
@@ -155,6 +189,11 @@ public class UniversidadResource {
     @Path("{id: \\d+}")
     public void deleteUniversidad(@PathParam("id") Long id)
     {
+        UniversidadEntity entidadAEliminar = logica.getUniversidad(id);
+        if(entidadAEliminar == null){
+            throw new WebApplicationException("El recurso /universidades/" + id + " no existe.", 404);
+        }
+        logica.deleteUniversidad(id);
     }
     
 }

@@ -68,38 +68,44 @@ public class ArrendatarioLogic {
      */
     public ArrendatarioEntity createArrendatario (ArrendatarioEntity newUser) throws BusinessLogicException{
         
-        LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma");
+        LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma.");
         
-//        ArrendatarioEntity buscado = persistence.findByName(newUser.getNombre());
-//        if (buscado != null){
-//            throw new BusinessLogicException("Hay un arrendatario con el mismo nombre");
-//        }
-        
-//        ArrendatarioEntity buscadoPorLogin = persistence.findByLogin(newUser.getUsuario());
-//        if (buscadoPorLogin != null){
-//            throw new BusinessLogicException("Existe un Usuario con el mismo login");
-//        }
-        
-        if (newUser.getEdad() < 18){
-            throw new BusinessLogicException("El Usuario no puede ser menor de edad");
+        // Verificacion: no existe un arrendatario con el mismo nombre.
+        if(persistence.findByName(newUser.getNombre()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con el mismo nombre.");
         }
         
-        if(newUser.getClave().length() < 8 || newUser.getClave().length() > 12){
-            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 12");
+        // Verificacion: no existe un arrendatario con el mismo usuario (login).
+        if (persistence.findByLogin(newUser.getUsuario()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con el mismo login.");
         }
-            
-        if (!(newUser.getClave().contains("1") | newUser.getClave().contains("2") | newUser.getClave().contains("3") | newUser.getClave().contains("4") |
-                    newUser.getClave().contains("5") | newUser.getClave().contains("6") | newUser.getClave().contains("7") | newUser.getClave().contains("8") 
-                            | newUser.getClave().contains("9") | newUser.getClave().contains("0"))){
-            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        
+        // Verificacion: no existe un arrendatario con la misma cedula.
+        if (persistence.findByCedula(newUser.getCedula()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con la misma cedula.");
         }
         
         if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
             throw new BusinessLogicException("Su correo no es válido.");
         }
         
+        if (newUser.getEdad() < 18){
+            throw new BusinessLogicException("El arrendatario no puede ser menor de edad");
+        }
+
+        
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 17){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 17.");
+        }
+        
+        if (!(newUser.getClave().contains("1") || newUser.getClave().contains("2") || newUser.getClave().contains("3") || newUser.getClave().contains("4") ||
+                    newUser.getClave().contains("5") || newUser.getClave().contains("6") || newUser.getClave().contains("7") || newUser.getClave().contains("8") 
+                            || newUser.getClave().contains("9") || newUser.getClave().contains("0"))){
+            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        }
+        
         String celular = String.valueOf(newUser.getCelular());
-        char numeros[] = celular.toCharArray();
+        char[] numeros = celular.toCharArray();
         
         // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
         // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.
@@ -116,9 +122,53 @@ public class ArrendatarioLogic {
      * @param newUser Instancia de ArrendatarioEntity con los nuevos datos.
      * @return Instancia de ArrendatarioEntity con los datos actualizados.
      */
-    public ArrendatarioEntity updateArrendatario (ArrendatarioEntity newUser){
+    public ArrendatarioEntity updateArrendatario (ArrendatarioEntity newUser) throws BusinessLogicException{
         LOGGER.info("Inicia el proceso de actualizar un arrendatario en la plataforma");
-        return persistence.update(newUser);
+        
+        if(persistence.findByName(newUser.getNombre()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con el mismo nombre."); 
+        }
+        
+        // Verificacion: no existe un arrendatario con el mismo usuario (login).
+        if (persistence.findByLogin(newUser.getUsuario()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con el mismo login."); 
+        }
+        
+        // Verificacion: no existe un arrendatario con la misma cedula.
+        if (persistence.findByCedula(newUser.getCedula()) != null){
+            throw new BusinessLogicException("Existe un arrendatario con la misma cedula."); 
+        }
+        
+        if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){
+            throw new BusinessLogicException("Su correo no es válido."); 
+        }
+        
+        if (newUser.getEdad() < 18){
+            throw new BusinessLogicException("El arrendatario no puede ser menor de edad"); 
+        } 
+
+        
+        if(newUser.getClave().length() < 8 && newUser.getClave().length() > 17){
+            throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 17."); 
+        }
+        
+        if (!(newUser.getClave().contains("1") || newUser.getClave().contains("2") || newUser.getClave().contains("3") || newUser.getClave().contains("4") ||
+                    newUser.getClave().contains("5") || newUser.getClave().contains("6") || newUser.getClave().contains("7") || newUser.getClave().contains("8") 
+                            || newUser.getClave().contains("9") || newUser.getClave().contains("0"))){
+            throw new BusinessLogicException("Su clave debe contener al menos un numero");
+        }
+        
+        String celular = String.valueOf(newUser.getCelular());
+        char[] numeros = celular.toCharArray();
+        
+        // El numero de acuerdo a la Proveniencia se verificará después del cambio de concepto
+        // de Usuario (hacerlo abstracto). Por ahora será de acuerdo a nuestro pais.
+        if (numeros.length != 10){
+            throw new BusinessLogicException("Ingrese un celular válido para Colombia.");
+        }
+        
+        ArrendatarioEntity newEntity = persistence.update(newUser);
+        return newEntity;
     }
     
     //-- DELETE
@@ -131,9 +181,9 @@ public class ArrendatarioLogic {
         persistence.delete(id);
     }
     
-    //---------------------------------------------------
-    // Metodos UsuarioDetail - Resource: con relaciones
-    //---------------------------------------------------
+    //------------------------------------------------------
+    // Metodos ArrendatarioDetail - Resource: con relaciones
+    //------------------------------------------------------
     
     //------------------------
     //  RELACION CON FACTURAS:
@@ -174,6 +224,49 @@ public class ArrendatarioLogic {
         return null;
     }
     
+    /**
+     * Asocia una factura con un arrendatario existente en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param facturaId Identificador de la instancia de Factura.
+     * @return Instancia de FacturaEntity que fue asociada a un Arrendatario.
+     */
+    public FacturaEntity createFacturaIn (Long arrendatarioId, Long facturaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar una factura al arrendatario con id = {0}", arrendatarioId);
+        
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        FacturaEntity facturEntity = new FacturaEntity();
+        facturEntity.setId(facturaId);
+        arrendEntity.getFacturas().add(facturEntity);
+        
+        return getFactura(arrendatarioId, facturaId);
+    }
+    
+    /**
+     * Remplaza las instancias de Factura asociadas a una instancia de Arrendatario.
+     * @param arrendatarioId Identificador de la instancia de arrendatario.
+     * @param list Colección de instancias de FacturaEntity a asociar a instancia de Arrendatario.
+     * @return Nueva colección de FacturaEntity asociada a la instancia de un arrendatario.
+     */
+    public List<FacturaEntity> updateFacturas(Long arrendatarioId, List<FacturaEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una factura del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        arrendEntity.setFacturas(list);
+        return arrendEntity.getFacturas();
+    }
+
+    /**
+     * Desasocia una Factura existente de un arrendatario en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param facturaId Identificador de la instancia de Factura.
+     */
+    public void removeFactura (Long arrendatarioId, Long facturaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una factura del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity entity = getArrendatario(arrendatarioId);
+        FacturaEntity factEntity = new FacturaEntity();
+        factEntity.setId(facturaId);
+        
+        entity.getFacturas().remove(factEntity);
+    }
     
     //------------------------
     //  RELACION CON VIVIENDAS:
@@ -212,5 +305,49 @@ public class ArrendatarioLogic {
         
         // No existe
         return null;
+    }
+    
+    /**
+     * Asocia una vivienda con un arrendatario existente en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param viviendaId Identificador de la instancia de Vivienda.
+     * @return Instancia de ViviendaEntity que fue asociada a un Arrendatario.
+     */
+    public ViviendaEntity createViviendaIn (Long arrendatarioId, Long viviendaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar una vivienda al arrendatario con id = {0}", arrendatarioId);
+        
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        ViviendaEntity viviendaEntity = new ViviendaEntity();
+        viviendaEntity.setId(viviendaId);
+        arrendEntity.getViviendas().add(viviendaEntity);
+        
+        return getVivienda(arrendatarioId, viviendaId);
+    }
+    
+    /**
+     * Remplaza las instancias de Vivienda asociadas a una instancia de Arrendatario.
+     * @param arrendatarioId Identificador de la instancia de arrendatario.
+     * @param list Colección de instancias de ViviendaEntity a asociar a instancia de Arrendatario.
+     * @return Nueva colección de ViviendaEntity asociada a la instancia de un arrendatario.
+     */
+    public List<ViviendaEntity> updateViviendas(Long arrendatarioId, List<ViviendaEntity> list) {
+        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar una vivienda del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
+        arrendEntity.setViviendas(list);
+        return arrendEntity.getViviendas();
+    }
+
+    /**
+     * Desasocia una Vivienda existente de un arrendatario en la BD.
+     * @param arrendatarioId Identificador de la instancia de Arrendatario.
+     * @param viviendaId Identificador de la instancia de Vivienda.
+     */
+    public void removeVivienda (Long arrendatarioId, Long viviendaId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una vivienda del arrendatario con id = {0}", arrendatarioId);
+        ArrendatarioEntity entity = getArrendatario(arrendatarioId);
+        ViviendaEntity vivEntity = new ViviendaEntity();
+        vivEntity.setId(viviendaId);
+        
+        entity.getViviendas().remove(vivEntity);
     }
 }

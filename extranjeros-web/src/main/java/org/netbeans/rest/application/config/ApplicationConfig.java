@@ -31,7 +31,6 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(co.edu.uniandes.csw.extranjeros.mappers.BusinessLogicExceptionMapper.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.ArrendatarioResource.class);
-        resources.add(co.edu.uniandes.csw.extranjeros.resources.CityResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.CuentaBancariaResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.EstudianteResource.class);
         resources.add(co.edu.uniandes.csw.extranjeros.resources.EventoResource.class);
