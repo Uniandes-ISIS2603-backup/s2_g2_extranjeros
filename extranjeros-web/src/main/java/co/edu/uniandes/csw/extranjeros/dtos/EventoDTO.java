@@ -63,6 +63,7 @@ import java.util.Date;
  */
 public class EventoDTO {
 
+    private Long id;
     /**
      * nombre del evento
      */
@@ -103,7 +104,6 @@ public class EventoDTO {
      */
     private Integer capacidad;
     
-    private Long id;
 
     /**
      * Constructor por defecto
@@ -130,6 +130,19 @@ public class EventoDTO {
         }
     }
 
+    /**
+     * @return El ID del evento
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id El nuevo ID
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
     /**
      * Retorna el nombre del evento
      * @return 
