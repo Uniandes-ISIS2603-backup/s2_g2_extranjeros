@@ -59,7 +59,7 @@ insert into ServicioEntity (id, name, adicional) values (45,'Wi-Fi',true);
 insert into ServicioEntity (id, name, adicional) values (687,'Luz',false);
 insert into ServicioEntity (id, name, adicional) values (101,'Televisión',true);
 
-insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
+insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (10111,'','Oveja Negra');
 insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
 insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
 insert into TarjetaEntity (id, name) values (100,'Oveja Negra');
