@@ -215,4 +215,51 @@ public class TarjetaLogicTest {
         
     }
     
+    /**
+     * Prueba de verificar que la franquicia se encuentra entre las soportadas.
+     */
+    @Test
+    public void verificarBancoTest()
+    {
+        //Caso donde la franquicia es correcta
+        boolean rta = tarjetaLogic.verificarBanco("VISA");
+        Assert.assertEquals(true, rta);
+        
+        //Caso donde la franquicia es incorrecta
+        rta = tarjetaLogic.verificarBanco("Prueba");
+        Assert.assertEquals(false, rta);
+    }
+    
+    /**
+     * Prueba de verificar que el numero de la cédula cumpla con el tamaño
+     */
+    @Test
+    public void verificarNumeroTest()
+    {
+        //Caso donde la franquicia es correcta
+        //boolean rta = tarjetaLogic.verificarNumero(4111111111111111);
+        //Assert.assertEquals(true, rta);
+        
+        //Caso donde la franquicia es incorrecta
+        Long num = new Long(123456);
+        boolean rta = tarjetaLogic.verificarNumero(num);
+        Assert.assertEquals(false, rta);
+    }
+    
+    /**
+     * Prueba que verifica que la fecha cumpla con las reglas de negocio.
+     */
+    @Test
+    public void verificarFechaTest()
+    {
+        //Fecha que cumple 
+        boolean rta = tarjetaLogic.verificarFecha("08/2019");
+        Assert.assertEquals(true, rta);
+        
+        //Prueba que falla
+        rta = tarjetaLogic.verificarFecha("03/2018");
+        Assert.assertEquals(false, rta);
+    }
+    
+    
 }

@@ -37,9 +37,9 @@ public class EventoLogic {
     public boolean validarNombreEvento(String nombreP)
     {
         boolean rta = true;
-        if(nombreP.contains(nombreP))
+        if(nombreP.contains("marica") || nombreP.contains("puta") || nombreP.contains("perra") || nombreP.contains("fuck"))
         {
-            
+            rta = false;
         }
         return rta;
     }
@@ -68,7 +68,7 @@ public class EventoLogic {
     public boolean validarCapacidad(List lista, int capacidad)
     {
         boolean rta = true;
-        if(lista.size()<capacidad)
+        if(lista.size()>capacidad)
         {
             rta = false;
         }

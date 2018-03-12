@@ -245,4 +245,73 @@ public class EventoLogicTest {
         }
     }
     
+    /**
+     * Prueba que verifica que la fecha cumpla con la regla
+     */
+    @Test
+    public void verificarFechaTest()
+    {
+        //Fecha que cumple 
+        boolean rta = eventoLogic.validarFecha("10/08/2019 15:00");
+        Assert.assertEquals(true, rta);
+        
+        //Prueba que falla
+        rta = eventoLogic.validarFecha("01/03/2018 15:00");
+        Assert.assertEquals(false, rta);
+    }
+    
+    /**
+     * Prueba que verifica que se cumpla con la regla de la capacidad
+     */
+    @Test
+    public void verificarCapacidadTest()
+    {
+        List<Integer> lista = new ArrayList<>();
+        for (int i = 0; i<20; i++)
+        {
+            Integer inte = new Integer(10);
+            lista.add(inte);
+        }
+        
+        //Prueba exitosa
+        boolean rta = eventoLogic.validarCapacidad(lista, 25);
+        Assert.assertEquals(true, rta);
+        
+        //Prueba que falla
+        rta = eventoLogic.validarCapacidad(lista, 19);
+        Assert.assertEquals(false, rta);
+    }
+    
+    /**
+     * Prueba que verifica que el tipo de evento sea alguno de los establecidos
+     */
+    @Test
+    public void verificarTipoTest()
+    {
+        //Prueba Exitosa
+        boolean rta = eventoLogic.validarTipoEvento("Fiesta");
+        Assert.assertEquals(true, rta);
+        
+        //Prueba que falla
+        rta = eventoLogic.validarTipoEvento("Full Farra mariquis");
+        Assert.assertEquals(false, rta);
+        
+    }
+    
+    /**
+     * Prueba que verifica que el nombre de evento no contiene palabras ofensivas
+     */
+    @Test
+    public void verificarNombreTest()
+    {
+        //Prueba Exitosa
+        boolean rta = eventoLogic.validarNombreEvento("Cumple");
+        Assert.assertEquals(true, rta);
+        
+        //Prueba que falla
+        rta = eventoLogic.validarNombreEvento("afucka");
+        Assert.assertEquals(false, rta);
+        
+    }
+    
 }
