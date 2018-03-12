@@ -69,7 +69,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @ManyToOne
-    private ArrendatarioEntity arrendatarioAsociado;
+    private ArrendatarioEntity arrendatariosAsociados;
      /**
      * @return costo fijo del arriendo.
      */
@@ -134,13 +134,13 @@ public class FacturaEntity extends BaseEntity implements Serializable
     * @return  El arrendatario asociado a la factura.
     */
     public ArrendatarioEntity getArrendatarioAsociados() {
-        return arrendatarioAsociado;
+        return arrendatariosAsociados;
     }
    /**
     * @param arrendatarioAsociados El nuevo arrendatario asociado a la factura.
     */
     public void setArrendatarioAsociados(ArrendatarioEntity arrendatarioAsociados) {
-        this.arrendatarioAsociado= arrendatarioAsociados;
+        this.arrendatariosAsociados= arrendatarioAsociados;
     }
     /**
      * @return Fecha de entrada a la vivienda.

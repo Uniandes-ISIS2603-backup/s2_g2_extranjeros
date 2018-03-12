@@ -225,23 +225,5 @@ public class ArrendatarioResource {
             throw new WebApplicationException("El recurso /arrendatarios/" + arrendatarioId + "/cuentasBancarias no existe.", 404);
         }
         return CuentaBancariaResource.class;
-    }
-    
-    @PUT
-    @Path("{idArrendatario: \\d+}/viviendas/{idVivienda: \\d+}")
-    public ArrendatarioDetailDTO updateArrendatarioVivienda (@PathParam ("idArrendatario") Long id, ArrendatarioDetailDTO pArrendatario, @PathParam("idVivienda") Long idVivienda) throws BusinessLogicException {
-        
-        pArrendatario.setId(id);
-        ArrendatarioEntity entidadActu = logica.getArrendatario(id);
-        if(entidadActu == null){
-            throw new WebApplicationException("El recurso /arrendatarios/" + id + " no existe.", 404);
-        }
-        
-        ArrendatarioEntity actualizar = pArrendatario.toEntity();
-        List<ViviendaEntity> viviendasEnt = actualizar.getViviendas();
-        viviendasEnt.add(logicVivienda.getVivienda(idVivienda));
-        actualizar.setViviendas(viviendasEnt);
-        
-        return new ArrendatarioDetailDTO(logica.updateArrendatario(actualizar));
     }   
 }

@@ -183,7 +183,7 @@ public class CuentaBancariaLogicTest {
         List<CuentaBancariaEntity> list = logic.getCuentasBancarias(dataArrendatario.get(1).getId());        
         
         // Como la relacion es OneToOne, list debe tener un tamanio de 1.
-        Assert.assertEquals(1, list.size());
+        Assert.assertEquals(data.size(), list.size());
         
         for (CuentaBancariaEntity entity : list) {
             boolean encontrado = false;
