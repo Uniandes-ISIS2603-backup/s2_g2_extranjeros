@@ -13,17 +13,17 @@ delete from ViviendaEntity;
 
 
 
-insert into ArrendatarioEntity (id, name) values (100,'Oveja Negra');
-insert into ArrendatarioEntity (id, name) values (100,'Oveja Negra');
-insert into ArrendatarioEntity (id, name) values (100,'Oveja Negra');
-insert into ArrendatarioEntity (id, name) values (100,'Oveja Negra');
-insert into ArrendatarioEntity (id, name) values (100,'Oveja Negra');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140000,'1020840628', '3223854596', 'estoEs123', 'pruebaUno@hotmail.com', 20, 'Un nombre aleta 1', 'aletaJeje');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140001,'1020840629', '3223854596', 'estoEs123', 'pruebaDos@hotmail.com', 20, 'Un nombre aleta 2', 'aletaJeje2');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140002,'1020840630', '3223854596', 'estoEs123', 'pruebaTres@hotmail.com', 20, 'Un nombre aleta 3', 'aletaJeje3');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140003,'1020840631', '3223854596', 'estoEs123', 'pruebaCuatro@hotmail.com', 20, 'Un nombre aleta 4', 'aletaJeje4');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140004,'1020840632', '3223854596', 'estoEs123', 'pruebaCinco@hotmail.com', 20, 'Un nombre aleta 5', 'aletaJeje5');
 
-insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
-insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
-insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
-insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
-insert into CuentaBancariaEntity (id, name) values (100,'Oveja Negra');
+insert into CuentaBancariaEntity (id, bancoAsociado, numeroCuenta, saldoCuenta, tipoCuenta) values (15000,'Banco Caja Social', 20202020, 30000, 'Ahorros');
+insert into CuentaBancariaEntity (id, bancoAsociado, numeroCuenta, saldoCuenta, tipoCuenta) values (15001,'Banco de Bogota', 20202021, 300000002, 'Corriente');
+insert into CuentaBancariaEntity (id, bancoAsociado, numeroCuenta, saldoCuenta, tipoCuenta) values (15002,'Banco Caja Social', 121341232, 324234323432, 'Ahorros');
+insert into CuentaBancariaEntity (id, bancoAsociado, numeroCuenta, saldoCuenta, tipoCuenta) values (15003,'Banco Agrario', 324213312112, 12, 'Corriente');
+insert into CuentaBancariaEntity (id, bancoAsociado, numeroCuenta, saldoCuenta, tipoCuenta) values (15004,'Banco de los Ricos', 12345678910, 14000000000000, 'Ahorros');
 
 insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201616977,'Ana',1020889765,'ana123','ana123@gmail.com','clave111',3102312132,18);
 insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201736899,'Daniel',1020976897,'dani123','daniel123@gmail.com','empanada',3214879822,19);

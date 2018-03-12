@@ -15,6 +15,7 @@ public class ProvidenciaDTO {
     
     private String pais;
     private String region;
+    private Long id;
     
     public ProvidenciaDTO()
     {
@@ -27,6 +28,15 @@ public class ProvidenciaDTO {
         this.region = providencia.getRegion();
     }       
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
     public void setPais(String pais) {
         this.pais = pais;
     }

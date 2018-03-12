@@ -31,6 +31,7 @@ public class EstudianteDTO  {
     private String celular;
     private String cedula;
     private int edad;
+    private Long id;
     
     /**
    
@@ -68,9 +69,23 @@ public class EstudianteDTO  {
     }
     
     public EstudianteEntity toEntity(){
-      return  new EstudianteEntity();
-       
-  
+      EstudianteEntity entity = new EstudianteEntity();
+       entity.setCedula(cedula);
+       entity.setCelular(celular);
+       entity.setClave(clave);
+       entity.setNombre(nombre);
+       entity.setCorreo(correo);
+       entity.setEstadoArrendamiento(estadoArrendamiento);
+       entity.setEdad(edad);
+       return entity;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
             
  
