@@ -93,6 +93,49 @@
 			"response": []
 		},
 		{
+			"name": "Post servicio copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6da59b6-c765-4a5f-aeb6-01fa6fc39315",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"tipo\": \"WI-Fi\",\r\n   \"adicional\": false\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"servicios"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Put servicio exitoso",
 			"event": [
 				{
@@ -119,7 +162,7 @@
 					"raw": "{\r\n   \"tipo\": \"HBO\",\r\n   \"adicional\": true\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/servicios/5",
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -129,7 +172,7 @@
 						"extranjeros-web",
 						"api",
 						"servicios",
-						"5"
+						"1"
 					]
 				},
 				"description": ""
@@ -163,7 +206,7 @@
 					"raw": "{\r\n   \"tipo\": \"Wi-Fi\",\r\n   \"adicional\": true\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/servicios/1",
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/1458",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -173,7 +216,7 @@
 						"extranjeros-web",
 						"api",
 						"servicios",
-						"1"
+						"1458"
 					]
 				},
 				"description": ""
@@ -259,7 +302,7 @@
 					"raw": "    {\n        \"adicional\": false,\n        \"tipo\": \"television\"\n    }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/servicios/7",
+					"raw": "http://localhost:8080/extranjeros-web/api/servicios/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -269,7 +312,7 @@
 						"extranjeros-web",
 						"api",
 						"servicios",
-						"7"
+						"1"
 					]
 				},
 				"description": ""
