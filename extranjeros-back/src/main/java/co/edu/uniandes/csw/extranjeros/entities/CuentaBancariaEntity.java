@@ -5,16 +5,17 @@
  */
 package co.edu.uniandes.csw.extranjeros.entities;
 
+import co.edu.uniandes.csw.extranjeros.podam.TipoCuentaStrategy;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  * @author jr.pacheco10
  */
-
 @Entity
 public class CuentaBancariaEntity extends BaseEntity implements Serializable{
 
@@ -23,7 +24,7 @@ public class CuentaBancariaEntity extends BaseEntity implements Serializable{
     //---------------------------------------------------
     
     @PodamExclude
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private ArrendatarioEntity arrendatarioTitular;
     
     //---------------------------------------------------
@@ -32,7 +33,10 @@ public class CuentaBancariaEntity extends BaseEntity implements Serializable{
     
     private Long numeroCuenta;
     private Double saldoCuenta;
+    
+    @PodamStrategyValue(TipoCuentaStrategy.class)
     private String tipoCuenta;
+    
     private String bancoAsociado;
 
     //---------------------------------------------------

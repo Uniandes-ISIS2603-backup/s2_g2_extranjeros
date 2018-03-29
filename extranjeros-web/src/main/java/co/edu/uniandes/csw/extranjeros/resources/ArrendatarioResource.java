@@ -8,9 +8,7 @@ package co.edu.uniandes.csw.extranjeros.resources;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.dtos.*;
 import co.edu.uniandes.csw.extranjeros.ejb.ArrendatarioLogic;
-import co.edu.uniandes.csw.extranjeros.ejb.ViviendaLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
-import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -57,12 +55,6 @@ public class ArrendatarioResource {
     
     @Inject 
     private ArrendatarioLogic logica;
-    
-    @Inject
-    private ViviendaLogic logicVivienda;
-    
-    @Inject
-    private ViviendaResource viviendas;
     
     //---------------------------------------------------
     // Lista de conversion
@@ -211,12 +203,12 @@ public class ArrendatarioResource {
     }
     
     /**
-     * Conexión con el servicio de cuentas bancarias asociadas a un libro. {@link CuentaBancariaResource}
+     * Conexión con el servicio de cuentas bancarias asociadas a un arrendatario. {@link CuentaBancariaResource}
      * Este método conecta la ruta de /arrendatarios con las rutas de /cuentasBancarias que dependen
      * del arrendatario, es una redirección al servicio que maneja el segmento de la 
-     * URL que se encarga de las reseñas.
+     * URL que se encarga de las cuentas bancarias.
      * @param arrendatarioId El ID del arrendatario con respecto al cual se accede al servicio.
-     * @return El servicio de cuentas de banco para ese libro en paricular.
+     * @return El servicio de cuentas de banco para ese arrendatario en paricular.
      */
     @Path("{idArrendatario: \\d+}/cuentasBancarias")
     public Class<CuentaBancariaResource> getCuentaBancariaResource(@PathParam("idArrendatario") Long arrendatarioId) {
@@ -226,4 +218,38 @@ public class ArrendatarioResource {
         }
         return CuentaBancariaResource.class;
     }   
+    
+    /**
+     * Conexión con el servicio de facturas para un arrendatario. {@link ArrendatarioFacturasResource}
+     * Este método conecta la ruta de /arrendatarios con las rutas de /facturas que dependen
+     * del arrendatario, es una redirección al servicio que maneja el segmento de la 
+     * URL que se encarga de las facturas.
+     * @param arrendatarioID El ID del arrendatario con respecto al cual se accede al servicio.
+     * @return El servicio de Facturas para ese arrendatario en paricular.
+     */
+    @Path("{arrendatarioID: \\d+}/facturas")
+    public Class<ArrendatarioFacturasResource> getArrendatarioFacturasResource(@PathParam("arrendatarioID") Long arrendatarioID) {
+        ArrendatarioEntity entity = logica.getArrendatario(arrendatarioID);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /arrendatarios/" + arrendatarioID + "/facturas no existe.", 404);
+        }
+        return ArrendatarioFacturasResource.class;
+    }
+    
+    /**
+     * Conexión con el servicio de viviendas para un arrendatario. {@link BookAuthorsResource}
+     * Este método conecta la ruta de /arrendatarios con las rutas de /viviendas que dependen
+     * del arrendatario, es una redirección al servicio que maneja el segmento de la 
+     * URL que se encarga de las viviendas.
+     * @param arrendatarioID El ID del arrendatario con respecto al cual se accede al servicio.
+     * @return El servicio de Viviendas para ese arrendatario en paricular.
+     */
+    @Path("{arrendatarioID: \\d+}/facturas")
+    public Class<ArrendatarioViviendasResource> getArrendatarioViviendasResource(@PathParam("arrendatarioID") Long arrendatarioID) {
+        ArrendatarioEntity entity = logica.getArrendatario(arrendatarioID);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /arrendatarios/" + arrendatarioID + "/viviendas no existe.", 404);
+        }
+        return ArrendatarioViviendasResource.class;
+    } 
 }

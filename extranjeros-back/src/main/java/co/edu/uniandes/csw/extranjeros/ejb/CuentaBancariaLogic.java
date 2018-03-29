@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.CuentaBancariaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.CuentaBancariaPersistence;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,12 +80,21 @@ public class CuentaBancariaLogic {
      * @param entity Objeto de CuentaBancariaEntity con los datos nuevos
      * @param titularID id del arrendatario el cual sera padre de la nueva cuenta.
      * @return Objeto de CuentaBancariaEntity con los datos nuevos y su ID.
+     * @throws BusinessLogicException 
      * 
      */
-    public CuentaBancariaEntity createCuentaBancaria(Long titularID, CuentaBancariaEntity entity) {
+    public CuentaBancariaEntity createCuentaBancaria(Long titularID, CuentaBancariaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de crear una Cuenta Bancaria.");
         ArrendatarioEntity arrendatario = arrendatarioLogic.getArrendatario(titularID);
         entity.setArrendatarioTitular(arrendatario);
+        CuentaBancariaEntity existe = persistence.findByNumeroCuenta(entity.getNumeroCuenta());
+        if (existe != null){
+            throw new BusinessLogicException("Existe una cuenta de banco con el mismo Numero de Cuenta."); 
+        }
+        
+        if(!entity.getTipoCuenta().equals("Ahorros") && !entity.getTipoCuenta().equals("Corriente")){
+            throw new BusinessLogicException("Su cuenta debe ser de Ahorros o Corriente."); 
+        }
         return persistence.create(entity);
     }
 
@@ -113,6 +121,7 @@ public class CuentaBancariaLogic {
      * Elimina una instancia de Cuenta Bancaria de la base de datos.
      * @param cuentaID ID de la cuenta bancaria que se consulta en las relaciones de la BD.
      * @param titularID Id del Arrendatario que se consulta en las relaciones de la BD. 
+     * @throws BusinessLogicException 
      */
     public void deleteReview(Long titularID, Long cuentaID) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de borrar una cuenta de banco.");

@@ -125,7 +125,7 @@ public class CuentaBancariaPersistenceTest {
         // Creacion cuentas bancarias
         for (int i = 0; i < 3; i++) {
             CuentaBancariaEntity cuentaB = factory.manufacturePojo(CuentaBancariaEntity.class);
-            if(i==0) {cuentaB.setArrendatarioTitular(dataArrendatario.get(0));}
+            if(i>=0) {cuentaB.setArrendatarioTitular(dataArrendatario.get(0));}
             em.persist(cuentaB);
             data.add(cuentaB);
         }
@@ -165,6 +165,24 @@ public class CuentaBancariaPersistenceTest {
         Assert.assertEquals(cuentaSingle.getNumeroCuenta(), newEntity.getNumeroCuenta());
         Assert.assertEquals(cuentaSingle.getSaldoCuenta(), newEntity.getSaldoCuenta());
         Assert.assertEquals(cuentaSingle.getTipoCuenta(), newEntity.getTipoCuenta());
+    }
+    
+    /**
+     * Prueba para consultar todas las cuentas de banco existentes en la Base de Datos. 
+     */
+    @Test
+    public void getCuentasBancarias(){
+        List<CuentaBancariaEntity> listCB = cBancariaPersistence.findAll(dataArrendatario.get(0).getId());
+        Assert.assertEquals("No coinciden las listas: expected " + listCB.size() + " result: " + data.size(),listCB.size(), data.size());
+        for (CuentaBancariaEntity listaCBObj : listCB){
+            boolean encontrado = false;
+            for (CuentaBancariaEntity dataObj: data){
+                if (listaCBObj.getId() == dataObj.getId()){
+                    encontrado = true;
+                }
+            }
+            Assert.assertTrue(encontrado);
+        }
     }
     
     /**

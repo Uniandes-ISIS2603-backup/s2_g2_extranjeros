@@ -1,0 +1,265 @@
+{
+	"info": {
+		"name": "Cuenta Bancaria Collection",
+		"_postman_id": "25203a83-747e-d7ab-9987-edb4bd319c8b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "12c55041-0c6d-429b-b90e-1cb3fd58ba04",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"saldoCuenta\": 12356000000,\n  \"tipoCuenta\": \"Corriente\",\n  \"bancoAsociado\": \"Itau\",\n  \"numeroCuenta\": 123456789151401218\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias",
+				"description": "Obtiene todas las cuentas bancarias asociadas a un Arrendatario dado (id=37)"
+			},
+			"response": []
+		},
+		{
+			"name": "GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e8e1df5-de3f-49a6-a22d-9e830065322e",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias/7",
+				"description": "Obtiene la cuenta Bancaria con id=7 asociada al Arrendatario con id=37"
+			},
+			"response": []
+		},
+		{
+			"name": "GET FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85989be6-1322-4ace-878c-7aa134cedae6",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias/0",
+				"description": "Trata de obtener una cuenta bancaria inexistente o no asignada al Arrendatario dado."
+			},
+			"response": []
+		},
+		{
+			"name": "POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7e522ee-e7b3-40ea-b56d-fb41ecb78b93",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bancoAsociado\": \"CityBank\",\n    \"numeroCuenta\": 236987145000,\n    \"saldoCuenta\": 10000,\n    \"tipoCuenta\": \"Ahorros\"\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias",
+				"description": "Ingresa una cuenta bancaria al sistema, asociada a un Arrendatario en especifico, cumpliendo las reglas de negocio."
+			},
+			"response": []
+		},
+		{
+			"name": "POST FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8bc8ff3a-f926-4d86-bb98-8ef2a2445bcb",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bancoAsociado\": \"Banco de la Mujer\",\n    \"numeroCuenta\": 123456789,\n    \"saldoCuenta\": 200,\n    \"tipoCuenta\": \"Corriente\"\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias",
+				"description": "Trata ingresar una cuenta bancaria al sistema sin tener en cuenta las reglas de negocio."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fdfa31a4-bd0a-4279-94f5-233da56faecd",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bancoAsociado\": \"Bancolombia\",\n    \"numeroCuenta\": 1234567891514,\n    \"saldoCuenta\": 2000000000,\n    \"tipoCuenta\": \"Ahorros\"\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias/8",
+				"description": "Actualiza con exito una cuenta bancaria"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34c57369-6bb8-48e9-a6be-f4ff20babc88",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias/0",
+				"description": "Trata de actualizar una cuenta de banco inexistente o no asociada con el Arrendatario."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32464c54-be5e-4b1f-8563-c3532b9f7a01",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias/18",
+				"description": "Elimina una cuenta bancaria de la plataforma."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d73e3fc8-8c6b-4dd7-bc2d-c658f6819683",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/37/cuentasBancarias/0",
+				"description": "Trata de eliminar una cuenta de banco inexistente o no asociada al arrendatario."
+			},
+			"response": []
+		}
+	]
+}

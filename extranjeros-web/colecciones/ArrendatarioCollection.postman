@@ -1,0 +1,249 @@
+{
+	"info": {
+		"name": "ArrendatarioCollection",
+		"_postman_id": "efc4c2c1-53bf-69ab-eb1a-1088c9474b48",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL: Obtiene los arrendatarios de la base de Datos.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "29fff125-80bc-4223-9b47-85cf97b686da",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios",
+				"description": "Obtiene todos los arrendatarios de la base de datos. "
+			},
+			"response": []
+		},
+		{
+			"name": "GET: Obtiene el arrendatarrio 140001 existente en la base de datos.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4713b7cc-f91a-48ff-8a68-bd0f199c8a82",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/140001",
+				"description": "Obtiene el arrendatario con ID: 140001."
+			},
+			"response": []
+		},
+		{
+			"name": "GET FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4e48248-a485-4443-8d38-518ea1234dfb",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/0",
+				"description": "Lanza un recurso hacia un arrendatario inexistente a la base de datos."
+			},
+			"response": []
+		},
+		{
+			"name": "POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c7576ef4-b875-465e-81d3-73ef35e2471c",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"1010101598000\",\n    \"celular\": \"3122424269\",\n    \"clave\": \"claveChevere123\",\n    \"correo\": \"pruebas@hotmail.com\",\n    \"edad\": 45,\n    \"nombre\": \"Carl Sagan El Paps mago de magos |||||\",\n    \"usuario\": \"XYZ-User v.1202020 yo creo que ya |||||\",\n    \"cuentaBancaria\": [],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios",
+				"description": "Adiciona un arrendatario a la base de datos, cumpliendo todas las reglas de negocio de esta entidad. "
+			},
+			"response": []
+		},
+		{
+			"name": "POST FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f491c474-63ef-4523-b288-452a4e221ec9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"10101010\",\n    \"celular\": \"3122424269\",\n    \"clave\": \"claveChevere123\",\n    \"correo\": \"pruebas@hotmail.com\",\n    \"edad\": 45,\n    \"nombre\": \"Carl Sagan\",\n    \"usuario\": \"XYZ-User\",\n    \"cuentaBancaria\": [],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios",
+				"description": "Servicio POST que no cumple con una de las reglas de negocio para arrendatarios."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6584169f-f961-43bf-b714-6361587e4cf4",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"20202021000\",\n    \"celular\": \"3122424269\",\n    \"clave\": \"claveChevere123\",\n    \"correo\": \"pruebas@hotmail.com\",\n    \"edad\": 45,\n    \"nombre\": \"Para PUTear v.10000||||\",\n    \"usuario\": \"PUT-User v.20000||||\",\n    \"cuentaBancaria\": [],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/26",
+				"description": "Actualiza un arrendatario."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a53b1ea4-632e-4ade-a0a3-48106a8f731e",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"arrendatarioDetailDTO\",\n    \"cedula\": \"1\",\n    \"celular\": \"3223854596\",\n    \"clave\": \"estoEs123\",\n    \"correo\": \"pruebaDos@hotmail.com\",\n    \"edad\": 20,\n    \"id\": 25,\n    \"nombre\": \"Un nombre aleta 82\",\n    \"usuario\": \"unUsuarioCasual\",\n    \"cuentaBancaria\": [],\n    \"facturas\": [],\n    \"viviendas\": []\n}"
+				},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/25",
+				"description": "Trata de actualizar un arrendatario incumpliendo con las reglas de negocio."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "06e0a5d7-773d-4628-818e-cdb681f403c4",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/0",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a84bb4dc-685d-43f8-ba09-b8e9486af09e",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": "http://localhost:8080/extranjeros-web/api/arrendatarios/36",
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

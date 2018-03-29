@@ -17,7 +17,6 @@ import javax.persistence.TypedQuery;
 /**
  * @author jr.pacheco10
  */
-
 @Stateless
 public class CuentaBancariaPersistence {
 
@@ -35,6 +34,24 @@ public class CuentaBancariaPersistence {
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
+    
+        /**
+     * Busca si hay algun arrendatario con la cedula que se envia de argumento.
+     * @param pNumeroCuenta: Numero de cuenta del arrendatario que se esta buscando.
+     * @return null si no existe ningun arrendatario con la cedula del argumento. Si
+     * existe alguno devuelve el primero.
+     */
+    public CuentaBancariaEntity findByNumeroCuenta (Long pNumeroCuenta){
+        LOGGER.log(Level.INFO, "Consultando la cuenta bancaria por su numero: ", pNumeroCuenta);
+        TypedQuery query = em.createQuery("Select e From CuentaBancariaEntity e where e.numeroCuenta = :numeroCuenta", CuentaBancariaEntity.class);
+        query = query.setParameter("numeroCuenta", pNumeroCuenta);
+        List<CuentaBancariaEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
     
     /**
      * Busca en la Base de Datos si existe una cuenta de banco asociada al ID dado por parametro.
@@ -66,6 +83,19 @@ public class CuentaBancariaPersistence {
         return retorno;
     }
     
+    /**
+     * Retorna una lista de las cuentas bancarias (como objetos) de un Arrendatario especifico.
+     * @param arrendatarioID Identificador del arrendatario que se desea buscar.
+     * @return List(CuentaBancariaEntity) Lista con las cuentas bancarias del arrendatario.
+      */
+    public List<CuentaBancariaEntity> findAll (Long arrendatarioID) {
+        LOGGER.log(Level.INFO, "Consultando las cuentas de banco del Arrendatario con id = {0}", arrendatarioID);
+        TypedQuery<CuentaBancariaEntity> query = em.createQuery("select p from CuentaBancariaEntity p where p.arrendatarioTitular.id = :arrendatarioID", CuentaBancariaEntity.class);
+        query.setParameter("arrendatarioID", arrendatarioID);
+        List <CuentaBancariaEntity> resultado = query.getResultList();
+        return resultado;
+    }
+
     /**
      * Crea una cuenta de banco dentro de su relacion en la Base de Datos
      * @param pCuBan Cuenta bancaria que se desea ingresar a la BD.

@@ -142,9 +142,10 @@ public class CuentaBancariaLogicTest {
     
     /**
      * Prueba para crear una Cuenta Bancaria.
+     * @throws BusinessLogicException
      */
     @Test
-    public void createCuentaBancaria() {
+    public void createCuentaBancaria() throws BusinessLogicException {
         CuentaBancariaEntity newEntity = factory.manufacturePojo(CuentaBancariaEntity.class);
         CuentaBancariaEntity result = logic.createCuentaBancaria(data.get(0).getArrendatarioTitular().getId(), newEntity);
         Assert.assertNotNull(result);
