@@ -66,10 +66,10 @@ insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon) v
 insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon) values (101,'Universidad Jorge Tadeo Lozano','Cra 4 Nº 22 - 61','4.606727','-74.067585');
 insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon) values (102,'Pontificia Universidad Javeriana','Cra 7 Nº 40 - 50','4.628464','-74.065118');
 
-insert into ValoracionEntity (id, valoracion,comentario) values (3124,3,'habia mucho ruido');
+insert into ValoracionEntity (id, valoracion,comentario) values (1,3,'habia mucho ruido');
 insert into ValoracionEntity (id, valoracion,comentario) values (3125,4,'muy caliente');
 insert into ValoracionEntity (id, valoracion,comentario) values (3126,2,'terrible');
 
-insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (1001,'carrera 12 7609',1,0,34,'4.643998','-74.071531','A');
-insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (1002,'calle 189 2345',2,1,22,'4.668502','-74.058386','C');
+insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (11,'carrera 12 7609',1,0,34,'4.643998','-74.071531','A');
+insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (8,'calle 189 2345',2,1,22,'4.668502','-74.058386','C');
 insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (2,'calle 21 1307',3,1,3,'4.652762','-74.056516','B');
