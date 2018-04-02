@@ -25,7 +25,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -48,15 +48,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Yei\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Yei\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -79,15 +78,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Casi que no\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Casi que no\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -110,15 +108,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Fue dificil, pero lo logramos\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Fue dificil, pero lo logramos\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -141,15 +138,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Tengo como sueño\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Tengo como sueño\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -172,15 +168,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"5 para todos\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"13/06/2018 23:36\",\n    \"ubicacionLon\": \"1.5829\",\n    \"ubicacionLat\": \"-8.4932\",\n    \"privado\": false,\n    \"distanciaVivienda\": 100,\n    \"capacidad\": 200,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"5 para todos\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"13/06/2018 23:36\",\n    \"ubicacionLon\": \"1.5829\",\n    \"ubicacionLat\": \"-8.4932\",\n    \"privado\": false,\n    \"distanciaVivienda\": 100,\n    \"capacidad\": 200,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -203,15 +198,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Lastima algunos test :(\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Lastima algunos test :(\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -234,15 +228,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Descontrol\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Descontrol\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -265,15 +258,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Matri\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Matri\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -296,15 +288,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Ya casi\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Ya casi\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -327,15 +318,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Terminamos estas pruebas\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Terminamos estas pruebas\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -358,15 +348,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Terminamos estas pruebas\",\n    \"tipoEvento\": \"Ritual del mal\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Terminamos estas pruebas\",\n    \"tipoEvento\": \"Ritual del mal\",\n    \"fechaEvento\": \"12/06/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -384,7 +373,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/eventos/1",
+				"url": "http://localhost:8080/extranjeros-web/api/eventos/416841989",
 				"method": "GET",
 				"header": [
 					{
@@ -395,9 +384,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -420,15 +409,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -446,7 +434,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/eventos/1",
+				"url": "http://localhost:8080/extranjeros-web/api/eventos/416841989",
 				"method": "PUT",
 				"header": [
 					{
@@ -457,9 +445,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"Mira como cambio\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/09/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 50,\n    \"capacidad\": 200,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"Mira como cambio\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/09/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 50,\n    \"capacidad\": 200,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -482,15 +470,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"No va a cambiar\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/03/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"No va a cambiar\",\n    \"tipoEvento\": \"Fiesta\",\n    \"fechaEvento\": \"12/03/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -508,7 +495,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/eventos/1",
+				"url": "http://localhost:8080/extranjeros-web/api/eventos/416841989",
 				"method": "PUT",
 				"header": [
 					{
@@ -519,27 +506,27 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombreEvento\": \"No va a cambiar :(\",\n    \"tipoEvento\": \"Funeral\",\n    \"fechaEvento\": \"12/03/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
+					"raw": "{\n  \"nombreEvento\": \"No va a cambiar :(\",\n    \"tipoEvento\": \"Funeral\",\n    \"fechaEvento\": \"12/03/2018 23:36\",\n    \"ubicacionLon\": \"10.5829\",\n    \"ubicacionLat\": \"-80.4932\",\n    \"privado\": true,\n    \"distanciaVivienda\": 10,\n    \"capacidad\": 20,\n    \"responsableEventoP\": {},\n    \"estudiantes\": []\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
 		{
-			"name": "Delete 200",
+			"name": "Delete 204",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"]= responseCode.code===200"
+							"tests[\"Status code is 204\"]= responseCode.code===204"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/eventos/4",
+				"url": "http://localhost:8080/extranjeros-web/api/eventos/416841989",
 				"method": "DELETE",
 				"header": [
 					{
@@ -552,7 +539,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -575,15 +562,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		}
