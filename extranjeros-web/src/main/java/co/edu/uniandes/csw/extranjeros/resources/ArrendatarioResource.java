@@ -244,7 +244,7 @@ public class ArrendatarioResource {
      * @param arrendatarioID El ID del arrendatario con respecto al cual se accede al servicio.
      * @return El servicio de Viviendas para ese arrendatario en paricular.
      */
-    @Path("{arrendatarioID: \\d+}/facturas")
+    @Path("{arrendatarioID: \\d+}/viviendas")
     public Class<ArrendatarioViviendasResource> getArrendatarioViviendasResource(@PathParam("arrendatarioID") Long arrendatarioID) {
         ArrendatarioEntity entity = logica.getArrendatario(arrendatarioID);
         if (entity == null) {
