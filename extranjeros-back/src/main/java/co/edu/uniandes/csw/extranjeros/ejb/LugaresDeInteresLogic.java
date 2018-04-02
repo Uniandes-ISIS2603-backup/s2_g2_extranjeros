@@ -13,12 +13,14 @@ import co.edu.uniandes.csw.extranjeros.persistence.LugaresDeInteresPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author o.amaya724
  */
+@Stateless
 public class LugaresDeInteresLogic {
     
     private static final Logger LOGGER = Logger.getLogger(LugaresDeInteresLogic.class.getName());
@@ -39,7 +41,6 @@ public class LugaresDeInteresLogic {
         if (persistence.findByName(entity.getNombre()) != null) {
             throw new BusinessLogicException("Ya existe un Lugar de Interes con el mismo nombre");
         }
-        
         if(entity.getNombre() == null){
             throw new BusinessLogicException("El Lugar de Interes tiene que tener un nombre.");
         }
@@ -74,9 +75,18 @@ public class LugaresDeInteresLogic {
      * @param entity Instancia de LugaresDeInteresEntity con los nuevos datos.
      * @return Instancia de LugaresDeInteresEntity con los datos actualizados.
      */
-    public LugaresDeInteresEntity updateLugarDeInteres(LugaresDeInteresEntity entity)  {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar un lugar de interes");
-        return persistence.update(entity);
+    public LugaresDeInteresEntity updateLugarDeInteres(LugaresDeInteresEntity entity) throws BusinessLogicException  {
+        LOGGER.info("Inicia proceso de creación de lugar de interes");
+        // Verifica la regla de negocio que dice que no puede haber dos lugares de interes con el mismo nombre
+        if (persistence.findByName(entity.getNombre()) != null) {
+            throw new BusinessLogicException("Ya existe un Lugar de Interes con el mismo nombre");
+        }
+        if(entity.getNombre() == null){
+            throw new BusinessLogicException("El Lugar de Interes tiene que tener un nombre.");
+        }
+        LugaresDeInteresEntity newEntity = persistence.update(entity);
+        return newEntity;
+       
     }
     
     //-- DELETE

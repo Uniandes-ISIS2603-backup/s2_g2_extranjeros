@@ -49,7 +49,7 @@ public class LugaresDeInteresPersistence {
         LOGGER.log(Level.INFO, "Consultando lugar de interes por nombre ", name);
 
         
-        TypedQuery query = em.createQuery("Select e From LugaresDeInteresEntity e where e.name = :name", LugaresDeInteresEntity.class); 
+        TypedQuery query = em.createQuery("Select e From LugaresDeInteresEntity e where e.nombre = :nombre", LugaresDeInteresEntity.class); 
         query = query.setParameter("nombre", name);
         List<LugaresDeInteresEntity> sameName = query.getResultList();
         

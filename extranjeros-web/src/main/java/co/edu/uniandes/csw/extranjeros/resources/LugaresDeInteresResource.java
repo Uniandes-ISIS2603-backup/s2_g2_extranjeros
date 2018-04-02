@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.extranjeros.resources;
+
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.dtos.*;
 import co.edu.uniandes.csw.extranjeros.ejb.LugaresDeInteresLogic;
@@ -13,7 +14,6 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -152,13 +152,13 @@ public class LugaresDeInteresResource {
      * </pre>
      * 
      * @param id Identificador del Lugar de Interes que se desea actualizar. Este debe ser una cadena de dígitos.
-     * @param userUp {@link LugaresDeInteresDetailDTO} el Lugar de Interes que se desea guardar.
+     * @param lugar {@link LugaresDeInteresDetailDTO} el Lugar de Interes que se desea guardar.
      * @return JSON {@link LugaresDeInteresDetailDTO} - el Lugar de Interes guardado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar el Lugar de Interes porque ya existe uno con ese nombre.
      */
     @PUT
     @Path("{id: \\d+}")
-    public LugaresDeInteresDetailDTO updateLugar(@PathParam("id") Long id, LugaresDeInteresDetailDTO lugar)
+    public LugaresDeInteresDetailDTO updateLugar(@PathParam("id") Long id, LugaresDeInteresDetailDTO lugar) throws BusinessLogicException
     {
         lugar.setId(id);
         LugaresDeInteresEntity entidad = logica.getLugarDeInteres(id);
