@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.extranjeros.ejb;
 
 
 import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
-import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.LugaresDeInteresPersistence;
 
@@ -22,7 +21,7 @@ import javax.inject.Inject;
  */
 public class LugaresDeInteresLogic {
     
-    private static final Logger LOGGER = Logger.getLogger(UniversidadLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(LugaresDeInteresLogic.class.getName());
 
     @Inject
     private LugaresDeInteresPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
@@ -38,7 +37,11 @@ public class LugaresDeInteresLogic {
         LOGGER.info("Inicia proceso de creación de lugar de interes");
         // Verifica la regla de negocio que dice que no puede haber dos lugares de interes con el mismo nombre
         if (persistence.findByName(entity.getNombre()) != null) {
-            throw new BusinessLogicException("Ya existe un Lugar de Interes con el nombre \"" + entity.getNombre() + "\"");
+            throw new BusinessLogicException("Ya existe un Lugar de Interes con el mismo nombre");
+        }
+        
+        if(entity.getNombre() == null){
+            throw new BusinessLogicException("El Lugar de Interes tiene que tener un nombre.");
         }
         // Invoca la persistencia para crear el lugar de interes
         return persistence.create(entity);
@@ -57,9 +60,9 @@ public class LugaresDeInteresLogic {
 
     //-- GET ONE
     /**
-     * Obtiene los datos de una instancia de Universidad a partir de su ID (identificador).
+     * Obtiene los datos de una instancia de LugarDeInteres a partir de su ID (identificador).
      * @param id Identificador de la instancia a consultar.
-     * @return Instancia de UniversidadEntity con los datos del Usuario consultado.
+     * @return Instancia de LugaresDeInteresEntity con los datos del Lugar consultado.
      */
     public LugaresDeInteresEntity getLugarDeInteres(Long id) {
         return persistence.find(id);
@@ -78,7 +81,7 @@ public class LugaresDeInteresLogic {
     
     //-- DELETE
     /**
-     * Elimina una instancia de Universidad de la base de datos.
+     * Elimina una instancia de LugarDeInteres de la base de datos.
      * @param id Identificador de la instancia a eliminar.
      */
     public void deleteLugarDeInteres(Long id)  {

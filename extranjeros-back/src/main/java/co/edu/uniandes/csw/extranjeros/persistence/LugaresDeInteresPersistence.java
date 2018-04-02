@@ -48,12 +48,11 @@ public class LugaresDeInteresPersistence {
     public LugaresDeInteresEntity findByName(String name) {
         LOGGER.log(Level.INFO, "Consultando lugar de interes por nombre ", name);
 
-        // Se crea un query para buscar cityes con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-        TypedQuery query = em.createQuery("Select e From LugaresDeInteresEntity e where e.name = :name", LugaresDeInteresEntity.class);
-        // Se remplaza el placeholder ":name" con el valor del argumento 
-        query = query.setParameter("name", name);
-        // Se invoca el query se obtiene la lista resultado
+        
+        TypedQuery query = em.createQuery("Select e From LugaresDeInteresEntity e where e.name = :name", LugaresDeInteresEntity.class); 
+        query = query.setParameter("nombre", name);
         List<LugaresDeInteresEntity> sameName = query.getResultList();
+        
         if (sameName.isEmpty()) {
             return null;
         } else {
