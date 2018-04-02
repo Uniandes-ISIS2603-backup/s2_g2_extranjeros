@@ -128,7 +128,7 @@ public class LugaresDeInteresResource {
      * </code>
      * </pre>
      * 
-     * @param userElement {@link LugaresDeInteresDetailDTO} - el Lugar de Interes que se desea guardar.
+     * @param lugar {@link LugaresDeInteresDetailDTO} - el Lugar de Interes que se desea guardar.
      * @return JSON {@link LugaresDeInteresDetailDTO}  - el Lugar de Interes guardado con el atributo id autogenerado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera cuando ya existe el Lugar de Interes.
      */
