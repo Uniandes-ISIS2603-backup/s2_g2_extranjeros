@@ -1,13 +1,13 @@
 {
 	"info": {
 		"name": "CollectionUniversidad",
-		"_postman_id": "d29bd53d-cc85-fadb-b0b2-9fa114d89541",
+		"_postman_id": "15384deb-a03a-68f3-c511-ab01ab332929",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "GetCorrect",
+			"name": "GET ALL",
 			"event": [
 				{
 					"listen": "test",
@@ -36,13 +36,12 @@
 						"api",
 						"universidades"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "PostCorrect",
+			"name": "POST",
 			"event": [
 				{
 					"listen": "test",
@@ -65,7 +64,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\t\"nombre\": \"Universidad de los Andes\",\r\n        \"direccion\": \"Carrera 1 # 19 - 30\",\r\n        \"ubicacionLat\": \"64.5256854\",\r\n        \"ubicacionLon\": \"-75.5487412\"\r\n}"
+					"raw": "{\r\n\t\t\"nombre\": \"Universidad del Bosque\",\r\n        \"direccion\": \"Carrera 1 # 19 - 30\",\r\n        \"ubicacionLat\": \"64.5256854\",\r\n        \"ubicacionLon\": \"-75.5487412\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/extranjeros-web/api/universidades",
@@ -78,6 +77,278 @@
 						"extranjeros-web",
 						"api",
 						"universidades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33658c24-6068-4a96-abb5-13d226255919",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c35820ea-7328-4428-b01c-5ccabd200fb6",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52cef463-341f-418c-8e14-070222cb9977",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"nombre\": \"Universidad del Bosque\",\r\n        \"direccion\": \"Carrera 1 # 19 - 30\",\r\n        \"ubicacionLat\": \"64.5256854\",\r\n        \"ubicacionLon\": \"-75.5487412\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades"
+					]
+				},
+				"description": "Intenta agregar una Universidad que ya existe."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f8eecd9d-aa6c-4c0c-bfab-33a8dc9c28b3",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"nombre\": \"Universidad de la Sabana\",\r\n        \"direccion\": \"Carrera 1 # 19 - 30\",\r\n        \"ubicacionLat\": \"64.5256854\",\r\n        \"ubicacionLon\": \"-75.5487412\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades/102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades",
+						"102"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ebaf677-6685-4c4e-8177-244a107e6478",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"] = responseCode.code === 412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"nombre\": \"Universidad de la Sabana\",\r\n        \"direccion\": \"Carrera 1 # 19 - 30\",\r\n        \"ubicacionLat\": \"64.5256854\",\r\n        \"ubicacionLon\": \"-75.5487412\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades",
+						"101"
+					]
+				},
+				"description": "Intenta actualizar el nombre de una Universidad con un nombre de una Universidad que ya existe en la base de datos."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2ae08e8-905c-4b02-be3a-cb5083a168ae",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades",
+						"101"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE FALLIDO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ccde988-8e17-4392-8b39-638b851e7ba0",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/extranjeros-web/api/universidades/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extranjeros-web",
+						"api",
+						"universidades",
+						"0"
 					]
 				},
 				"description": ""

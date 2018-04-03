@@ -41,8 +41,8 @@ public class LugaresDeInteresLogic {
         if (persistence.findByName(entity.getNombre()) != null) {
             throw new BusinessLogicException("Ya existe un Lugar de Interes con el mismo nombre");
         }
-        if(entity.getNombre() == null){
-            throw new BusinessLogicException("El Lugar de Interes tiene que tener un nombre.");
+        if(entity.getDireccion() == null){
+            throw new BusinessLogicException("El Lugar de Interes tiene que tener una direccion.");
         }
         // Invoca la persistencia para crear el lugar de interes
         return persistence.create(entity);

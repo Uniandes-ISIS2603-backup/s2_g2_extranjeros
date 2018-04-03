@@ -61,6 +61,22 @@ public class UniversidadPersistence {
             return sameName.get(0);
         }
     }
+    
+    public UniversidadEntity findByDireccion(String direccion) {
+        LOGGER.log(Level.INFO, "Consultando universidad por nombre ", direccion);
+
+        // Se crea un query para buscar universidades con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+        TypedQuery query = em.createQuery("Select e From UniversidadEntity e where e.direccion = :direccion", UniversidadEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter("direccion", direccion);
+        // Se invoca el query se obtiene la lista resultado
+        List<UniversidadEntity> sameName = query.getResultList();
+        if (sameName.isEmpty()) {
+            return null;
+        } else {
+            return sameName.get(0);
+        }
+    }
     /**
      * Busca las universidades en la base de datos
      * @return devuelve una lista de las universidades que estan en la base de datos.
