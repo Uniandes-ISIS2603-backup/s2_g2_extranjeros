@@ -25,7 +25,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -48,15 +48,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012345,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012345,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -79,15 +78,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012311,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012311,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -110,15 +108,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012312,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012312,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -141,15 +138,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012314,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012314,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -172,15 +168,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012315,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012315,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -203,15 +198,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012316,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012316,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -234,15 +228,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012317,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012317,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -265,15 +258,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012318,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012318,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -296,15 +288,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012319,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012319,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -327,15 +318,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012320,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012320,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -358,15 +348,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -384,7 +373,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/1",
+				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/10111",
 				"method": "GET",
 				"header": [
 					{
@@ -395,9 +384,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -420,15 +409,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -446,7 +434,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/1",
+				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/10111",
 				"method": "PUT",
 				"header": [
 					{
@@ -457,9 +445,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012112,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012112,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -482,15 +470,14 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012112,\n\t\"banco\": \"VISA\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012112,\n  \"banco\": \"VISA\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -508,7 +495,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/1",
+				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/10111",
 				"method": "PUT",
 				"header": [
 					{
@@ -519,27 +506,27 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\": 4123456789012112,\n\t\"banco\": \"VISASS\",\n\t\"fechaCaducidad\":\"08/2019\"\n}"
+					"raw": "{\n  \"numero\": 4123456789012112,\n  \"banco\": \"VISASS\",\n  \"fechaCaducidad\":\"08/2019\"\n}"
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
 		{
-			"name": "Delete 200",
+			"name": "Delete 204",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"]= responseCode.code===200"
+							"tests[\"Status code is 204\"]= responseCode.code===204"
 						]
 					}
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/2",
+				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/10111",
 				"method": "DELETE",
 				"header": [
 					{
@@ -552,7 +539,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -570,7 +557,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/2",
+				"url": "http://localhost:8080/extranjeros-web/api/tarjetas/10111",
 				"method": "DELETE",
 				"header": [
 					{
@@ -583,7 +570,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		}
