@@ -41,16 +41,16 @@ public class LugaresDeInteresPersistence {
     /**
      * Busca si hay alguna city con el nombre que se envía de argumento
      *
-     * @param name: Nombre de la city que se está buscando
+     * @param nombre: Nombre de la city que se está buscando
      * @return null si no existe ninguna city con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
-    public LugaresDeInteresEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando lugar de interes por nombre ", name);
+    public LugaresDeInteresEntity findByName(String nombre) {
+        LOGGER.log(Level.INFO, "Consultando lugar de interes por nombre ", nombre);
 
         
-        TypedQuery query = em.createQuery("Select e From LugaresDeInteresEntity e where e.name = :name", LugaresDeInteresEntity.class); 
-        query = query.setParameter("nombre", name);
+        TypedQuery query = em.createQuery("Select e From LugaresDeInteresEntity e where e.nombre = :nombre", LugaresDeInteresEntity.class); 
+        query = query.setParameter("nombre", nombre);
         List<LugaresDeInteresEntity> sameName = query.getResultList();
         
         if (sameName.isEmpty()) {
