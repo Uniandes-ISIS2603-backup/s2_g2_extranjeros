@@ -50,7 +50,6 @@ public class LugaresDeInteresDTO {
     private String nombre;
     private String direccion;
     private Integer telefono;
-    private EventoDTO eventos;
     private String ubicacionLat;
     private String ubicacionLon;
     private Long id;
@@ -157,21 +156,6 @@ public class LugaresDeInteresDTO {
         this.telefono = telefono;
     }
 
-    /**
-     * @return El evento del sitio de interes
-     */
-    public EventoDTO getEventos() {
-        return eventos;
-    }
-    
-    /**
-     * Asigna los eventos que posee el sitio de interes
-     * @param eventos 
-     */
-
-    public void setEventos(EventoDTO eventos) {
-        this.eventos = eventos;
-    }
 
     /**
      * @return La latitud del sitio de interes

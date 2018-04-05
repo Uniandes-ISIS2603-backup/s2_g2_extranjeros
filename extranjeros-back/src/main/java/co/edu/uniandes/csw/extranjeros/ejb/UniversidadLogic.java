@@ -40,10 +40,6 @@ public class UniversidadLogic {
         if (persistence.findByName(entity.getNombre()) != null) {
             throw new BusinessLogicException("Ya existe una Universidad con el nombre \"" + entity.getNombre() + "\"");
         }
-        
-        if (persistence.findByDireccion(entity.getDireccion()) != null) {
-            throw new BusinessLogicException("Ya existe una Universidad con la direccion \"" + entity.getDireccion() + "\"");
-        }
         // Invoca la persistencia para crear la universidad
         return persistence.create(entity);
         
