@@ -72,4 +72,4 @@ insert into ValoracionEntity (id, valoracion,comentario) values (3126,2,'terribl
 
 insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (11,'carrera 12 7609',1,0,34,'4.643998','-74.071531','A');
 insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (8,'calle 189 2345',2,1,22,'4.668502','-74.058386','C');
-insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (2,'calle 21 1307',3,1,3,'4.652762','-74.056516','B');
+insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento) values (9,'calle 21 1307',3,1,3,'4.652762','-74.056516','B');
