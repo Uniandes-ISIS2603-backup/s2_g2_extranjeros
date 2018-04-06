@@ -190,7 +190,7 @@ public class LugaresDeInteresLogicTest {
     
     
     @Test
-    public void updateLugarDeInteresTest() {
+    public void updateLugarDeInteresTest() throws BusinessLogicException {
         LugaresDeInteresEntity entity = data.get(0);
         LugaresDeInteresEntity pojoEntity = factory.manufacturePojo(LugaresDeInteresEntity.class);
 
