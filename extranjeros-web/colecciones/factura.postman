@@ -7,49 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Creación vivienda que tendra facturas.",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "df4e1e20-3e95-4cf1-b1bc-3dbcbbc8e663",
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"type\": \"viviendaDetailDTO\",\n        \"direccion\": \"carrera 50A\",\n        \"disponible\": false,\n        \"inquilinos\": 3,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"tipoAlojamiento\": \"B\",\n        \"capacidad\":34,\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": []\n    }"
-				},
-				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"extranjeros-web",
-						"api",
-						"viviendas"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "Post exitoso de factura",
 			"event": [
 				{
@@ -73,10 +30,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-04-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-06-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -86,11 +43,11 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -118,10 +75,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-05-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-06-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -131,11 +88,11 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -163,10 +120,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-08-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-09-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -176,11 +133,11 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -208,10 +165,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cargo único\",\n   \"dividirCuentaServicios\": true,\n   \"fechaEntrada\": \"2018-09-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-10-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -221,11 +178,11 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -253,10 +210,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cobros mensuales\",\n   \"dividirCuentaServicios\": false,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
+					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cobros mensuales\",\n   \"dividirCuentaServicios\": false,\n   \"fechaEntrada\": \"2018-06-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-08-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -266,11 +223,11 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"5",
+						"11",
 						"facturas"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -301,7 +258,7 @@
 					"raw": "{\n    \"costoFijo\": 120000.20,\n    \"costosAdicionales\": 5000.50,\n   \"formaDePago\": \"cobros mensuales\",\n   \"dividirCuentaServicios\": false,\n   \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n   \"fechaSalida\":\"2018-05-22T20:38:54.973-05:00\",\n   \"iva\": 10.013,\n   \"serviciosIncluidos\":[],\n   \"serviciosExtra\":[]\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas/2",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas/6969696",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -311,12 +268,12 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"5",
+						"11",
 						"facturas",
-						"2"
+						"6969696"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -326,10 +283,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3049e191-d355-426c-930c-18e76b121c4a",
+						"id": "ceabe24e-a58c-43f0-9365-2ae4128c0ce2",
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+							"tests[\"Status code is 200\"] = responseCode.code === 204;"
 						]
 					}
 				}
@@ -347,7 +304,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas/2",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas/78945",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -357,12 +314,12 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"5",
+						"11",
 						"facturas",
-						"2"
+						"78945"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -393,7 +350,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -403,11 +360,11 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"5",
+						"11",
 						"facturas"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -438,7 +395,7 @@
 					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": true,\n        \"fechaEntrada\": \"2018-02-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cargo Ãºnico\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/5/facturas",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -448,11 +405,11 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"5",
+						"11",
 						"facturas"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -483,7 +440,7 @@
 					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": true,\n        \"fechaEntrada\": \"2018-02-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cargo Ãºnico\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/20",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas/20",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -493,12 +450,12 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas",
 						"20"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -529,7 +486,7 @@
 					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": false,\n        \"fechaEntrada\": \"2018-02-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cobros mensuales\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/1",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas/6969696",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -539,12 +496,12 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas",
-						"1"
+						"6969696"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -572,10 +529,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": false,\n        \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cobros mensuales\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
+					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": false,\n        \"fechaEntrada\": \"2018-06-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-07-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cobros mensuales\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/1",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas/1234",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -585,12 +542,12 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas",
-						"1"
+						"1234"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -621,7 +578,7 @@
 					"raw": "{\n        \"type\": \"facturaDetailDTO\",\n        \"costoFijo\": 120000.2,\n        \"costosAdicionales\": 5000.5,\n        \"dividirCuentaServicios\": false,\n        \"fechaEntrada\": \"2018-03-22T20:38:54.973-05:00\",\n        \"fechaSalida\": \"2018-05-22T20:38:54.973-05:00\",\n        \"formaDePago\": \"cobros mensuales\",\n        \"id\": 3,\n        \"serviciosExtra\": [],\n        \"serviciosIncluidos\": []\n }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/18",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas/18",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -631,12 +588,12 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas",
 						"18"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -667,7 +624,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/1/facturas/2",
+					"raw": "http://localhost:8080/extranjeros-web/api/viviendas/11/facturas/280000",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -677,12 +634,12 @@
 						"extranjeros-web",
 						"api",
 						"viviendas",
-						"1",
+						"11",
 						"facturas",
-						"2"
+						"280000"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		}
