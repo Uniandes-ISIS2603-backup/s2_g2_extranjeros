@@ -12,11 +12,17 @@ and open the template in the editor.
                 <thead>
                     <tr>
                         <th>Nombre evento</th>
+                        <th>Tipo evento</th>
+                        <th>Fecha evento</th>
+                        <th>Capacidad</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="evento in eventosRecords">
                         <td>{{evento.nombreEvento}}</td>
+                        <td>{{evento.tipoEvento}}</td>
+                        <td>{{evento.fechaEvento}}</td>
+                        <td>{{evento.capacidad}}</td>
                     </tr>
                 </tbody>
             </table>

@@ -12,11 +12,15 @@ and open the template in the editor.
                 <thead>
                     <tr>
                         <th>Numero</th>
+                        <th>Franquicia</th>
+                        <th>Fecha Caducidad </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="tarjeta in tarjetasRecords">
                         <td>{{tarjeta.numero}}</td>
+                        <td>{{tarjeta.banco}}</td>
+                        <td>{{tarjeta.fechaCaducidad}}</td>
                     </tr>
                 </tbody>
             </table>
