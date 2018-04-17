@@ -5,6 +5,8 @@
        
         // Internal modules dependencies       
         'citiesModule',
+        'tarjetaModule',
+        'eventoModule'
         
 
     ]);
