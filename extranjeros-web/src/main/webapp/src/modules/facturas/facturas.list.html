@@ -10,7 +10,7 @@
                     <th>Fecha de salida</th>
                 </tr>
                 <tr ng-repeat="factura in facturasRecords">
-                    <td>{{factura.id}}</td>
+                    <td><a ui-sref="facturaDetail({facturaId: factura.id})">{{factura.id}}</a></td>
                     <td>{{factura.fechaEntrada}}</td>
                     <td>{{factura.fechaSalida}}</td>
                 </tr>

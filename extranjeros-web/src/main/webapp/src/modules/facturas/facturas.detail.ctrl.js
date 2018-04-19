@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("facturaModule");
-    mod.constant("facturaContext", "api/facturas");
+    mod.constant("facturaContext", "api/viviendas/11/facturas");
     mod.controller('facturaDetailCtrl', ['$scope', '$http', 'facturaContext', '$state', '$filter',
         function ($scope, $http, facturaContext, $state, $filter) {
 

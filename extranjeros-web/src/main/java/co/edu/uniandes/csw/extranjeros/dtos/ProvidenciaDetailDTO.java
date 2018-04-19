@@ -17,6 +17,11 @@ public class ProvidenciaDetailDTO extends ProvidenciaDTO {
     {
         super (entity);
     }
+        @Override
+    public ProvidenciaEntity toEntity()
+    {
+        return super.toEntity();
+    }
     
     
 }
