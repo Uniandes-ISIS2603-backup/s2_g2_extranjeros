@@ -1,0 +1,59 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <ul>
+                        <li>ID
+                            <ul>
+                                <li>{{currentFactura.id}}</li>
+                            </ul>
+                        </li>
+                        <li>Costo Fijo
+                            <ul>
+                                <li>{{currentFactura.costoFijo}}</li>
+                            </ul>
+                        </li>
+                        <li>Costo Adicional
+                            <ul>
+                                <li>{{currentFactura.costosAdicionales}}</li>
+                            </ul>
+                        </li>
+                        <li>¿Se divide la cuenta de servicios adicioanles con los otros inquilinos?
+                            <ul>
+                                <li>{{currentFactura.dividirCuentaServicios}}</li>
+                            </ul>
+                        </li>
+                        <li>Fecha de entrada
+                            <ul>
+                                <li>{{currentFactura.fechaEntrada}}</li>
+                            </ul>
+                        </li>
+                        <li>Fecha de salida
+                            <ul>
+                                <li>{{currentFactura.fechaSalida}}</li>
+                            </ul>
+                        </li>
+                        <li>Forma de pago
+                            <ul>
+                                <li>{{currentFactura.formaDePago}}</li>
+                            </ul>
+                        </li>
+                        <li ng-repeat="servicio in currentFactura.serviciosExtra">Servicios Extra
+                            <dl>
+                                <dt>Tipo</dt>
+                                <dd>{{servicio.tipo}}</dd>
+                            </dl>
+                        </li>
+                        <li ng-repeat="servicio in currentFactura.serviciosIncluidos">Servicios Incluidos
+                            <dl>
+                                <dt>Tipo</dt>
+                                <dd>{{servicio.tipo}}</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

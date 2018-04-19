@@ -6,7 +6,8 @@
         // Internal modules dependencies       
         'citiesModule',
         'tarjetaModule',
-        'eventoModule'
+        'eventoModule',
+        'facturaModule'
         
 
     ]);
