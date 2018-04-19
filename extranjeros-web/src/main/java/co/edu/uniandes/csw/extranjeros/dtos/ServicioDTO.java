@@ -38,6 +38,7 @@ public class ServicioDTO {
     private Long id;
     private String tipo;
     private Boolean adicional;
+    private Double precioMensual;
     
     /**
      * Constructor por defecto
@@ -57,6 +58,7 @@ public class ServicioDTO {
             this.id = entity.getId();
             this.tipo = entity.getTipo();
             this.adicional = entity.getAdicional();
+            this.precioMensual=entity.getPrecioMensual();
         }
     }
     //Métodos
@@ -96,12 +98,25 @@ public class ServicioDTO {
     public void setAdicional(Boolean adicional) {
         this.adicional = adicional;
     }
+    /**
+     * @return precio mensual del servicio.
+     */
+    public Double getPrecioMensual() {
+        return precioMensual;
+    }
+    /**
+     * @param precioMensual nuevo precio mensual del servicio.
+     */
+    public void setPrecioMensual(Double precioMensual) {
+        this.precioMensual = precioMensual;
+    }
     public ServicioEntity toEntity()
     {
         ServicioEntity e=new ServicioEntity();
         e.setAdicional(adicional);
         e.setId(id);
         e.setTipo(tipo);
+        e.setPrecioMensual(precioMensual);
         return e;
     }
     

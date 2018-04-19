@@ -52,11 +52,11 @@ insert into ProvidenciaEntity (id, pais, region) values (4234423,'Colombia','Car
 insert into ProvidenciaEntity (id, pais, region) values (3423441,'España','Madrid');
 insert into ProvidenciaEntity (id, pais, region) values (3454532,'España','Barcelona');
 
-insert into ServicioEntity (id, tipo, adicional) values (100,'Agua',0);
-insert into ServicioEntity (id, tipo, adicional) values (233422,'Gas',0);
-insert into ServicioEntity (id, tipo, adicional) values (434235,'Wi-Fi',1);
-insert into ServicioEntity (id, tipo, adicional) values (687,'Luz',0);
-insert into ServicioEntity (id, tipo, adicional) values (101,'Televisión',1);
+insert into ServicioEntity (id, tipo, adicional,preciomensual) values (100,'Agua',0,350000.0);
+insert into ServicioEntity (id, tipo, adicional,preciomensual) values (233422,'Gas',0,350000.0);
+insert into ServicioEntity (id, tipo, adicional,preciomensual) values (434235,'Wi-Fi',1,350000.0);
+insert into ServicioEntity (id, tipo, adicional,preciomensual) values (687,'Luz',0,350000.0);
+insert into ServicioEntity (id, tipo, adicional,preciomensual) values (101,'Televisión',1,350000.0);
 
 insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (10111,'VISA',4789215346878546,'10/2018');
 insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (101251,'MasterCard',5789215346878546,'10/2018');
