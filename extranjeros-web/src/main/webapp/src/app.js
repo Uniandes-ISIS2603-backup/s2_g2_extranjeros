@@ -7,7 +7,8 @@
         'citiesModule',
         'tarjetaModule',
         'eventoModule',
-        'facturaModule'
+        'facturaModule',
+        'servicioModule'
         
 
     ]);

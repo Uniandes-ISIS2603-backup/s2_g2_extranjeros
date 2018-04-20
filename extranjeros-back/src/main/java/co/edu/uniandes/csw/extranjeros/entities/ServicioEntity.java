@@ -17,6 +17,7 @@ public class ServicioEntity extends BaseEntity implements Serializable
 {
     private String tipo;
     private Boolean adicional;
+    private Double precioMensual;
     
     /**
      * @return el tipo de servicio.
@@ -42,4 +43,17 @@ public class ServicioEntity extends BaseEntity implements Serializable
     public void setAdicional(Boolean adicional) {
         this.adicional = adicional;
     }
+    /**
+     * @return precio mensual del servicio.
+     */
+    public Double getPrecioMensual() {
+        return precioMensual;
+    }
+    /**
+     * @param precioMensual nuevo precio mensual del servicio.
+     */
+    public void setPrecioMensual(Double precioMensual) {
+        this.precioMensual = precioMensual;
+    }
+    
 }
