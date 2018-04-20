@@ -1,7 +1,17 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+(function (ng) {
+    var mod = ng.module("servicioModule");
+    mod.constant("servicioContext", "api/servicios");
+    mod.controller('servicioDetailCtrl', ['$scope', '$http', 'servicioContext', '$state', '$filter',
+        function ($scope, $http, servicioContext, $state, $filter) {
 
+            if (($state.params.servicioId !== undefined) && ($state.params.servicioId !== null)) {
+                $http.get(servicioContext).then(function (response) {
+                    $scope.serviciosRecords = response.data;
+                    $scope.currentServicio = $filter('filter')($scope.serviciosRecords, {id: $state.params.servicioId}, true)[0];
+                });
+            }
+        }
+    ]);
+}
+)(window.angular);
 

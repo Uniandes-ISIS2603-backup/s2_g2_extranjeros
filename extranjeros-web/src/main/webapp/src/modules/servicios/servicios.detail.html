@@ -1,20 +1,21 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2 col-md-2">
-            <h2><strong>Servicios</strong></h2>
-            <table class="table table-hover">
-                <tr>
-                    <th>Tipo de servicio</th>
-                    <th>Fecha de entrada</th>
-                    <th>Fecha de salida</th>
-                </tr>
-                <tr ng-repeat="factura in facturasRecords">
-                    <td><a ui-sref="facturaDetail({facturaId: factura.id})">{{factura.id}}</a></td>
-                    <td>{{factura.fechaEntrada}}</td>
-                    <td>{{factura.fechaSalida}}</td>
-                </tr>
-            </table>
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <h1 class="bold">{{currentServicio.tipo}}</h1>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <dl> 
+                    <dt class="bold">¿Es un servicio adicional?</dt>
+                    <dd>{{currentServicio.adicional}}</dd>
+                    <hr>
+                    <dt class="bold">Precio mensual asociado</dt>
+                    <dd>{{currentServicio.precioMensual}}</dd>
+                </dl>
+            </div>
         </div>
+
     </div>
 </div>
