@@ -1,0 +1,20 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            <h2><strong>Servicios</strong></h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>Tipo de servicio</th>
+                    <th>Fecha de entrada</th>
+                    <th>Fecha de salida</th>
+                </tr>
+                <tr ng-repeat="factura in facturasRecords">
+                    <td><a ui-sref="facturaDetail({facturaId: factura.id})">{{factura.id}}</a></td>
+                    <td>{{factura.fechaEntrada}}</td>
+                    <td>{{factura.fechaSalida}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
