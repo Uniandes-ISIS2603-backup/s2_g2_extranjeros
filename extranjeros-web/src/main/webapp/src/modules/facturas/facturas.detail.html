@@ -21,7 +21,16 @@
                         </li>
                         <li>¿Se divide la cuenta de servicios adicioanles con los otros inquilinos?
                             <ul>
-                                <li>{{currentFactura.dividirCuentaServicios}}</li>
+                        <span ng-if="currentFactura.dividirCuentaServicios==true">
+                         <li>
+                            Sí.
+                         </li>
+                        </span>
+                        <span ng-if="currentFactura.dividirCuentaServicios==false">
+                         <li>
+                            No.
+                         </li>
+                        </span>
                             </ul>
                         </li>
                         <li>Fecha de entrada

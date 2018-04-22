@@ -9,13 +9,21 @@
             <div class="col-md-3">
                 <dl> 
                     <dt class="bold">¿Es un servicio adicional?</dt>
-                    <dd>{{currentServicio.adicional}}</dd>
+                        <span ng-if="currentServicio.adicional==true">
+                         <dd>
+                            Sí.
+                         </dd>
+                        </span>
+                        <span ng-if="currentServicio.adicional==false">
+                        <dd>
+                            No.
+                        </dd>
+                        </span>
                     <hr>
                     <dt class="bold">Precio mensual asociado</dt>
                     <dd>{{currentServicio.precioMensual}}</dd>
                 </dl>
             </div>
         </div>
-
     </div>
 </div>
