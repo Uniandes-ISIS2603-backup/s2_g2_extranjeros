@@ -66,5 +66,22 @@ and open the template in the editor.
     padding: 40px;
 }
 
+.Ostias-chaval{
+    padding-left: 10px;
+}
 
+.cuentasBox {
+    background-color:skyblue;
+}
 
+ .intro-lead-inTres {
+     font-size: 21px;
+     font-style: italic;
+     font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+     color: navy;
+     padding-left: 10px;
+}
+
+.cB{
+    padding-left: 40px;
+}
