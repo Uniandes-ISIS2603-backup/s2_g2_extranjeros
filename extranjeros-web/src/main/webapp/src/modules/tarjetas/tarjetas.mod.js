@@ -46,7 +46,16 @@
                     }
                 }
 
-            });
+            }).state('tarjetaCreate', {
+                url: '/create',
+                parent: 'tarjetas',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjetas.new.html',
+                        controller: 'tarjetaNewCtrl'
+                    }
+                }
+});
         }
     ]);
 })(window.angular);
