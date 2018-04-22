@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/04/2018, 08:30:27 PM
+    Author     : jr.pacheco10
+*/
+
+.panel-heading{
+  text-align: center;
+  font-size: 22px;
+  font-style: italic;
+  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ }
+ 
+ .Hola{
+  text-align: left;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 22px;
+  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ } 
+ 
+ .panel-headings{
+  text-align: center;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 22px;
+  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ }
+ 
+ .intro-lead-in {
+  font-size: 21px;
+  font-style: italic;
+  line-height: 22px;
+  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: navy;
+}
+
+ .intro-lead-inDos {
+     font-size: 28px;
+     font-style: italic;
+     font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+     color: navy;
+     padding-top: 10px;
+}
+
+.dd {
+  padding: 19px;
+  font-size: 19px;
+  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: cadetblue;
+}
+
+.img-rounded {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto\9; 
+}
+
+.elBoton{
+    padding: 40px;
+}
+
+
+

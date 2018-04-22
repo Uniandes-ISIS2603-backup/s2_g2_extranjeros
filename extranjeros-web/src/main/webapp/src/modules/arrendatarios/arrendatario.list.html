@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row">
+        <h2><strong> Arrendatarios </strong></h2>
+        <table class="table">
+            <thead>
+            <tr>
+              <th> Nombre </th>
+              <th> Usuario </th>
+              <th> Cedula</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr class = "text-justify  info" ng-repeat="arrendatario in arrendatarioRecords">
+              <td><a ui-sref="arrendatarioDetail({arrendatarioId: arrendatario.id})">{{arrendatario.nombre}}</a></td>
+              <td>{{arrendatario.usuario}}</td>
+              <td>{{arrendatario.cedula}}</td>
+              </tr> 
+          </tbody>
+         </table>
+    </div>
+</div>
+
