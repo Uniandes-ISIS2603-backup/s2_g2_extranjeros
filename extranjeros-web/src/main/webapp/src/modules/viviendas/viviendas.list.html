@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+     <div class="btn-group mr-2" role="group" aria-label="First group"> 
+        <a class="btn btn-info" ui-sref="viviendasCreate"> 
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            Add new vivienda</a> </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Direccion </th>
+                        <th>Capacidad</th>
+                        <th>Disponibilidad</th>
+                        <th>Tipo de alojamiento</th>
+                        <th>Precio Mensual</th>
+                        <th>Vivienda </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="vivienda in viviendasRecords">
+                        <td>{{vivienda.direccion}}</td>
+                        <td>{{vivienda.capacidad}}</td>
+                        <td>{{vivienda.disponible}}</td>
+                        <td>{{vivienda.tipoAlojamiento}}</td>
+                        <td>{{vivienda.precioMensual}}</td>
+                        <td><a ui-sref="viviendaDetail({viviendaId: vivienda.id})"> Ir </a></td>
+                    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

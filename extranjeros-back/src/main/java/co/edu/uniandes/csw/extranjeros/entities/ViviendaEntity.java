@@ -59,6 +59,10 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
 
     private String tipoAlojamiento;
     
+    private Double precioMensual;
+    
+    
+    
     @PodamStrategyValue(InquilinosStrategy.class)
     private Integer inquilinos;
     
@@ -267,6 +271,20 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
      */
     public void setFacturas(List<FacturaEntity> facturas) {
         this.facturas = facturas;
+    }
+
+    /**
+     * @return the precioMensual
+     */
+    public Double getPrecioMensual() {
+        return precioMensual;
+    }
+
+    /**
+     * @param precioMensual the precioMensual to set
+     */
+    public void setPrecioMensual(Double precioMensual) {
+        this.precioMensual = precioMensual;
     }
    
     

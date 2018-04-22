@@ -9,7 +9,8 @@
         'tarjetaModule',
         'eventoModule',
         'facturaModule',
-        'servicioModule'
+        'servicioModule',
+        'viviendasModule'
         
         
     ]);

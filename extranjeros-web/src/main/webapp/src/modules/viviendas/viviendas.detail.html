@@ -1,0 +1,81 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <ul>
+                        <li>ID
+                            <ul>
+                                <li>{{currentVivienda.id}}</li>
+                            </ul>
+                        </li>
+                        <li>Capacidad 
+                            <ul>
+                                <li>{{currentVivienda.capacidad}}</li>
+                            </ul>
+                        </li>
+                        <li>Direccion
+                            <ul>
+                                <li>{{currentVivienda.direccion}}</li>
+                            </ul>
+                        </li>
+                        <li>¿Está disponible?
+                            <ul>
+                                <li>{{currentVivienda.disponible}}</li>
+                            </ul>
+                        </li>
+                        <li>¿Cuantas personas caben?
+                            <ul>
+                                <li>{{currentVivienda.inquilinos}}</li>
+                            </ul>
+                        </li>
+                        <li>Ubicación 
+                            <ul>
+                                <li>Latitud:{{currentVivienda.latitud}}, Longitud: {{currentVivienda.longitud}} </li>
+                            </ul>
+                        </li>
+                        <li>Tipo de alojamiento
+                            <ul>
+                                <li>{{currentVivienda.tipoAlojamiento}}</li>
+                            </ul>
+                        </li>
+                        <li ng-repeat="servicio in currentVivienda.serviciosAdicionales">Servicios adicionales
+                            <dl>
+                                <dt>Tipo</dt>
+                                <dd>{{servicio.tipo}}</dd>
+                            </dl>
+                        </li>
+                        <li ng-repeat="servicio in currentVivienda.serviciosFijoss">Servicios Incluidos
+                            <dl>
+                                <dt>Tipo</dt>
+                                <dd>{{servicio.tipo}}</dd>
+                            </dl>
+                        </li>
+                         <li ng-repeat="lugaresDeInteres in currentVivienda.lugaresDeInteres">Lugares cercanos
+                            <dl>
+                                <dt>Tipo</dt>
+                                    <dd>{{lugaresDeInteres.tipo}}</dd>
+                                <dt>Nombre</dt>
+                                    <dd>{{lugaresDeInteres.nombre}}</dd>
+                                <dt>Direccion</dt>
+                                    <dd>{{servicio.direccion}}</dd>
+                            </dl>
+                        </li>
+                        <li>Valoraciones:</li>
+                         <li ng-repeat="valoracion in currentVivienda.valoraciones">
+                            <dl>
+                                
+                                <dt>Rating</dt>
+                                    <dd>{{valoracion.valoracion}}</dd>
+                                <dt>Comentario</dt>
+                                    <dd>{{valoracion.comentario}}</dd>
+                            </dl>
+                        </li>
+                       
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
