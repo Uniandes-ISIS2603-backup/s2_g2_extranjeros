@@ -11,16 +11,12 @@ and open the template in the editor.
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Numero</th>
-                        <th>Franquicia</th>
-                        <th>Fecha Caducidad </th>
+                        <th>ID</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="tarjeta in tarjetasRecords">
-                        <td>{{tarjeta.numero}}</td>
-                        <td>{{tarjeta.banco}}</td>
-                        <td>{{tarjeta.fechaCaducidad}}</td>
+                        <td><a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">{{tarjeta.id}}</a></td>
                     </tr>
                 </tbody>
             </table>

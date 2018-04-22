@@ -13,16 +13,39 @@
             
             $urlRouterProvider.otherwise("/eventosList");
             
-            $stateProvider.state('eventosList', {
+            $stateProvider.state('eventos', {
                 
-                url: '/eventos/list',
+                url: '/eventos',
                  views: {
                     'mainView': {
-                        templateUrl: basePath + 'eventos.list.html',
+                        templateUrl: basePath + 'eventos.html',
                         controller: 'eventoCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('eventosList', {
+                url: '/list',
+                parent: 'eventos',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    }
+                }
+            }).state('eventoDetail', {
+                url: '/{eventoId:int}/detail',
+                parent: 'eventos',
+                param: {eventoId: null},
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'eventos.detail.html',
+                        controller: 'eventoDetailCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+
             });
         }
     ]);

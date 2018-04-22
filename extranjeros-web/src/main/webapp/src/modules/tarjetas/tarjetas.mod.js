@@ -13,16 +13,39 @@
             
             $urlRouterProvider.otherwise("/tarjetasList");
             
-            $stateProvider.state('tarjetasList', {
+            $stateProvider.state('tarjetas', {
                 
-                url: '/tarjetas/list',
+                url: '/tarjetas',
                  views: {
                     'mainView': {
-                        templateUrl: basePath + 'tarjetas.list.html',
+                        templateUrl: basePath + 'tarjetas.html',
                         controller: 'tarjetaCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('tarjetasList', {
+                url: '/list',
+                parent: 'tarjetas',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'tarjetas.list.html'
+                    }
+                }
+            }).state('tarjetaDetail', {
+                url: '/{tarjetaId:int}/detail',
+                parent: 'tarjetas',
+                param: {tarjetaId: null},
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'tarjetas.list.html'
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'tarjetas.detail.html',
+                        controller: 'tarjetaDetailCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+
             });
         }
     ]);
