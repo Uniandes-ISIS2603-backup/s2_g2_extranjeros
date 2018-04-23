@@ -33,7 +33,7 @@ import javax.ws.rs.WebApplicationException;
  * URL: /api/estudiante
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
- * este recurso tiene la ruta "Evento".</i>
+ * este recurso tiene la ruta "Estudiante".</i>
  *
  * <h2>Anotaciones </h2>
  * <pre>
@@ -99,6 +99,7 @@ public class EstudianteResource {
      */
     @GET
     public List<EstudianteDetailDTO> getEstudiantes() {
+        
         return listEntityToDTO(logic.getEstudiantes());
     }
     

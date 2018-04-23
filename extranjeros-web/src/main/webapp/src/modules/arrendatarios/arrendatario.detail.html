@@ -1,0 +1,70 @@
+<div class="container-fluid"> 
+    <section id= "Informacion">
+    <div class="panel panel-primary">
+    <div class= "panel-heading"> Información de mi cuenta </div>
+    <div class="panel-body">
+    <div class="row">
+
+            <div class="col-md-6"> 
+                    <img class="img-rounded" ng-src="{{currentArrendatario.imagen}}"/>
+            </div>
+
+            <div class="col-md-6"> 
+              <div class="Ostias-chaval">
+                <div class="col-md-6">
+                    <p class = "intro-lead-inDos"> Nombre </p> 
+                    <p class = "dd">{{currentArrendatario.nombre}} </p>  
+                    <hr>
+                    
+                    <p class = "intro-lead-inDos"> Usuario </p>
+                    <p class = "dd">{{currentArrendatario.usuario}}</p>
+                    <hr>
+                </div>
+                <div class="col-md-6">
+                    
+                        <p class = "intro-lead-inDos"> Teléfono </p>
+                        <p class = "dd">{{currentArrendatario.celular}}</p>
+                        <hr>
+
+                        <p class = "intro-lead-inDos"> Cédula </p>
+                        <p class = "dd">{{currentArrendatario.cedula}}</p>
+                        <hr>   
+                    </div>
+                </div> 
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-12">  
+                <div class = "col-md-6">
+                    <h5 class="intro-lead-inTres">Mis cuentas de banco</h5>
+                </div>
+
+                <div class = "col-md-6">
+                    <div class="dropdown">
+                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Opciones
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a ui-sref="cuentasBancariasList({arrendatarioId: currentArrendatario.id})"> Ver mis cuentas</a> </li>
+                            <li><a href="#">Agregar una cuenta</a></li>
+                            <li><a href="#">Actualizar una cuenta</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Eliminar una cuenta</a></li> 
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+        </div>   
+        
+        <div class="row">
+            <div class="col-md-5">
+                <div ui-view="childrenView"></div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+</section>
+</div>

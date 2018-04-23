@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.extranjeros.dtos;
 
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,16 +32,33 @@ public class EstudianteDetailDTO extends EstudianteDTO {
     public EstudianteDetailDTO(EstudianteEntity entity)
     {
           super(entity);
+          providencia = new ProvidenciaDTO();
+          tarjeta = new TarjetaDTO();
+          universidad = new UniversidadDTO();
+          eventosCreados = new ArrayList();
+          eventosInvitado = new ArrayList();
+          
+          if (entity.getProvidencia()!=null)
+          {    
           providencia = new ProvidenciaDTO (entity.getProvidencia());
+          }
+          if (entity.getTarjeta()!=null){
           tarjeta = new TarjetaDTO(entity.getTarjeta());
-          universidad = new UniversidadDTO(entity.getUniversidad());
+          }
+          if (entity.getUniversidad() != null){
+          universidad = new UniversidadDTO(entity.getUniversidad()); 
+          }
+          if (entity.getEventosCreados() != null){
           for (int i=0; i< entity.getEventosCreados().size(); i++)
           {
               eventosCreados.add(new EventoDTO(entity.getEventosCreados().get(i)));
           }
+          }
+          if (entity.getEventosInvitado()!=null){
           for (int i=0; i< entity.getEventosInvitado().size(); i++)
           {
               eventosInvitado.add(new EventoDTO(entity.getEventosInvitado().get(i)));
+          }
           }
          
     }
