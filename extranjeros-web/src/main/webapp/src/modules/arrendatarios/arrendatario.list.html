@@ -11,7 +11,7 @@
           </thead>
           <tbody>
               <tr class = "text-justify  info" ng-repeat="arrendatario in arrendatarioRecords">
-              <td><a ui-sref="arrendatarioDetail({arrendatarioId: arrendatario.id})">{{arrendatario.nombre}}</a></td>
+              <td><a id="esconder" ui-sref="arrendatarioDetail({arrendatarioId: arrendatario.id})">{{arrendatario.nombre}}</a></td>
               <td>{{arrendatario.usuario}}</td>
               <td>{{arrendatario.cedula}}</td>
               </tr> 

@@ -45,7 +45,8 @@ public class ArrendatarioDTO {
     private int edad;
     private String nombre;
     private Long id;
-  
+    
+    private String imagen;
     //---------------------------------------------------
     // Constructor
     //---------------------------------------------------
@@ -76,7 +77,7 @@ public class ArrendatarioDTO {
             this.celular = entity.getCelular();
             this.cedula = entity.getCedula();
             this.edad = entity.getEdad();
-            
+            this.imagen = entity.getImagen();
         }
     }
     
@@ -103,6 +104,7 @@ public class ArrendatarioDTO {
         entity.setCelular(this.getCelular());
         entity.setEdad(this.edad);
         entity.setCedula(this.cedula);
+        entity.setImagen(this.imagen);
         
         // Return
         return entity;
@@ -227,5 +229,12 @@ public class ArrendatarioDTO {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }

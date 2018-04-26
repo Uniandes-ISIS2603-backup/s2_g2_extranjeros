@@ -1,0 +1,14 @@
+<div class="container-fluid">
+<div class="col-sm-12">
+    <br>
+    <table class="table">
+        <tbody>
+            <tr ng-repeat="cuenta in cuentaBancariaRecords">
+                <td>
+                    <b>{{cuenta.bancoAsociado}}</b> <span> (No. {{cuenta.numeroCuenta}}): </span> <span> $ </span>{{cuenta.saldoCuenta}}
+                </td>                                  
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

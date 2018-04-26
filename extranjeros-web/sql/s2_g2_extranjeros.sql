@@ -14,11 +14,11 @@ delete from ViviendaEntity;
 
 
 
-insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140000,'1020840628', '3223854596', 'estoEs123', 'pruebaUno@hotmail.com', 20, 'Un nombre aleta 1', 'aletaJeje');
-insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140001,'1020840629', '3223854596', 'estoEs123', 'pruebaDos@hotmail.com', 20, 'Un nombre aleta 2', 'aletaJeje2');
-insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140002,'1020840630', '3223854596', 'estoEs123', 'pruebaTres@hotmail.com', 20, 'Un nombre aleta 3', 'aletaJeje3');
-insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140003,'1020840631', '3223854596', 'estoEs123', 'pruebaCuatro@hotmail.com', 20, 'Un nombre aleta 4', 'aletaJeje4');
-insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario) values (140004,'1020840632', '3223854596', 'estoEs123', 'pruebaCinco@hotmail.com', 20, 'Un nombre aleta 5', 'aletaJeje5');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario, imagen) values (140000,'1020840628', '3223854596', 'estoEs123', 'jsantos_pres@hotmail.com', 62, 'Juan Manuel Santos', 'jSantos07', 'https://static.iris.net.co/semana/upload/images/2016/10/8/498264_1.jpg');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario, imagen) values (140001,'1020840629', '3223854596', 'estoEs123', 'crusoerobin_90@hotmail.com', 27, 'Robinson Crusoe', 'robinCr_10','https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?cs=srgb&dl=black-and-white-fun-happy-91227.jpg&fm=jpg');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario, imagen) values (140002,'1020840630', '3223854596', 'estoEs123', 'natacruz007@hotmail.com', 25, 'Nathalia Cruz', 'ncruz_10', 'https://images.pexels.com/photos/253758/pexels-photo-253758.jpeg?cs=srgb&dl=adolescent-adult-beautiful-253758.jpg&fm=jpg');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario, imagen) values (140003,'1020840631', '3223854596', 'estoEs123', 'sara_riascos09@hotmail.com', 19, 'Sara Lucia Rodriguez', 'saraRodriguez95', 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+insert into ArrendatarioEntity (id, cedula, celular, clave, correo, edad, nombre, usuario, imagen) values (140004,'1020840632', '3223854596', 'estoEs123', 'rodi_elmejor@hotmail.com', 80, 'Rodrigo Cardoso M', 'rodrigoCard1920', 'https://images.pexels.com/photos/759829/pexels-photo-759829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
 
 insert into CuentaBancariaEntity (id, bancoAsociado, numeroCuenta, saldoCuenta, tipoCuenta) values (15000,'Banco Caja Social', 20202020, 30000, 'Ahorros');
 insert into CuentaBancariaEntity (id, bancoAsociado, numeroCuenta, saldoCuenta, tipoCuenta) values (15001,'Banco de Bogota', 20202021, 300000002, 'Corriente');
