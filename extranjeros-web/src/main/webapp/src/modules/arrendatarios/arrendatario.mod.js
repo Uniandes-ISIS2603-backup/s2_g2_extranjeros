@@ -30,9 +30,9 @@
                     arrendatarioId: null
                 },
                 views: {
-                    'listView': {
-                        templateUrl: basePath + 'arrendatario.list.html'
-                    },
+//                    'listView': {
+//                        templateUrl: basePath + 'arrendatario.list.html'
+//                    },
                     'detailView': {
                         templateUrl: basePath + 'arrendatario.detail.html',
                         controller: 'arrendatarioDetailCtrl',
@@ -41,6 +41,15 @@
 
                 }
 
+            }).state('arrendatarioCreate', {
+                url: '/create',
+                parent: 'arrendatarios',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/post/arrendatario.new.html',
+                        controller: 'arrendatarioPostCtrl'
+                    }
+                }
             });
         }]);
 })(window.angular);

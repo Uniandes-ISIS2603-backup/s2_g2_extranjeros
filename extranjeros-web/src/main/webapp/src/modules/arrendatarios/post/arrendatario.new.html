@@ -1,0 +1,109 @@
+<div class="container-fluid" style="padding: 1em;">
+
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <img class="img-circle" src="https://images.pexels.com/photos/545034/pexels-photo-545034.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Join Us" style="max-height: 25em; max-width: 30em; border-radius: 50%; align-content: center;"/>
+        <p class="Join-Us"> Únete y contribuye </p>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioNombre" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong> Nombre &nbsp; &nbsp; </strong> </label>
+
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioNombre" required ng-model="data.nombre" type="text" class="form-control" placeholder="Gabriel Jesús" aria-describedby="basic-addon3">
+                <span class="input-group-addon" id="basic-addon3">@</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioEdad" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong> Edad &nbsp; &nbsp; </strong> </label>
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioEdad" required ng-model="data.edad" type="number" class="form-control" placeholder="18" aria-describedby="basic-addon6">
+                <span class="input-group-addon" id="basic-addon6">#.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioCedula" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong> Cédula &nbsp; &nbsp; </strong> </label>
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioCedula" required ng-model="data.cedula" type="number" class="form-control" placeholder="1010240037" aria-describedby="basic-addon7">
+                <span class="input-group-addon" id="basic-addon7">#.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioUsuario" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong> Usuario &nbsp; &nbsp; </strong> </label>
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioUsuario" required ng-model="data.usuario" type="text" class="form-control" placeholder="gabrielJesus01-futbol" aria-describedby="basic-addon4">
+                <span class="input-group-addon" id="basic-addon4">@</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioClave" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong> Clave &nbsp; &nbsp; </strong> </label>
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioClave" required ng-model="data.clave" type="password" class="form-control" placeholder="" aria-describedby="basic-addon5">
+                <span class="input-group-addon" id="basic-addon5"> *** </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioCorreo" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong>Correo &nbsp; &nbsp; </strong> </label>
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioCorreo" required ng-model="data.correo" type="text" class="form-control" placeholder="Correo electrónico" aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2">@com</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioCelular" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong> Celular &nbsp; &nbsp; </strong> </label>
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioCelular" required ng-model="data.celular" type="number" class="form-control" placeholder="3223457906" aria-describedby="basic-addon10">
+                <span class="input-group-addon" id="basic-addon10">#.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="padding-left: 18em; height: 2em;">
+        <div class="form-group col-md-11">
+            <label for="arrendatarioImagen" class="col-sm-1" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em;"> <strong> Imagen &nbsp; &nbsp; </strong> </label>
+
+            <div class="input-group col-sm-9">
+                <input id="arrendatarioImagen" required ng-model="data.imagen" type="text" class="form-control" placeholder="https://images.pexels.com/photos/289825/pexels-photo-289825.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" aria-describedby="basic-addon11">
+                <span class="input-group-addon" id="basic-addon11">@</span>
+            </div>
+        </div>
+    </div>
+
+    <move-lists ng-if="edit" selected="selectedItems" available="availableItems"></move-lists>
+
+
+    <div class="form-group row" style="margin: auto;">
+        
+        <div class="form-group col-sm-4"> </div>
+        
+        <div class="form-group col-sm-4" style="text-align: center;">
+            
+            <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createArrendatario()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
+                    Guardar cambios
+                </button>
+            
+                <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="arrendatariosList" >
+                    Cancel   
+                </button>
+        </div>
+        <div class="form-group col-sm-4"> </div>
+    </div>
+</div>
