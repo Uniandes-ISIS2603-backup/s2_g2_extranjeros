@@ -1,13 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 21/04/2018, 08:30:27 PM
-    Author     : jr.pacheco10
-*/
-
 .panel-heading{
   text-align: center;
   font-size: 22px;
@@ -68,6 +58,7 @@ and open the template in the editor.
 
 .Ostias-chaval{
     padding-left: 10px;
+    padding-top: 2.8em;
 }
 
 .cuentasBox {
@@ -84,4 +75,37 @@ and open the template in the editor.
 
 .cB{
     padding-left: 40px;
+}
+
+.paddingArriba{
+    padding: 2em;
+}
+
+.imageArr{
+    background-image: url("https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+}
+
+.h2Jose{
+    padding-left: 0.01em;
+    font-family: 'Roboto', sans-serif;
+    color: navy;
+}
+
+.h1Jose{
+    font-size: 21px;
+} 
+
+.X-NickyJam{
+   font-family: 'Roboto', sans-serif;
+   font-size: 18px;
+   text-align: center;
+   font-weight: bold;
+}
+
+.Join-Us {
+    padding-top: 1em;
+    padding-left: 1.2em;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 38px;
 }
