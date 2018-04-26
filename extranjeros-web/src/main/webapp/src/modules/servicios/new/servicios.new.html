@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createServicio">Crear nuevo Servicio</label>
+                <label ng-if="edit" id="editServicio">Editar Servicio</label></div>
+            <div class="panel-body">
+                <form name="servicio">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Tipo de servicio:</label>
+                            <input type="text" name="tipo" required ng-model="data.tipo" class="col-sm-4"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Precio mensual:</label>
+                            <input type="number" name="precioMensual" required ng-model="data.precioMensual" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-8">
+                            <label class="col-sm-3">Url de imagen:</label>
+                            <input class="col-sm-3" type="url" name="imagen" required ng-model="data.imagen"/><br><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-9">
+                            <label class="col-sm-8">¿El servicio que va a prestar es adicional? <br>  
+                                <input type="radio" name="adicional" value=true required ng-model="data.adicional" class="col-sm-1"/>Sí.<br>
+                                <input type="radio" name="adicional" value=false required ng-model="data.adicional" class="col-sm-1"/>No.<br>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!servicio.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Atención!</strong><p>Se requieren todos los campos*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="servicio.$valid" ng-click="createServicio()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="serviciosList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

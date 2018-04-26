@@ -29,7 +29,7 @@
             }).state('facturaDetail', {
                 url: '/{facturaId:int}/detail',
                 parent: 'facturas',
-                param: {sportId: null},
+                param: {facturaId: null},
                 views: {
                     'listView': {
                         templateUrl: basePath + 'facturas.list.html'
@@ -41,6 +41,39 @@
                     }
                 }
 
+            }).state('facturaCreate', {
+                url: '/create',
+                parent: 'facturas',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/facturas.new.html',
+                        controller: 'facturaNewCtrl'
+                    }
+                }
+            }).state('facturaUpdate', {
+                url: '/update/{facturaId:int}',
+                parent: 'facturas',
+                param: {
+                    facturaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/facturas.new.html',
+                        controller: 'facturaUpdateCtrl'
+                    }
+                }
+            }).state('facturaDelete', {
+                url: '/delete/{facturaId:int}',
+                parent: 'facturas',
+                param: {
+                    facturaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/facturas.delete.html',
+                        controller: 'facturaDeleteCtrl'
+                    }
+                }
             });
         }
     ]);

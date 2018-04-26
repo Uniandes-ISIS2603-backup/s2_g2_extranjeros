@@ -1,9 +1,8 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2 col-md-2">
+<div class="container-fluid" style="text-align: center">
             <h2><strong>Facturas</strong></h2>
-            <table class="table table-hover">
+            <br>
+            <table class="table table-hover table-bordered">
                 <tr>
                     <th>ID</th>
                     <th>Fecha de entrada</th>
@@ -15,6 +14,9 @@
                     <td>{{factura.fechaSalida}}</td>
                 </tr>
             </table>
-        </div>
-    </div>
+            <div class="row" style="text-align: center">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <a class="btn btn-info" ui-sref="facturaCreate"><span class="glyphicon glyphicon-plus-sign"></span>Crear Factura</a>
+                </div>
+            </div>
 </div>

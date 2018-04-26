@@ -10,7 +10,7 @@
         'eventoModule',
         'facturaModule',
         'servicioModule',
-        'viviendasModule'
+        'viviendasModule',
         'cuentaBancariaModule'
         
 

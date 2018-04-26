@@ -131,6 +131,7 @@ public class ServicioPersistenceTest
         Assert.assertEquals(servicio1.getTipo(), servicio2.getTipo());
         Assert.assertEquals(servicio1.getAdicional(), servicio2.getAdicional());
         Assert.assertEquals(servicio1.getPrecioMensual(), servicio2.getPrecioMensual());
+        Assert.assertEquals(servicio1.getImagen(), servicio2.getImagen());
 
     }
     /**
@@ -145,6 +146,7 @@ public class ServicioPersistenceTest
         Assert.assertEquals(servicio1.getTipo(), servicio2.getTipo());
         Assert.assertEquals(servicio1.getAdicional(),servicio2.getAdicional());
         Assert.assertEquals(servicio1.getPrecioMensual(), servicio2.getPrecioMensual());
+        Assert.assertEquals(servicio1.getImagen(), servicio2.getImagen());
     }
     /**
      * Prueba para consultar todos los servicios.
@@ -195,5 +197,6 @@ public class ServicioPersistenceTest
         Assert.assertEquals(resp.getTipo(), servicio2.getTipo());
         Assert.assertEquals(resp.getAdicional(),servicio2.getAdicional());
         Assert.assertEquals(resp.getPrecioMensual(), servicio2.getPrecioMensual());
+        Assert.assertEquals(resp.getImagen(), servicio2.getImagen());
     }
 }

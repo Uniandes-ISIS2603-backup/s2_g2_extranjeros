@@ -9,13 +9,28 @@
             <div class="col-md-3">
                 <dl> 
                     <dt class="bold">¿Es un servicio adicional?</dt>
-                    <dd>{{currentServicio.adicional}}</dd>
+                        <span ng-if="currentServicio.adicional==true">
+                         <dd>
+                            Sí.
+                         </dd>
+                        </span>
+                        <span ng-if="currentServicio.adicional==false">
+                        <dd>
+                            No.
+                        </dd>
+                        </span>
                     <hr>
                     <dt class="bold">Precio mensual asociado</dt>
                     <dd>{{currentServicio.precioMensual}}</dd>
                 </dl>
             </div>
+            <div class="col-md-3">
+                <img class="embed-responsive-item" ng-src="{{currentServicio.imagen}}" style="max-width: 500px">
+            </div>
         </div>
-
+        <div id="{{$index}}-actions" class="row">
+                        <a class="btn btn-default btn-sm" ui-sref="servicioUpdate({servicioId: currentServicio.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a class="btn btn-danger btn-sm" ui-sref="servicioDelete({servicioId: currentServicio.id})"><span class="glyphicon glyphicon-trash"></span></a>
+        </div>
     </div>
 </div>
