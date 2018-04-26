@@ -74,7 +74,16 @@
                        
                         
                     </ul>
+                    <ul class='nav nav-tabs'>
+                        <li class='active'><a ui-sref='facturasList({viviendaId: currentVivienda.id})'>Facturas</a></li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-3'></div>
+            <div class='col-md-9'>
+                <div ui-view='childrenView'></div>
             </div>
         </div>
     </div>

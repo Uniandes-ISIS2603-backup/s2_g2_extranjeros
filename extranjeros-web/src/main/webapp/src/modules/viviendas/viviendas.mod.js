@@ -48,9 +48,18 @@
                     }
                 }
 
+            }).state('viviendasCreate',
+            { url: '/create',
+                parent: 'viviendas',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/viviendas.new.html',
+                        controller: 'viviendaaNewCtrl'
+                    }
             });
         }
     ]);
+    
 })(window.angular);
 
 
