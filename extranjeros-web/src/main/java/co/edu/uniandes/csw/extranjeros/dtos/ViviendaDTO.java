@@ -64,6 +64,8 @@ public class ViviendaDTO {
     private String tipoAlojamiento;
     
     private Integer inquilinos;
+    
+    private Double precioMensual; 
 
     public ViviendaDTO(){
         
@@ -87,6 +89,8 @@ public class ViviendaDTO {
       this.tipoAlojamiento = entity.getTipoAlojamiento(); 
    
       this.inquilinos = entity.getInquilinos();
+  
+      this.precioMensual = entity.getPrecioMensual();
     }
     /**
      * @return the disponible
@@ -199,6 +203,7 @@ public class ViviendaDTO {
         en.setLongitud(longitud);
         en.setTipoAlojamiento(tipoAlojamiento);
         en.setInquilinos(inquilinos);
+        en.setPrecioMensual(precioMensual);
         return en;
         
     }
@@ -215,6 +220,20 @@ public class ViviendaDTO {
      */
     public void setInquilinos(int inquilinos) {
         this.inquilinos = inquilinos;
+    }
+
+    /**
+     * @return the precioMensual
+     */
+    public Double getPrecioMensual() {
+        return precioMensual;
+    }
+
+    /**
+     * @param precioMensual the precioMensual to set
+     */
+    public void setPrecioMensual(Double precioMensual) {
+        this.precioMensual = precioMensual;
     }
     
     

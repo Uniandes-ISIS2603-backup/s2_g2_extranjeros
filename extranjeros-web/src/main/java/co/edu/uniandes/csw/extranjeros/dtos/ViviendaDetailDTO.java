@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.extranjeros.dtos;
 import co.edu.uniandes.csw.extranjeros.entities.ArrendatarioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
+import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
@@ -37,7 +38,8 @@ public class ViviendaDetailDTO extends ViviendaDTO {
     
     private List <EstudianteDTO> estudiantes;
     
- 
+    private List <LugaresDeInteresDTO> lugaresDeInteres;
+    
     public ViviendaDetailDTO(){
         super();
     }
@@ -50,9 +52,15 @@ public class ViviendaDetailDTO extends ViviendaDTO {
          estudiantes = new ArrayList();
          facturas = new ArrayList<>();
          arrendatariosPropietarios = new ArrendatarioDTO(entity.getArrendatariosPropietarios());
+         lugaresDeInteres = new ArrayList<>();
           if(entity.getFacturas()!=null){
              for (int i = 0; i < entity.getServiciosAdicionales().size(); i++) {
                  facturas.add(new FacturaDTO(entity.getFacturas().get(i)));
+             }
+         }
+          if(entity.getLugaresDeInteres()!=null){
+             for (int i = 0; i < entity.getLugaresDeInteres().size(); i++) {
+                 lugaresDeInteres.add(new LugaresDeInteresDTO(entity.getLugaresDeInteres().get(i)));
              }
          }
           if(entity.getEstudiantes()!=null){
@@ -93,6 +101,8 @@ public class ViviendaDetailDTO extends ViviendaDTO {
         
         List<EstudianteEntity> PEstudiantes = new ArrayList<>();
         
+        List<LugaresDeInteresEntity> PLugares = new ArrayList<>();
+        
         if(arrendatariosPropietarios!=null){
         e.setArrendatariosPropietarios(arrendatariosPropietarios.toEntity());
         }
@@ -127,6 +137,13 @@ public class ViviendaDetailDTO extends ViviendaDTO {
             PserviciosFijos.add(get);
         }
         }
+        if(getLugaresDeInteres()!=null){
+           for (int i = 0; i < lugaresDeInteres.size(); i++) {
+            LugaresDeInteresEntity get = lugaresDeInteres.get(i).toEntity();
+            PLugares.add(get);
+        }
+        }
+           e.setLugaresDeInteres(PLugares);
            e.setValoraciones(Pvaloraciones);
            e.setServiciosAdicionales(PserviciosAdicionales);
            e.setServiciosFijos(PserviciosFijos);
@@ -216,6 +233,20 @@ public class ViviendaDetailDTO extends ViviendaDTO {
      */
     public void setEstudiantes(List <EstudianteDTO> estudiantes) {
         this.estudiantes = estudiantes;
+    }
+
+    /**
+     * @return the lugaresDeInteres
+     */
+    public List <LugaresDeInteresDTO> getLugaresDeInteres() {
+        return lugaresDeInteres;
+    }
+
+    /**
+     * @param lugaresDeInteres the lugaresDeInteres to set
+     */
+    public void setLugaresDeInteres(List <LugaresDeInteresDTO> lugaresDeInteres) {
+        this.lugaresDeInteres = lugaresDeInteres;
     }
 }
 
