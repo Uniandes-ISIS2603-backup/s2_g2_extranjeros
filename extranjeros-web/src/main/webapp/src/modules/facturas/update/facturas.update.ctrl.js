@@ -1,7 +1,8 @@
 (function (ng) {
     var mod = ng.module("facturaModule");
-    mod.constant("facturasContext", "api/viviendas/11/facturas");
-    mod.controller('facturaUpdateCtrl', ['$scope', '$http', 'facturasContext', '$state', '$rootScope',
+    mod.constant("facturasContext", "facturas");
+    mod.constant("viviendaContext", "api/viviendas");
+    mod.controller('facturaCtrl', ['$scope', '$http', 'facturaContext', '$state','$rootScope','viviendaContext',
         /**
          * @ngdoc controller
          * @name facturas.controller:facturaUpdateCtrl
@@ -19,7 +20,7 @@
          * @param {Object} $filter Dependencia injectada para hacer filtros sobre
          * arreglos.
          */
-        function ($scope, $http, facturasContext, $state, $rootScope) {
+        function ($scope, $http, facturasContext, $state, $rootScope, viviendaContext) {
             $rootScope.edit = true;
 
             $scope.data = {};
@@ -50,7 +51,7 @@
              * $scope.
              */
             $scope.createFactura = function () {
-                $http.put(facturasContext + "/" + idFactura, $scope.data).then(function (response) {
+                $http.put(viviendaContext+'/'+$state.params.viviendaId+'/'+facturasContext + "/" + idFactura, $scope.data).then(function (response) {
                     $state.go('facturasList', {facturaId: response.data.id}, {reload: true});
                 });
             };

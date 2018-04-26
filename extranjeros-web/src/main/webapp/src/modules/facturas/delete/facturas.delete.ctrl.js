@@ -1,7 +1,8 @@
 (function (ng) {
     var mod = ng.module("facturaModule");
-    mod.constant("facturasContext", "api/viviendas/11/facturas");
-    mod.controller('facturaDeleteCtrl', ['$scope', '$http', 'facturasContext', '$state',
+    mod.constant("facturaContext", "facturas");
+    mod.constant("viviendaContext", "api/viviendas");
+    mod.controller('facturaCtrl', ['$scope', '$http', 'facturaContext', '$state','viviendaContext',
         /**
          * @ngdoc controller
          * @name authors.controller:authorDeleteCtrl
@@ -17,7 +18,7 @@
          * @param {Object} $state Dependencia injectada en la que se recibe el 
          * estado actual de la navegación definida en el módulo.
          */
-        function ($scope, $http, facturasContext, $state) {
+        function ($scope, $http, facturasContext, $state, viviendaContext) {
             var idFactura = $state.params.facturaId;
             /**
              * @ngdoc function
@@ -28,7 +29,7 @@
              * @param {String} id El ID del autor a eliminar.
              */
             $scope.deleteFactura = function () {
-                $http.delete(facturasContext + '/' + idFactura, {}).then(function (response) {
+                $http.delete(viviendaContext+'/'+$state.params.viviendaId+'/'+facturasContext + '/' + idFactura, {}).then(function (response) {
                     $state.go('facturasList', {facturaId: response.data.id}, {reload: true});
                 });
             };

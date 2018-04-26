@@ -1,6 +1,8 @@
 (function (ng) {
     
-    var mod = ng.module("facturaModule", ['ui.router']);
+    var mod = ng.module("facturaModule", ['viviendasModule','ui.router']);
+    mod.constant("facturasContext", "facturas");
+    mod.constant("viviendaContext", "api/viviendas");
     
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             
@@ -11,19 +13,22 @@
             $stateProvider.state('facturas', {
                 
                 url: '/facturas',
+                abstract:true,
+                parent:'viviendaDetail',
                  views: {
                     'mainView': {
-                        templateUrl: basePath + 'facturas.html',
-                        controller: 'facturaCtrl',
-                        controllerAs: 'ctrl'
+                        templateUrl: basePath + 'facturas.html'
                     }
                 }
             }).state('facturasList', {
                 url: '/list',
                 parent: 'facturas',
+                param: {viviendaId: null},
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'facturas.list.html'
+                        templateUrl: basePath + 'facturas.list.html',
+                        controller: 'facturaCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
             }).state('facturaDetail', {
