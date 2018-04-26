@@ -1,9 +1,7 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2 col-md-2">
             <h2><strong>Servicios</strong></h2>
-            <table class="table table-hover">
+            <table class="table table-hover table-bordered" style="text-align: center">
                 <tr>
                     <th>ID</th>
                     <th>Tipo de servicio</th>
@@ -13,6 +11,9 @@
                     <td><a ui-sref="servicioDetail({servicioId: servicio.id})">{{servicio.tipo}}</a></td>
                 </tr>
             </table>
-        </div>
-    </div>
+            <div class="row" style="text-align: center">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <a class="btn btn-info" ui-sref="servicioCreate"><span class="glyphicon glyphicon-plus-sign"></span>Crear Servicio</a>
+                </div>
+            </div>
 </div>

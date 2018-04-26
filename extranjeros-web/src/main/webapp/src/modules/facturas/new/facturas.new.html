@@ -7,7 +7,7 @@
                 <form name="factura">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label class="col-sm-3">Costo fijo:</label>
+                            <label class="col-sm-4">Costo fijo:</label>
                             <input type="number" name="fijo" value="500000" required ng-model="data.costoFijo" class="col-sm-4"/><br>
                         </div>
                     </div>
@@ -18,31 +18,30 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="facturaIN" class="col-sm-3">Fecha de entrada:</label>
-                            Ingrese una fecha superior o igual a <span id="fechaHoy">...</span>:<br>
-                            <input class="fechaHoyIN col-sm-6" type="date" name="bday" required ng-model="data.fechaEntrada"/><br><br>
+                        <div class="form-group col-md-8">
+                            <label for="facturaIN" class="col-sm-3">Fecha de entrada:<br><h5>Ingrese una fecha superior o igual a <span id="fechaHoy">...</span> : </h5></label>
+
+                            <input id="fechaHoyIN" class="col-sm-3" type="date" name="bday" required ng-model="data.fechaEntrada"/><br><br>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="facturaIN" class="col-sm-3">Fecha de salida:</label>
-                            Ingrese una fecha superior o igual a <span id="fechaMesDespues">...</span>:<br>
-                            <input id="fechaMesDespuesIN col-sm-6" type="date" name="bday2" required ng-model="data.fechaSalida"/><br><br>
+                        <div class="form-group col-md-8">
+                            <label for="facturaIN" class="col-sm-3">Fecha de salida:<br><h5>Ingrese una fecha superior o igual a <span id="fechaMesDespues">...</span>:</h5> </label>
+                            <input id="fechaMesDespuesIN" class="col-sm-3" type="date" name="bday2" required ng-model="data.fechaSalida"/><br><br>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="form-group col-md-11">
-                            <label for="facturaIN" class="col-sm-6">Deseo dividir el cargo de mis servicios adicionales con los otros inquilinos</label>
-                            <input type="radio" name="dividir" value=true required ng-model="data.dividirCuentaServicios" class="col-sm-1"/>Sí.<br>
-                            <input type="radio" name="dividir" value=false required ng-model="data.dividirCuentaServicios" class="col-sm-1"/>No.<br>
-                            
+                        <div class="form-group col-md-9">
+                            <label for="facturaIN" class="col-sm-8">¿Desea dividir el cargo de mis servicios adicionales con los otros inquilinos? <br>  
+                                <input type="radio" name="dividir" value=true required ng-model="data.dividirCuentaServicios" class="col-sm-1"/>Sí.<br>
+                                <input type="radio" name="dividir" value=false required ng-model="data.dividirCuentaServicios" class="col-sm-1"/>No.<br>
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            Forma de pago:<br> 
-                            <select name="pago" required ng-model="data.formaDePago" class="col-sm-6">
+                        <div class="form-group col-md-8">
+                             <label for="facturaIN" class="col-sm-3">Forma de pago: </label>
+                             <select name="pago" required ng-model="data.formaDePago" class="col-sm-3">
                                 <option value="unico">Cargo Unico</option>
                                 <option value="mens">Cobros Mensuales</option>
                             </select>

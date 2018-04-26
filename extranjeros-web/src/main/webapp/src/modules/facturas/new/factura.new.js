@@ -42,8 +42,8 @@ function fechaMinimaDeSalida() {
   if (newMonth < 10) newMonth = "0" + newMonth;
   if (newDay < 10) newDay = "0" + newDay;
   var notoday = year + "-" + newMonth + "-" + newDay;
-  document.getElementById('fechaHoyIN').min = notoday;
-  document.getElementById("fechaHoy").innerHTML=notoday;
+  document.getElementById('fechaMesDespuesIN').min = notoday;
+  document.getElementById("fechaMesDespues").innerHTML=notoday;
 }
 fechaActual();
 fechaMinimaDeSalida();

@@ -39,6 +39,7 @@ public class ServicioDTO {
     private String tipo;
     private Boolean adicional;
     private Double precioMensual;
+    private String imagen;
     
     /**
      * Constructor por defecto
@@ -59,6 +60,7 @@ public class ServicioDTO {
             this.tipo = entity.getTipo();
             this.adicional = entity.getAdicional();
             this.precioMensual=entity.getPrecioMensual();
+            this.imagen=entity.getImagen();
         }
     }
     //Métodos
@@ -110,6 +112,19 @@ public class ServicioDTO {
     public void setPrecioMensual(Double precioMensual) {
         this.precioMensual = precioMensual;
     }
+    /**
+     * @return url de la imagen del servicio.
+     */
+    public String getImagen() {
+        return imagen;
+    }
+    /**
+     * @param imagen nueva url de la imagen del servicio.
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
     public ServicioEntity toEntity()
     {
         ServicioEntity e=new ServicioEntity();
@@ -117,6 +132,7 @@ public class ServicioDTO {
         e.setId(id);
         e.setTipo(tipo);
         e.setPrecioMensual(precioMensual);
+        e.setImagen(imagen);
         return e;
     }
     

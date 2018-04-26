@@ -54,7 +54,7 @@
                 url: '/update/{facturaId:int}',
                 parent: 'facturas',
                 param: {
-                    editorialId: null
+                    facturaId: null
                 },
                 views: {
                     'detailView': {
@@ -62,16 +62,16 @@
                         controller: 'facturaUpdateCtrl'
                     }
                 }
-            }).state('editorialDelete', {
-                url: '/delete/{editorialId:int}',
+            }).state('facturaDelete', {
+                url: '/delete/{facturaId:int}',
                 parent: 'facturas',
                 param: {
-                    editorialId: null
+                    facturaId: null
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/delete/editorials.delete.html',
-                        controller: 'editorialDeleteCtrl'
+                        templateUrl: basePath + '/delete/facturas.delete.html',
+                        controller: 'facturaDeleteCtrl'
                     }
                 }
             });
