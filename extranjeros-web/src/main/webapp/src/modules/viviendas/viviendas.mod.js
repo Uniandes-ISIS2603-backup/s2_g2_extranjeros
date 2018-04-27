@@ -56,9 +56,8 @@
                         templateUrl: basePath + '/new/viviendas.new.html',
                         controller: 'viviendaaNewCtrl'
                     }
-            });
-        }
-    ]);
+        }});
+    }]);
     
 })(window.angular);
 
