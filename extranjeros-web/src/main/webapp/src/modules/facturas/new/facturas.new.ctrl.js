@@ -2,7 +2,7 @@
     var mod = ng.module("facturaModule");
     mod.constant("facturasContext", "facturas");
     mod.constant("viviendaContext", "api/viviendas");
-    mod.controller('facturaCtrl', ['$scope', '$http', 'facturaContext', '$state','$rootScope','viviendaContext',
+    mod.controller('facturaNewCtrl', ['$scope', '$http', 'facturaContext', '$state','$rootScope','viviendaContext',
         /**
          * @ngdoc controller
          * @name facturas.controller:facturaNewCtrl

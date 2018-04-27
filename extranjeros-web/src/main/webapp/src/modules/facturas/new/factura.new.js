@@ -14,8 +14,8 @@ function fechaActual() {
   if (month < 10) month = "0" + month;
   if (day < 10) day = "0" + day;
   var today = year + "-" + month + "-" + day;
-  document.getElementById('fechaHoyIN').min = today;
-  document.getElementById("fechaHoy").innerHTML=today;
+  //document.getElementById('fechaHoyIN').min = today;
+  //document.getElementById("fechaHoy").innerHTML=today;
 }
 function fechaMinimaDeSalida() {
   var newMonth;
@@ -42,8 +42,8 @@ function fechaMinimaDeSalida() {
   if (newMonth < 10) newMonth = "0" + newMonth;
   if (newDay < 10) newDay = "0" + newDay;
   var notoday = year + "-" + newMonth + "-" + newDay;
-  document.getElementById('fechaMesDespuesIN').min = notoday;
-  document.getElementById("fechaMesDespues").innerHTML=notoday;
+  //document.getElementById('fechaMesDespuesIN').min = notoday;
+  //document.getElementById("fechaMesDespues").innerHTML=notoday;
 }
 fechaActual();
 fechaMinimaDeSalida();

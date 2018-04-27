@@ -12,23 +12,24 @@
             
             $stateProvider.state('facturas', {
                 
-                url: '/facturas',
+                url: '/{viviendaId:int}/facturas',
                 abstract:true,
-                parent:'viviendaDetail',
+                
+                param: {viviendaId: null},
                  views: {
                     'mainView': {
-                        templateUrl: basePath + 'facturas.html'
+                        templateUrl: basePath + 'facturas.html',
+                        controller: 'facturaICtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
             }).state('facturasList', {
                 url: '/list',
                 parent: 'facturas',
-                param: {viviendaId: null},
                 views: {
                     'listView': {
                         templateUrl: basePath + 'facturas.list.html',
-                        controller: 'facturaCtrl',
-                        controllerAs: 'ctrl'
+                        
                     }
                 }
             }).state('facturaDetail', {
