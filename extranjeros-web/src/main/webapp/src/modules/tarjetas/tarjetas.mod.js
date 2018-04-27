@@ -31,6 +31,18 @@
                         templateUrl: basePath + 'tarjetas.list.html'
                     }
                 }
+            }).state('tarjetaUpdate', {
+                url: '/update/{tarjetaId:int}',
+                parent: 'tarjetas',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjetas.update.html',
+                        controller: 'tarjetaUpdateCtrl'
+                    }
+                }
             }).state('tarjetaDetail', {
                 url: '/{tarjetaId:int}/detail',
                 parent: 'tarjetas',
