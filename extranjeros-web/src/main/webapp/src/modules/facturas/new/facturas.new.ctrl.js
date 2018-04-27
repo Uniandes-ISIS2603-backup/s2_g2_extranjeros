@@ -1,7 +1,8 @@
 (function (ng) {
     var mod = ng.module("facturaModule");
-    mod.constant("facturasContext", "api/viviendas/11/facturas");
-    mod.controller('facturaNewCtrl', ['$scope', '$http', 'facturasContext', '$state', '$rootScope',
+    mod.constant("facturasContext", "facturas");
+    mod.constant("viviendaContext", "api/viviendas");
+    mod.controller('facturaNewCtrl', ['$scope', '$http', 'facturaContext', '$state','$rootScope','viviendaContext',
         /**
          * @ngdoc controller
          * @name facturas.controller:facturaNewCtrl
@@ -19,7 +20,7 @@
          * @param {Object} $rootScope Referencia injectada al Scope definida para
          * toda la aplicación.
          */
-        function ($scope, $http, facturasContext, $state, $rootScope) {
+        function ($scope, $http, facturasContext, $state, $rootScope, viviendaContext) {
             $rootScope.edit = false;
 
             $scope.data = {};
@@ -33,7 +34,7 @@
              * @param {Object} editorial Objeto con la nueva de la factura.
              */
             $scope.createFactura = function () {
-                $http.post(facturasContext, $scope.data).then(function (response) {
+                $http.post(viviendaContext+'/'+$state.params.viviendaId+'/'+facturasContext, $scope.data).then(function (response) {
                     $state.go('facturasList', {facturaId: response.data.id}, {reload: true});
                 });
             };
