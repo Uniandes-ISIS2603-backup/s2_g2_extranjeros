@@ -125,18 +125,26 @@ public class ArrendatarioLogic {
     public ArrendatarioEntity updateArrendatario (ArrendatarioEntity newUser) throws BusinessLogicException{
         LOGGER.info("Inicia el proceso de actualizar un arrendatario en la plataforma");
         
-        if(persistence.findByName(newUser.getNombre()) != null){
-            throw new BusinessLogicException("Existe un arrendatario con el mismo nombre."); 
+       ArrendatarioEntity comparacion = getArrendatario(newUser.getId());
+       
+        if (!newUser.getNombre().equalsIgnoreCase(comparacion.getNombre())) {
+            if (persistence.findByName(newUser.getNombre()) != null) {
+                throw new BusinessLogicException("Existe un arrendatario con el mismo nombre.");
+            }
         }
         
-        // Verificacion: no existe un arrendatario con el mismo usuario (login).
-        if (persistence.findByLogin(newUser.getUsuario()) != null){
-            throw new BusinessLogicException("Existe un arrendatario con el mismo login."); 
+        if (!newUser.getCedula().equalsIgnoreCase(comparacion.getCedula())) {
+            // Verificacion: no existe un arrendatario con la misma cedula.
+            if (persistence.findByCedula(newUser.getCedula()) != null) {
+                throw new BusinessLogicException("Existe un arrendatario con la misma cedula.");
+            }
         }
-        
-        // Verificacion: no existe un arrendatario con la misma cedula.
-        if (persistence.findByCedula(newUser.getCedula()) != null){
-            throw new BusinessLogicException("Existe un arrendatario con la misma cedula."); 
+
+        if (!newUser.getUsuario().equalsIgnoreCase(comparacion.getUsuario())) {
+            // Verificacion: no existe un arrendatario con el mismo usuario (login).
+            if (persistence.findByLogin(newUser.getUsuario()) != null) {
+                throw new BusinessLogicException("Existe un arrendatario con el mismo login.");
+            }
         }
         
         if (!newUser.getCorreo().contains("@") || !newUser.getCorreo().contains(".com")){

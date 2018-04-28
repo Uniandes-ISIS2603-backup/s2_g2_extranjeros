@@ -1,11 +1,4 @@
-.panel-heading{
-  text-align: center;
-  font-size: 22px;
-  font-style: italic;
-  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
- }
- 
- .Hola{
+.Hola{
   text-align: left;
   font-size: 19px;
   font-style: italic;
@@ -101,6 +94,7 @@
    font-size: 18px;
    text-align: center;
    font-weight: bold;
+   padding-top: 1em;
 }
 
 .Join-Us {

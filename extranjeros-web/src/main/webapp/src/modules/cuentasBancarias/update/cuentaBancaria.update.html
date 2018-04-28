@@ -1,0 +1,60 @@
+<div class="container-fluid" style="padding: 1em;">
+
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <img class="img-circle" src="https://images.pexels.com/photos/730569/pexels-photo-730569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Join Usa" style="max-height: 25em; max-width: 30em; text-align: center;"/>
+        <p class="Join-Us"> Actualiza tus datos </p>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="cuentaBancoBAsociado" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Banco Asociado </strong> </label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="cuentaBancoBAsociado" required ng-model="data.bancoAsociado" type="text" class="form-control" placeholder="Bancolombia" aria-describedby="basic-addon1">
+                    <span class="input-group-addon" id="basic-addon1">@</span>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="cuentaBancoSaldo" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Saldo actual </strong> </label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="cuentaBancoSaldo" required ng-model="data.saldoCuenta" type="number" class="form-control" placeholder="5000000000" aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="basic-addon2">#.</span>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="cuentaBancoTipo" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Tipo de Cuenta </strong> </label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="cuentaBancoTipo" required ng-model="data.tipoCuenta" type="text" class="form-control" placeholder="Ahorros O Corriente" aria-describedby="basic-addon20">
+                    <span class="input-group-addon" id="basic-addon20">#.</span>
+                </div>
+            </div>            
+        </div> 
+    </div>
+
+    <div class="form-group row" style="margin: auto;">
+        <div class="form-group col-sm-4"> </div>
+        <div class="form-group col-sm-4" style="text-align: center;">
+
+            <button type="button" id="create" ng-disabled="" ng-click="createCuentaBanco()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
+                Guardar cambios
+            </button>
+            <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="cuentasBancariasList" >
+                Cancel   
+            </button>
+        </div>
+        <div class="form-group col-sm-4"> </div>
+    </div>
+</div>
