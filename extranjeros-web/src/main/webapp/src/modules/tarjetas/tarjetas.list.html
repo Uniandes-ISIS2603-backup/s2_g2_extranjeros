@@ -6,8 +6,8 @@ and open the template in the editor.
 -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2 col-md-2">
-            <table class="table table-hover">
+        <div class="col-sm-3 col-md-3">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -15,7 +15,8 @@ and open the template in the editor.
                 </thead>
                 <tbody>
                     <tr ng-repeat="tarjeta in tarjetasRecords">
-                        <td><a ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})">{{tarjeta.id}}</a></td>
+                        <td>{{tarjeta.id}}</td>
+                        <td><a class="btn btn-info btn-xs" ui-sref="tarjetaDetail({tarjetaId: tarjeta.id})"> Ver detalle</a></td>
                     </tr>
                 </tbody>
             </table>
