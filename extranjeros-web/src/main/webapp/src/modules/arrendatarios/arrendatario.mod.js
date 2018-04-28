@@ -50,6 +50,30 @@
                         controller: 'arrendatarioPostCtrl'
                     }
                 }
+                
+            }).state('arrendatarioUpdate', {
+                url: '/update/{arrendatarioId:int}',
+                parent: 'arrendatarios',
+                param: {
+                    arrendatarioId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/update/arrendatario.update.html',
+                        controller: 'arrendatarioPutCtrl'
+                    }
+                }
+            }).state('arrendatarioDelete', {
+                url: '/delete/{arrendatarioId:int}',
+                parent: 'arrendatarios',
+                param: {
+                    arrendatarioId: null
+                },
+                views: {
+                    'detailView': {
+                        controller: 'arrendatarioDeleteCtrl'
+                    }
+                }
             });
         }]);
 })(window.angular);

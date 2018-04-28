@@ -1,14 +1,24 @@
 <div class="container-fluid">
-<div class="col-sm-12">
-    <br>
-    <table class="table">
-        <tbody>
-            <tr ng-repeat="cuenta in cuentaBancariaRecords">
-                <td>
-                    <b>{{cuenta.bancoAsociado}}</b> <span> (No. {{cuenta.numeroCuenta}}): </span> <span> $ </span>{{cuenta.saldoCuenta}}
-                </td>                                  
-            </tr>
-        </tbody>
-    </table>
+    <div class="panel panel-default">
+
+        <div class="form-group panel-heading" style="text-align: left; font-size: 18px;font-style: italic; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+            Mis cuentas bancarias <a ui-sref="cuentaBancariaCreate"> <span class="pull-right glyphicon glyphicon glyphicon-plus"> </span> </a>
+        </div>
+
+        <div class="panel-body"> 
+
+            <div class="form-group row" style="height: 3em;" ng-repeat="cuenta in cuentaBancariaRecords">   
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-9">
+                        <p style="text-align: left; padding-left: 0.8em;"><b> {{cuenta.bancoAsociado}}</b> <span> (No. {{cuenta.numeroCuenta}}) </span></p>     
+                    </div>
+                    <div class="form-group col-md-2">
+                        <a class="pull-right btn btn-primary btn-sm" ui-sref= "cuentaBancariaDetalle({cuentaBancariaId: cuenta.id})"> <span class="glyphicon glyphicon-list-alt"> </span> Ampliar </a>
+                    </div>
+                </div>     
+            </div>
+            <hr>
+        </div>
+    </div>
 </div>
-</div>
+
