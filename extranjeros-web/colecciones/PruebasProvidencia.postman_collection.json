@@ -1,0 +1,101 @@
+{
+	"id": "125244d8-84c2-0fd0-6abf-166a3688fe23",
+	"name": "PruebasProvidencia",
+	"description": "",
+	"auth": null,
+	"events": [],
+	"variables": [],
+	"order": [
+		"ff0bbb6d-0a60-4764-8b51-63786f255cf6",
+		"c462e222-0292-4293-8805-81f980e54522",
+		"bf7fc925-4a60-4111-ab53-f6a1993fe4a7"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "bf7fc925-4a60-4111-ab53-f6a1993fe4a7",
+			"name": "Get providencia - 404",
+			"url": "http://localhost:8080/extranjeros-web/api/providencia/576457",
+			"description": "Selecciona una providencia que no existe",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c0f3543-2f1f-408c-944d-dd0568031010",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"]=responseCode.code===404;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "c462e222-0292-4293-8805-81f980e54522",
+			"name": "Get providencia - 200",
+			"url": "http://localhost:8080/extranjeros-web/api/providencia/5764572",
+			"description": "Selecciona una providencia",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c4c3a46-5de8-41b8-8df5-caa586e9ede0",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "ff0bbb6d-0a60-4764-8b51-63786f255cf6",
+			"name": "Get providencia - 200",
+			"url": "http://localhost:8080/extranjeros-web/api/providencia",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "38a11142-69fc-4ebc-88f1-9f6a55b882e1",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
