@@ -55,6 +55,18 @@
                     }
                 }
 
+            }).state('eventoDelete', {
+                url: '/delete/{eventoId:int}',
+                parent: 'eventos',
+                param: {
+                    eventoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'eventos.delete.html',
+                        controller: 'eventoDeleteCtrl'
+                    }
+                }
             }).state('eventoUpdate', {
                 url: '/update/{eventoId:int}',
                 parent: 'eventos',
