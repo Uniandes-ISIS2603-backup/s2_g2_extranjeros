@@ -54,7 +54,7 @@
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/viviendas.new.html',
-                        controller: 'viviendaaNewCtrl'
+                        controller: 'viviendaNewCtrl'
                     }
         }});
     }]);
