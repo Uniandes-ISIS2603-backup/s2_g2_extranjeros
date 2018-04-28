@@ -1,21 +1,21 @@
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="form-group panel-heading" style="text-align: left; font-size: 18px;font-style: italic; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-            Cuenta Bancaria No. ({{currentCuentaBancaria.numeroCuenta}})  
+            Cuenta Bancaria No. <span>{{currentCuentaBanco.numeroCuenta}} </span>
         </div>
         
         
         <div class="panel-body">  
             <div class="form-group row" style="height: 3em;">   
                 <div class="form-group col-md-9">
-                    <p style="text-align: left; padding-left: 0.8em;"><b style="font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Entidad Bancaria: <br> <br> </b> 
-                        <span style="padding-left: 1em; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Saldo Disponible: &nbsp; <span style="color: seagreen">$</span><span>{{currentCuentaBancaria.saldoCuenta}}</span><br><br></span>
-                        <span style="padding-left: 1em; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Tipo de Cuenta: &nbsp; {{currentCuentaBancaria.tipoCuenta}}</span>
+                    <p style="text-align: left; padding-left: 0.8em;"><b style="font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Entidad Bancaria: {{currentCuentaBanco.bancoAsociado}} <br> <br> </b> 
+                        <span style="padding-left: 1em; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Saldo Disponible: &nbsp; <span style="color: seagreen">$</span><span>{{currentCuentaBanco.saldoCuenta}}</span><br><br></span>
+                        <span style="padding-left: 1em; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Tipo de Cuenta: &nbsp; {{currentCuentaBanco.tipoCuenta}}</span>
                     </p>
                 </div>
                 
                 <div class="pull-right form-group col-md-2">
-                    <a class="btn btn-link btn-sm" ui-sref= "cuentaBancariaUpdate({currentCuentaBancaria: currentCuentaBancaria.id})"> <span class="glyphicon glyphicon-edit"> </span></a>
+                    <a class="btn btn-link btn-sm" ui-sref= "cuentaBancariaUpdate({cuentaBancariaId: currentCuentaBanco.id})"> <span class="glyphicon glyphicon-edit"> </span></a>
                 </div>
             </div>
         </div>

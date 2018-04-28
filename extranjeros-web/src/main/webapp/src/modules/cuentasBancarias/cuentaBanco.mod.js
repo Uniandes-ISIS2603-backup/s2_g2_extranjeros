@@ -34,7 +34,7 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'cuentaBancaria.detail.html',
-                        controller: 'cuentaBancariaDetailController',
+                        controller: 'cuentaBancariaDetailCtrl',
                         controllerAs: 'ctrl'
                     }
                 }

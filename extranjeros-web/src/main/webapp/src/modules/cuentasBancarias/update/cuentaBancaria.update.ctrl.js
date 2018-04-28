@@ -13,7 +13,7 @@
             var idArrendatario = $state.params.arrendatarioId;
             var idCuentaBancaria = $state.params.cuentaBancariaId;
 
-            $scope.createArrendatario = function () {
+            $scope.createCuentaBanco = function () {
                 $http.put(arrendatarioContext + "/" + idArrendatario + '/' + cuentaBancariaContext + '/' + idCuentaBancaria, $scope.data).then(function (response) {
                     $state.go('cuentasBancariasList', {cuentaBancariaId: response.data.id}, {reload: true});
                 });
