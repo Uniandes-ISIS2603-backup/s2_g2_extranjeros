@@ -1,0 +1,22 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid" style="text-align: center">
+            <h2><strong>Facturas</strong></h2>
+            <br>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha de entrada</th>
+                    <th>Fecha de salida</th>
+                </tr>
+                <tr ng-repeat="factura in facturasRecords">
+                    <td><a ui-sref="facturaDetail({facturaId: factura.id})">{{factura.id}}</a></td>
+                    <td>{{factura.fechaEntrada}}</td>
+                    <td>{{factura.fechaSalida}}</td>
+                </tr>
+            </table>
+            <div class="row" style="text-align: center">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <a class="btn btn-info" ui-sref="facturaCreate"><span class="glyphicon glyphicon-plus-sign"></span>Crear Factura</a>
+                </div>
+            </div>
+</div>

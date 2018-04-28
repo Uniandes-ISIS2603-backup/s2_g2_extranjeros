@@ -48,12 +48,24 @@
                     }
                 }
 
-            }).state('viviendasCreate',
+            }).state('viviendaUpdate', {
+                url: '/update/{viviendaId:int}',
+                parent: 'viviendas',
+                param: {
+                    viviendaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/viviendas.new.html',
+                        controller: 'viviendaUpdateCtrl'
+                    }
+                }
+            }) .state('viviendasCreate',
             { url: '/create',
                 parent: 'viviendas',
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/viviendas.new.html',
+                        templateUrl: basePath + 'viviendas.new.html',
                         controller: 'viviendaNewCtrl'
                     }
         }});
