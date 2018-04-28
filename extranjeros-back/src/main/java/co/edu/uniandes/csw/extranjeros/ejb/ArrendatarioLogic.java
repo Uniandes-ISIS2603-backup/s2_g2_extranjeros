@@ -126,6 +126,10 @@ public class ArrendatarioLogic {
         LOGGER.info("Inicia el proceso de actualizar un arrendatario en la plataforma");
         
        ArrendatarioEntity comparacion = getArrendatario(newUser.getId());
+       newUser.setCedula(comparacion.getCedula());
+       newUser.setNombre(comparacion.getNombre());
+       newUser.setEdad(comparacion.getEdad());
+       newUser.setCuentasBancarias(comparacion.getCuentasBancarias());
        
         if (!newUser.getNombre().equalsIgnoreCase(comparacion.getNombre())) {
             if (persistence.findByName(newUser.getNombre()) != null) {
