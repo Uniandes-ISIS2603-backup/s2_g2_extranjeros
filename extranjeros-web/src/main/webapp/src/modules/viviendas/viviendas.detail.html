@@ -61,7 +61,7 @@
                                     <dd>{{servicio.direccion}}</dd>
                             </dl>
                         </li>
-                        <li>Valoraciones:</li>
+                       
                          <li ng-repeat="valoracion in currentVivienda.valoraciones">
                             <dl>
                                 
@@ -74,9 +74,13 @@
                        
                         
                     </ul>
+                    <div id="{{$index}}-actions">
+                        <a class="btn btn-default btn-sm" ui-sref="viviendaUpdate({viviendaId: currentVivienda.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                    </div>
                     <ul class='nav nav-tabs'>
                         <li class='active'><a ui-sref='facturasList({viviendaId: currentVivienda.id})'>Facturas</a></li>
                     </ul>
+                     
                 </div>
             </div>
         </div>
