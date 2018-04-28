@@ -10,9 +10,11 @@ import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.FacturaPersistence;
+import co.edu.uniandes.csw.extranjeros.persistence.ServicioPersistence;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +30,10 @@ import javax.inject.Inject;
 @Stateless
 public class FacturaLogic {
     private static final Logger LOGGER = Logger.getLogger(ServicioLogic.class.getName());
-
+    
+    @Inject
+    private ServicioPersistence servicios;
+    
     @Inject
     private FacturaPersistence persistence;
     
@@ -40,7 +45,7 @@ public class FacturaLogic {
     public List<FacturaEntity> getFacturas() {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los servicios");
          List<FacturaEntity> facs= persistence.findAll();
-         LOGGER.info("Termina proceso de consultar todos los libros");
+         LOGGER.info("Termina proceso de consultar todos los libros");          
          return facs;
     }
     /**
@@ -65,6 +70,20 @@ public class FacturaLogic {
     public FacturaEntity createFactura(FacturaEntity entity, ViviendaEntity vivienda)throws BusinessLogicException
     {
         LOGGER.log(Level.INFO,"Inicia proceso de crear un servicio");
+        List<ServicioEntity> adicionales=new ArrayList<>();
+        for(ServicioEntity x: entity.getServiciosAdicionales())
+        {
+            if(x.getId()!=null)
+            adicionales.add(servicios.find(x.getId()));
+        }
+        entity.setServiciosAdicionales(adicionales);
+        List<ServicioEntity> incluidos=new ArrayList<>();
+        for(ServicioEntity x: entity.getServiciosIncluidos())
+        {
+            if(x.getId()!=null)
+            incluidos.add(servicios.find(x.getId()));
+        }
+        entity.setServiciosIncluidos(incluidos);
         if(isFechaMenor(new Date(),entity.getFechaEntrada())||isFechaMenor(new Date(),entity.getFechaSalida()))
             throw new BusinessLogicException("La fecha de entrada o de salida no pueden ser anteriores a la actual.");
         if(isFechaMenor(entity.getFechaEntrada(), entity.getFechaSalida()))
@@ -85,6 +104,18 @@ public class FacturaLogic {
     public FacturaEntity updateFactura(FacturaEntity entity)throws BusinessLogicException
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar un servicio");
+        List<ServicioEntity> adicionales=new ArrayList<>();
+        for(ServicioEntity x: entity.getServiciosAdicionales())
+        {
+            adicionales.add(servicios.find(x.getId()));
+        }
+        entity.setServiciosAdicionales(adicionales);
+        List<ServicioEntity> incluidos=new ArrayList<>();
+        for(ServicioEntity x: entity.getServiciosIncluidos())
+        {
+            incluidos.add(servicios.find(x.getId()));
+        }
+        entity.setServiciosIncluidos(incluidos);
         if(isFechaMenor(new Date(),entity.getFechaEntrada())||isFechaMenor(new Date(),entity.getFechaSalida()))
             throw new BusinessLogicException("La fecha de entrada o la fecha de salida no pueden ser anteriores a la actual.");
         if(isFechaMenor(entity.getFechaEntrada(), entity.getFechaSalida()))
