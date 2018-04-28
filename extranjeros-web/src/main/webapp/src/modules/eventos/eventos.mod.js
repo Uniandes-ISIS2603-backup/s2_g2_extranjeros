@@ -23,6 +23,15 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('eventoCreate', {
+                url: '/create',
+                parent: 'eventos',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'eventos.new.html',
+                        controller: 'eventoNewCtrl'
+                    }
+                }
             }).state('eventosList', {
                 url: '/list',
                 parent: 'eventos',

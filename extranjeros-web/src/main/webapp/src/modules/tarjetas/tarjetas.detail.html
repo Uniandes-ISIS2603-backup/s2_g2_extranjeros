@@ -4,26 +4,18 @@
             <div class="col-md-3">
                 <div class="thumb">
                     <ul>
-                        <li>ID
-                            <ul>
-                                <li>{{currentTarjeta.id}}</li>
-                            </ul>
-                        </li>
-                        <li>Número de la tarjeta
-                            <ul>
-                                <li>{{currentTarjeta.numero}}</li>
-                            </ul>
-                        </li>
-                        <li>Franquicia
-                            <ul>
-                                <li>{{currentTarjeta.banco}}</li>
-                            </ul>
-                        </li>
-                        <li>Fecha de caducidad
-                            <ul>
-                                <li>{{currentTarjeta.fechaCaducidad}}</li>
-                            </ul>
-                        </li>
+                        <dt>ID</dt>
+                                <dd>{{currentTarjeta.id}}</dd>
+                                <hr>
+                        <dt>Número de la tarjeta</dt>
+                                <dd>{{currentTarjeta.numero}}</dd>
+                                <hr>
+                        <dt>Franquicia</dt>
+                                <dd>{{currentTarjeta.banco}}</dd>
+                                <hr>
+                        <dt>Fecha de caducidad</dt>
+                                <dd>{{currentTarjeta.fechaCaducidad}}</dd>
+                                <hr>
                     </ul>
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                          <a class="btn btn-info" ui-sref="tarjetaUpdate({tarjetaId: currentTarjeta.id})">

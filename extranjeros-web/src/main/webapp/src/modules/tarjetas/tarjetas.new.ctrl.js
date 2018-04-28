@@ -17,7 +17,10 @@
                 }).then(function (response) {
                     //Author created successfully
                     $state.go('tarjetasList', {tarjetaId: response.data.id}, {reload: true});
-                    });
+                    }).catch(function(data) {
+                // Handle error here
+                alert(data.data);
+        });
                 };
             }
         ]);
