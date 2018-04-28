@@ -31,6 +31,11 @@
                         
                        
                     </ul>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                         <a class="btn btn-info" ui-sref="eventoUpdate({eventoId: currentEvento.id})">
+                         <span class="glyphicon glyphicon-pencil"></span> Modificar evento</a>
+                         <a class="btn btn-danger" ui-sref="eventoDelete({eventoId: currentEvento.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar evento</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -55,6 +55,18 @@
                     }
                 }
 
+            }).state('eventoUpdate', {
+                url: '/update/{eventoId:int}',
+                parent: 'eventos',
+                param: {
+                    eventoId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'eventos.update.html',
+                        controller: 'eventoUpdateCtrl'
+                    }
+                }
             });
         }
     ]);
