@@ -12,7 +12,9 @@
         'servicioModule',
         'universidadModule',
         'viviendasModule',
-        'cuentaBancariaModule'
+        'cuentaBancariaModule',
+        'providenciaModule',
+        'estudianteModule'
         
 
     ]);
