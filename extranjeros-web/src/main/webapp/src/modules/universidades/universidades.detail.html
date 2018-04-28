@@ -1,0 +1,28 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <h1 class="bold">{{currentUniversidad.nombre}}</h1>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <dl> 
+                    <dt class="bold">Direccion</dt>
+                        
+                         <dd>{{currentUniversidad.direccion}}</dd>
+                       
+                    <hr>
+                    
+                </dl>
+            </div>
+            <div class="col-md-3">
+                <img class="embed-responsive-item" ng-src="{{currentUniversidad.imagen}}" style="max-width: 500px">
+            </div>
+        </div>
+        <div id="{{$index}}-actions" class="row">
+                        <a class="btn btn-default btn-sm" ui-sref="universidadUpdate({universidadId: currentUniversidad.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a class="btn btn-danger btn-sm" ui-sref="universidadDelete({universidadId: currentUniversidad.id})"><span class="glyphicon glyphicon-trash"></span></a>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@
         'eventoModule',
         'facturaModule',
         'servicioModule',
+        'universidadModule',
         'viviendasModule',
         'cuentaBancariaModule'
         
