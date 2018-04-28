@@ -1,55 +1,14 @@
 <div class="container-fluid" style="padding: 1em;">
 
     <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
-        <img class="img-circle" src="https://images.pexels.com/photos/545034/pexels-photo-545034.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Join Us" style="max-height: 25em; max-width: 30em; border-radius: 50%; align-content: center;"/>
-        <p class="Join-Us"> Únete y contribuye </p>
+        <img class="img-circle" src="https://images.unsplash.com/photo-1519217651866-847339e674d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d8190de5b37e8de21875a91ab8252a9a&auto=format&fit=crop&w=1050&q=80" alt="Update" style="max-height: 25em; max-width: 30em; border-radius: 50%; align-content: center;"/>
+        <p class="Join-Us"> Actualiza tus datos <i class="em em-writing_hand"></i>
+        </p>
     </div>
 
     <div ng-repeat ="alert in alerts" class="alert alert-danger alert-dismissible" style="text-align: center; margin: auto; height: 4em;">
          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
          <strong> Error: &nbsp; </strong> {{alert.msg}} <br>
-    </div>
-
-    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
-        <div class="form-group col-md-12">
-
-            <div class="col-md-1"> </div>
-            <label for="arrendatarioNombre" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Nombre </strong> </label>
-
-            <div class="col-md-7" style="margin: auto; align-content: center;">
-                <div class="input-group">
-                    <input id="arrendatarioNombre" required ng-model="data.nombre" type="text" class="form-control" placeholder="Gabriel Jesús" aria-describedby="basic-addon3">
-                    <span class="input-group-addon" id="basic-addon3">@</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
-        <div class="form-group col-md-12">
-            <div class="col-md-1"> </div>
-            <label for="arrendatarioEdad" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Edad </strong> </label>
-            <div class="col-md-7" style="margin: auto; align-content: center;">
-                <div class="input-group">
-                    <input id="arrendatarioEdad" required ng-model="data.edad" type="number" class="form-control" placeholder="18" aria-describedby="basic-addon6">
-                    <span class="input-group-addon" id="basic-addon6">#.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
-        <div class="form-group col-md-12">
-            <div class="col-md-1"> </div>
-            <label for="arrendatarioCedula" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Cédula </strong> </label>
-
-            <div class="col-md-7" style="margin: auto; align-content: center;">
-                <div class="input-group">
-                    <input id="arrendatarioCedula" required ng-model="data.cedula" type="number" class="form-control" placeholder="1010240037" aria-describedby="basic-addon7">
-                    <span class="input-group-addon" id="basic-addon7">#.</span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
@@ -64,7 +23,7 @@
             </div>            
         </div>
     </div>
-    
+
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">        
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>
@@ -130,13 +89,12 @@
         <div class="form-group col-sm-4" style="text-align: center;">
 
             <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createArrendatario()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
-                Guardar cambios
+                Actualizar perfil
             </button>
             <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="arrendatariosList" >
-                Cancel   
+                Cancelar   
             </button>
         </div>
         <div class="form-group col-sm-4"> </div>
     </div>
-    
 </div>

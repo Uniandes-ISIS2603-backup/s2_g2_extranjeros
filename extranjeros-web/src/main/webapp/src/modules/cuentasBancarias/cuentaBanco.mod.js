@@ -27,6 +27,40 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('cuentaBancariaDetalle', {
+                url: '/{cuentaBancariaId:int}/detalle',
+                parent: 'cuentasBancarias',
+                param: {cuentaBancariaId: null},
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'cuentaBancaria.detail.html',
+                        controller: 'cuentaBancariaDetailController',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('cuentaBancariaCreate', {
+                url: '/createCuenta',
+                parent: 'cuentasBancarias',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/post/cuentaBancaria.new.html',
+                        controller: 'cuentaBancariaPostCtrl'
+                    }
+                }
+                
+            }).state('cuentaBancariaUpdate', {
+                url: '/update/{cuentaBancariaId:int}',
+                parent: 'cuentasBancarias',
+                param: {
+                    arrendatarioId: null,
+                    cuentaBancariaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/update/cuentaBancaria.update.html',
+                        controller: 'cuentaBancariaUpdateCtrl'
+                    }
+                }
             });
         }]);
 })(window.angular);

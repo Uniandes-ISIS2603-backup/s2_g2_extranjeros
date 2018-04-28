@@ -17,13 +17,13 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class= "row" style="padding: 2em 1.5em; padding-left: 7.9em;">
+                                <div class= "row" style="padding: 1em; padding-left: 10em;">
                                     <div class="col-md-6" ng-repeat="arrendatario in arrendatarioRecords"> 
-                                        <div class="thumbnail" style="max-height: 25em; max-width: 20em;">
+                                        <div class="thumbnail" style="padding: 1em; max-height: 15em; min-height:15em; max-width: 19em; min-width: 19em; ">
                                             <a ui-sref="arrendatarioDetail({arrendatarioId: arrendatario.id})">
-                                                <img class = "img-rounded" ng-src="{{arrendatario.imagen}}" style="max-height: 20em; max-width: 18.7em;"/>
+                                                <img class = "img-rounded" ng-src="{{arrendatario.imagen}}" style="max-height: 11em; min-height: 11em;"/> 
                                             </a>
-                                            <p class="X-NickyJam"> <strong>  {{arrendatario.nombre}}: </strong> <span>  &nbsp; &nbsp; {{arrendatario.edad}} </span> </p>   
+                                            <p class="X-NickyJam"> <strong>  {{arrendatario.nombre}}: </strong> <span>  {{arrendatario.edad}} </span> </p>   
                                         </div>
                                     </div>
                                 </div> 
