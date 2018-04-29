@@ -11,6 +11,7 @@
         'facturaModule',
         'servicioModule',
         'universidadModule',
+        'lugarDeInteresModule',
         'viviendasModule',
         'cuentaBancariaModule'
         

@@ -62,9 +62,9 @@ insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (10111,'VIS
 insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (101251,'MasterCard',5789215346878546,'10/2018');
 insert into TarjetaEntity (id, banco, numero, fechaCaducidad) values (101451,'VISA',378921534687854,'10/2018');
 
-insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon, imagen) values (100,'Universidad de los Andes','Cra 1 Nº 18A - 12','4.602135','-74.066245', https://orientacion.universia.net.co/imgs2011/imagenes/andes-2016_02_12_185309.jpg);
-insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon, imagen) values (101,'Universidad Jorge Tadeo Lozano','Cra 4 Nº 22 - 61','4.606727','-74.067585', http://bibliotecadeobras.argos.com.co/Files/Works/Gallery//U._Jorge_Tadeo_Lozano_201722_17835.jpg);
-insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon, imagen) values (102,'Pontificia Universidad Javeriana','Cra 7 Nº 40 - 50','4.628464','-74.065118', http://www.javeriana.edu.co/image/journal/article?img_id=7183410&t=1467837109077);
+insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon, imagen) values (100,'Universidad de los Andes','Cra 1 Nº 18A - 12','4.602135','-74.066245', 'https://orientacion.universia.net.co/imgs2011/imagenes/andes-2016_02_12_185309.jpg');
+insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon, imagen) values (101,'Universidad Jorge Tadeo Lozano','Cra 4 Nº 22 - 61','4.606727','-74.067585', 'http://bibliotecadeobras.argos.com.co/Files/Works/Gallery//U._Jorge_Tadeo_Lozano_201722_17835.jpg');
+insert into UniversidadEntity (id, nombre,direccion,ubicacionLat,ubicacionLon, imagen) values (102,'Pontificia Universidad Javeriana','Cra 7 Nº 40 - 50','4.628464','-74.065118', 'http://www.javeriana.edu.co/image/journal/article?img_id=7183410&t=1467837109077');
 
 insert into ValoracionEntity (id, valoracion,comentario) values (1,3,'habia mucho ruido');
 insert into ValoracionEntity (id, valoracion,comentario) values (3125,4,'muy caliente');
