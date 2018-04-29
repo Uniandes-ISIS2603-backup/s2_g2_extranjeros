@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createUniversidad">Crear nueva Universidad</label>
+                <label ng-if="edit" id="editUniversidad">Editar Universidad</label></div>
+            <div class="panel-body">
+                <form name="universidad">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Nombre de universidad:</label>
+                            <input type="text" name="nombre" required ng-model="data.nombre" class="col-sm-4"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Direccion:</label>
+                            <input type="text" name="direccion" required ng-model="data.direccion" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-8">
+                            <label class="col-sm-3">Url de imagen:</label>
+                            <input class="col-sm-3" type="url" name="imagen" required ng-model="data.imagen"/><br><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!universidad.$valid">
+                            <div class="alert alert-warning" >
+                                <strong>Atención!</strong><p>Se requieren todos los campos*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="universidad.$valid" ng-click="createUniversidad()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="universidadesList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

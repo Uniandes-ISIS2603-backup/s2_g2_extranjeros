@@ -1,22 +1,35 @@
-<div class="container-fluid">
-    <div class="row">
-        <h2><strong> Arrendatarios </strong></h2>
-        <table class="table">
-            <thead>
-            <tr>
-              <th> Nombre </th>
-              <th> Usuario </th>
-              <th> Cedula</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr class = "text-justify  info" ng-repeat="arrendatario in arrendatarioRecords">
-              <td><a ui-sref="arrendatarioDetail({arrendatarioId: arrendatario.id})">{{arrendatario.nombre}}</a></td>
-              <td>{{arrendatario.usuario}}</td>
-              <td>{{arrendatario.cedula}}</td>
-              </tr> 
-          </tbody>
-         </table>
-    </div>
+<style> hr{display: block; border: 0.5px solid lightgrey;}</style>
+<div class= "imageArr">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="paddingArriba"> 
+                        <div class="row"> <br> </div>  
+                        <div>
+                            <div class="thumbnail" style="padding: 1em 2.5em;"> 
+                                <div class="row" style="height: 0.5em;">
+                                    <div class="col-md-11">
+                                        <h2 class = "h2Jose"><strong> Arrendatarios </strong></h2>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-1">                      
+                                        <a ui-sref="arrendatarioCreate">
+                                        <h1 style="color: orange"> +  </h1> 
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class= "row" style="padding: 1em; padding-left: 10em;">
+                                    <div class="col-md-6" ng-repeat="arrendatario in arrendatarioRecords"> 
+                                        <div class="thumbnail" style="padding: 1em; max-height: 15em; min-height:15em; max-width: 19em; min-width: 19em; ">
+                                            <a ui-sref="arrendatarioDetail({arrendatarioId: arrendatario.id})">
+                                                <img class = "img-rounded" ng-src="{{arrendatario.imagen}}" style="max-height: 11em; min-height: 11em;"/> 
+                                            </a>
+                                            <p class="X-NickyJam"> <strong>  {{arrendatario.nombre}}: </strong> <span>  {{arrendatario.edad}} </span> </p>   
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </div>
-

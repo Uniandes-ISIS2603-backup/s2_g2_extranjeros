@@ -43,6 +43,12 @@ public class FacturaDetailDTO extends FacturaDTO {
     public FacturaDetailDTO(FacturaEntity entity)
     {
         super(entity);
+        
+        estudianteAsociado=new EstudianteDTO();
+        arrendatarioAsociado=new ArrendatarioDTO();
+        serviciosExtra=new ArrayList<>();
+        serviciosIncluidos=new ArrayList<>();
+                
         if(entity.getServiciosAdicionales()!=null)
             serviciosExtra=servicioEntityAServicioDTO(entity.getServiciosAdicionales());
         if(entity.getServiciosIncluidos()!=null)

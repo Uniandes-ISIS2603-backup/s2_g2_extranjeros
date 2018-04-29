@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createVivienda">Crear nueva vivienda</label>
+                <label ng-if="edit" id="editVivienda">Editar vivienda</label></div>
+            <div class="panel-body">
+                <form name="Vivienda">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Capacidad </label>
+                            <input type="number" name="capacidad" value="100" required ng-model="data.capacidad" class="col-sm-4"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Direccion </label>
+                            <input type="text" name="direccion" value="dir" required ng-model="data.direccion" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Latitud </label>
+                            <input type="text" name="latitud" value="dir" required ng-model="data.latitud" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Longitud </label>
+                            <input type="text" name="longitud" value="dir" required ng-model="data.longitud" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Precio mensual </label>
+                            <input type="number" name="precioMensual" value="100" required ng-model="data.precioMensual" class="col-sm-4"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-9">
+                            <label for="viviendaIN" class="col-sm-8">¿La vivienda  esta disponible? <br>  
+                                <input type="radio" name="disponible" value=true required ng-model="data.disponible" class="col-sm-1"/>Sí.<br>
+                                <input type="radio" name="disponible" value=false required ng-model="data.disponible" class="col-sm-1"/>No.<br>
+                            </label> 
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Inquilinos </label>
+                            <input type="number" name="inquilinos" value="3" required ng-model="data.inquilinos" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="form-group col-md-8">
+                             <label for="viviendaIN" class="col-sm-3">Tipo de alojamiento   </label>
+                             <select name="tipoAlojamiento" required ng-model="data.tipoAlojamiento" class="col-sm-3">
+                                <option value="A"> Tipo A</option>
+                                <option value="B"> Tipo B </option>
+                                <option value="C"> Tipo C </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!vivienda.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Atención!</strong><p>Debe ingresar todos los campos*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="vivienda.$valid" ng-click="createVivienda()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="viviendasList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

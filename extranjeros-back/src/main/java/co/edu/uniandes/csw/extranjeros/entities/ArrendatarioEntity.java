@@ -61,6 +61,8 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
     @PodamStrategyValue(IntegerStrategy.class)
     private Integer edad;
     
+    private String imagen;
+    
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
@@ -219,4 +221,12 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
     public void setCuentasBancarias(List<CuentaBancariaEntity> cuentaBancaria) {
         this.cuentasBancarias = cuentaBancaria;
     } 
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 } 

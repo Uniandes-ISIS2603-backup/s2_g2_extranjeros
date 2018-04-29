@@ -21,7 +21,16 @@
                         </li>
                         <li>¿Se divide la cuenta de servicios adicioanles con los otros inquilinos?
                             <ul>
-                                <li>{{currentFactura.dividirCuentaServicios}}</li>
+                        <span ng-if="currentFactura.dividirCuentaServicios==true">
+                         <li>
+                            Sí.
+                         </li>
+                        </span>
+                        <span ng-if="currentFactura.dividirCuentaServicios==false">
+                         <li>
+                            No.
+                         </li>
+                        </span>
                             </ul>
                         </li>
                         <li>Fecha de entrada
@@ -52,6 +61,10 @@
                             </dl>
                         </li>
                     </ul>
+                    <div id="{{$index}}-actions">
+                        <a class="btn btn-default btn-sm" ui-sref="facturaUpdate({facturaId: currentFactura.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a class="btn btn-danger btn-sm" ui-sref="facturaDelete({facturaId: currentFactura.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                    </div>
                 </div>
             </div>
         </div>

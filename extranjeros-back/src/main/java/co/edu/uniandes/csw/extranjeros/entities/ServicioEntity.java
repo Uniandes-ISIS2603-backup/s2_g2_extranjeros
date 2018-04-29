@@ -18,6 +18,7 @@ public class ServicioEntity extends BaseEntity implements Serializable
     private String tipo;
     private Boolean adicional;
     private Double precioMensual;
+    private String imagen;
     
     /**
      * @return el tipo de servicio.
@@ -55,5 +56,18 @@ public class ServicioEntity extends BaseEntity implements Serializable
     public void setPrecioMensual(Double precioMensual) {
         this.precioMensual = precioMensual;
     }
+    /**
+     * @return url de la imagen del servicio.
+     */
+    public String getImagen() {
+        return imagen;
+    }
+    /**
+     * @param imagen nueva url de la imagen del servicio.
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
     
 }

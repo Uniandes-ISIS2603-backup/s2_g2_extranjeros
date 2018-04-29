@@ -1,0 +1,103 @@
+{
+	"id": "9dd7853c-a780-488f-a20e-5d36da5dac28",
+	"name": "PruebasEstudiantes",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": null,
+	"order": [
+		"1f00db7b-14fc-4dd3-806e-cd976c657715",
+		"6903a53d-f51a-4f98-8b60-62575c82ea0c",
+		"26d74505-3b6a-466b-be91-b2e8309a5ba7"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "1f00db7b-14fc-4dd3-806e-cd976c657715",
+			"name": "Get estudiantes - 200",
+			"url": "http://localhost:8080/extranjeros-web/api/estudiante",
+			"description": "",
+			"data": [],
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fde1e166-d08c-497a-a1d6-1c6867f021f6",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "26d74505-3b6a-466b-be91-b2e8309a5ba7",
+			"name": "Get estudiante -200",
+			"url": "http://localhost:8080/extranjeros-web/api/estudiante/201616977",
+			"description": "Retorna el estudiante con su id",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f299cd0-07bd-45f6-a866-562f1f7fe1e1",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "6903a53d-f51a-4f98-8b60-62575c82ea0c",
+			"name": "Get estudiante - 404",
+			"url": "http://localhost:8080/extranjeros-web/api/estudiante/111",
+			"description": "Solicita un estudiante que no existe",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49473a9b-2b14-4409-b70f-c51301dd0ca5",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"]=responseCode.code===404;"
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}

@@ -1,6 +1,8 @@
 (function (ng) {
     
-    var mod = ng.module("facturaModule", ['ui.router']);
+    var mod = ng.module("facturaModule", ['viviendasModule','ui.router']);
+    mod.constant("facturasContext", "facturas");
+    mod.constant("viviendaContext", "api/viviendas");
     
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             
@@ -10,11 +12,14 @@
             
             $stateProvider.state('facturas', {
                 
-                url: '/facturas',
+                url: '/{viviendaId:int}/facturas',
+                abstract:true,
+                
+                param: {viviendaId: null},
                  views: {
                     'mainView': {
                         templateUrl: basePath + 'facturas.html',
-                        controller: 'facturaCtrl',
+                        controller: 'facturaICtrl',
                         controllerAs: 'ctrl'
                     }
                 }
@@ -23,13 +28,14 @@
                 parent: 'facturas',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'facturas.list.html'
+                        templateUrl: basePath + 'facturas.list.html',
+                        
                     }
                 }
             }).state('facturaDetail', {
                 url: '/{facturaId:int}/detail',
                 parent: 'facturas',
-                param: {sportId: null},
+                param: {facturaId: null},
                 views: {
                     'listView': {
                         templateUrl: basePath + 'facturas.list.html'
@@ -41,6 +47,39 @@
                     }
                 }
 
+            }).state('facturaCreate', {
+                url: '/create',
+                parent: 'facturas',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/facturas.new.html',
+                        controller: 'facturaNewCtrl'
+                    }
+                }
+            }).state('facturaUpdate', {
+                url: '/update/{facturaId:int}',
+                parent: 'facturas',
+                param: {
+                    facturaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/facturas.new.html',
+                        controller: 'facturaUpdateCtrl'
+                    }
+                }
+            }).state('facturaDelete', {
+                url: '/delete/{facturaId:int}',
+                parent: 'facturas',
+                param: {
+                    facturaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/facturas.delete.html',
+                        controller: 'facturaDeleteCtrl'
+                    }
+                }
             });
         }
     ]);

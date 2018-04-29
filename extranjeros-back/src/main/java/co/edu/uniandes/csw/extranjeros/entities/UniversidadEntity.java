@@ -19,6 +19,7 @@ public class UniversidadEntity extends BaseEntity implements Serializable {
     private String direccion;
     private String ubicacionLat;
     private String ubicacionLon;
+    private String imagen;
 
     //------------------
     //Metodos
@@ -57,6 +58,23 @@ public class UniversidadEntity extends BaseEntity implements Serializable {
     
     public void setDireccion(String direccion){
         this.direccion = direccion;
+    }
+    
+    /**
+     * @return La imagen de la universidad
+     */
+    
+    public String getImagen(){
+        return imagen;
+    }
+    
+    /**
+     * Asigna una imagen a la universidad
+     * @param imagen La direccion
+     */
+    
+    public void setImagen(String imagen){
+        this.imagen = imagen;
     }
     
     /**

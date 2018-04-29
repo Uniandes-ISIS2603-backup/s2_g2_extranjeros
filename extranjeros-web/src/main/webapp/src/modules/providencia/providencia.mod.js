@@ -13,19 +13,44 @@
             
             $urlRouterProvider.otherwise("/providenciaList");
             
-            $stateProvider.state('providenciaList', {
-                
-                url: '/providencia/list',
+            $stateProvider.state('providencia', {
+                url: '/providencia',
                  views: {
                     'mainView': {
-                        templateUrl: basePath + 'providencia.list.html',
+                        templateUrl: basePath + 'providencia.html',
                         controller: 'providenciaCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+                
+            }).state('providenciaList', {
+                url: '/list',
+                parent: 'providencia',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'providencia.list.html'
+                    }
+                }
+            }).state('providenciaDetail', {
+                url: '/{providenciaId:int}/detail',
+                parent: 'providencia',
+                param: {providenciaId: null},
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'providencia.list.html'
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'providencia.detail.html',
+                        controller: 'providenciaDetailCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+
             });
-        }
+            
+    }
     ]);
 })(window.angular);
+        
 
 

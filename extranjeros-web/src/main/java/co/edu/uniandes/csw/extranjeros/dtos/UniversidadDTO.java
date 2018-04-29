@@ -45,7 +45,10 @@ public class UniversidadDTO {
     private String nombre;
     private String direccion;
     private String ubicacionLat;
+
+    
     private String ubicacionLon;
+    private String imagen;
     private Long id;
     
     
@@ -78,6 +81,8 @@ public class UniversidadDTO {
         this.direccion = universidad.getDireccion();
         this.ubicacionLat =universidad.getUbicacionLat();
         this.ubicacionLon = universidad.getUbicacionLon();
+        this.imagen = universidad.getImagen();
+        this.id = universidad.getId();
         }
     }
     
@@ -93,6 +98,7 @@ public class UniversidadDTO {
         entity.setDireccion(this.direccion);
         entity.setUbicacionLat(this.ubicacionLat);
         entity.setUbicacionLon(this.ubicacionLon);
+        entity.setImagen(this.imagen);
         return entity;
     }
     
@@ -183,8 +189,14 @@ public class UniversidadDTO {
         this.id = id;
     }
     
-  
-    
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+      
     
     
 }

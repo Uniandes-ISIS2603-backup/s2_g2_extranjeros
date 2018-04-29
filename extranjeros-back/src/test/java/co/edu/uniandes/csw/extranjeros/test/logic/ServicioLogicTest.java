@@ -121,6 +121,7 @@ public class ServicioLogicTest
         Assert.assertEquals(newEntity.getAdicional(),entity.getAdicional());
         Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
         Assert.assertEquals(newEntity.getPrecioMensual(), entity.getPrecioMensual());
+        Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
     }
     /**
      * Prueba para consultar la lista de Servicio.
@@ -153,6 +154,7 @@ public class ServicioLogicTest
         Assert.assertEquals(resultEntity.getAdicional(),entity.getAdicional());
         Assert.assertEquals(resultEntity.getTipo(), entity.getTipo());
         Assert.assertEquals(resultEntity.getPrecioMensual(), entity.getPrecioMensual());
+        Assert.assertEquals(resultEntity.getImagen(), entity.getImagen());
     }
     /**
      * Prueba para eliminar un Servicio.
@@ -183,5 +185,6 @@ public class ServicioLogicTest
         Assert.assertEquals(pojoEntity.getAdicional(),resp.getAdicional());
         Assert.assertEquals(pojoEntity.getTipo(), resp.getTipo());
         Assert.assertEquals(pojoEntity.getPrecioMensual(), resp.getPrecioMensual());
+        Assert.assertEquals(pojoEntity.getImagen(), resp.getImagen());
     }
 }

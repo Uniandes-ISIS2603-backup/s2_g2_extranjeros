@@ -1,0 +1,27 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumb">
+                    <h1 class="bold">{{currentEstudiante.nombre}}</h1>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <dl> 
+                    <dt class="bold">Cedula</dt>
+                        <dd>{{currenEstudiante.cedula}}</dd>
+                    
+                    <dt class="bold">Usuario</dt>
+                    <dd>{{currentEstudiante.usuario}}</dd>
+                </dl>
+            </div>
+            <div class="col-md-3">
+                <img class="embed-responsive-item" ng-src="{{currentProvidencia.imagen}}" style="max-width: 500px">
+            </div>
+        </div>
+        <div id="{{$index}}-actions" class="row">
+                        <a class="btn btn-default btn-sm" ui-sref="providenciaUpdate({providenciaId: providenciaServicio.id})"><span class="glyphicon glyphicon-edit"></span></a>
+        </div>
+    </div>
+</div>
+

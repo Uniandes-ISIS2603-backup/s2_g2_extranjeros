@@ -9,9 +9,16 @@
         'tarjetaModule',
         'eventoModule',
         'facturaModule',
-        'servicioModule'
-        
-        
+        'servicioModule',
+        'universidadModule',
+        'lugarDeInteresModule',
+        'viviendasModule',
+        'cuentaBancariaModule',
+        'valoracionModule', 
+        'estudianteModule',
+        'providenciaModule'
+             
+
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

@@ -1,10 +1,12 @@
 (function (ng) {
     var mod = ng.module("facturaModule");
-    mod.constant("facturaContext", "api/viviendas/11/facturas");
-    mod.controller('facturaCtrl', ['$scope', '$http', 'facturaContext',
-        function ($scope, $http, facturaContext) {
-            $http.get(facturaContext).then(function (response) {
+    mod.constant("facturaContext", "facturas");
+    mod.constant("viviendaContext", "api/viviendas");
+    mod.controller('facturaICtrl', ['$scope', '$http', 'facturaContext', 'viviendaContext','$state',
+        function ($scope, $http, facturaContext,  viviendaContext, $state) {
+            $http.get(viviendaContext+'/'+$state.params.viviendaId+'/'+facturaContext).then(function (response) {
                 $scope.facturasRecords = response.data;
+                //$state.go('facturasList' ,{facturaId: response.data.id}, {reload: true});
             });
         }
     ]);
