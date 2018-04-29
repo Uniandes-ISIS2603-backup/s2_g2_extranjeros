@@ -14,8 +14,7 @@
         'lugarDeInteresModule',
         'viviendasModule',
         'cuentaBancariaModule',
-        'providenciaModule',
-        'estudianteModule'
+        'valoracionModule'
         
         
 
