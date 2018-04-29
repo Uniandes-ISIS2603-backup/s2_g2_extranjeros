@@ -64,8 +64,8 @@
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/valoraciones.new.html',
-                        controller: 'valoracionUpdateCtrl'
+                        templateUrl: basePath + 'valoraciones.new.html',
+                        controller: 'valoracionesUpdateCtrl'
                     }
                 }
             }).state('valoracionDelete', {

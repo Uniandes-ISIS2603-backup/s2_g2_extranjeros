@@ -158,22 +158,25 @@ public class ViviendaResource {
             throw new WebApplicationException("La vivienda no existe", 404);
         }
         List<ServicioEntity> adicional = new ArrayList<>();
+        if( vivienda.getServiciosAdicionales()!=null){
         for (int i = 0; i < vivienda.getServiciosAdicionales().size(); i++) {
            ServicioEntity ser = (serviLogic.getServicio(vivienda.getServiciosAdicionales().get(i).getId()));
            if(ser == null){
                throw new BusinessLogicException("El servicio no existe");
            }
            adicional.add(ser);
-        }
+        }}
         List<ServicioEntity> fijos = new ArrayList<>();
+        if(vivienda.getServiciosFijos()!=null){
         for (int i = 0; i < vivienda.getServiciosFijos().size(); i++) {
            ServicioEntity ser = (serviLogic.getServicio(vivienda.getServiciosFijos().get(i).getId()));
            if(ser == null){
                throw new BusinessLogicException("El servicio no existe");
            }
            fijos.add(ser);
-        }
+        }}
         List<ValoracionEntity> valo = new ArrayList<>();
+       
         if(vivienda.getValoraciones()!=null){
             for (int i = 0; i < vivienda.getValoraciones().size(); i++) {
                 valo.add(vivienda.getValoraciones().get(i).toEntity());
