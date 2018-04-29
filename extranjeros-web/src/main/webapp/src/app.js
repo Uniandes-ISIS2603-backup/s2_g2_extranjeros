@@ -15,7 +15,8 @@
         'lugarDeInteresModule',
         'cuentaBancariaModule',
         'valoracionModule', 
-        'estudianteModule'
+        'estudianteModule', 
+        'providenciaModule'
              
 
     ]);
