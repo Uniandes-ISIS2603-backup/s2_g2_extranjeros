@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
             <h2><strong>Providencia</strong></h2>
@@ -14,11 +8,11 @@ and open the template in the editor.
                     <th>Region</th>
                 </tr>
                 <tr ng-repeat="providencia in providenciaRecords">
-                    <td><a ui-sref="providenciaDetail({providenciaId: providencia.id})">{{providencia.id}}</a></td>
+                    <td>{{providencia.id}}</td>
                     <td>{{providencia.pais}}</td>
-                    <td>{{providencia.region}}</td>
-                   
+                    <td>{{providencia.pais}}</td>
                 </tr>
             </table>
+           
 </div>
 
