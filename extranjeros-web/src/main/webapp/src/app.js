@@ -11,12 +11,11 @@
         'facturaModule',
         'servicioModule',
         'universidadModule',
-        'lugarDeInteresModule',
         'viviendasModule',
+        'lugarDeInteresModule',
         'cuentaBancariaModule',
         'valoracionModule', 
-        'estudianteModule',
-        'providenciaModule'
+        'estudianteModule'
              
 
     ]);
