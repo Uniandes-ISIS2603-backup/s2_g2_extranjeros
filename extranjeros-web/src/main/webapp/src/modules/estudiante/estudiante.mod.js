@@ -13,18 +13,42 @@
             
             $urlRouterProvider.otherwise("/estudianteList");
             
-            $stateProvider.state('estudianteList', {
-                
-                url: '/estudiante/list',
+            $stateProvider.state('estudiante', {
+                url: '/estudiante',
                  views: {
                     'mainView': {
-                        templateUrl: basePath + 'estudiante.list.html',
+                        templateUrl: basePath + 'estudiante.html',
                         controller: 'estudianteCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
+                
+            }).state('estudianteList', {
+                url: '/list',
+                parent: 'estudiante',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'estudiante.list.html'
+                    }
+                }
+            }).state('estudianteDetail', {
+                url: '/{estudianteId:int}/detail',
+                parent: 'estudiante',
+                param: {estudianteId: null},
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'estudiante.list.html'
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'estudiante.detail.html',
+                        controller: 'estudianteDetailCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+
             });
-        }
+            
+    }
     ]);
 })(window.angular);
 

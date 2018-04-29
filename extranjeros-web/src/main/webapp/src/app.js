@@ -14,9 +14,10 @@
         'lugarDeInteresModule',
         'viviendasModule',
         'cuentaBancariaModule',
-        'valoracionModule'
-        
-        
+        'valoracionModule', 
+        'estudianteModule',
+        'providenciaModule'
+             
 
     ]);
     // Resuelve problemas de las promesas
