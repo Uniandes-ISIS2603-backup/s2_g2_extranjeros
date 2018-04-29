@@ -62,6 +62,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="vivienda.$valid" ng-click="createVivienda()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="viviendasList">Cancel</a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!vivienda.$valid">
 
                             <div class="alert alert-warning" >
@@ -69,12 +75,7 @@
                             </div> 
                         </div> 
                     </div> 
-                    <div class="form-group row">
-                        <div class="form-group col-sm-12">
-                            <input ng-show="vivienda.$valid" ng-click="createVivienda()" value="Save" class="btn btn-success"/>
-                            <a class="btn btn-info" ui-sref="viviendasList">Cancel</a>
-                        </div>
-                    </div>
+                    
                 </form>
 
             </div>

@@ -52,7 +52,7 @@
                 parent: 'valoraciones',
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/valoraciones.new.html',
+                        templateUrl: basePath + 'valoraciones.new.html',
                         controller: 'valoracionNewCtrl'
                     }
                 }
