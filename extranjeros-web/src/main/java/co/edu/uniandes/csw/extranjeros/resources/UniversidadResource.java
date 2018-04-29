@@ -88,11 +88,7 @@ public class UniversidadResource {
    @GET
    @Path("{id: \\d+}")
    public UniversidadDetailDTO getUniversidad(@PathParam("id")Long id){
-        UniversidadEntity entidadBuscada = logica.getUniversidad(id);
-        if(entidadBuscada == null){
-            throw new WebApplicationException("El recurso /universidades/" + id + " no existe.", 404);
-        }
-        return new UniversidadDetailDTO(entidadBuscada);
+        return new UniversidadDetailDTO(logica.getUniversidad(id));
     }
    /**
      * <h1> GET /api/universidades : Obtener todas las universidades. </h1>

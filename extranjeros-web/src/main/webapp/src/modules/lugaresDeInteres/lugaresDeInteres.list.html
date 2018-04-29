@@ -1,0 +1,19 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+            <h2><strong>Lugares de Interes</strong></h2>
+            <table class="table table-hover table-bordered" style="text-align: center">
+                <tr>
+                    <th>ID</th>
+                    <th>Lugar de Interes</th>
+                </tr>
+                <tr ng-repeat="lugarDeInteres in lugaresDeInteresRecords">
+                    <td>{{lugarDeInteres.id}}</td>
+                    <td><a ui-sref="lugarDeInteresDetail({lugarDeInteresId: lugarDeInteres.id})">{{lugarDeInteres.nombre}}</a></td>
+                </tr>
+            </table>
+            <div class="row" style="text-align: center">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <a class="btn btn-info" ui-sref="lugarDeInteresCreate"><span class="glyphicon glyphicon-plus-sign"></span>Agregar Lugar de Interes</a>
+                </div>
+            </div>
+</div>

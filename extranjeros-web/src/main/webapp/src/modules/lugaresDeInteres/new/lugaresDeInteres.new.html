@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createLugarDeInteres">Crear nuevo lugar de interes</label>
+                <label ng-if="edit" id="editLugarDeInteres">Editar Lugar de Interes</label></div>
+            <div class="panel-body">
+                <form name="Lugar">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Nombre del lugar de interes:</label>
+                            <input type="text" name="Nombre" required ng-model="data.nombre" class="col-sm-4"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Numero de telefono del lugar:</label>
+                            <input type="text" name="Telefono" required ng-model="data.telefono" class="col-sm-4"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Tipo de Lugar:</label>
+                            <input type="text" name="Tipo" required ng-model="data.tipo" class="col-sm-4"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Direccion:</label>
+                            <input type="text" name="Direccion" required ng-model="data.direccion" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!lugarDeInteres.$valid">
+                            <div class="alert alert-warning" >
+                                <strong>Atención!</strong><p>Se requieren todos los campos*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="lugarDeInteres.$valid" ng-click="createLugarDeInteres()" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="lugaresDeInteresList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
