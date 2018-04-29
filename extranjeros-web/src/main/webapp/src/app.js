@@ -11,11 +11,13 @@
         'facturaModule',
         'servicioModule',
         'universidadModule',
+        'lugarDeInteresModule',
         'viviendasModule',
         'cuentaBancariaModule',
-        'providenciaModule',
-        'estudianteModule'
-        
+        'valoracionModule', 
+        'estudianteModule',
+        'providenciaModule'
+             
 
     ]);
     // Resuelve problemas de las promesas

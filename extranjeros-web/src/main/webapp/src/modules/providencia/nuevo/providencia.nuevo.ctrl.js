@@ -1,13 +1,12 @@
 (function (ng) {
-    var mod = ng.module("facturaModule");
-    mod.constant("facturasContext", "facturas");
-    mod.constant("viviendaContext", "api/viviendas");
-    mod.controller('facturaNewCtrl', ['$scope', '$http', 'facturaContext', '$state','$rootScope','viviendaContext',
+    var mod = ng.module("providenciaModule");
+    mod.constant("providenciaContext", "api/providencia");
+    mod.controller('providenciaNewCtrl', ['$scope', '$http', 'providenciaContext', '$state', '$rootScope',
         /**
          * @ngdoc controller
-         * @name facturas.controller:facturaNewCtrl
+         * @name servicios.controller:servicioNewCtrl
          * @description
-         * Definición del controlador auxiliar para crear Facturas. 
+         * Definición del controlador auxiliar para crear servicios. 
          * @param {Object} $scope Referencia injectada al Scope definida para este
          * controlador, el scope es el objeto que contiene las variables o 
          * funciones que se definen en este controlador y que son utilizadas 
@@ -20,25 +19,27 @@
          * @param {Object} $rootScope Referencia injectada al Scope definida para
          * toda la aplicación.
          */
-        function ($scope, $http, facturasContext, $state, $rootScope, viviendaContext) {
+        function ($scope, $http, providenciaContext, $state, $rootScope) {
             $rootScope.edit = false;
 
             $scope.data = {};
 
             /**
              * @ngdoc function
-             * @name createFactura
+             * @name createServicio
              * @methodOf editorials.controller:editorialNewCtrl
              * @description
              * Esta función utiliza el protocolo HTTP para crear la factura.
              * @param {Object} editorial Objeto con la nueva de la factura.
              */
-            $scope.createFactura = function () {
-                $http.post(viviendaContext+'/'+$state.params.viviendaId+'/'+facturasContext, $scope.data).then(function (response) {
-                    $state.go('facturasList', {facturaId: response.data.id}, {reload: true});
+            $scope.createProvidencia = function () {
+                $http.post(providenciaContext, $scope.data).then(function (response) {
+                    $state.go('providenciaList', {providenciaId: response.data.id}, {reload: true});
                 });
             };
         }
     ]);
 }
 )(window.angular);
+
+

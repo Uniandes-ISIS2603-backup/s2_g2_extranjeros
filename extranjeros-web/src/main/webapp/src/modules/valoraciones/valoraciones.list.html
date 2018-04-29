@@ -1,0 +1,18 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid" style="text-align: center">
+            <h2><strong>Valoraciones</strong></h2>
+            <br>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <th>Pubntaje</th>
+                    <th>Comentario</th>
+                </tr>
+                <tr ng-repeat="valoracion in valoracionesRecords">
+                    <td><a ui-sref="valoracionDetail({valoracionId: valoracion.id})">{{valoracion.id}}</a></td>
+                    <td>{{valoracion.valoracion}}</td>
+                    <td>{{valoracion.comentario}}</td>
+                </tr>
+            </table>
+           
+</div>

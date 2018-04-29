@@ -63,6 +63,7 @@ public class UniversidadLogic {
      * @return Instancia de UniversidadEntity con los datos del Usuario consultado.
      */
     public UniversidadEntity getUniversidad(Long id) {
+        LOGGER.log(Level.INFO,"Inicia proceso de consultar un servicio con id={0}",id);
         return persistence.find(id);
     }
     
