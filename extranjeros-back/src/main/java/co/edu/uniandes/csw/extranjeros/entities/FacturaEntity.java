@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -49,6 +50,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @OneToMany
+    @JoinTable(name="SERVICIOS_INCLUIDOS")
     private List<ServicioEntity> serviciosIncluidos;
     
     /**
@@ -56,6 +58,7 @@ public class FacturaEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @OneToMany
+    @JoinTable(name="SERVICIOS_ADICIONALES")
     private List<ServicioEntity> serviciosAdicionales;
     
     /**

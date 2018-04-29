@@ -116,6 +116,8 @@ public class FacturaLogicTest {
     @Test
     public void createFacturaTest() throws BusinessLogicException {
         FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
+        newEntity.setServiciosAdicionales(new ArrayList<>());
+        newEntity.setServiciosIncluidos(new ArrayList<>());
         ViviendaEntity vivienda=factory.manufacturePojo(ViviendaEntity.class);
         viviendaLogic.createVivienda(vivienda);
         FacturaEntity result = facturaLogic.createFactura(newEntity,vivienda);
@@ -184,7 +186,9 @@ public class FacturaLogicTest {
         FacturaEntity pojoEntity = factory.manufacturePojo(FacturaEntity.class);
 
         pojoEntity.setId(entity.getId());
-
+        pojoEntity.setServiciosAdicionales(new ArrayList<>());
+        pojoEntity.setServiciosIncluidos(new ArrayList<>());
+        
         facturaLogic.updateFactura(pojoEntity);
 
         FacturaEntity resp = em.find(FacturaEntity.class, entity.getId());
