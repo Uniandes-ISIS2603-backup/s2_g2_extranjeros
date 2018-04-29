@@ -65,6 +65,7 @@ public class EstudianteDTO  {
        this.estadoArrendamiento = estudiante.isEstadoArrendamiento();
        this.edad = this.getEdad();
        this.correo = estudiante.getCorreo();
+       this.id = estudiante.getId();
 
     }
     

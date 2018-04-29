@@ -26,6 +26,7 @@ public class ProvidenciaDTO {
      {
         this.pais = providencia.getPais();
         this.region = providencia.getRegion();
+        this.id = providencia.getId();
     }       
 
     public Long getId() {

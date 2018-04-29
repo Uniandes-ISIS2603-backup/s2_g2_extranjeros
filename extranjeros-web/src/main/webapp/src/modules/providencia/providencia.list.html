@@ -8,7 +8,7 @@
                     <th>Region</th>
                 </tr>
                 <tr ng-repeat="providencia in providenciaRecords">
-                    <td>{{providencia.id}}</td>
+                    <td><a ui-sref="providenciaDetail({providenciaId: providencia.id})">{{providencia.id}}</a></td>
                     <td>{{providencia.pais}}</td>
                     <td>{{providencia.pais}}</td>
                 </tr>
