@@ -13,7 +13,9 @@
         'universidadModule',
         'lugarDeInteresModule',
         'viviendasModule',
-        'cuentaBancariaModule'
+        'cuentaBancariaModule',
+        'providenciaModule',
+        'estudianteModule'
         
 
     ]);

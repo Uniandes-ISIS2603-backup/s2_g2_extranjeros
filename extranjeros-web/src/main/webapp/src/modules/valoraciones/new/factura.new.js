@@ -18,18 +18,16 @@ function fechaActual() {
   //document.getElementById("fechaHoy").innerHTML=today;
 }
 function fechaMinimaDeSalida() {
-  var date = new Date();
   var newMonth;
-  var newDay=date.getDate();
-  
-  if(date.getMonth() + 2==13)
+  var newDay=day;
+  if(month+1==13)
   {
       newMonth=1;
-      newYear=date.getFullYear()+1;
+      newYear=year+1;
   }
   else
   {
-        newMonth = date.getMonth()+2;
+        newMonth = month + 1;
   }
   if(newDay==31&&(newMonth==4||newMonth==6||newMonth==9||newMonth==11))
   {

@@ -1,8 +1,8 @@
 (function (ng) {
     var mod = ng.module("viviendasModule");
    mod.constant("viviendaContext", "api/viviendas"); 
-   mod.controller('viviendaNewCtrl', ['$scope', '$http', 'viviendaContext', '$state', '$filter',
-        function ($scope, $http, viviendaContext, $state, $filter) {
+   mod.controller('viviendaNewCtrl', ['$scope', '$http','$state', '$rootScope', 'viviendaContext',
+        function($scope, $http, $state, $rootScope, viviendaContext) {
 
             $rootScope.edit = false;
 
