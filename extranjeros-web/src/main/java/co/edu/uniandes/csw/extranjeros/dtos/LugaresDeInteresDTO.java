@@ -82,6 +82,7 @@ public class LugaresDeInteresDTO {
         this.tipo = lugarDeInteres.getTipo();
         this.ubicacionLat = lugarDeInteres.getUbicacionLat();
         this.ubicacionLon = lugarDeInteres.getUbicacionLon();
+        this.id = lugarDeInteres.getId();
         }
     }
     

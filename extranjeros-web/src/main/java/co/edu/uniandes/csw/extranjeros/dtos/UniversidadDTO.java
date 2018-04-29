@@ -82,6 +82,7 @@ public class UniversidadDTO {
         this.ubicacionLat =universidad.getUbicacionLat();
         this.ubicacionLon = universidad.getUbicacionLon();
         this.imagen = universidad.getImagen();
+        this.id = universidad.getId();
         }
     }
     
