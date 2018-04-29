@@ -65,14 +65,14 @@ public class FacturaLogic {
     public FacturaEntity createFactura(FacturaEntity entity, ViviendaEntity vivienda)throws BusinessLogicException
     {
         LOGGER.log(Level.INFO,"Inicia proceso de crear un servicio");
+        if(!hayEspacio(vivienda))
+            throw new BusinessLogicException("La factura no se puede realizar, la vivienda esta llena.");
         if(isFechaMenor(new Date(),entity.getFechaEntrada())||isFechaMenor(new Date(),entity.getFechaSalida()))
             throw new BusinessLogicException("La fecha de entrada o de salida no pueden ser anteriores a la actual.");
         if(isFechaMenor(entity.getFechaEntrada(), entity.getFechaSalida()))
             throw new BusinessLogicException("La fecha de salida no puede ser menor a la de entrada.");
         if(!fechaSalidaAlMenosUnMes(entity))
             throw new BusinessLogicException("La fecha de salida no es de al menos un m despues de la de entrada.");
-        if(!hayEspacio(vivienda))
-            throw new BusinessLogicException("La factura no se puede realizar, la vivienda esta llena.");
         return persistence.create(entity);
     }
     /**
