@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -29,20 +30,38 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @ManyToOne
+    @JoinTable(name = "arendatarioVivienda")
     private ArrendatarioEntity arrendatariosPropietarios;
     
     @PodamExclude
     @OneToMany (mappedBy = "vivienda")
+    @JoinTable(name = "estudianteVivienda")
     private List <EstudianteEntity> estudiantes;
     
     @PodamExclude
     @OneToMany(mappedBy = "viviendaConectada")
+    @JoinTable(name = "lugaresVivienda")
     private List <LugaresDeInteresEntity> lugaresDeInteres;
     
     @PodamExclude
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "facturasVivienda")
     private List<FacturaEntity> facturas;
     
+     @OneToMany
+    @PodamExclude
+    @JoinTable(name = "serviciosFVivienda")
+    private List<ServicioEntity> serviciosFijos;
+     
+    @OneToMany
+    @PodamExclude
+    @JoinTable(name = "serviciosAVivienda")
+    private List<ServicioEntity> serviciosAdicionales;
+    
+    @OneToMany
+    @PodamExclude
+    private List<ValoracionEntity> valoraciones;
+
      //---------------------------------------------------
     // Atributos
     //---------------------------------------------------
@@ -66,16 +85,7 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     @PodamStrategyValue(InquilinosStrategy.class)
     private Integer inquilinos;
     
-    @OneToMany
-    @PodamExclude
-    private List<ServicioEntity> serviciosFijos;
-    @OneToMany
-    @PodamExclude
-    private List<ServicioEntity> serviciosAdicionales;
-    @OneToMany
-    @PodamExclude
-    private List<ValoracionEntity> valoraciones;
-
+   
     /**
      * @return the disponible
      */

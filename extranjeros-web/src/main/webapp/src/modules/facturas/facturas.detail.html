@@ -48,16 +48,14 @@
                                 <li>{{currentFactura.formaDePago}}</li>
                             </ul>
                         </li>
-                        <li ng-repeat="servicio in currentFactura.serviciosExtra">Servicios Extra
-                            <dl>
-                                <dt>Tipo</dt>
+                        <li>Servicios Extra
+                            <dl ng-repeat="servicio in currentFactura.serviciosExtra">
                                 <dd>{{servicio.tipo}}</dd>
                             </dl>
                         </li>
-                        <li ng-repeat="servicio in currentFactura.serviciosIncluidos">Servicios Incluidos
-                            <dl>
-                                <dt>Tipo</dt>
-                                <dd>{{servicio.tipo}}</dd>
+                        <li>Servicios Incluidos
+                            <dl ng-repeat="ss in currentFactura.serviciosIncluidos">
+                                <dd>{{ss.tipo}}</dd>
                             </dl>
                         </li>
                     </ul>

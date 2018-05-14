@@ -24,7 +24,13 @@
             $rootScope.edit = false;
 
             $scope.data = {};
-
+            $scope.data2={};
+            //Consulto los servicios de la vivienda a facturar.
+            $http.get(viviendaContext+'/'+$state.params.viviendaId).then(function (response) {
+                var vivienda = response.data;
+                $scope.data2.serviciosIncluidos = vivienda.serviciosIncluidos;
+                $scope.data2.serviciosExtra = vivienda.serviciosExtra;
+            });
             /**
              * @ngdoc function
              * @name createFactura

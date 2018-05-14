@@ -42,8 +42,22 @@
                         <div class="form-group col-md-8">
                              <label for="facturaIN" class="col-sm-3">Forma de pago: </label>
                              <select name="pago" required ng-model="data.formaDePago" class="col-sm-3">
-                                <option value="unico">Cargo Unico</option>
-                                <option value="mens">Cobros Mensuales</option>
+                                <option value="cargo unico">Cargo Unico</option>
+                                <option value="cobros mensuales">Cobros Mensuales</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-8">
+                             <label for="facturaIN" class="col-sm-3">Servicios Incluidos: </label>
+                             <select ng-model="data.serviciosIncluidos" ng-options="x for x in data2.serviciosIncluidos" name="SI" class="col-sm-3" multiple>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-8">
+                             <label for="facturaIN" class="col-sm-3">Servicios Extras: </label>
+                             <select ng-model="data.serviciosExtra" ng-options="x for x in data2.serviciosExtra" name="SI" class="col-sm-3" multiple>
                             </select>
                         </div>
                     </div>

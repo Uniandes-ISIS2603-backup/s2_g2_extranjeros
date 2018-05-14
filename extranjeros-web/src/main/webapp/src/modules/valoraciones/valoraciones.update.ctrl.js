@@ -17,14 +17,14 @@
             var idValoracion = $state.params.valoracionId;
 
             //Consulto la factura a editar.
-            $http.get(viviendaContext+'/'+$state.params.viviendaId+'/'+'valoracionContext'+'valoraciones'+'/'+idValoracion).then(function (response) {
+            $http.get(viviendaContext+'/'+$state.params.viviendaId+'/'+valoracionContext+'/'+idValoracion).then(function (response) {
                 var valoracion = response.data;
                 $scope.data.valoracion = valoracion.valoracion;
                 $scope.data.comentario = valoracion.comentario;
                  });
 
             $scope.createValoracion = function () {
-                $http.put(viviendaContext+'/'+$state.params.viviendaId+'/'+'valoraciones' + "/" + idValoracion, $scope.data).then(function (response) {
+                $http.put(viviendaContext+'/'+$state.params.viviendaId+'/'+valoracionContext + "/" + idValoracion, $scope.data).then(function (response) {
                     $state.go('valoracionesList', {valoracionId: response.data.id}, {reload: true});
                 });
             };
