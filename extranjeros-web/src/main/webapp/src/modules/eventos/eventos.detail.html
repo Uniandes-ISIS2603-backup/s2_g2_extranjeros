@@ -1,0 +1,43 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="thumb">
+                    <ul>
+                        <dt class="bold">ID</dt>
+                                <dd>{{currentEvento.id}}</dd>
+                                <hr>
+                        <dt>Nombre del evento</dt>
+                                <dd>{{currentEvento.nombreEvento}}</dd>
+                                <hr>
+                        <dt>Tipo</dt>
+                                <dd>{{currentEvento.tipoEvento}}</dd>
+                                <hr>
+                        <dt>Fecha</dt>
+                                <dd>{{currentEvento.fechaEvento}}</dd>
+                                <hr>
+                        <dt>Capacidad</dt>
+                                <dd>{{currentEvento.capacidad}}</dd>
+                                <hr>
+                        <dt>¿Es el evento privado?</dt>
+                                <dd>{{currentEvento.privado}}</dd>
+                                <hr>
+                        <dt>Ubicación latitud</dt>
+                                <dd>{{currentEvento.ubicacionLat}}</dd>
+                                <hr>
+                        <dt>Ubicación longitud</dt>
+                                <dd>{{currentEvento.ubicacionLon}}</dd>
+                                <hr>
+                        
+                       
+                    </ul>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                         <a class="btn btn-info" ui-sref="eventoUpdate({eventoId: currentEvento.id})">
+                         <span class="glyphicon glyphicon-pencil"></span> Modificar evento</a>
+                         <a class="btn btn-danger" ui-sref="eventoDelete({eventoId: currentEvento.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar evento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

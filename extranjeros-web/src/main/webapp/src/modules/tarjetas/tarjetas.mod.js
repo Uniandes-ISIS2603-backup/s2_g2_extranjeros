@@ -13,17 +13,73 @@
             
             $urlRouterProvider.otherwise("/tarjetasList");
             
-            $stateProvider.state('tarjetasList', {
+            $stateProvider.state('tarjetas', {
                 
-                url: '/tarjetas/list',
+                url: '/tarjetas',
                  views: {
                     'mainView': {
-                        templateUrl: basePath + 'tarjetas.list.html',
+                        templateUrl: basePath + 'tarjetas.html',
                         controller: 'tarjetaCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
-            });
+            }).state('tarjetasList', {
+                url: '/list',
+                parent: 'tarjetas',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'tarjetas.list.html'
+                    }
+                }
+            }).state('tarjetaUpdate', {
+                url: '/update/{tarjetaId:int}',
+                parent: 'tarjetas',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjetas.update.html',
+                        controller: 'tarjetaUpdateCtrl'
+                    }
+                }
+            }).state('tarjetaDetail', {
+                url: '/{tarjetaId:int}/detail',
+                parent: 'tarjetas',
+                param: {tarjetaId: null},
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'tarjetas.list.html'
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'tarjetas.detail.html',
+                        controller: 'tarjetaDetailCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+
+            }).state('tarjetaCreate', {
+                url: '/create',
+                parent: 'tarjetas',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjetas.new.html',
+                        controller: 'tarjetaNewCtrl'
+                    }
+                }
+            }).state('tarjetaDelete', {
+                url: '/delete/{tarjetaId:int}',
+                parent: 'tarjetas',
+                param: {
+                    tarjetaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'tarjetas.delete.html',
+                        controller: 'tarjetaDeleteCtrl'
+                    }
+                }
+});
         }
     ]);
 })(window.angular);

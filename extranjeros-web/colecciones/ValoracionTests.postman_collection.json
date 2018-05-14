@@ -56,7 +56,7 @@
 			"dataMode": "raw",
 			"version": 2,
 			"auth": null,
-			"time": 1520824356231,
+			"time": 1524953693766,
 			"name": "PUT valoraciones en vivienda",
 			"description": "",
 			"collectionId": "c37b0ae7-5dc0-caf5-d3a7-9bc8b0d7e0a3",
@@ -65,7 +65,7 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
 			"currentHelper": null,
 			"helperAttributes": null,
-			"rawModeData": "{\n       \n        \"direccion\": \"calle 21 1307\",\n        \"disponible\": true,\n         \"inquilinos\":5,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"capacidad\": 34,\n        \"tipoAlojamiento\": \"B\",\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": [\n     {\n       \"comentario\": \"habia mucho ruido\",\n        \"valoracion\": 3\n},\n{\n      \"comentario\": \"buena ubicacion\",\n     \"valoracion\": 4.5\n},\n{\n       \"comentario\": \"decente\",\n        \"valoracion\": 2\n},\n{\n      \"comentario\": \"perfecto\",\n     \"valoracion\": 5\n},\n{\n      \"comentario\":\"regular\",\n     \"valoracion\": 3.5\n}\n        \t],\n         \"estudiantes\": []\n        }\n"
+			"rawModeData": "{\n       \n        \"direccion\": \"calle 21 1307\",\n        \"disponible\": true,\n         \"inquilinos\":5,\n        \"latitud\": \"32\",\n        \"longitud\": \"456\",\n        \"capacidad\": 34,\n        \"tipoAlojamiento\": \"B\",\n        \"precioMensual\": 3143,\n        \"facturas\": [],\n        \"serviciosAdicionales\": [],\n        \"serviciosFijos\": [],\n        \"valoraciones\": [\n     {\n       \"comentario\": \"habia mucho ruido\",\n        \"valoracion\": 3\n},\n{\n      \"comentario\": \"buena ubicacion\",\n     \"valoracion\": 4.5\n},\n{\n       \"comentario\": \"decente\",\n        \"valoracion\": 2\n},\n{\n      \"comentario\": \"perfecto\",\n     \"valoracion\": 5\n},\n{\n      \"comentario\":\"regular\",\n     \"valoracion\": 3.5\n}\n        \t],\n         \"estudiantes\": []\n        }\n"
 		},
 		{
 			"id": "0ecb493d-efdd-7ae5-f824-e561f2608c26",

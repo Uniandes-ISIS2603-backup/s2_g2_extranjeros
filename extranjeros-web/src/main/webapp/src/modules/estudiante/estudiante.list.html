@@ -15,8 +15,8 @@ and open the template in the editor.
                     <th>Usuario</th>
                 </tr>
                 <tr ng-repeat="estudiante in estudianteRecords">
-                    <td>{{estudiante.id}}</td>
-                    <td>{{estudiante.nombre}}</td>
+                    <td><a ui-sref="estudianteDetail({estudianteId: estudiante.id})">{{estudiante.id}}</a></td>
+                    <td> {{estudiante.nombre}}</td>
                     <td>{{estudiante.cedula}}</td>
                     <td>{{estudiante.usuario}}</td>
                 </tr>

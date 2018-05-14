@@ -52,7 +52,7 @@
                 parent: 'valoraciones',
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/valoraciones.new.html',
+                        templateUrl: basePath + 'valoraciones.new.html',
                         controller: 'valoracionNewCtrl'
                     }
                 }
@@ -64,8 +64,8 @@
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/new/valoraciones.new.html',
-                        controller: 'valoracionUpdateCtrl'
+                        templateUrl: basePath + 'valoraciones.new.html',
+                        controller: 'valoracionesUpdateCtrl'
                     }
                 }
             }).state('valoracionDelete', {

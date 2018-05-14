@@ -1,0 +1,29 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="thumb">
+                    <ul>
+                        <dt>ID</dt>
+                                <dd>{{currentTarjeta.id}}</dd>
+                                <hr>
+                        <dt>Número de la tarjeta</dt>
+                                <dd>{{currentTarjeta.numero}}</dd>
+                                <hr>
+                        <dt>Franquicia</dt>
+                                <dd>{{currentTarjeta.banco}}</dd>
+                                <hr>
+                        <dt>Fecha de caducidad</dt>
+                                <dd>{{currentTarjeta.fechaCaducidad}}</dd>
+                                <hr>
+                    </ul>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                         <a class="btn btn-info" ui-sref="tarjetaUpdate({tarjetaId: currentTarjeta.id})">
+                         <span class="glyphicon glyphicon-pencil"></span> Modificar tarjeta</a>
+                         <a class="btn btn-danger" ui-sref="tarjetaDelete({tarjetaId: currentTarjeta.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar tarjeta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
