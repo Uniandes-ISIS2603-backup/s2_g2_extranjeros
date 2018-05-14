@@ -13,6 +13,7 @@ import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.time.Clock;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class ViviendaDetailDTO extends ViviendaDTO {
          arrendatariosPropietarios = new ArrendatarioDTO(entity.getArrendatariosPropietarios());
          lugaresDeInteres = new ArrayList<>();
           if(entity.getFacturas()!=null){
-             for (int i = 0; i < entity.getServiciosAdicionales().size(); i++) {
+             for (int i = 0; i < entity.getFacturas().size(); i++) {
                  facturas.add(new FacturaDTO(entity.getFacturas().get(i)));
              }
          }
@@ -127,6 +128,7 @@ public class ViviendaDetailDTO extends ViviendaDTO {
         
         if(getServiciosAdicionales()!=null){
           for (int i = 0; i < serviciosAdicionales.size(); i++) {
+              System.out.println("PUTA"+serviciosAdicionales.get(i)  ); 
             ServicioEntity get = serviciosAdicionales.get(i).toEntity();
             PserviciosAdicionales.add(get);
         }
@@ -144,6 +146,7 @@ public class ViviendaDetailDTO extends ViviendaDTO {
         }
         }
            e.setLugaresDeInteres(PLugares);
+           e.setFacturas(PFacturas);
            e.setValoraciones(Pvaloraciones);
            e.setServiciosAdicionales(PserviciosAdicionales);
            e.setServiciosFijos(PserviciosFijos);
