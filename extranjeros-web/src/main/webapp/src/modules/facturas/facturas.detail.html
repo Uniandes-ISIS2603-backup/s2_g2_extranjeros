@@ -50,14 +50,12 @@
                         </li>
                         <li ng-repeat="servicio in currentFactura.serviciosExtra">Servicios Extra
                             <dl>
-                                <dt>Tipo</dt>
                                 <dd>{{servicio.tipo}}</dd>
                             </dl>
                         </li>
-                        <li ng-repeat="servicio in currentFactura.serviciosIncluidos">Servicios Incluidos
+                        <li ng-repeat="ss in currentFactura.serviciosIncluidos">Servicios Incluidos
                             <dl>
-                                <dt>Tipo</dt>
-                                <dd>{{servicio.tipo}}</dd>
+                                <dd>{{ss.tipo}}</dd>
                             </dl>
                         </li>
                     </ul>

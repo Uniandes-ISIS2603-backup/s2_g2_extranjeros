@@ -32,9 +32,7 @@ public class ProvidenciaLogic {
      */
     public List<ProvidenciaEntity> getProvidencias() {
         LOGGER.info("Inicia proceso de consultar todas las providencias");
-        List<ProvidenciaEntity> providencias = persistence.findAll();
-        LOGGER.info("Termina proceso de consultar todas las providencias");
-        return providencias;
+        return persistence.findAll();
     }
     
     /**
