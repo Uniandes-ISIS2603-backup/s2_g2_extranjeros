@@ -119,6 +119,11 @@ public class FacturaLogicTest {
         newEntity.setServiciosAdicionales(new ArrayList<>());
         newEntity.setServiciosIncluidos(new ArrayList<>());
         ViviendaEntity vivienda=factory.manufacturePojo(ViviendaEntity.class);
+        vivienda.setEstudiantes(new ArrayList<>());
+        vivienda.setFacturas(new ArrayList<>());
+        vivienda.setLugaresDeInteres(new ArrayList<>());
+        vivienda.setServiciosAdicionales(new ArrayList<>());
+        vivienda.setServiciosFijos(new ArrayList<>());
         viviendaLogic.createVivienda(vivienda);
         FacturaEntity result = facturaLogic.createFactura(newEntity,vivienda);
         Assert.assertNotNull(result);
