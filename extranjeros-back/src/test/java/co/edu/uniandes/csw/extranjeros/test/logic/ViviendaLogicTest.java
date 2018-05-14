@@ -109,8 +109,13 @@ public class ViviendaLogicTest {
     public void createViviendaTest() throws BusinessLogicException {
            PodamFactory factory = new PodamFactoryImpl();
         ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
+        newEntity.setEstudiantes(new ArrayList<>());
+        newEntity.setFacturas(new ArrayList<>());
+        newEntity.setLugaresDeInteres(new ArrayList<>());
+        newEntity.setServiciosAdicionales(new ArrayList<>());
+        newEntity.setServiciosFijos(new ArrayList<>());
         ViviendaEntity result = viviendaLogic.createVivienda(newEntity);
-
+        
         Assert.assertNotNull(result);
 
         ViviendaEntity entity = em.find(ViviendaEntity.class, result.getId());
@@ -183,7 +188,12 @@ public class ViviendaLogicTest {
         ViviendaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         ViviendaEntity newEntity = factory.manufacturePojo(ViviendaEntity.class);
-
+        newEntity.setEstudiantes(new ArrayList<>());
+        newEntity.setFacturas(new ArrayList<>());
+        newEntity.setLugaresDeInteres(new ArrayList<>());
+        newEntity.setServiciosAdicionales(new ArrayList<>());
+        newEntity.setServiciosFijos(new ArrayList<>());
+      
         newEntity.setId(entity.getId());
 
         viviendaLogic.updateVivienda(newEntity);
