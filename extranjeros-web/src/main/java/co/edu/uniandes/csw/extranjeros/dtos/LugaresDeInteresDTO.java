@@ -22,7 +22,8 @@ import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
  *      "telefono": number,
  *      "eventos": EventoDTO,
  *      "ubicacionLon": string,
- *      "ubicacionLat": string
+ *      "ubicacionLat": string,
+ *      "imagen": string
  *      
  *   }
  * </pre>
@@ -38,7 +39,8 @@ import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
  *      "telefono": 3224593,
  *      "eventos": EventoDTO,
  *      "ubicacionLon": "1.343344",
- *      "ubicacionLat": "-44.23233"       
+ *      "ubicacionLat": "-44.23233"
+ *      "imagen": 'https://uniandes.edu.co/sites/default/files/campus-universidad-edificio_0.jpg'
  *   }
  *
  * </pre>
@@ -52,7 +54,9 @@ public class LugaresDeInteresDTO {
     private Integer telefono;
     private String ubicacionLat;
     private String ubicacionLon;
+    private String imagen;
     private Long id;
+    
 
     
     
@@ -72,7 +76,7 @@ public class LugaresDeInteresDTO {
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
      *
-     * @param city: Es la entidad que se va a convertir a DTO
+     * @param lugarDeInteres: Es la entidad que se va a convertir a DTO
      */
     public LugaresDeInteresDTO(LugaresDeInteresEntity lugarDeInteres) {
         if(lugarDeInteres != null){
@@ -82,8 +86,27 @@ public class LugaresDeInteresDTO {
         this.tipo = lugarDeInteres.getTipo();
         this.ubicacionLat = lugarDeInteres.getUbicacionLat();
         this.ubicacionLon = lugarDeInteres.getUbicacionLon();
+        this.imagen = lugarDeInteres.getImagen();
         this.id = lugarDeInteres.getId();
+        
         }
+    }
+    
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public LugaresDeInteresEntity toEntity() {
+        LugaresDeInteresEntity entity = new LugaresDeInteresEntity();
+        entity.setNombre(this.nombre);
+        entity.setDireccion(this.direccion);
+        entity.setTelefono(this.telefono);
+        entity.setTipo(this.tipo);
+        entity.setUbicacionLat(this.ubicacionLat);
+        entity.setUbicacionLon(this.ubicacionLon);
+        entity.setImagen(this.imagen);
+        return entity;
     }
     
     
@@ -107,6 +130,22 @@ public class LugaresDeInteresDTO {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+    
+    /**
+     * @return La imagen de sitio
+     */
+    public String getImagen() {
+        return imagen;
+    }
+    
+    /**
+     * Asigna una imagen al sitio de interes
+     * @param imagen 
+     */
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     /**
@@ -201,21 +240,7 @@ public class LugaresDeInteresDTO {
     }
     
     
-    /**
-     * Convertir DTO a Entity
-     *
-     * @return Un Entity con los valores del DTO
-     */
-    public LugaresDeInteresEntity toEntity() {
-        LugaresDeInteresEntity entity = new LugaresDeInteresEntity();
-        entity.setNombre(this.nombre);
-        entity.setDireccion(this.direccion);
-        entity.setTelefono(this.telefono);
-        entity.setTipo(this.tipo);
-        entity.setUbicacionLat(this.ubicacionLat);
-        entity.setUbicacionLon(this.ubicacionLon);
-        return entity;
-    }
+    
     
     
     
