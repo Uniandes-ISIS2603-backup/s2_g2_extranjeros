@@ -31,6 +31,16 @@
                         templateUrl: basePath + 'estudiante.list.html'
                     }
                 }
+            }).state('estudianteCreate', {
+                url: '/create',
+                parent: 'estudiante',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/nuevo/estudiante.new.html',
+                        controller: 'estudiantePostCtrl'
+                    }
+             }
+                
             }).state('estudianteDetail', {
                 url: '/{estudianteId:int}/detail',
                 parent: 'estudiante',

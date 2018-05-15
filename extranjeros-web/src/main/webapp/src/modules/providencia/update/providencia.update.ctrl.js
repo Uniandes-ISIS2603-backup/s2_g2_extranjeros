@@ -28,13 +28,13 @@
 
             $scope.availableItems = [];
 
-            var idServicio = $state.params.servicioId;
+            var idProvidencia = $state.params.servicioId;
 
             //Consulto la factura a editar.
             $http.get(providenciaContext + '/' + idProvidencia).then(function (response) {
-                var servicio = response.data;
-                $scope.data.pais = servicio.pais;
-                $scope.data.region = servicio.region;
+                var providencia = providencia.data;
+                $scope.data.pais = providencia.pais;
+                $scope.data.region = providencia.region;
             });
 
             /**
@@ -45,7 +45,7 @@
              * Crea un nuevo autor con los libros nuevos y la información del
              * $scope.
              */
-            $scope.createServicio = function () {
+            $scope.createProvidencia= function () {
                 $http.put(providenciaContext + "/" + idProvidencia, $scope.data).then(function (response) {
                     $state.go('providenciaList', {providenciaId: response.data.id}, {reload: true});
                 });

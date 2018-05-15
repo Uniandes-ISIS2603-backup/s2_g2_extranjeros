@@ -33,6 +33,8 @@ public class EstudianteDTO  {
     private int edad;
     private Long id;
     
+    private String imagen;
+    
     /**
    
     
@@ -66,7 +68,11 @@ public class EstudianteDTO  {
        this.edad = this.getEdad();
        this.correo = estudiante.getCorreo();
        this.id = estudiante.getId();
-
+       if (estudiante.getImagen()!=null)
+       {
+           this.imagen = estudiante.getImagen();
+       }
+      
     }
     
     public EstudianteEntity toEntity(){
@@ -78,6 +84,9 @@ public class EstudianteDTO  {
        entity.setCorreo(correo);
        entity.setEstadoArrendamiento(estadoArrendamiento);
        entity.setEdad(edad);
+       if (imagen!=null){
+       entity.setImagen(imagen);
+       }
        return entity;
     }
 
@@ -198,5 +207,14 @@ public class EstudianteDTO  {
     public void setEdad(int edad) {
         this.edad = edad;
     }  
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
     
 }
