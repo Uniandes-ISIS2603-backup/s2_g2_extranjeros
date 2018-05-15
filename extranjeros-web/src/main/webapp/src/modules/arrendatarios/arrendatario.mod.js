@@ -71,6 +71,7 @@
                 },
                 views: {
                     'detailView': {
+                        templateUrl: basePath + '/delete/arrendatario.delete.html',
                         controller: 'arrendatarioDeleteCtrl'
                     }
                 }

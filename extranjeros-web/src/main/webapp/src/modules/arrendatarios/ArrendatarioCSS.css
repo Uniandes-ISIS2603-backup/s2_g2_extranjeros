@@ -77,6 +77,8 @@
 .imageArr{
     background-image: url("https://images.pexels.com/photos/463734/pexels-photo-463734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
+    min-width: 100%; 
+    min-height: 100%;
 }
 
 .h2Jose{
@@ -102,4 +104,45 @@
     padding-left: 1.2em;
     font-family: 'Permanent Marker', cursive;
     font-size: 38px;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+.deleteView {
+    background-image: url("https://images.pexels.com/photos/731082/pexels-photo-731082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    min-width: 100%; 
+    min-height: 100%;
+    filter: grayscale(70%);
+}
+.content {
+    position: fixed;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 98%;
+    padding: 20px;
+}
+
+.deleteH1 {
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;   
+}
+
+.signUpBG{
+    background-image: url("https://images.pexels.com/photos/541518/pexels-photo-541518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    min-width: 100%; 
+    min-height: 100%;
+    
+}
+
+.verticalLine {
+  border-left: thick solid tomato;
 }
