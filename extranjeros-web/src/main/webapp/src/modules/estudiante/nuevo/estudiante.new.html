@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid" style="padding: 1em;">
+
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <img class="img-circle" src="https://images.pexels.com/photos/545034/pexels-photo-545034.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Join Us" style="max-height: 25em; max-width: 30em; border-radius: 50%; align-content: center;"/>
+        <p class="Join-Us"> Únete y contribuye </p>
+    </div>
+    
+    
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+
+            <div class="col-md-1"> </div>
+            <label for="estudianteNombre" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Nombre </strong> </label>
+
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteNombre" required ng-model="data.nombre" type="text" class="form-control" placeholder="Maria Camila" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="estudianteEdad" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Edad </strong> </label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteEdad" required ng-model="data.edad" type="number" class="form-control" placeholder="18" aria-describedby="basic-addon6">
+                    <span class="input-group-addon" id="basic-addon6"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="estudianteCedula" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Cédula </strong> </label>
+
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteCedula" required ng-model="data.cedula" type="number" class="form-control" placeholder="1010240037" aria-describedby="basic-addon7">
+                    <span class="input-group-addon" id="basic-addon7"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="estudianteUsuario" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Usuario </strong> </label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteUsuario" required ng-model="data.usuario" type="text" class="form-control" placeholder="macamila123" aria-describedby="basic-addon4">
+                    <span class="input-group-addon" id="basic-addon4"></span>
+                </div>
+            </div>            
+        </div>
+    </div>
+    
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">        
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="estudianteClave" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Clave </strong> </label>
+
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteClave" required ng-model="data.clave" type="password" class="form-control" placeholder="" aria-describedby="basic-addon5">
+                    <span class="input-group-addon" id="basic-addon5"></span>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            
+            <div class="col-md-1"> </div>
+            <label for="estudianteCorreo" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Correo </strong> </label>
+            
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteCorreo" required ng-model="data.correo" type="text" class="form-control" placeholder="Correo electrónico" aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="basic-addon2"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="estudianteCelular" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Celular </strong> </label>
+            
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteCelular" required ng-model="data.celular" type="number" class="form-control" placeholder="3223457906" aria-describedby="basic-addon10">
+                    <span class="input-group-addon" id="basic-addon10"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <move-lists ng-if="edit" selected="selectedItems" available="availableItems"></move-lists>
+
+
+    <div class="form-group row" style="margin: auto;">
+        <div class="form-group col-sm-4"> </div>
+        <div class="form-group col-sm-4" style="text-align: center;">
+
+            <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createEstudiante()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
+                Guardar cambios
+            </button>
+            <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="arrendatariosList" >
+                Cancel   
+            </button>
+        </div>
+        <div class="form-group col-sm-4"> </div>
+    </div>
+    
+</div>
