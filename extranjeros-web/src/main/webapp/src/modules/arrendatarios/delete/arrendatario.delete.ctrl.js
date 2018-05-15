@@ -7,7 +7,7 @@
             var idArrendatario = $state.params.arrendatarioId;
 
             $scope.deleteArrendatario = function () {
-                $http.delete(arrendatarioContext + '/' + idArrendatario, {}).then(function (response) {
+                $http.delete(arrendatarioContext + '/' + idArrendatario).then(function (response) {
                     $state.go('arrendatariosList', {arrendatarioId: response.data.id}, {reload: true});
                 });
             };
