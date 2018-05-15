@@ -31,6 +31,16 @@
                         templateUrl: basePath + 'providencia.list.html'
                     }
                 }
+                
+            }).state('providenciaCreate', {
+                url: '/create',
+                parent: 'providencia',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/nuevo/providencia.nuevo.html',
+                        controller: 'providenciaPostCtrl'
+                    }
+             }
             }).state('providenciaDetail', {
                 url: '/{providenciaId:int}/detail',
                 parent: 'providencia',
