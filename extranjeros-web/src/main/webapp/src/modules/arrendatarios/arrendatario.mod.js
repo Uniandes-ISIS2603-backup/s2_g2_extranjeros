@@ -21,6 +21,10 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'arrendatario.list.html'
+                    },
+                    data: {
+                    requireLogin: true,
+                    roles: []
                     }
                 }
             }).state('arrendatarioDetail', {
@@ -30,9 +34,6 @@
                     arrendatarioId: null
                 },
                 views: {
-//                    'listView': {
-//                        templateUrl: basePath + 'arrendatario.list.html'
-//                    },
                     'detailView': {
                         templateUrl: basePath + 'arrendatario.detail.html',
                         controller: 'arrendatarioDetailCtrl',

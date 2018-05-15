@@ -20,7 +20,7 @@
         'signUpModule',
         'loginModule',
         'checklist-model'
-             
+        
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
@@ -34,8 +34,8 @@
 //                var $state = trans.router.stateService;
 //                var requireLogin = $state.current.data.requireLogin;
 //                var roles = $state.current.data.roles
+//                
 //               
-//
 //                /**
 //                 * @ngdoc function
 //                 * @name isAuthenticated
@@ -53,7 +53,7 @@
 //                        return false;
 //                    }
 //                };
-//                
+//                            
 //                /**
 //                 * @ngdoc function
 //                 * @name hasPermissions
