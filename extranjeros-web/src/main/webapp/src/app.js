@@ -16,7 +16,8 @@
         'cuentaBancariaModule',
         'valoracionModule', 
         'estudianteModule', 
-        'providenciaModule'
+        'providenciaModule',
+        'checklist-model'
              
 
     ]);

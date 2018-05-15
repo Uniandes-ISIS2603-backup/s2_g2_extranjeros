@@ -1,6 +1,6 @@
 (function (ng) {
     
-    var mod = ng.module("facturaModule", ['viviendasModule','ui.router']);
+    var mod = ng.module("facturaModule", ['viviendasModule','ui.router','checklist-model']);
     mod.constant("facturasContext", "facturas");
     mod.constant("viviendaContext", "api/viviendas");
     
