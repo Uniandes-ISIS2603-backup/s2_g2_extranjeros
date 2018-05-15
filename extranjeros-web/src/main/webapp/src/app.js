@@ -2,7 +2,6 @@
     var app = angular.module('mainApp', [
         // External dependencies
         'ui.router',
-        'ui.bootstrap',
        
         // Internal modules dependencies       
         'citiesModule',
@@ -19,7 +18,8 @@
         'estudianteModule', 
         'providenciaModule',
         'signUpModule',
-        'loginModule'
+        'loginModule',
+        'checklist-model'
              
     ]);
     // Resuelve problemas de las promesas
