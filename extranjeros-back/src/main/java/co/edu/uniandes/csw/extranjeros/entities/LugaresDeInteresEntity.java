@@ -26,6 +26,7 @@ public class LugaresDeInteresEntity extends BaseEntity implements Serializable {
     private Integer telefono;
     private String ubicacionLat;
     private String ubicacionLon;
+    private String imagen;
     
     //Atributos relacionales
     @PodamExclude
@@ -70,6 +71,22 @@ public class LugaresDeInteresEntity extends BaseEntity implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    /**
+     * @return La imagen del sitio
+     */
+    public String getImagen() {
+        return imagen;
+    }
+    
+    /**
+     * Asigna una imagen al sitio de interes
+     * @param imagen 
+     */
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     /**

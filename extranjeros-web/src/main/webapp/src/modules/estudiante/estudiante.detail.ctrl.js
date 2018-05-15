@@ -4,7 +4,7 @@
     mod.controller('estudianteDetailCtrl', ['$scope', '$http', 'estudianteContext', '$state', '$filter',
         function ($scope, $http, estudianteContext, $state, $filter) {
 
-            if (($state.params.servicioId !== undefined) && ($state.params.servicioId !== null)) {
+            if (($state.params.estudianteId !== undefined) && ($state.params.estudianteId !== null)) {
                 $http.get(estudianteContext).then(function (response) {
                     $scope.estudianteRecords = response.data;
                     $scope.currentEstudiante = $filter('filter')($scope.estudianteRecords, {id: $state.params.estudianteId}, true)[0];

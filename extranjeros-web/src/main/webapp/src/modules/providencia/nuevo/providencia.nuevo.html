@@ -4,13 +4,57 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="container-fluid" style="padding: 1em;">
+
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <img class="img-circle" src="http://www.portafolioblog.com/wp-content/uploads/2010/11/map01.jpg" alt="Join Us" style="max-height: 25em; max-width: 30em; border-radius: 50%; align-content: center;"/>
+        <p class="Join-Us"> Únete y contribuye </p>
+    </div>
+    
+    
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+
+            <div class="col-md-1"> </div>
+            <label for="providenciaPais" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Pais </strong> </label>
+
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="providenciaPais" required ng-model="data.pais" type="text" class="form-control" placeholder="Colombia" aria-describedby="basic-addon3">
+                    <span class="input-group-addon" id="basic-addon3"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+            <div class="col-md-1"> </div>
+            <label for="providenciaRegion" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Region </strong> </label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <div class="input-group">
+                    <input id="estudianteEdad" required ng-model="data.region" type="text" class="form-control" placeholder="Bogota" aria-describedby="basic-addon6">
+                    <span class="input-group-addon" id="basic-addon6"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <move-lists ng-if="edit" selected="selectedItems" available="availableItems"></move-lists>
+
+
+    <div class="form-group row" style="margin: auto;">
+        <div class="form-group col-sm-4"> </div>
+        <div class="form-group col-sm-4" style="text-align: center;">
+
+            <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createProvidencia()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
+                Guardar cambios
+            </button>
+            <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="providenciaList" >
+                Cancel   
+            </button>
+        </div>
+        <div class="form-group col-sm-4"> </div>
+    </div>
+    
+</div>

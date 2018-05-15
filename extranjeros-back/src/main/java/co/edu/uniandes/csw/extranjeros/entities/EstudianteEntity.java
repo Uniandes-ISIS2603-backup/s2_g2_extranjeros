@@ -33,6 +33,7 @@ public class EstudianteEntity extends BaseEntity {
     private String nombre;
     private boolean estadoArrendamiento;
      private String usuario;
+     private String imagen;
     
     @PodamStrategyValue(CorreoStrategy.class)
     private String correo;
@@ -79,9 +80,14 @@ public class EstudianteEntity extends BaseEntity {
     @ManyToOne
     private ViviendaEntity vivienda;
 
-    
-    
-   
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     
     public List<FacturaEntity> getFacturas() {
         return facturas;
