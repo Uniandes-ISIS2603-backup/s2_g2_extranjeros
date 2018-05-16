@@ -4,7 +4,7 @@
             <div class="panel-heading"><label ng-if="!edit" id="createLugarDeInteres">Crear nuevo lugar de interes</label>
                 <label ng-if="edit" id="editLugarDeInteres">Editar Lugar de Interes</label></div>
             <div class="panel-body">
-                <form name="Lugar">
+                <form name="lugarDeInteres">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label class="col-sm-4">Nombre del lugar de interes:</label>
@@ -14,7 +14,7 @@
                     <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label class="col-sm-4">Numero de telefono del lugar:</label>
-                            <input type="text" name="Telefono" required ng-model="data.telefono" class="col-sm-4"/><br>
+                            <input type="number" name="Telefono" required ng-model="data.telefono" class="col-sm-4"/><br>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -27,6 +27,24 @@
                         <div class="form-group col-md-6">
                             <label class="col-sm-4">Direccion:</label>
                             <input type="text" name="Direccion" required ng-model="data.direccion" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Latitud:</label>
+                            <input type="text" name="Latitud" required ng-model="data.ubicacionLat" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Longitud:</label>
+                            <input type="text" name="Longitud" required ng-model="data.ubicacionLon" class="col-sm-4" /><br>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-4">Url de la imagen:</label>
+                            <input type="url" name="Imagen" required ng-model="data.imagen" class="col-sm-4" /><br>
                         </div>
                     </div>
                     <div class="form-group row">
