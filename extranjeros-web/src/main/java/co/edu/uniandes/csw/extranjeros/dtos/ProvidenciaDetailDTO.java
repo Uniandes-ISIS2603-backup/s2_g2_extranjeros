@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.extranjeros.entities.ProvidenciaEntity;
 public class ProvidenciaDetailDTO extends ProvidenciaDTO {
     
     public ProvidenciaDetailDTO(){
-        
+        super();
     }
     public ProvidenciaDetailDTO(ProvidenciaEntity entity)
     {
