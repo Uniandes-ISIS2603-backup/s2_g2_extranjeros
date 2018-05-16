@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ArrendatarioPersistence;
@@ -17,6 +18,7 @@ import co.edu.uniandes.csw.extranjeros.persistence.EstudiantePersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.FacturaPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.LugaresDeInteresPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.ServicioPersistence;
+import co.edu.uniandes.csw.extranjeros.persistence.UniversidadPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.ViviendaPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +58,9 @@ public class ViviendaLogic {
  @Inject
  ServicioPersistence servicioPersistence;
  
+ @Inject
+ UniversidadPersistence universidadPersistence;
+ 
  private static final Logger LOGGER = Logger.getLogger(ServicioLogic.class.getName());
 
    public List<ViviendaEntity> getViviendas() {
@@ -72,8 +77,17 @@ public class ViviendaLogic {
  public ViviendaEntity createVivienda(ViviendaEntity vivienda){
       
      LOGGER.log(Level.INFO, "Inicia proceso de crear la vivienda");
-   
-     ArrendatarioEntity arrendatariosPropietarios = null;
+       List <UniversidadEntity> universidades = new ArrayList<>();
+   if(vivienda.getUniversidades()!=null){
+       for (UniversidadEntity universidad : vivienda.getUniversidades()) {
+         UniversidadEntity temp = universidadPersistence.find(universidad.getId());
+         if(temp !=null)
+         universidades.add(temp);
+     }
+   }
+    vivienda.setUniversidades(universidades);
+    
+    ArrendatarioEntity arrendatariosPropietarios = null;
     if(vivienda.getArrendatariosPropietarios()!=null)
     arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
    if(arrendatariosPropietarios!=null) vivienda.setArrendatariosPropietarios(arrendatariosPropietarios);
@@ -87,10 +101,14 @@ public class ViviendaLogic {
     vivienda.setEstudiantes(estudiantes);
     
     List <LugaresDeInteresEntity> lugaresDeInteres = new ArrayList<>();
-     for (LugaresDeInteresEntity lugares : vivienda.getLugaresDeInteres()) {
-         LugaresDeInteresEntity temp = lugaresDeInteresPersistence.find(lugares.getId());
-         if(temp !=null)
-         lugaresDeInteres.add(temp);
+    List <LugaresDeInteresEntity> lugaresBaseDatos = lugaresDeInteresPersistence.findAll();
+    for (LugaresDeInteresEntity lugar : lugaresBaseDatos) {
+         if(getDistance(Double.parseDouble(vivienda.getLatitud()), Double.parseDouble(vivienda.getLongitud()),
+                 Double.parseDouble(lugar.getUbicacionLat()) , Double.parseDouble(lugar.getUbicacionLon()))<=1000){
+              lugaresDeInteres.add(lugar);
+              
+         }
+        
      }
      vivienda.setLugaresDeInteres(lugaresDeInteres);
      
@@ -136,15 +154,17 @@ public class ViviendaLogic {
      }
     vivienda.setEstudiantes(estudiantes);
     
-    List <LugaresDeInteresEntity> lugaresDeInteres = new ArrayList<>();
+  /*  List <LugaresDeInteresEntity> lugaresDeInteres = new ArrayList<>();
      for (LugaresDeInteresEntity lugares : vivienda.getLugaresDeInteres()) {
          LugaresDeInteresEntity temp = lugaresDeInteresPersistence.find(lugares.getId());
          if(temp !=null)
          lugaresDeInteres.add(temp);
      }
      vivienda.setLugaresDeInteres(lugaresDeInteres);
-     
-    List<FacturaEntity> facturas = new ArrayList<>();
+     */
+     List <LugaresDeInteresEntity> lugaresDeInteres = lugaresDeInteresPersistence.findAll();
+    
+     List<FacturaEntity> facturas = new ArrayList<>();
      for (FacturaEntity factura : vivienda.getFacturas()) {
          FacturaEntity temp = facturaPersistence.find(factura.getId());
          if(temp !=null)
@@ -176,7 +196,68 @@ public class ViviendaLogic {
         LOGGER.log(Level.INFO,"Inicia proceso de eliminar una vivienda con id={0}",id);
         persistence.delete(id);
     }
-  
+   /*
+   *´retorna la lista de viviendas asociadas a una universidad
+   */
+   public List<ViviendaEntity> viviendaPorUniversidad(Long idUniversidad){
+       ArrayList<ViviendaEntity> retornar = new ArrayList<>();
+       UniversidadEntity universidad = universidadPersistence.find(idUniversidad);
+       List<ViviendaEntity> iterar = getViviendas();
+       for (int i = 0; i < iterar.size(); i++) {
+           if(iterar.get(i).getUniversidades().contains(universidad)){
+               retornar.add(iterar.get(i));
+           }
+       }
+       return retornar;
+   }
+   
+   /*
+   *Retorna una lsta de viviendas debajo de un precio dado
+   */
+     public List<ViviendaEntity> viviendaPorPrecio(Double precio){
+       ArrayList<ViviendaEntity> retornar = new ArrayList<>();
+       List<ViviendaEntity> iterar = getViviendas();
+       for (int i = 0; i < iterar.size(); i++) {
+           if(iterar.get(i).getPrecioMensual()<=precio){
+               retornar.add(iterar.get(i));
+           }
+       }
+       return retornar;
+   }
+     
+   /*
+   *Retorna una lsta de viviendas que tengas una lista de servicios 
+   */
+     public List<ViviendaEntity> viviendaPorServicios(ArrayList<ServicioEntity> servicios){
+       ArrayList<ViviendaEntity> retornar = new ArrayList<>();
+       List<ViviendaEntity> iterar = getViviendas();
+       for (int i = 0; i < iterar.size(); i++) {
+           if(iterar.get(i).getServiciosFijos().containsAll(servicios)){
+               retornar.add(iterar.get(i));
+           }
+       }
+       return retornar;
+   }
+   /*
+     *Metodo que calcula la distancia en metros entre dos puntos
+     */
+     public double getDistance(double lat1, double lon1, double lat2, double lon2) 
+	{
+		int R = 6371*1000; 
+		double latDistance = toRad(lat2-lat1);
+		double lonDistance = toRad(lon2-lon1);
+		double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		double distance = R * c;
+
+		return distance;
+
+	}
+
+	private double toRad(double value) {
+		return value * Math.PI / 180;
+	}
+   
    
    //-- GET LUGARES DE INTERES ASOCIADOS:
     public List<LugaresDeInteresEntity> getFacturas(Long userID){

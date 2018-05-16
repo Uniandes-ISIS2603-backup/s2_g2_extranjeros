@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.extranjeros.entities.EstudianteEntity;
 import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.LugaresDeInteresEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ServicioEntity;
+import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ValoracionEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
@@ -41,12 +42,15 @@ public class ViviendaDetailDTO extends ViviendaDTO {
     
     private List <LugaresDeInteresDTO> lugaresDeInteres;
     
+    private List<UniversidadDTO> universidades;
+    
     public ViviendaDetailDTO(){
         super();
     }
     
      public ViviendaDetailDTO(ViviendaEntity entity){
         super(entity);
+        universidades = new ArrayList<>();
          serviciosAdicionales = new ArrayList<>();
          serviciosFijos = new ArrayList<>();
          valoraciones = new ArrayList<>();
@@ -84,6 +88,12 @@ public class ViviendaDetailDTO extends ViviendaDTO {
                  valoraciones.add(new ValoracionDTO(entity.getValoraciones().get(i)));
              }
          }
+          if(entity.getUniversidades()!=null){
+             for (int i = 0; i < entity.getUniversidades().size(); i++) {
+                 universidades.add(new UniversidadDTO(entity.getUniversidades().get(i)));
+             }
+         }
+          
        //preguntar for de creadores de dtos asociados
     }
     
@@ -104,6 +114,7 @@ public class ViviendaDetailDTO extends ViviendaDTO {
         
         List<LugaresDeInteresEntity> PLugares = new ArrayList<>();
         
+        List<UniversidadEntity> PUni = new ArrayList<>();
         if(arrendatariosPropietarios!=null){
         e.setArrendatariosPropietarios(arrendatariosPropietarios.toEntity());
         }
@@ -145,6 +156,12 @@ public class ViviendaDetailDTO extends ViviendaDTO {
             PLugares.add(get);
         }
         }
+       if(getUniversidades()!=null){
+           for (int i = 0; i < universidades.size(); i++) {
+            UniversidadEntity get = universidades.get(i).toEntity();
+            PUni.add(get);
+        }
+        }
            e.setLugaresDeInteres(PLugares);
            e.setFacturas(PFacturas);
            e.setValoraciones(Pvaloraciones);
@@ -153,6 +170,8 @@ public class ViviendaDetailDTO extends ViviendaDTO {
            e.setEstudiantes(PEstudiantes);
       return e;
     }
+    
+    
     
     /**
      * @return the serviciosFijos
@@ -250,6 +269,20 @@ public class ViviendaDetailDTO extends ViviendaDTO {
      */
     public void setLugaresDeInteres(List <LugaresDeInteresDTO> lugaresDeInteres) {
         this.lugaresDeInteres = lugaresDeInteres;
+    }
+
+    /**
+     * @return the universidad
+     */
+    public List<UniversidadDTO> getUniversidades() {
+        return universidades;
+    }
+
+    /**
+     * @param universidad the universidad to set
+     */
+    public void setUniversidad(List<UniversidadDTO> universidades) {
+        this.universidades = universidades;
     }
 }
 

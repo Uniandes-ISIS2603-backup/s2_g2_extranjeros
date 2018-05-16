@@ -66,6 +66,8 @@ public class ViviendaDTO {
     private Integer inquilinos;
     
     private Double precioMensual; 
+    
+    private List<String> imagenes;
 
     public ViviendaDTO(){
         
@@ -91,6 +93,8 @@ public class ViviendaDTO {
       this.inquilinos = entity.getInquilinos();
   
       this.precioMensual = entity.getPrecioMensual();
+      
+      this.imagenes = entity.getImagenes();
     }
     /**
      * @return the disponible
@@ -204,6 +208,7 @@ public class ViviendaDTO {
         en.setTipoAlojamiento(tipoAlojamiento);
         en.setInquilinos(inquilinos);
         en.setPrecioMensual(precioMensual);
+        en.setImagenes(getImagenes());
         return en;
         
     }
@@ -234,6 +239,20 @@ public class ViviendaDTO {
      */
     public void setPrecioMensual(Double precioMensual) {
         this.precioMensual = precioMensual;
+    }
+
+    /**
+     * @return the imagenes
+     */
+    public List<String> getImagenes() {
+        return imagenes;
+    }
+
+    /**
+     * @param imagenes the imagenes to set
+     */
+    public void setImagenes(List<String> imagenes) {
+        this.imagenes = imagenes;
     }
     
     
