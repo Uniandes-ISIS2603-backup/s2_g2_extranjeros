@@ -25,6 +25,15 @@
 
             $scope.data = {};
 
+            $scope.data2={};
+            
+            //Consulto los servicios de la vivienda a facturar.
+            $http.get(viviendaContext+'/'+$state.params.viviendaId).then(function (response) {
+                var vivienda = response.data;
+                $scope.data2.serviciosFijos = vivienda.serviciosFijos;
+                $scope.data2.serviciosAdicionales = vivienda.serviciosAdicionales;
+            });
+            
             $scope.selectedItems = [];
 
             $scope.availableItems = [];

@@ -32,6 +32,7 @@
              * Esta función utiliza el protocolo HTTP para crear el lugar de interes.
              * @param {Object} editorial Objeto con la nueva del lugar de interes.
              */
+            
             $scope.createLugarDeInteres = function () {
                 $http.post(lugaresDeInteresContext, $scope.data).then(function (response) {
                     $state.go('lugaresDeInteresList', {lugarDeInteresId: response.data.id}, {reload: true});

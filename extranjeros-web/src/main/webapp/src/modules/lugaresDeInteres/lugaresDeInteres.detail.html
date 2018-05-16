@@ -20,12 +20,20 @@
                     <dt class="bold">Direccion</dt>
                          <dd>{{currentLugarDeInteres.direccion}}</dd> 
                     <hr>
-                    
+                    <hr>
+                    <hr>
+                    <hr>
+                    <hr>
+                    <hr>
+                    <dt class="bold">Mapa</dt>
+                 <div id="map" style="width:400px;height:400px;background:yellow"></div>
+                  
                 </dl>
             </div>
-            <div class="col-md-3">
+<            <div class="col-md-3">
                 <img class="embed-responsive-item" ng-src="{{currentLugarDeInteres.imagen}}" style="max-width: 500px">
             </div>
+            
         </div>
         <div id="{{$index}}-actions" class="row">
                         <a class="btn btn-default btn-sm" ui-sref="lugarDeInteresUpdate({lugarDeInteresId: currentLugarDeInteres.id})"><span class="glyphicon glyphicon-edit"></span></a>
@@ -33,3 +41,4 @@
         </div>
     </div>
 </div>
+        
