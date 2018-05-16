@@ -42,9 +42,9 @@ insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCue
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (78945,350.200,10.500,'cargo único',1,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (141454,350.200,203.500,'cobros mensuales',1,{ts '2018-04-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 
-insert into LugaresDeInteresEntity (id, tipo,nombre,direccion,telefono,ubicacionLat,ubicacionLon, imagen) values (132212,'Centro Comercial','Unicentro','Carrera 15 # 127 - 30',6622732,'4.644277','-74.071385', 'https://www.lurebogota.com/wp-content/uploads/2016/08/ADR-5698-.jpg');
-insert into LugaresDeInteresEntity (id, tipo,nombre,direccion,telefono,ubicacionLat,ubicacionLon, imagen) values (2241322,'Bar','La Pola','Carrera 3 # 19 - 30',6626333,'4.669595','-74.059950', 'https://www.portal80.com.co/web2014/wp-content/uploads/2015/08/la-pola.jpg');
-insert into LugaresDeInteresEntity (id, tipo,nombre,direccion,telefono,ubicacionLat,ubicacionLon, imagen) values (3342361,'Entretenimiento','Cinema Uniandes','Carrera 19 # 71 - 85',3226574,'4.654693','-74.055516', 'https://uniandes.edu.co/sites/default/files/campus-universidad-edificio_0.jpg');
+insert into LugaresDeInteresEntity (id, tipo,nombre,direccion,telefono,ubicacionLat,ubicacionLon, imagen) values (132212,'Centro Comercial','Unicentro','Carrera 15 # 127 - 30',6622732,'4.7022085','-74.0441784', 'https://www.lurebogota.com/wp-content/uploads/2016/08/ADR-5698-.jpg');
+insert into LugaresDeInteresEntity (id, tipo,nombre,direccion,telefono,ubicacionLat,ubicacionLon, imagen) values (2241322,'Bar','La Pola','Carrera 3 # 19 - 30',6626333,'4.6025815','-74.0691184', 'http://paseosanrafael.com//wp-content/uploads/2013/07/pola-pag.png');
+insert into LugaresDeInteresEntity (id, tipo,nombre,direccion,telefono,ubicacionLat,ubicacionLon, imagen) values (3342361,'Entretenimiento','Cinema Uniandes','Carrera 19 # 71 - 85',3226574,'4.6028136','-74.068398', 'https://uniandes.edu.co/sites/default/files/campus-universidad-edificio_0.jpg');
 
 insert into ProvidenciaEntity (id, pais, region) values (5324671,'Colombia','Medellin');
 insert into ProvidenciaEntity (id, pais, region) values (5764572,'Colombia','Cali');

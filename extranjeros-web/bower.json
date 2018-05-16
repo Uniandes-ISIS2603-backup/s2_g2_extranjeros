@@ -7,7 +7,11 @@
     "bootstrap": "^3.3.7",
     "angular-ui-router": "~0.2.14",
     "angular-bootstrap": "^0.13.4",
-        "checklist-model": "*"
+    "checklist-model": "*",
+    "google-maps-utility-library-v3-markerwithlabel": "1.1.10",
+    "google-maps-utility-library-v3-infobox": "^1.1.14",
+    "google-maps-utility-library-v3-keydragzoom": "^2.0.9",
+    "angular-google-maps": "^2.0.5"
   },
   "devDependencies": {}
 }

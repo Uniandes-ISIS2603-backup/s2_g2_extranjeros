@@ -9,7 +9,9 @@
         }
     ]);
 }
-)(window.angular);
+)
+
+(window.angular);
 
 
 
