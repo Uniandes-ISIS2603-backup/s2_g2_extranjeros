@@ -53,8 +53,8 @@
                     
                     <div class="form-group row">
                         <div class="form-group col-md-8">
-                             <label for="viviendaIN" class="col-sm-3">Tipo de alojamiento   </label>
-                             <select name="tipoAlojamiento" required ng-model="data.tipoAlojamiento" class="col-sm-3">
+                            <label for="viviendaIN" class="col-sm-3">Tipo de alojamiento   </label>
+                            <select name="tipoAlojamiento" required ng-model="data.tipoAlojamiento" class="col-sm-3">
                                 <option value="A"> Tipo A</option>
                                 <option value="B"> Tipo B </option>
                                 <option value="C"> Tipo C </option>
@@ -63,15 +63,21 @@
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-8">
-                             <label for="viviendaIN" class="col-sm-3">Servicios Adicionales   </label>
-                             <select name="tipoAlojamiento" required ng-model="data.tipoAlojamiento" class="col-sm-3">
-                                <option value="A"> Tipo A</option>
-                                <option value="B"> Tipo B </option>
-                                <option value="C"> Tipo C </option>
-                            </select>
+                            <label for="viviendaIN" class="col-sm-3">Servicios fijos   </label>
+                            <label ng-repeat="servicio in data2.servicios">
+                            <input type="checkbox" data-checklist-model="data.serviciosFijos" data-checklist-value="servicio"> {{servicio.tipo}} 
+                            </label>
                         </div>
                     </div>
-                    
+                    <div class="form-group row">
+                        <div class="form-group col-md-8">
+                            <label for="viviendaIN" class="col-sm-3">Servicios adicionales   </label>
+                            <label ng-repeat="servicio in data2.servicios">
+                            <input type="checkbox" data-checklist-model="data.serviciosAdicionales" data-checklist-value="servicio"> {{servicio.tipo}} 
+                            </label>
+                        </div>
+                    </div>
+                        
                     <div class="form-group row">
                         <div class="form-group col-sm-12">
                             <input ng-show="vivienda.$valid" ng-click="createVivienda()" value="Save" class="btn btn-success"/>
@@ -80,7 +86,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!vivienda.$valid">
-
+                            
                             <div class="alert alert-warning" >
                                 <strong>Atención!</strong><p>Debe ingresar todos los campos*</p>
                             </div> 
@@ -88,7 +94,7 @@
                     </div> 
                     
                 </form>
-
+                
             </div>
         </div>
     </div>
