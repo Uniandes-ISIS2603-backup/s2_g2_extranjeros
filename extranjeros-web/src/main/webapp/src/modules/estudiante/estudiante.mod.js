@@ -31,6 +31,18 @@
                         templateUrl: basePath + 'estudiante.list.html'
                     }
                 }
+            }).state('estudianteUpdate', {
+                url: '/update/{estudianteId:int}',
+                parent: 'estudiante',
+                param: {
+                    estudianteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/nuevo/estudiante.new.html',
+                        controller: 'estudianteUpdateCtrl'
+                    }
+                }
             }).state('estudianteCreate', {
                 url: '/create',
                 parent: 'estudiante',
@@ -40,7 +52,18 @@
                         controller: 'estudiantePostCtrl'
                     }
              }
-                
+             }).state('estudianteDelete', {
+                url: '/delete/{estudianteId:int}',
+                parent: 'estudiante',
+                param: {
+                   estudianteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/estudiante.delete.html',
+                        controller: 'estudianteDeleteCtrl'
+                    }
+                }  
             }).state('estudianteDetail', {
                 url: '/{estudianteId:int}/detail',
                 parent: 'estudiante',

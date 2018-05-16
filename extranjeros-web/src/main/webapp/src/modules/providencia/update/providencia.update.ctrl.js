@@ -28,7 +28,7 @@
 
             $scope.availableItems = [];
 
-            var idProvidencia = $state.params.servicioId;
+            var idProvidencia = $state.params.providenciaId;
 
             //Consulto la factura a editar.
             $http.get(providenciaContext + '/' + idProvidencia).then(function (response) {

@@ -41,6 +41,30 @@
                         controller: 'providenciaPostCtrl'
                     }
              }
+            }).state('providenciaDelete', {
+                url: '/delete/{providenciaId:int}',
+                parent: 'providencia',
+                param: {
+                   providenciaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/providencia.delete.html',
+                        controller: 'providenciaDeleteCtrl'
+                    }
+                }
+            }).state('providenciaUpdate', {
+                url: '/update/{providenciaId:int}',
+                parent: 'providencia',
+                param: {
+                    estudianteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/nuevo/providencia.nuevo.html',
+                        controller: 'providenciaUpdateCtrl'
+                    }
+                }
             }).state('providenciaDetail', {
                 url: '/{providenciaId:int}/detail',
                 parent: 'providencia',
