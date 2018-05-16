@@ -1,7 +1,9 @@
 (function (ng) {
     var mod = ng.module("viviendasModule");
     mod.constant("viviendaContext", "api/viviendas");
-    mod.controller('viviendaUpdateCtrl', ['$scope', '$http', 'viviendaContext', '$state','$rootScope',
+    mod.constant("servicioContext", "api/servicios"); 
+    mod.controller('viviendaUpdateCtrl', ['$scope', '$http', 'viviendaContext','servicioContext', '$state','$rootScope',
+      
         /**
          * @ngdoc controller
          * @name facturas.controller:facturaUpdateCtrl
@@ -19,7 +21,7 @@
          * @param {Object} $filter Dependencia injectada para hacer filtros sobre
          * arreglos.
          */
-        function ($scope, $http, viviendaContext, $state, $rootScope) {
+        function ($scope, $http, viviendaContext,servicioContext, $state, $rootScope) {
             $rootScope.edit = true;
 
             $scope.data = {};
@@ -27,10 +29,16 @@
             $scope.selectedItems = [];
 
             $scope.availableItems = [];
+            
+            $scope.data2 = {};
+            
+            $http.get(servicioContext).then(function (response){
+            $scope.data2.servicios = response.data;    
+            });
 
             var idVivienda = $state.params.vivivendaId;
 
-            //Consulto la factura a editar.
+            //Consulto la vivienda a editar.
             $http.get(viviendaContext+'/'+$state.params.viviendaId).then(function (response) {
                 var vivienda = response.data;
                 $scope.data.direccion = vivienda.direccion;
@@ -41,16 +49,13 @@
                 $scope.data.longitud= vivienda.longitud;
                 $scope.data.tipoAlojamiento = vivienda.tipoAlojamiento;
                 $scope.data.precioMensual = vivienda.precioMensual;
+                $scope.data.universidades = vivienda.universidades;
+                $scope.data.lugaresDeInteres=vivienda.lugaresDeInteres;
+                $scope.data.serviciosFijos = vivienda.serviciosFijos;
+                $scope.data.serviciosAdicionales = vivienda.serviciosAdicionales;
             });
 
-            /**
-             * @ngdoc function
-             * @name createFactura
-             * @methodOf facturas.controller:facturaUpdateCtrl
-             * @description
-             * Crea un nuevo autor con los libros nuevos y la información del
-             * $scope.
-             */
+         
             $scope.createVivienda = function () {
                 $http.put(viviendaContext+'/'+$state.params.viviendaId, $scope.data).then(function (response) {
                     $state.go('viviendasList', {viviendaId: response.data.id}, {reload: true});

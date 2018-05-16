@@ -103,10 +103,9 @@ public class ViviendaLogic {
     List <LugaresDeInteresEntity> lugaresDeInteres = new ArrayList<>();
     List <LugaresDeInteresEntity> lugaresBaseDatos = lugaresDeInteresPersistence.findAll();
     for (LugaresDeInteresEntity lugar : lugaresBaseDatos) {
-         if(getDistance(Double.parseDouble(vivienda.getLatitud()), Double.parseDouble(vivienda.getLongitud()),
+        if(getDistance(Double.parseDouble(vivienda.getLatitud()), Double.parseDouble(vivienda.getLongitud()),
                  Double.parseDouble(lugar.getUbicacionLat()) , Double.parseDouble(lugar.getUbicacionLon()))<=1000){
               lugaresDeInteres.add(lugar);
-              
          }
         
      }
@@ -141,7 +140,17 @@ public class ViviendaLogic {
  
   public ViviendaEntity updateVivienda(ViviendaEntity vivienda) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una vivienda");
-      ArrendatarioEntity arrendatariosPropietarios = null;
+      List <UniversidadEntity> universidades = new ArrayList<>();
+   if(vivienda.getUniversidades()!=null){
+       for (UniversidadEntity universidad : vivienda.getUniversidades()) {
+         UniversidadEntity temp = universidadPersistence.find(universidad.getId());
+         if(temp !=null)
+         universidades.add(temp);
+     }
+   }
+    vivienda.setUniversidades(universidades);
+    
+    ArrendatarioEntity arrendatariosPropietarios = null;
     if(vivienda.getArrendatariosPropietarios()!=null)
     arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
    if(arrendatariosPropietarios!=null) vivienda.setArrendatariosPropietarios(arrendatariosPropietarios);
@@ -154,17 +163,18 @@ public class ViviendaLogic {
      }
     vivienda.setEstudiantes(estudiantes);
     
-  /*  List <LugaresDeInteresEntity> lugaresDeInteres = new ArrayList<>();
-     for (LugaresDeInteresEntity lugares : vivienda.getLugaresDeInteres()) {
-         LugaresDeInteresEntity temp = lugaresDeInteresPersistence.find(lugares.getId());
-         if(temp !=null)
-         lugaresDeInteres.add(temp);
+    List <LugaresDeInteresEntity> lugaresDeInteres = new ArrayList<>();
+    List <LugaresDeInteresEntity> lugaresBaseDatos = lugaresDeInteresPersistence.findAll();
+    for (LugaresDeInteresEntity lugar : lugaresBaseDatos) {
+        if(getDistance(Double.parseDouble(vivienda.getLatitud()), Double.parseDouble(vivienda.getLongitud()),
+                 Double.parseDouble(lugar.getUbicacionLat()) , Double.parseDouble(lugar.getUbicacionLon()))<=1000){
+              lugaresDeInteres.add(lugar);
+         }
+        
      }
      vivienda.setLugaresDeInteres(lugaresDeInteres);
-     */
-     List <LugaresDeInteresEntity> lugaresDeInteres = lugaresDeInteresPersistence.findAll();
-    
-     List<FacturaEntity> facturas = new ArrayList<>();
+     
+    List<FacturaEntity> facturas = new ArrayList<>();
      for (FacturaEntity factura : vivienda.getFacturas()) {
          FacturaEntity temp = facturaPersistence.find(factura.getId());
          if(temp !=null)

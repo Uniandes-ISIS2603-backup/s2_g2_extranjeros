@@ -162,6 +162,7 @@ public class ViviendaDetailDTO extends ViviendaDTO {
             PUni.add(get);
         }
         }
+           e.setUniversidades(PUni);
            e.setLugaresDeInteres(PLugares);
            e.setFacturas(PFacturas);
            e.setValoraciones(Pvaloraciones);
