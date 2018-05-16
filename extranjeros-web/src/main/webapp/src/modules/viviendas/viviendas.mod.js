@@ -5,7 +5,7 @@
  */
 (function (ng) {
     
-    var mod = ng.module("viviendasModule", ['ui.router']);
+    var mod = ng.module("viviendasModule", ['ui.router','checklist-model']);
     
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             

@@ -1,4 +1,4 @@
-(function (ng) {
+    (function (ng) {
     var mod = ng.module("valoracionModule");
    mod.constant("viviendaContext", "api/viviendas"); 
     mod.constant("valoracionesContext", "valoraciones"); 

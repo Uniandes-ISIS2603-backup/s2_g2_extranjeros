@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
@@ -61,6 +62,11 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     @OneToMany
     @PodamExclude
     private List<ValoracionEntity> valoraciones;
+    
+    @OneToMany
+    @PodamExclude
+    @JoinTable(name = "universidadVivienda")
+    private List<UniversidadEntity> universidades; 
 
      //---------------------------------------------------
     // Atributos
@@ -80,7 +86,7 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     
     private Double precioMensual;
     
-    
+    private List<String> imagenes;
     
     @PodamStrategyValue(InquilinosStrategy.class)
     private Integer inquilinos;
@@ -295,6 +301,34 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
      */
     public void setPrecioMensual(Double precioMensual) {
         this.precioMensual = precioMensual;
+    }
+
+    /**
+     * @return the universidad
+     */
+    public List<UniversidadEntity> getUniversidades() {
+        return universidades;
+    }
+
+    /**
+     * @param universidades the universidad to set
+     */
+    public void setUniversidades(List<UniversidadEntity> universidades) {
+        this.universidades = universidades;
+    }
+
+    /**
+     * @return the imagenes
+     */
+    public List<String> getImagenes() {
+        return imagenes;
+    }
+
+    /**
+     * @param imagenes the imagenes to set
+     */
+    public void setImagenes(List<String> imagenes) {
+        this.imagenes = imagenes;
     }
    
     

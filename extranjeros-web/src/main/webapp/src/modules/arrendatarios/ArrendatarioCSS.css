@@ -140,9 +140,15 @@
     background-size: cover;
     min-width: 100%; 
     min-height: 100%;
-    
 }
 
 .verticalLine {
   border-left: thick solid tomato;
+}
+
+.logIn{
+    background-image: url("https://images.pexels.com/photos/541518/pexels-photo-541518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    min-width: 100%; 
+    min-height: 100%;
 }
