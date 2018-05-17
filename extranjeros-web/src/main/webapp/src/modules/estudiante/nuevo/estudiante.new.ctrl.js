@@ -14,9 +14,7 @@
             $scope.universidadesRecords = [];
             $scope.providenciaRecords = [];
             $scope.data = {};
-            $scope.pro={};
-            $scope.uni={};
-
+         
             $http.get(universidadesContext).then(function (response) {
                 $scope.universidadesRecords = response.data;
             });

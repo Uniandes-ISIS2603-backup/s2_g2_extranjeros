@@ -8,8 +8,8 @@ and open the template in the editor.
     Author     : am.quintero12
 */
 
-.logIn{
-    background-image: url("https://images.pexels.com/photos/128299/pexels-photo-128299.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+.logInEstu{
+     background-image: url("https://images.pexels.com/photos/128299/pexels-photo-128299.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-size: cover;
     min-width: 100%; 
     min-height: 100%;
