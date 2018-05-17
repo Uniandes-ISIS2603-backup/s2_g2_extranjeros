@@ -1,7 +1,18 @@
 
 <div class="container-fluid">
     <div class="row col-md-4" style="margin-bottom: 20px;">
-        <div class="col-md-10" style="background-color: #f5f5f5; border-radius: 10px;">
+        <div class="col-md-10" style="background-color: #f5f5f5; border-radius: 10px; text-align:center; padding: 10px;">
+            <h4>Encontrar Eventos en fecha</h4> 
+            <form ng-submit="filtrarEvento()" name="evento">
+                <div class="form-group row">
+                    <div class="form-group col-md-12">
+                    <input id="fecha" placeholder="DD/MM/YYYY" required ng-model="fecha" class="col-sm-12"></input>
+                    <input type="submit" value="Buscar" class="btn btn-info" style="margin-top:10px;"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-10" style="background-color: #f5f5f5; border-radius: 10px; margin-top: 20px;">
             <div class="row col-md-12" style="margin:20px 0 20px 0; padding-top:20px; text-align: center;">
                 <div class="btn-group mr-2"  role="group" aria-label="First group">
                      <a class="btn btn-info" ui-sref="eventoCreate">
