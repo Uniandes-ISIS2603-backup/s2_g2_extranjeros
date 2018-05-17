@@ -82,7 +82,9 @@ public class ValoracionResource {
        if(vivi.getValoracion()>5 || vivi.getValoracion()<0){
           throw new BusinessLogicException("el rating es menor a 0 o mayor a 5 y no es valido");  
        }
+       viviendaLogic.getVivienda(id).getValoraciones().add((logic.createValoracion(vivi.toEntity())));
        ValoracionDetailDTO val = new ValoracionDetailDTO(logic.createValoracion(vivi.toEntity()));
+       
        return val;
     }
       /**
