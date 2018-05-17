@@ -5,6 +5,12 @@
         <p class="Join-Us"> Aumenta tus ganancias, a crear! </p>
     </div>
     
+    <div class="alert alert-info alert-dismissible" ng-if="alerts.length >0" close="closeAlert()" style="width: 60%; margin: auto; margin-bottom: 2em;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+        <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;">  <strong>Hey!</strong> </span>
+        <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;"> {{alerts[alerts.length - 1].msg}}  </span> 
+    </div>
+    
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>

@@ -323,7 +323,7 @@ public class ArrendatarioLogic {
         } 
         
         // No existe
-        throw new BusinessLogicException("El arrendatario aún no tiene viviendas. GGG");
+        throw new BusinessLogicException("El arrendatario aún no tiene viviendas");
     }
     
     /**
@@ -339,7 +339,9 @@ public class ArrendatarioLogic {
         ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
         ViviendaEntity viviendaEntity = new ViviendaEntity();
         viviendaEntity.setId(viviendaId);
+        viviendaEntity = vivLogic.find(viviendaEntity.getId());
         arrendEntity.getViviendas().add(viviendaEntity);
+        persistence.update(arrendEntity);
         
         return getVivienda(arrendatarioId, viviendaId);
     }
