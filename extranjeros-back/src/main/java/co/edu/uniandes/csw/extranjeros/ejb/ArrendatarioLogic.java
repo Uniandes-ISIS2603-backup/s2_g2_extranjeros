@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ArrendatarioPersistence;
+import co.edu.uniandes.csw.extranjeros.persistence.ViviendaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -36,7 +37,7 @@ public class ArrendatarioLogic {
     private ArrendatarioPersistence persistence;
     
     @Inject  
-    private ViviendaLogic vivLogic;
+    private ViviendaPersistence vivLogic;
 
     //---------------------------------------------------
     // Metodos Usuario(DTO) - Resource: sin relaciones
@@ -73,6 +74,7 @@ public class ArrendatarioLogic {
     public ArrendatarioEntity createArrendatario (ArrendatarioEntity newUser) throws BusinessLogicException{
         
         LOGGER.log(Level.INFO, "Inicia el proceso de crear un arrendatario en la plataforma.");
+        newUser.setRol("Arrendatario");
         
         // Verificacion: no existe un arrendatario con el mismo nombre.
         if(persistence.findByName(newUser.getNombre()) != null){
@@ -134,6 +136,7 @@ public class ArrendatarioLogic {
        newUser.setNombre(comparacion.getNombre());
        newUser.setEdad(comparacion.getEdad());
        newUser.setCuentasBancarias(comparacion.getCuentasBancarias());
+       newUser.setRol(comparacion.getRol());
        
         if (!newUser.getNombre().equalsIgnoreCase(comparacion.getNombre())) {
             if (persistence.findByName(newUser.getNombre()) != null) {
@@ -301,7 +304,7 @@ public class ArrendatarioLogic {
      * @param viviendaID Identificador de la instancia de Vivienda.
      * @return La entidadd de Factura correspondiente al autor.
      */
-    public ViviendaEntity getVivienda(Long userID, Long viviendaID){
+    public ViviendaEntity getVivienda(Long userID, Long viviendaID) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia el proceso para consultar la Vivienda asociada con id = {0}", viviendaID + " " + "del usuario con id = " + userID);
         
         // Lista
@@ -320,7 +323,7 @@ public class ArrendatarioLogic {
         } 
         
         // No existe
-        return null;
+        throw new BusinessLogicException("El arrendatario aún no tiene viviendas. GGG");
     }
     
     /**
@@ -328,20 +331,17 @@ public class ArrendatarioLogic {
      * @param arrendatarioId Identificador de la instancia de Arrendatario.
      * @param viviendaId Identificador de la instancia de Vivienda.
      * @return Instancia de ViviendaEntity que fue asociada a un Arrendatario.
+     * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
     public ViviendaEntity createViviendaIn (Long arrendatarioId, Long viviendaId) {
         LOGGER.log(Level.INFO, "Inicia proceso de asociar una vivienda al arrendatario con id = {0}", arrendatarioId);
         
         ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
-        ViviendaEntity viviendaEntity = new ViviendaEntity();
-        System.out.println(viviendaEntity.getCapacidad());
-        viviendaEntity.setId(viviendaId);
-        viviendaEntity = vivLogic.getVivienda(viviendaId);
-        List<ViviendaEntity> set = new ArrayList<>();
-        set.add(viviendaEntity);
-        arrendEntity.setViviendas(set);
+        ViviendaEntity viviendaEntity = vivLogic.find(viviendaId);
+        arrendEntity.getViviendas().add(viviendaEntity);
+        persistence.update(arrendEntity);
         
-        return getVivienda(arrendatarioId, viviendaId);
+        return getViviendas(arrendatarioId).get(0);
     }
     
     /**

@@ -79,7 +79,7 @@ public class ArrendatarioDTO {
             this.cedula = entity.getCedula();
             this.edad = entity.getEdad();
             this.imagen = entity.getImagen();
-            this.rol = "Arrendatario";
+            this.rol = entity.getRol();
         }
     }
     
@@ -107,7 +107,7 @@ public class ArrendatarioDTO {
         entity.setEdad(this.edad);
         entity.setCedula(this.cedula);
         entity.setImagen(this.imagen);
-        entity.setRol("Arrendatario");
+        entity.setRol(this.rol);
         // Return
         return entity;
     }

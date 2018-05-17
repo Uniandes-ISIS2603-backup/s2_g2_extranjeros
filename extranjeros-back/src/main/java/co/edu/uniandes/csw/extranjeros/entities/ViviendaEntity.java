@@ -31,7 +31,7 @@ public class ViviendaEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @ManyToOne
-    @JoinTable(name = "arendatarioVivienda")
+   
     private ArrendatarioEntity arrendatariosPropietarios;
     
     @PodamExclude

@@ -7,7 +7,7 @@
             $scope.data = {};
             $scope.createArrendatario = function () {
                 $http.post(arrendatarioContext, $scope.data).then(function (response) {
-                    $state.go('arrendatariosList', {arrendatarioId: response.data.id}, {reload: true});
+                    $state.go('successPost', {arrendatarioId: response.data.id}, {reload: true});
                 });
             };
         }

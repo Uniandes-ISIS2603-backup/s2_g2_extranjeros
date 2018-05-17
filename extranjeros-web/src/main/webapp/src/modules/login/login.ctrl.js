@@ -22,7 +22,7 @@
                         if (($scope.arrendatarioRecords[item].correo === $scope.data.UserName || $scope.arrendatarioRecords[item].usuario === $scope.data.UserName) && $scope.arrendatarioRecords[item].clave === $scope.data.Contrasenia) {
                             flag = true;
                             $scope.user = $scope.arrendatarioRecords[item];
-                            $state.go('arrendatariosList', {}, {reload: true});
+                            $state.go('viviendasList', {}, {reload: true});
                             break;
                         }
                     }
@@ -33,11 +33,8 @@
                         sessionStorage.token = $scope.user.token;
                         sessionStorage.setItem("User", $scope.user.usuario);
                         sessionStorage.setItem("Correo", $scope.user.correo);
-//                    sessionStorage.setItem("rol", $scope.user.rol);
-                        console.log($scope.user.usuario);
+                        sessionStorage.setItem("rol", $scope.user.rol);
                         $rootScope.currentUsuarioLog = $scope.user;
-                        $scope.currentUserX = $rootScope.currentUsuarioLog;
-                        console.log(currentUserX === undefined);
                     }
                 });
             };

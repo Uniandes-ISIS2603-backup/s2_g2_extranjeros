@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.extranjeros.resources;
 import co.edu.uniandes.csw.extranjeros.dtos.ViviendaDetailDTO;
 import co.edu.uniandes.csw.extranjeros.ejb.ArrendatarioLogic;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
+import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -117,7 +118,7 @@ public class ArrendatarioViviendasResource {
      */
     @GET
     @Path("{viviendaId: \\d+}")
-    public ViviendaDetailDTO getVivienda(@PathParam("arrendatarioID") Long arrendID, @PathParam("viviendaId") Long viviendaId) {
+    public ViviendaDetailDTO getVivienda(@PathParam("arrendatarioID") Long arrendID, @PathParam("viviendaId") Long viviendaId) throws BusinessLogicException {
         return new ViviendaDetailDTO(logic.getVivienda(arrendID, viviendaId));
     }
     

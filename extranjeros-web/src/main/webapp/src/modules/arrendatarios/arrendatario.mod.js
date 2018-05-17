@@ -8,10 +8,6 @@
             $stateProvider.state('arrendatarios', {
                 url: '/arrendatarios',
                 abstract: true,
-                data: {
-                        requireLogin: true,
-                        roles: []
-                    },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'arrendatario.html',
@@ -29,7 +25,7 @@
                 },
                 data: {
                         requireLogin: true,
-                        roles: ['Administrador']
+                        roles: ['Admin']
                 }
                 
             }).state('arrendatarioDetail', {
@@ -48,7 +44,7 @@
                 
                 data: {
                         requireLogin: true,
-                        roles: ['Arrendatario', 'Administrador']
+                        roles: ['Arrendatario', 'Admin']
                 }
 
             }).state('arrendatarioCreate', {
@@ -59,6 +55,10 @@
                         templateUrl: basePath + '/post/arrendatario.new.html',
                         controller: 'arrendatarioPostCtrl'
                     }
+                },
+                                
+                data: {
+                        requireLogin: false,
                 }
                 
             }).state('arrendatarioUpdate', {
@@ -76,7 +76,7 @@
                 
                 data: {
                     requireLogin: true,
-                    roles: ['Arrendatario', 'Administrador']
+                    roles: ['Arrendatario', 'Admin']
                 }
                 
             }).state('arrendatarioDelete', {
@@ -93,7 +93,7 @@
                 },
                 data: {
                     requireLogin: true,
-                    roles: ['Arrendatario', 'Administrador']
+                    roles: ['Arrendatario', 'Admin']
                 }
             });
         }]);

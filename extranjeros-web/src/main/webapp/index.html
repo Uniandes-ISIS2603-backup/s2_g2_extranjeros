@@ -137,6 +137,7 @@
 
         <!-- Sign Up --> 
         <script src="src/modules/signUp/signUp.mod.js" type="text/javascript"></script>
+        <script src="src/modules/arrendatarios/post/successPostArrendatario.mod.js" type="text/javascript"></script>
 
         <!-- LogIn --> 
         <script src="src/modules/login/login.mod.js" type="text/javascript"></script>
@@ -157,19 +158,20 @@
                             <div class="navbar-header">
                                 <a class="navbar-brand" href=""> <p style="text-align: center; font-size: 1.5em; font-family: 'Roboto', sans-serif; color: darkorange;"> Lease Me App </p></a>
                             </div>
-
                             <ul ng-if="isAuthenticated()" class="nav navbar-nav navbar-right">
 
+                                <li> <a ui-sref="arrendatariosList" style="color: navy; padding-right: 1.5em;"> Arrendatarios </a></li>
                                 <li style="padding-right: 1.5em;"><a ui-sref="viviendasList"> <span style="color: navy; font-family: 'Roboto', sans-serif;">Viviendas</span></a></li>   
-                                <li style="padding-right: 5em;"><a ui-sref="eventosList"> <span style="color: navy; font-family: 'Roboto', sans-serif;">Eventos</span></a></li> 
+                                <li style="padding-right: 4em;"><a ui-sref="eventosList"> <span style="color: navy; font-family: 'Roboto', sans-serif;">Eventos</span></a></li> 
                                 <li style="padding-right: 0.7em;"> <a ui-sref="#"> <span style="color: navy; font-family: 'Roboto', sans-serif;"> Bienvenido, {{currentUsuarioLog.nombre}} </span></a></li>
 
                                 <li> <a ui-sref="arrendatarioDetail({arrendatarioId: currentUsuarioLog.id})"> <span style="color: navy; font-family: 'Roboto', sans-serif;">Mi perfil &nbsp; <span class="glyphicon glyphicon-user"></span> </span></a></li>
                                 <li><a ui-sref="logout"> <span style="color: navy; font-family: 'Roboto', sans-serif;"> Logout</span> <span class="glyphicon glyphicon-log-out" style="color: black;"></span></a></li>
+                                
                             </ul>
 
-                            <ul ng-if="!isAuthenticated()" class="nav navbar-nav navbar-right">
-                                <li><a ui-sref="arrendatariosList" style="color: navy;">Arrendatarios</a></li>
+                            <ul ng-if="!isAuthenticated() && !hasPermissions()" class="nav navbar-nav navbar-right">
+                                
                                 <li><a ui-sref="eventosList" style="color: navy;">Eventos</a></li>
                                 <li><a ui-sref="tarjetasList" style="color: navy;">Tarjetas</a></li>
                                 <li><a ui-sref="serviciosList" style="color: navy;">Servicios</a></li>
