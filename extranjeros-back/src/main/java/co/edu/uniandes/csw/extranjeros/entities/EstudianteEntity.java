@@ -23,59 +23,60 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  *
  * @author am.quintero12
  */
-
 @Entity
 public class EstudianteEntity extends BaseEntity {
-    
+
     //---------------------------------------------------
     // Atributos
     //---------------------------------------------------
     private String nombre;
     private boolean estadoArrendamiento;
-     private String usuario;
-     private String imagen;
-    
+    private String usuario;
+    private String imagen;
+    private String rol = "estudiante";
+
     @PodamStrategyValue(CorreoStrategy.class)
     private String correo;
-    
+
     @PodamStrategyValue(ClaveStrategy.class)
     private String clave;
-    
+
     @PodamStrategyValue(CelularStrategy.class)
     private String celular;
-    
+
+    @PodamStrategyValue(IntegerStrategy.class)
     private String cedula;
-    
+
     @PodamStrategyValue(IntegerStrategy.class)
     private Integer edad;
-    
+
     //---------------------------------------------------
     // Relaciones
     //---------------------------------------------------
-   @PodamExclude
-   @OneToOne
+    @PodamExclude
+    @OneToOne
     private ProvidenciaEntity providencia;
-   
-   @PodamExclude
-   @OneToOne (cascade = CascadeType.ALL)
-   private TarjetaEntity tarjeta;
-   
-   @PodamExclude
-   @OneToOne 
-   private UniversidadEntity universidad;
-   
-   @PodamExclude
-   @OneToMany(mappedBy = "responsableEventoP",cascade = CascadeType.ALL)
-   private List<EventoEntity> eventosCreados;
-   
-   @PodamExclude
-   @ManyToMany
-   private List<EventoEntity> eventosInvitado;
-   
-   @PodamExclude
-   @ManyToMany
-    private List <FacturaEntity> facturas;
-    
+
+    @PodamExclude
+    @OneToOne(cascade = CascadeType.ALL)
+    private TarjetaEntity tarjeta;
+
+    @PodamExclude
+    @OneToOne
+    private UniversidadEntity universidad;
+
+    @PodamExclude
+    @OneToMany(mappedBy = "responsableEventoP", cascade = CascadeType.ALL)
+    private List<EventoEntity> eventosCreados;
+
+    @PodamExclude
+    @ManyToMany
+    private List<EventoEntity> eventosInvitado;
+
+    @PodamExclude
+    @ManyToMany
+    private List<FacturaEntity> facturas;
+
     @PodamExclude
     @ManyToOne
     private ViviendaEntity vivienda;
@@ -88,7 +89,6 @@ public class EstudianteEntity extends BaseEntity {
         this.imagen = imagen;
     }
 
-    
     public List<FacturaEntity> getFacturas() {
         return facturas;
     }
@@ -104,7 +104,7 @@ public class EstudianteEntity extends BaseEntity {
     public void setViviendas(ViviendaEntity viviendas) {
         this.vivienda = viviendas;
     }
-    
+
     public TarjetaEntity getTarjeta() {
         return tarjeta;
     }
@@ -129,15 +129,13 @@ public class EstudianteEntity extends BaseEntity {
         this.eventosCreados.add(evento);
     }
 
-    public List <EventoEntity> getEventosInvitado() {
+    public List<EventoEntity> getEventosInvitado() {
         return eventosInvitado;
     }
 
     public void addEventosInvitado(EventoEntity evento) {
         this.eventosInvitado.add(evento);
     }
-   
-   
 
     public ProvidenciaEntity getProvidencia() {
         return providencia;
@@ -146,11 +144,15 @@ public class EstudianteEntity extends BaseEntity {
     public void setProvidencia(ProvidenciaEntity providencia) {
         this.providencia = providencia;
     }
-    
-    
+
+    public String getRol() {
+        return rol;
+    }
+
     
     /**
      * Método que retorna el nombre del estudiante
+     *
      * @return Nombre del estudiante
      */
     public String getNombre() {
@@ -158,7 +160,8 @@ public class EstudianteEntity extends BaseEntity {
     }
 
     /**
-     * Asigna el nombre del estudiante 
+     * Asigna el nombre del estudiante
+     *
      * @param nombre del estudiante
      */
     public void setNombre(String nombre) {
@@ -166,7 +169,8 @@ public class EstudianteEntity extends BaseEntity {
     }
 
     /**
-     *Método que retorna el estado de arrendaiento del estudiante 
+     * Método que retorna el estado de arrendaiento del estudiante
+     *
      * @return El estado de arrendamiento del estudiante
      */
     public boolean isEstadoArrendamiento() {
@@ -175,18 +179,18 @@ public class EstudianteEntity extends BaseEntity {
 
     /**
      * Asigna el estado de arrentamiento
-     * @param estadoArrendamiento 
+     *
+     * @param estadoArrendamiento
      */
     public void setEstadoArrendamiento(Boolean estadoArrendamiento) {
         this.estadoArrendamiento = estadoArrendamiento;
     }
-    
-    public void agregarEventoCreado(EventoEntity e)
-    {
+
+    public void agregarEventoCreado(EventoEntity e) {
         this.eventosCreados.add(e);
     }
-    public void agregarEventoInvitado(EventoEntity e)
-    {
+
+    public void agregarEventoInvitado(EventoEntity e) {
         this.eventosInvitado.add(e);
     }
 
@@ -201,77 +205,81 @@ public class EstudianteEntity extends BaseEntity {
     //---------------------------------------------------
     // Metodos Anteriores a Usuario
     //---------------------------------------------------
-    
     /**
-     * @return El nombre (nickname en la plataforma) del usuario. 
+     * @return El nombre (nickname en la plataforma) del usuario.
      */
-    public String getUsuario(){
+    public String getUsuario() {
         return usuario;
     }
-    
+
     /**
-     * Crea un nombre de usuario. 
+     * Crea un nombre de usuario.
+     *
      * @param newUser El nuevo ID
      */
-    public void setUsuario(String newUser){
+    public void setUsuario(String newUser) {
         this.usuario = newUser;
     }
-    
+
     /**
      * @return La clave del usuario
      */
-    public String getClave(){
+    public String getClave() {
         return clave;
     }
-    
+
     /**
-     * Crea o cambia una contrasenia. 
+     * Crea o cambia una contrasenia.
+     *
      * @param newPassword La nueva contrasenia.
      */
-    public void setClave(String newPassword){
+    public void setClave(String newPassword) {
         this.clave = newPassword;
     }
-    
+
     /**
      * @return El correo de un usuario.
      */
-    public String getCorreo(){
+    public String getCorreo() {
         return correo;
     }
-    
+
     /**
      * Crea o modifica el correo asociado a un usuario.
-     * @param newEmail El nuevo correo. 
+     *
+     * @param newEmail El nuevo correo.
      */
-    public void setCorreo(String newEmail){
+    public void setCorreo(String newEmail) {
         this.correo = newEmail;
     }
-    
+
     /**
      * @return El numero de un usuario.
      */
-    public String getCelular(){
+    public String getCelular() {
         return celular;
     }
-    
+
     /**
      * Crea o modifica el numero asociado a un usuario.
-     * @param newPhone El nuevo correo. 
+     *
+     * @param newPhone El nuevo correo.
      */
-    public void setCelular(String newPhone){
+    public void setCelular(String newPhone) {
         this.celular = newPhone;
     }
-    
+
     /**
      * @return El numero de cedula de un usuario.
      */
     public String getCedula() {
         return cedula;
     }
-    
+
     /**
      * Crea o modifica el numero de cedula asociado a un usuario.
-     * @param cedula La nueva cedula. 
+     *
+     * @param cedula La nueva cedula.
      */
     public void setCedula(String cedula) {
         this.cedula = cedula;
@@ -283,10 +291,11 @@ public class EstudianteEntity extends BaseEntity {
     public Integer getEdad() {
         return edad;
     }
-    
+
     /**
      * Crea o modifica la edad asociado a un usuario.
-     * @param edad La nueva edad. 
+     *
+     * @param edad La nueva edad.
      */
     public void setEdad(Integer edad) {
         this.edad = edad;

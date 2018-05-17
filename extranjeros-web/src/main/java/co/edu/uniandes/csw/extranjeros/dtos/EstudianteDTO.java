@@ -19,7 +19,7 @@ public class EstudianteDTO  {
      * Nombre del estudiante 
      */
     private String nombre;
-    
+    private String rol;
     /**
      * 
      */
@@ -68,6 +68,7 @@ public class EstudianteDTO  {
        this.edad = this.getEdad();
        this.correo = estudiante.getCorreo();
        this.id = estudiante.getId();
+       this.rol = estudiante.getRol();
        if (estudiante.getImagen()!=null)
        {
            this.imagen = estudiante.getImagen();

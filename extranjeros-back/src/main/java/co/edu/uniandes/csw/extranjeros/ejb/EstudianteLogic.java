@@ -13,6 +13,8 @@ import co.edu.uniandes.csw.extranjeros.entities.UniversidadEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.EstudiantePersistence;
+import co.edu.uniandes.csw.extranjeros.persistence.ProvidenciaPersistence;
+import co.edu.uniandes.csw.extranjeros.persistence.UniversidadPersistence;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -32,6 +34,12 @@ public class EstudianteLogic  {
     
     @Inject
     private EstudiantePersistence estudiantePersistence;
+    
+    @Inject
+    private ProvidenciaPersistence providenciaPersistence;
+    
+    @Inject
+    private UniversidadPersistence universidadPersistence;
     
     /**
      * Devuelve todos los estudiantes que hay en la base de datos.
@@ -80,6 +88,13 @@ public class EstudianteLogic  {
         
         LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
         
+         if (universidadPersistence.find(newUser.getUniversidad().getId())!=null){
+            Long id = newUser.getUniversidad().getId();
+            newUser.setUniversidad(universidadPersistence.find(id));
+        }
+        else{
+            throw new BusinessLogicException("No existe la universidad seleccionada");
+        }
         
         if(newUser.getClave().length() < 8 && newUser.getClave().length() > 15){
             throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15");
@@ -117,6 +132,22 @@ public class EstudianteLogic  {
         LOGGER.log(Level.INFO, "Inicia el proceso de crear un estudiante en la plataforma.");
         
   
+        if (providenciaPersistence.find(newUser.getProvidencia().getId())!=null){
+            Long id = newUser.getProvidencia().getId();
+            newUser.setProvidencia(providenciaPersistence.find(id));
+        }
+        else{
+            throw new BusinessLogicException("No existe la providencia seleccionada");
+        }
+        
+        if (universidadPersistence.find(newUser.getUniversidad().getId())!=null){
+            Long id = newUser.getUniversidad().getId();
+            newUser.setUniversidad(universidadPersistence.find(id));
+        }
+        else{
+            throw new BusinessLogicException("No existe la universidad seleccionada");
+        }
+        
         if (estudiantePersistence.findByUsuario(newUser.getUsuario()) != null){
             throw new BusinessLogicException("Existe un estudiante con el mismo usuario.");
         }
