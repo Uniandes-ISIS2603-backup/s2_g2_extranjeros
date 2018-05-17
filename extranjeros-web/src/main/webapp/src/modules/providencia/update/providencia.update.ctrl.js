@@ -30,9 +30,9 @@
 
             var idProvidencia = $state.params.providenciaId;
 
-            //Consulto la factura a editar.
+            //Consulto la providencia a editar.
             $http.get(providenciaContext + '/' + idProvidencia).then(function (response) {
-                var providencia = providencia.data;
+                var providencia = response.data;
                 $scope.data.pais = providencia.pais;
                 $scope.data.region = providencia.region;
             });
