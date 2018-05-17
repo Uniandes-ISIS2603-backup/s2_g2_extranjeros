@@ -8,7 +8,7 @@
     mod.constant("viviendaContext", "api/viviendas");
     mod.controller('viviendaCtrl', ['$scope', '$http', 'viviendaContext',
         function ($scope, $http, viviendaContext) {
-            $http.get(viviendaContext).then(function (response) {
+            $http.get(viviendaContext+'?filter=').then(function (response) {
                 $scope.viviendasRecords = response.data;
             });
         }

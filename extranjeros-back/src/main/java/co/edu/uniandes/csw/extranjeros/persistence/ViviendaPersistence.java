@@ -36,6 +36,13 @@ public class ViviendaPersistence {
         Query q = em.createQuery("select u from ViviendaEntity u");
         return q.getResultList();
     }
+    
+    public List<ViviendaEntity> findAllDisponibles()
+    {
+        LOGGER.info("Consultando todas las viviendas disponibles");
+        Query q = em.createQuery("select u from ViviendaEntity u where u.capacidad>u.inquilinos");
+        return q.getResultList();
+    }
 
     public ViviendaEntity create(ViviendaEntity entity) {
         LOGGER.info("Creando una vivienda nueva");

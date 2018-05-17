@@ -282,8 +282,9 @@ public class ViviendaDetailDTO extends ViviendaDTO {
     /**
      * @param universidad the universidad to set
      */
-    public void setUniversidad(List<UniversidadDTO> universidades) {
+    public void setUniversidades(List<UniversidadDTO> universidades) {
         this.universidades = universidades;
     }
+    
 }
 

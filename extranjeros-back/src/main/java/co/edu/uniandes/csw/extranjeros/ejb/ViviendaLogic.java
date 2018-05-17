@@ -20,7 +20,10 @@ import co.edu.uniandes.csw.extranjeros.persistence.LugaresDeInteresPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.ServicioPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.UniversidadPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.ViviendaPersistence;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,7 +92,8 @@ public class ViviendaLogic {
     
     ArrendatarioEntity arrendatariosPropietarios = null;
     if(vivienda.getArrendatariosPropietarios()!=null)
-    arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
+    if(vivienda.getArrendatariosPropietarios().getId()!=null)
+        arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
    if(arrendatariosPropietarios!=null) vivienda.setArrendatariosPropietarios(arrendatariosPropietarios);
    
    List <EstudianteEntity> estudiantes = new ArrayList<>();
@@ -152,6 +156,7 @@ public class ViviendaLogic {
     
     ArrendatarioEntity arrendatariosPropietarios = null;
     if(vivienda.getArrendatariosPropietarios()!=null)
+    if(vivienda.getArrendatariosPropietarios().getId()!=null)
     arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
    if(arrendatariosPropietarios!=null) vivienda.setArrendatariosPropietarios(arrendatariosPropietarios);
    
@@ -209,13 +214,14 @@ public class ViviendaLogic {
    /*
    *´retorna la lista de viviendas asociadas a una universidad
    */
-   public List<ViviendaEntity> viviendaPorUniversidad(Long idUniversidad){
+   public List<ViviendaEntity> viviendaPorUniversidad(List<ViviendaEntity> actual, Long idUniversidad){
        ArrayList<ViviendaEntity> retornar = new ArrayList<>();
        UniversidadEntity universidad = universidadPersistence.find(idUniversidad);
-       List<ViviendaEntity> iterar = getViviendas();
-       for (int i = 0; i < iterar.size(); i++) {
-           if(iterar.get(i).getUniversidades().contains(universidad)){
-               retornar.add(iterar.get(i));
+       if(actual.isEmpty())
+           actual= persistence.findAll();
+       for (int i = 0; i < actual.size(); i++) {
+           if(actual.get(i).getUniversidades().contains(universidad)){
+               retornar.add(actual.get(i));
            }
        }
        return retornar;
@@ -224,12 +230,13 @@ public class ViviendaLogic {
    /*
    *Retorna una lsta de viviendas debajo de un precio dado
    */
-     public List<ViviendaEntity> viviendaPorPrecio(Double precio){
+     public List<ViviendaEntity> viviendaPorPrecio(List<ViviendaEntity> actual, Double precio){
        ArrayList<ViviendaEntity> retornar = new ArrayList<>();
-       List<ViviendaEntity> iterar = getViviendas();
-       for (int i = 0; i < iterar.size(); i++) {
-           if(iterar.get(i).getPrecioMensual()<=precio){
-               retornar.add(iterar.get(i));
+       if(actual.isEmpty())
+           actual= persistence.findAll();
+       for (int i = 0; i < actual.size(); i++) {
+           if(actual.get(i).getPrecioMensual()<=precio){
+               retornar.add(actual.get(i));
            }
        }
        return retornar;
@@ -238,16 +245,79 @@ public class ViviendaLogic {
    /*
    *Retorna una lsta de viviendas que tengas una lista de servicios 
    */
-     public List<ViviendaEntity> viviendaPorServicios(ArrayList<ServicioEntity> servicios){
+     public List<ViviendaEntity> viviendaPorServicios(List<ViviendaEntity> actual, String serv){
+       String[] s=serv.split(";");
+       ArrayList<ServicioEntity> servicios=new ArrayList<>();
+       for(int i=0; i<s.length;i++)
+       {
+           servicios.add(servicioPersistence.find(Long.valueOf(s[i]).longValue()));
+       }
        ArrayList<ViviendaEntity> retornar = new ArrayList<>();
-       List<ViviendaEntity> iterar = getViviendas();
-       for (int i = 0; i < iterar.size(); i++) {
-           if(iterar.get(i).getServiciosFijos().containsAll(servicios)){
-               retornar.add(iterar.get(i));
+       if(actual.isEmpty())
+           actual= persistence.findAll();
+       for (int i = 0; i < actual.size(); i++) {
+           if(actual.get(i).getServiciosFijos().containsAll(servicios)){
+               retornar.add(actual.get(i));
            }
        }
        return retornar;
    }
+  /*
+   *Retorna una lsta de viviendas ordeandas por precios
+   */
+     public List<ViviendaEntity> viviendaOrdenadaPorPrecios(List<ViviendaEntity> actual){
+         if(actual.isEmpty())
+           actual= getViviendas();
+        bubbleSort(actual);
+       return actual;         
+     }
+     /*
+     *Metodo que retorna una lista de viviendas disponibles dentro de un periodo dado
+     */
+     
+     public List<ViviendaEntity> viviendasPorFecha (String fecha){
+         List<ViviendaEntity> retornar = new ArrayList<>();
+         String ini = fecha.split(";")[0];
+         String f = fecha.split(";")[1];
+         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+         Date inicio = null;
+         Date fin = null;
+        try {
+
+            inicio  = formatter.parse(ini);
+            fin = formatter.parse(f);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+         List<ViviendaEntity> viviendas = getViviendas();
+         List<FacturaEntity> facturas;
+         FacturaEntity actual;
+         boolean sirve = true;
+         ViviendaEntity vivienda = null;
+         for (int i = 0; i < viviendas.size(); i++) {
+             if(inicio!=null && fin !=null){
+             vivienda = viviendas.get(i);
+             facturas = vivienda.getFacturas();
+             for (int j = 0; j < facturas.size(); j++) {
+                 actual = facturas.get(j);
+                if(actual.getFechaSalida().before(inicio)||actual.getFechaEntrada().after(fin)){
+                    
+                }else{
+                    sirve = false; 
+                    break;
+                }
+             }
+             }
+             if(sirve == true && vivienda !=null){
+                 retornar.add(vivienda);
+             }
+             vivienda = null;
+             
+             
+         }
+         return retornar;
+     }
    /*
      *Metodo que calcula la distancia en metros entre dos puntos
      */
@@ -274,4 +344,30 @@ public class ViviendaLogic {
         LOGGER.log(Level.INFO, "Inicia el proceso para consultar las Facturas asociadas al Arrendatario con id = {0}", userID);
         return getVivienda(userID).getLugaresDeInteres();
     }
+    static void bubbleSort(List<ViviendaEntity> arr)
+    {
+        int n=arr.size();
+        int i, j;
+        ViviendaEntity temp;
+        boolean swapped;
+        for (i = 0; i < n - 1; i++) 
+        {
+            swapped = false;
+            for (j = 0; j < n - i - 1; j++) 
+            {
+                if (arr.get(j).getPrecioMensual() > arr.get(j+1).getPrecioMensual()) 
+                {
+                   
+                    temp = arr.get(j);
+                    arr.set(j, arr.get(j+1));
+                    arr.set(j+1, temp);
+                    swapped = true;
+                }
+            }
+
+            if (swapped == false)
+                break;
+        }
+    }
+    
 }

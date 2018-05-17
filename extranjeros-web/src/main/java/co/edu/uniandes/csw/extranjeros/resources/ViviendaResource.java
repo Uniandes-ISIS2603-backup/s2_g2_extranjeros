@@ -28,6 +28,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -99,8 +100,22 @@ public class ViviendaResource {
      * @return JSONArray {@link AuthorDetailDTO} -las viviendas encontrados en la aplicación. Si no hay ninguna retorna una lista vacía.
      */
     @GET
-    public List<ViviendaDetailDTO> getViviendas(){
-        return listEntity2DTO(logic.getViviendas());
+    public List<ViviendaDetailDTO> getViviendas(@QueryParam("filter") String filter){
+        List<ViviendaEntity> lista=logic.getViviendas();
+        if(filter!=null)
+        {
+            String[] filtros=filter.split(",");
+        
+        if(filtros[0].equals("1:1"))
+            lista=logic.viviendaOrdenadaPorPrecios(lista);
+        if(filtros[1].startsWith("2:"))
+            lista=logic.viviendaPorPrecio(lista, Double.parseDouble(filtros[1].substring(2,filtros[1].length())));
+        if(filtros[2].startsWith("3:"))
+            lista=logic.viviendaPorServicios(lista, filtros[2].replace("3:", ""));
+        if(filtros[3].startsWith("4:"))
+            lista=logic.viviendaPorUniversidad(lista,Long.valueOf(filtros[3].replace("4:", "")).longValue());
+        }
+        return listEntity2DTO(lista);
     }
     
     /**
