@@ -20,7 +20,10 @@ import co.edu.uniandes.csw.extranjeros.persistence.LugaresDeInteresPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.ServicioPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.UniversidadPersistence;
 import co.edu.uniandes.csw.extranjeros.persistence.ViviendaPersistence;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,7 +92,8 @@ public class ViviendaLogic {
     
     ArrendatarioEntity arrendatariosPropietarios = null;
     if(vivienda.getArrendatariosPropietarios()!=null)
-    arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
+    if(vivienda.getArrendatariosPropietarios().getId()!=null)
+        arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
    if(arrendatariosPropietarios!=null) vivienda.setArrendatariosPropietarios(arrendatariosPropietarios);
    
    List <EstudianteEntity> estudiantes = new ArrayList<>();
@@ -152,6 +156,7 @@ public class ViviendaLogic {
     
     ArrendatarioEntity arrendatariosPropietarios = null;
     if(vivienda.getArrendatariosPropietarios()!=null)
+    if(vivienda.getArrendatariosPropietarios().getId()!=null)
     arrendatariosPropietarios = arrendatarioPersistence.find(vivienda.getArrendatariosPropietarios().getId());
    if(arrendatariosPropietarios!=null) vivienda.setArrendatariosPropietarios(arrendatariosPropietarios);
    
@@ -266,7 +271,53 @@ public class ViviendaLogic {
         bubbleSort(actual);
        return actual;         
      }
-    
+     /*
+     *Metodo que retorna una lista de viviendas disponibles dentro de un periodo dado
+     */
+     
+     public List<ViviendaEntity> viviendasPorFecha (String fecha){
+         List<ViviendaEntity> retornar = new ArrayList<>();
+         String ini = fecha.split(";")[0];
+         String f = fecha.split(";")[1];
+         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+         Date inicio = null;
+         Date fin = null;
+        try {
+
+            inicio  = formatter.parse(ini);
+            fin = formatter.parse(f);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+         List<ViviendaEntity> viviendas = getViviendas();
+         List<FacturaEntity> facturas;
+         FacturaEntity actual;
+         boolean sirve = true;
+         ViviendaEntity vivienda = null;
+         for (int i = 0; i < viviendas.size(); i++) {
+             if(inicio!=null && fin !=null){
+             vivienda = viviendas.get(i);
+             facturas = vivienda.getFacturas();
+             for (int j = 0; j < facturas.size(); j++) {
+                 actual = facturas.get(j);
+                if(actual.getFechaSalida().before(inicio)||actual.getFechaEntrada().after(fin)){
+                    
+                }else{
+                    sirve = false; 
+                    break;
+                }
+             }
+             }
+             if(sirve == true && vivienda !=null){
+                 retornar.add(vivienda);
+             }
+             vivienda = null;
+             
+             
+         }
+         return retornar;
+     }
    /*
      *Metodo que calcula la distancia en metros entre dos puntos
      */
@@ -318,4 +369,5 @@ public class ViviendaLogic {
                 break;
         }
     }
+    
 }
