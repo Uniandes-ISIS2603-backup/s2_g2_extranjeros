@@ -105,16 +105,23 @@ public class EstudianteDetailDTO extends EstudianteDTO {
     
     public EstudianteEntity toEntity(){
         EstudianteEntity entity = super.toEntity();
-        entity.setUniversidad(universidad.toEntity());
-        entity.setTarjeta(tarjeta.toEntity());
-        entity.setProvidencia(providencia.toEntity());
+        if (universidad!=null){
+        entity.setUniversidad(universidad.toEntity());}
+        if(tarjeta!=null){
+        entity.setTarjeta(tarjeta.toEntity());}
+        if(providencia!=null){
+        entity.setProvidencia(providencia.toEntity());}
+        if(eventosCreados.size()>0){
         for (int i=0; i<getEventosCreados().size(); i++)
         {
             entity.agregarEventoCreado(eventosCreados.get(i).toEntity());
         }
+        }
+        if(eventosInvitado.size()>0){
         for (int i=0; i< getEventosInvitado().size(); i++)
         {
             entity.agregarEventoInvitado(eventosInvitado.get(i).toEntity());
+        }
         }
         return entity ;
     }

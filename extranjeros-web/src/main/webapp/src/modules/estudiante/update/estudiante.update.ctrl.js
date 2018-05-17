@@ -1,7 +1,9 @@
 (function (ng) {
     var mod = ng.module("estudianteModule");
     mod.constant("estudianteContext", "api/estudiante");
-    mod.controller('estudianteUpdateCtrl', ['$scope', '$http', 'estudianteContext', '$state', '$rootScope',
+    mod.constant("universidadesContext", "api/universidades");
+    mod.constant("providenciaContext","api/providencia");
+    mod.controller('estudianteUpdateCtrl', ['$scope', '$http', 'estudianteContext', '$state', '$rootScope','universidadesContext','providenciaContext',
         /**
          * @ngdoc controller
          * @name universidades.controller:universidadUpdateCtrl
@@ -19,14 +21,24 @@
          * @param {Object} $filter Dependencia injectada para hacer filtros sobre
          * arreglos.
          */
-        function ($scope, $http, estudianteContext, $state, $rootScope) {
-            $rootScope.edit = true;
-
+        function ($scope, $http, estudianteContext, $state, $rootScope,universidadesContext, providenciaContext) {
+            $rootScope.edit = false;
+            $scope.universidadesRecords=[];
+            $scope.providenciaRecords=[];
             $scope.data = {};
+            $http.get(universidadesContext).then(function (response) {
+                $scope.universidadesRecords = response.data;
+            });
+            
+            $http.get(providenciaContext).then(function (response) {
+                $scope.providenciaRecords = response.data;
+            });
 
             $scope.selectedItems = [];
 
             $scope.availableItems = [];
+            
+            
 
             var idEstudiante = $state.params.estudianteId;
 
@@ -42,6 +54,8 @@
                 $scope.data.celular = estudiante.celular;
                 
             });
+            
+            
 
             /**
              * @ngdoc function
