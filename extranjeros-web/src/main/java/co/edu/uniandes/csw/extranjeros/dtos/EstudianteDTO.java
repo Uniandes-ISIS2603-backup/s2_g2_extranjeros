@@ -82,6 +82,7 @@ public class EstudianteDTO  {
        entity.setClave(clave);
        entity.setNombre(nombre);
        entity.setCorreo(correo);
+       entity.setUsuario(usuario);
        if (estadoArrendamiento!=null){
            entity.setEstadoArrendamiento(estadoArrendamiento);
        }

@@ -156,7 +156,7 @@ public class ProvidenciaResouce {
     @PUT
     @Path("{id: \\d+}")
      public ProvidenciaDetailDTO updateProvidencia(@PathParam("id") Long id, ProvidenciaDetailDTO providencia) throws BusinessLogicException {
-        if(providenciaLogic.getProvidencia(providencia.getId()) == null){
+        if(providenciaLogic.getProvidencia(id) == null){
             throw new WebApplicationException("El recurso /providencia/" + id + " no existe.", 404);
         }
         return new ProvidenciaDetailDTO(providenciaLogic.updateProvidencia(providencia.toEntity()));
