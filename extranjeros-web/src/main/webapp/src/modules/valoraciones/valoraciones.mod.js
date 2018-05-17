@@ -12,7 +12,7 @@
             
             $stateProvider.state('valoraciones', {
                 
-                url: '/{viviendaId:int}/valoraciones',
+                url: 'viviendas/{viviendaId:int}/valoraciones',
                 abstract:true,
                 
                 param: {viviendaId: null},
