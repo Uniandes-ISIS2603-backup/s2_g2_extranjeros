@@ -135,8 +135,7 @@ and open the template in the editor.
             <div class="form-group">
                 <label for="sel2" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Universidad:</label>
                 <div class="col-md-7" style="margin: auto; align-content: center;">
-                    <select class="form-control" id="sel2" ng-model="data.universidad.id"> 
-                        <option>Ninguna</option>
+                    <select class="form-control" id="sel2" ng-model="data.universidad.id">  <option>Ninguna</option>
                         <option ng-repeat="universidad in universidadesRecords" value="{{universidad.id}}">{{universidad.nombre}}</option>    
                     </select>
                 </div>
