@@ -26,6 +26,10 @@
                         controller: 'cuentaBancariaCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Arrendatario', 'Administrador']
                 }
             }).state('cuentaBancariaDetalle', {
                 url: '/{cuentaBancariaId:int}/detalle',
@@ -37,6 +41,10 @@
                         controller: 'cuentaBancariaDetailCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Arrendatario', 'Administrador']
                 }
             }).state('cuentaBancariaCreate', {
                 url: '/createCuenta',
@@ -46,6 +54,10 @@
                         templateUrl: basePath + '/post/cuentaBancaria.new.html',
                         controller: 'cuentaBancariaPostCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Arrendatario', 'Administrador']
                 }
                 
             }).state('cuentaBancariaUpdate', {
@@ -60,6 +72,28 @@
                         templateUrl: basePath + '/update/cuentaBancaria.update.html',
                         controller: 'cuentaBancariaUpdateCtrl'
                     }
+                },
+                
+                data: {
+                    requireLogin: true,
+                    roles: ['Arrendatario', 'Administrador']
+                }
+            }).state('cuentaBancariaDelete', {
+                url: '/delete/{cuentaBancariaId:int}',
+                parent: 'cuentasBancarias',
+                param: {
+                    arrendatarioId: null,
+                    cuentaBancariaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/cuentaBancaria.delete.html',
+                        controller: 'cuentaBancariaDeleteCtrl'
+                    }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Arrendatario', 'Administrador']
                 }
             });
         }]);

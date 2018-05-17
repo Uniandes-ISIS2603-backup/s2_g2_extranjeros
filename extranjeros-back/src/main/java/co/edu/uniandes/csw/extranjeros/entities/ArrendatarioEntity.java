@@ -63,6 +63,8 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
     
     private String imagen;
     
+    private String rol;
+    
     //---------------------------------------------------
     // Metodos
     //---------------------------------------------------
@@ -228,5 +230,13 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 } 

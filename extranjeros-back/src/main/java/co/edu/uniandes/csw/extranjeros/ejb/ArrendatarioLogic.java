@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.extranjeros.entities.FacturaEntity;
 import co.edu.uniandes.csw.extranjeros.entities.ViviendaEntity;
 import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.ArrendatarioPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +34,9 @@ public class ArrendatarioLogic {
     //---------------------------------------------------
     @Inject  
     private ArrendatarioPersistence persistence;
+    
+    @Inject  
+    private ViviendaLogic vivLogic;
 
     //---------------------------------------------------
     // Metodos Usuario(DTO) - Resource: sin relaciones
@@ -330,8 +334,12 @@ public class ArrendatarioLogic {
         
         ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
         ViviendaEntity viviendaEntity = new ViviendaEntity();
+        System.out.println(viviendaEntity.getCapacidad());
         viviendaEntity.setId(viviendaId);
-        arrendEntity.getViviendas().add(viviendaEntity);
+        viviendaEntity = vivLogic.getVivienda(viviendaId);
+        List<ViviendaEntity> set = new ArrayList<>();
+        set.add(viviendaEntity);
+        arrendEntity.setViviendas(set);
         
         return getVivienda(arrendatarioId, viviendaId);
     }

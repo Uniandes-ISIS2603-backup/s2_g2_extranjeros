@@ -18,21 +18,26 @@
                         
                         <br>
 
-                        <div class="alert alert-info alert-dismissible" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">
+                        <div class="alert alert-info alert-dismissible" ng-repeat ="alert in alerts" type="{{alert.type}}" close="closeAlert()">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
                             <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;">  <strong>Hey!</strong> </span>
                             <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;"> {{alert.msg}}  </span> 
                         </div>
                         
                         <hr>  
-                        <p class="pull-left" style="font-family: 'Roboto', sans-serif; font-size: 1.5em; color: navy;" ng-model="data.UserName"> Usuario o Correo </p>
-                        <input type="text" class="form-control" placeholder="Username" required="" autofocus="">
+                        <p class="pull-left" style="font-family: 'Roboto', sans-serif; font-size: 1.5em; color: navy;"> Usuario o Correo </p>
+                            <input type="text" class="form-control" placeholder="Username" required="" autofocus="" ng-model="userName">
                         <br> <br> 
-                        <p class="pull-left" style="font-family: 'Roboto', sans-serif; font-size: 1.5em; color: navy;" ng-model="data.Contrasenia"> Clave </p>
-                        <p style="text-align: center;"> <input type="password" class="form-control" placeholder="Password" required=""> </p>
+                        <p class="pull-left" style="font-family: 'Roboto', sans-serif; font-size: 1.5em; color: navy;"> Clave </p> 
+                            <input type="password" class="form-control" placeholder="Password" required="" ng-model="claveX"> 
                         <br> 
                         <p style="text-align: center;">
                             <button type="button" class="btn btn-primary btn-lg" ng-click="autenticar()"> Ingresar </button>
+                        </p>
+                        
+                        <br> 
+                        <p style="text-align: center; font-family: 'Roboto', sans-serif; font-size: 1.2em;">
+                            ¿No tienes una cuenta? <a ui-sref="signUp"> <span style="color: navy;"> Regístrate </span> </a>
                         </p>
                     </div>
                 </div>

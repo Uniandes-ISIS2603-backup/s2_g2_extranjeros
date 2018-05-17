@@ -47,6 +47,7 @@ public class ArrendatarioDTO {
     private Long id;
     
     private String imagen;
+    private String rol;
     //---------------------------------------------------
     // Constructor
     //---------------------------------------------------
@@ -78,6 +79,7 @@ public class ArrendatarioDTO {
             this.cedula = entity.getCedula();
             this.edad = entity.getEdad();
             this.imagen = entity.getImagen();
+            this.rol = "Arrendatario";
         }
     }
     
@@ -105,7 +107,7 @@ public class ArrendatarioDTO {
         entity.setEdad(this.edad);
         entity.setCedula(this.cedula);
         entity.setImagen(this.imagen);
-        
+        entity.setRol("Arrendatario");
         // Return
         return entity;
     }
@@ -236,5 +238,13 @@ public class ArrendatarioDTO {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }
