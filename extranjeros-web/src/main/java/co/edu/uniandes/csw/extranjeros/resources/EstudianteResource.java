@@ -153,7 +153,7 @@ public class EstudianteResource {
     @Path("{id: \\d+}")
     public EstudianteDetailDTO updateEstudiante(@PathParam("id") Long id, EstudianteDetailDTO estudiante) throws BusinessLogicException
     {
-        if(logic.getEstudiante(estudiante.getId()) == null){
+        if(logic.getEstudiante(id)== null){
             throw new WebApplicationException("El recurso /estudiante/" + id + " no existe.", 404);
         }
         return new EstudianteDetailDTO(logic.updateEstudiante(estudiante.toEntity()));

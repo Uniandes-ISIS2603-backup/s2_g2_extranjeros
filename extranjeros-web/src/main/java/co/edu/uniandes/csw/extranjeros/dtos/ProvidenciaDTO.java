@@ -56,6 +56,7 @@ public class ProvidenciaDTO {
     
     public ProvidenciaEntity toEntity(){
         ProvidenciaEntity entity= new ProvidenciaEntity();
+        entity.setId(id);
         entity.setRegion(region);
         entity.setPais(pais);
         return entity;

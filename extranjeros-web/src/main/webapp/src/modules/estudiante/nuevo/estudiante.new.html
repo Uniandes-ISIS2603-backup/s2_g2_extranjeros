@@ -120,8 +120,8 @@ and open the template in the editor.
             <div class="form-group">
                 <label for="sel1" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Providencia:</label>
                 <div class="col-md-7" style="margin: auto; align-content: center;">
-                    <select class="form-control" id="sel1" >
-                        <option ng-repeat="providencia in providenciaRecords" value="{{providencia.id}}" ng-model="providencia">{{providencia.pais}}, {{providencia.region}}</option>
+                    <select class="form-control" id="sel1" ng-model="data.providencia.id" >
+                        <option ng-repeat="providencia in providenciaRecords" value="{{providencia.id}}" >{{providencia.pais}}, {{providencia.region}}</option>
                     </select>
                 </div>
             </div>
@@ -135,13 +135,20 @@ and open the template in the editor.
             <div class="form-group">
                 <label for="sel2" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Universidad:</label>
                 <div class="col-md-7" style="margin: auto; align-content: center;">
-                    <select class="form-control" id="sel2" ng-model="uniSelect"> 
-                        <option>Ninguna</option>
+                    <select class="form-control" id="sel2" ng-model="data.universidad.id">  <option>Ninguna</option>
                         <option ng-repeat="universidad in universidadesRecords" value="{{universidad.id}}">{{universidad.nombre}}</option>    
                     </select>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <hr>  
+    </div>
+    
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <label  style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Recuerda adicionar un medio de pago una vez estes registrado</label>   
     </div>
 
 </div>
@@ -158,7 +165,7 @@ and open the template in the editor.
         <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createEstudiante()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
             Guardar cambios
         </button>
-        <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="estudianteIngresar" >
+        <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="signUp" >
             Cancel   
         </button>
     </div>

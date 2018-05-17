@@ -18,8 +18,11 @@
 
         </div>
         <div id="{{$index}}-actions" class="row">
-            <a class="btn btn-default btn-sm" ui-sref="estudianteUpdate({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-edit"></span></a>
-            <a class="btn btn-danger btn-sm" ui-sref="estudianteDelete({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-trash"></span></a>
+            <a class="btn btn-default btn-sm" ng-disabled="currentEstudiante.tarjeta.id === undefined" ui-sref="tarjetaDetail({tarjetaId: currentEstudiante.tarjeta.id})"><span class="glyphicon glyphicon-credit-card"></span> Ver Tarjeta</a>
+            <a class="btn btn-default btn-sm" ng-disabled="currentEstudiante.tarjeta.id === undefined" ui-sref="tarjetaDelete({tarjetaId: currentEstudiante.tarjeta.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar Tarjeta</a>
+            <a class="btn btn-default btn-sm" ng-disabled="currentEstudiante.tarjeta.id !== undefined" ui-sref="tarjetaCreate"><span class="glyphicon glyphicon-credit-card"></span> Nueva Tarjeta</a>
+            <a class="btn btn-default btn-sm" ui-sref="estudianteUpdate({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-edit"></span> Edita tu perfil</a>
+            <a class="btn btn-danger btn-sm" ui-sref="estudianteDelete({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-trash"></span> Elimina tu cuenta</a>
         </div>
     </div>
 </div>

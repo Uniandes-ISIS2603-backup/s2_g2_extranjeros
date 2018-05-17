@@ -99,7 +99,7 @@ and open the template in the editor.
             </div>
         </div>
     </div>
-    
+
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>
@@ -108,14 +108,16 @@ and open the template in the editor.
                 <label for="sel2" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Universidad:</label>
                 <div class="col-md-7" style="margin: auto; align-content: center;">
                     <select class="form-control" id="sel2" ng-model="uniSelect"> 
-                        <option>Ninguna</option>
                         <option ng-repeat="universidad in universidadesRecords" value="{{universidad.id}}">{{universidad.nombre}}</option>    
                     </select>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <hr>     
+    </div>
+ 
 </div>
 
 

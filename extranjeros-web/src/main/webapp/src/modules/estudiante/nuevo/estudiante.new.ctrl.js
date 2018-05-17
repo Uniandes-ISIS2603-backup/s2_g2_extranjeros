@@ -14,9 +14,7 @@
             $scope.universidadesRecords = [];
             $scope.providenciaRecords = [];
             $scope.data = {};
-            $scope.pro={};
-            $scope.uni={};
-
+         
             $http.get(universidadesContext).then(function (response) {
                 $scope.universidadesRecords = response.data;
             });
@@ -26,9 +24,9 @@
             });
             
             $scope.createEstudiante = function () {
-                
+                console.log($scope.data);
                 $http.post(estudianteContext, $scope.data).then(function (response) {
-                    $state.go('estudianteList', {estudianteId: response.data.id}, {reload: true});
+                    $state.go('estudianteIngresar', {estudianteId: response.data.id}, {reload: true});
                 });
             };
             

@@ -70,6 +70,8 @@
                     $state.go('estudianteList', {estudianteId: response.data.id}, {reload: true});
                 });
             };
+            
+           
         }
     ]);
 }
