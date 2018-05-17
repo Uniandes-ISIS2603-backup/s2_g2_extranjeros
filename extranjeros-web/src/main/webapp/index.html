@@ -149,15 +149,20 @@
 
     <body>
 
-        <div class="container-fluid col-md-12">
+        <div class="container-fluid col-md-12" style="padding:0;">
             <div class="row">
-                <div class="col-lg-12" style="height: 3.8em;">
-                    <nav class="navbar navbar-default" style="padding-top: 0.5em;">
+                <div class="col-lg-12" style="height: auto;">
+                    <nav class="navbar navbar-default" style="padding-top: 0.5em; z-index: 10;">
                         <div class="container-fluid">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href=""> <p style="text-align: center; font-size: 1.5em; font-family: 'Roboto', sans-serif; color: darkorange;"> Lease Me App </p></a>
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>                        
+                                  </button>
+                                <a class="navbar-brand" href="./"> <p style="text-align: center; font-size: 1.5em; font-family: 'Roboto', sans-serif; color: darkorange;"> Lease Me App </p></a>
                             </div>
-
+                            <div class="collapse navbar-collapse" id="myNavbar">
                             <ul ng-if="isAuthenticated()" class="nav navbar-nav navbar-right">
 
                                 <li style="padding-right: 1.5em;"><a ui-sref="viviendasList"> <span style="color: navy; font-family: 'Roboto', sans-serif;">Viviendas</span></a></li>   
@@ -185,6 +190,7 @@
                             <ul class="nav navbar-nav navbar-right">
 
                             </ul>
+                            </div>
                         </div>
 
                     </nav>

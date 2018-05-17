@@ -1,15 +1,17 @@
 
 <div class="container-fluid">
-    <div class="row" style="margin-bottom: 20px; margin-top:20px;">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-            <a class="btn btn-info" ui-sref="eventoCreate">
-            <span class="glyphicon glyphicon-plus-sign"></span> Crear evento</a>
+    <div class="row col-md-4" style="margin-bottom: 20px;">
+        <div class="col-md-10" style="background-color: #f5f5f5; border-radius: 10px;">
+            <div class="row col-md-12" style="margin:20px 0 20px 0; padding-top:20px; text-align: center;">
+                <div class="btn-group mr-2"  role="group" aria-label="First group">
+                     <a class="btn btn-info" ui-sref="eventoCreate">
+                    <span class="glyphicon glyphicon-plus-sign"></span> Crear evento</a>
+                 </div>
+            </div>
+            <div ui-view="listView"></div>
         </div>
     </div>
-    <div class="row">
-        <div ui-view="listView"></div>
-    </div>
-    <div class="row">
+    <div class="row col-md-8" >
         <div ui-view="detailView"></div>
     </div>
 </div>

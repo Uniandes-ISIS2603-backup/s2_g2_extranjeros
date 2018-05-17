@@ -27,6 +27,9 @@
                 url: '/create',
                 parent: 'eventos',
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'eventos.new.html',
                         controller: 'eventoNewCtrl'
@@ -62,6 +65,9 @@
                     eventoId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'eventos.delete.html',
                         controller: 'eventoDeleteCtrl'
@@ -74,6 +80,9 @@
                     eventoId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'eventos.update.html',
                         controller: 'eventoUpdateCtrl'

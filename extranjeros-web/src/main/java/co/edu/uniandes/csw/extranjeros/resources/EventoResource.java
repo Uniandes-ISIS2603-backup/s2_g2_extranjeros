@@ -116,6 +116,32 @@ public class EventoResource {
         }
         return res;
     }
+    
+    
+    /**
+     * <h1>GET /api/eventos/buscar/{fechaP} : Obtener todos los eventos en una fecha.</h1>
+     * 
+     * <pre>Busca y devuelve todos los eventos que existen en una fecha.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Devuelve todos los eventos en una fecha.</code> 
+     * </pre>
+     * @param fechaP fecha de los eventos que se estan buscando. Este debe ser una cadena de la forma DD/MM/YYYY.
+     * @return JSONArray {@link EventoDetailDTO} - Los Eventos encontradas en la aplicación. Si no hay ninguna retorna una lista vacía.
+     */
+    @GET
+    @Path("buscar/{fechaP}")
+    public List<EventoDetailDTO> getEventosByDate(@PathParam("fechaP") String fechaP) {
+        
+        List<EventoEntity> evens = eventoLogic.findByDate(fechaP);
+        List<EventoDetailDTO> res = new ArrayList<>();
+        for(EventoEntity eve:evens)
+        {
+            res.add(new EventoDetailDTO(eve));
+        }
+        return res;
+    }
 
     /**
      * <h1>GET /api/eventos/{id} : Obtener eventos por id.</h1>

@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.extranjeros.persistence.EventoPersistence;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -143,7 +144,7 @@ public class EventoLogic {
     
     /**
      * Método que encuentra todos los eventos
-     * @return 
+     * @return
      */
     public List<EventoEntity> findAll()
     {
@@ -183,5 +184,34 @@ public class EventoLogic {
     public void delete(Long id)
     {
         persistence.delete(id);
+    }
+    
+    /**
+     * Método que encuentra todos los eventos dada una fecha.
+     * @param fechaParam fecha buscada
+     * @return lista con los eventos en esa fecha.
+     */
+    public List<EventoEntity> findByDate(String fechaParam)
+    {
+        String cualquierCosa = fechaParam;
+        List<EventoEntity> allEvents = persistence.findAll();
+        List<EventoEntity> enFecha = new ArrayList<>();
+        String cambiada = cualquierCosa.replace('-', '/');        
+        System.out.println(cambiada);
+            for(EventoEntity eve:allEvents)
+            {
+                String fecha = eve.getFechaEvento();
+                String[] fechas = fecha.split(" ");
+                System.out.println(fechas[0]);
+                if(cambiada.equals(fechas[0]))
+                {
+                    enFecha.add(eve);
+                }
+                
+            }
+        
+        return enFecha;
+        
+        
     }
 }

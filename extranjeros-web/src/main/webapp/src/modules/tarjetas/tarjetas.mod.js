@@ -38,6 +38,9 @@
                     tarjetaId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'tarjetas.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'tarjetas.update.html',
                         controller: 'tarjetaUpdateCtrl'
@@ -62,6 +65,9 @@
                 url: '/create',
                 parent: 'tarjetas',
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'tarjetas.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'tarjetas.new.html',
                         controller: 'tarjetaNewCtrl'
@@ -74,6 +80,9 @@
                     tarjetaId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'tarjetas.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'tarjetas.delete.html',
                         controller: 'tarjetaDeleteCtrl'
