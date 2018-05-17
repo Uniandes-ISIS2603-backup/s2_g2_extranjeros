@@ -152,3 +152,13 @@
     min-width: 100%; 
     min-height: 100%;
 }
+
+.logOut{
+    background-image: url("https://images.pexels.com/photos/1059976/pexels-photo-1059976.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    min-width: 100%; 
+    min-height: 100%;
+}
+.mySlides {
+    display:none;
+}

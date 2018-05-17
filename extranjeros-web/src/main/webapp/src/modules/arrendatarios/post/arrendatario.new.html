@@ -5,6 +5,11 @@
         <p class="Join-Us"> Únete y contribuye </p>
     </div>
     
+    <div class="alert alert-info alert-dismissible" ng-repeat ="alert in alerts" type="{{alert.type}}" close="closeAlert()">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+        <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;">  <strong>Hey!</strong> </span>
+        <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;"> {{alert.msg}}  </span> 
+    </div>
     
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">

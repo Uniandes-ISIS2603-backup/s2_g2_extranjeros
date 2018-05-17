@@ -8,6 +8,10 @@
             $stateProvider.state('arrendatarios', {
                 url: '/arrendatarios',
                 abstract: true,
+                data: {
+                        requireLogin: true,
+                        roles: []
+                    },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'arrendatario.html',
@@ -21,12 +25,13 @@
                 views: {
                     'listView': {
                         templateUrl: basePath + 'arrendatario.list.html'
-                    },
-                    data: {
-                    requireLogin: true,
-                    roles: []
                     }
+                },
+                data: {
+                        requireLogin: true,
+                        roles: ['Administrador']
                 }
+                
             }).state('arrendatarioDetail', {
                 url: '/{arrendatarioId:int}/detail',
                 parent: 'arrendatarios',
@@ -39,7 +44,11 @@
                         controller: 'arrendatarioDetailCtrl',
                         controllerAs: 'ctrl'
                     }
-
+                },
+                
+                data: {
+                        requireLogin: true,
+                        roles: ['Arrendatario', 'Administrador']
                 }
 
             }).state('arrendatarioCreate', {
@@ -63,7 +72,13 @@
                         templateUrl: basePath + '/update/arrendatario.update.html',
                         controller: 'arrendatarioPutCtrl'
                     }
+                },
+                
+                data: {
+                    requireLogin: true,
+                    roles: ['Arrendatario', 'Administrador']
                 }
+                
             }).state('arrendatarioDelete', {
                 url: '/delete/{arrendatarioId:int}',
                 parent: 'arrendatarios',
@@ -75,6 +90,10 @@
                         templateUrl: basePath + '/delete/arrendatario.delete.html',
                         controller: 'arrendatarioDeleteCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Arrendatario', 'Administrador']
                 }
             });
         }]);

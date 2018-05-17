@@ -13,6 +13,10 @@
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'signup.html'
+                    },
+                    
+                    data: {
+                        requireLogin: false
                     }
                 }
             });

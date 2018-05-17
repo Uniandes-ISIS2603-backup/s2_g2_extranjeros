@@ -14,8 +14,12 @@
                     </p>
                 </div>
                 
-                <div class="pull-right form-group col-md-2">
+                <div class="pull-right form-group col-md-2" style="text-align: right;">
                     <a class="btn btn-link btn-sm" ui-sref= "cuentaBancariaUpdate({cuentaBancariaId: currentCuentaBanco.id})"> <span class="glyphicon glyphicon-edit"> </span></a>
+                    
+                    <a class="btn btn-link btn-sm" ui-sref= "cuentaBancariaDelete({cuentaBancariaId: currentCuentaBanco.id})">
+                        <button id="confirm-delete" class="btn btn-danger"><span class="glyphicon glyphicon-trash"> </span></button> 
+                    </a>
                 </div>
             </div>
         </div>
