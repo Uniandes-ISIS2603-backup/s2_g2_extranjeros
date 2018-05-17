@@ -60,7 +60,19 @@
                         controller: 'viviendaUpdateCtrl'
                     }
                 }
-            }) .state('viviendasCreate',
+            }).state('viviendaDelete', {
+                url: '/delete/{viviendaId:int}',
+                parent: 'viviendas',
+                param: {
+                    viviendaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/viviendas.delete.html',
+                        controller: 'viviendaDeleteCtrl'
+                    }
+                }
+            }).state('viviendasCreate',
             { url: '/create',
                 parent: 'viviendas',
                 views: {
