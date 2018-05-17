@@ -1,6 +1,6 @@
-(function (ng){
-    var mod= ng.module("estudianteModule");
-    mod.constant("estudianteContext","api/estudiante");
+(function (ng) {
+    var mod = ng.module("estudianteModule");
+    mod.constant("estudianteContext", "api/estudiante");
     mod.controller('estudianteDeleteCtrl', ['$scope', '$http', 'estudianteContext', '$state',
         /**
          * @ngdoc controller
@@ -17,8 +17,8 @@
          * @param {Object} $state Dependencia injectada en la que se recibe el 
          * estado actual de la navegación definida en el módulo.
          */
-        function ($scope, $http,estudianteContext, $state){
-            var idEstudiante=$state.params.estudianteId;
+        function ($scope, $http, estudianteContext, $state) {
+            var idEstudiante = $state.params.estudianteId;
             /**
              * @ngdoc function
              * @name deleteLugarDeInteres
@@ -27,11 +27,11 @@
              * Esta función utiliza el protocolo HTTP para eliminar un lugar de interes.
              * @param {String} id El ID del lugar de interes a eliminar.
              */
-            $scope.deleteEstudiante=function(){
-                $http.delete(estudianteContext+'/'+idEstudiante,{}).then(function(response){
+            $scope.deleteEstudiante = function () {
+                $http.delete(estudianteContext + '/' + idEstudiante, {}).then(function (response) {
                     $state.go('estudianteList', {estudianteId: response.data.id}, {reload: true});
                 });
-        };
-    }
+            };
+        }
     ]);
 })(window.angular);

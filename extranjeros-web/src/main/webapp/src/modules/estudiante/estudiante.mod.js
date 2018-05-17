@@ -4,31 +4,39 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    
+
     var mod = ng.module("estudianteModule", ['ui.router']);
-    
+
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            
+
             var basePath = 'src/modules/estudiante/';
-            
+
             $urlRouterProvider.otherwise("/estudianteList");
-            
+
             $stateProvider.state('estudiante', {
                 url: '/estudiante',
-                 views: {
+                views: {
                     'mainView': {
                         templateUrl: basePath + 'estudiante.html',
                         controller: 'estudianteCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
-                
+
             }).state('estudianteList', {
                 url: '/list',
                 parent: 'estudiante',
                 views: {
                     'listView': {
                         templateUrl: basePath + 'estudiante.list.html'
+                    }
+                }
+            }).state('estudianteIngresar', {
+                url: '/signEstudiante',
+                parent: 'estudiante',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'loginEstudiante.html'
                     }
                 }
             }).state('estudianteUpdate', {
@@ -39,7 +47,7 @@
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/nuevo/estudiante.new.html',
+                        templateUrl: basePath + '/update/estudiante.update.html',
                         controller: 'estudianteUpdateCtrl'
                     }
                 }
@@ -51,19 +59,19 @@
                         templateUrl: basePath + '/nuevo/estudiante.new.html',
                         controller: 'estudiantePostCtrl'
                     }
-             }
-             }).state('estudianteDelete', {
+                }
+            }).state('estudianteDelete', {
                 url: '/delete/{estudianteId:int}',
                 parent: 'estudiante',
                 param: {
-                   estudianteId: null
+                    estudianteId: null
                 },
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/delete/estudiante.delete.html',
                         controller: 'estudianteDeleteCtrl'
                     }
-                }  
+                }
             }).state('estudianteDetail', {
                 url: '/{estudianteId:int}/detail',
                 parent: 'estudiante',
@@ -80,8 +88,8 @@
                 }
 
             });
-            
-    }
+
+        }
     ]);
 })(window.angular);
 

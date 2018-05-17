@@ -6,25 +6,25 @@ and open the template in the editor.
 -->
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
-            <h2><strong>Estudiante</strong></h2>
-            <table class="table table-hover table-bordered" style="text-align: center">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Cedula</th>
-                    <th>Usuario</th>
-                </tr>
-                <tr ng-repeat="estudiante in estudianteRecords">
-                    <td><a ui-sref="estudianteDetail({estudianteId: estudiante.id})">{{estudiante.id}}</a></td>
-                    <td> {{estudiante.nombre}}</td>
-                    <td>{{estudiante.cedula}}</td>
-                    <td>{{estudiante.usuario}}</td>
-                </tr>
-            </table>
-             <div class="row" style="text-align: center">
-                <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <a class="btn btn-info" ui-sref="estudianteCreate"><span class="glyphicon glyphicon-plus-sign"></span>Agregar Estudiante</a>
-                </div>
-            </div>
-           
+    <h2><strong>Estudiante</strong></h2>
+    <table class="table table-hover table-bordered" style="text-align: center">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cedula</th>
+            <th>Usuario</th>
+        </tr>
+        <tr ng-repeat="estudiante in estudianteRecords">
+            <td><a ui-sref="estudianteDetail({estudianteId: estudiante.id})">{{estudiante.id}}</a></td>
+            <td> {{estudiante.nombre}}</td>
+            <td>{{estudiante.cedula}}</td>
+            <td>{{estudiante.usuario}}</td>
+        </tr>
+    </table>
+    <div class="row" style="text-align: center">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="estudianteCreate"><span class="glyphicon glyphicon-plus-sign"></span>Agregar Estudiante</a>
+        </div>
+    </div>
+
 </div>
