@@ -18,10 +18,10 @@
                         
                         <br>
 
-                        <div class="alert alert-info alert-dismissible" ng-repeat ="alert in alerts" type="{{alert.type}}" close="closeAlert()">
+                        <div class="alert alert-info alert-dismissible" ng-if="alerts.length >0" close="closeAlert()">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
                             <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;">  <strong>Hey!</strong> </span>
-                            <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;"> {{alert.msg}}  </span> 
+                            <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;"> {{alerts[alerts.length - 1].msg}}  </span> 
                         </div>
                         
                         <hr>  

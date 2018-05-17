@@ -7,6 +7,12 @@
     </div>
 
 
+    <div class="alert alert-info alert-dismissible" ng-if="alerts.length > 0" close="closeAlert()" style="width: 60%; margin: auto; margin-bottom: 2em;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+        <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;">  <strong>Hey!</strong> </span>
+        <span style="font-family: 'Roboto', sans-serif; color: navy; font-size: 1.3em;"> {{alerts[alerts.length - 1].msg}}  </span> 
+    </div>
+    
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>
@@ -36,10 +42,10 @@
 
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
-            
+
             <div class="col-md-1"> </div>
             <label for="arrendatarioCorreo" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Correo </strong> </label>
-            
+
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
                     <input id="arrendatarioCorreo" required ng-model="data.correo" type="text" class="form-control" placeholder="Correo electrónico" aria-describedby="basic-addon2">
@@ -53,7 +59,7 @@
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>
             <label for="arrendatarioCelular" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Celular </strong> </label>
-            
+
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
                     <input id="arrendatarioCelular" required ng-model="data.celular" type="number" class="form-control" placeholder="3223457906" aria-describedby="basic-addon10">
@@ -76,7 +82,7 @@
             </div>
         </div>
     </div>
-    
+
     <move-lists ng-if="edit" selected="selectedItems" available="availableItems"></move-lists>
 
 
