@@ -9,17 +9,17 @@
             <div class="col-md-3">
                 <dl> 
                     <dt class="bold">Cedula</dt>
-                        <dd>{{currentEstudiante.cedula}}</dd>
-                    
+                    <dd>{{currentEstudiante.cedula}}</dd>
+
                     <dt class="bold">Usuario</dt>
                     <dd>{{currentEstudiante.usuario}}</dd>
                 </dl>
             </div>
-            
+
         </div>
         <div id="{{$index}}-actions" class="row">
-                        <a class="btn btn-default btn-sm" ui-sref="estudianteUpdate({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-edit"></span></a>
-                        <a class="btn btn-danger btn-sm" ui-sref="estudianteDelete({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-trash"></span></a>
+            <a class="btn btn-default btn-sm" ui-sref="estudianteUpdate({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-edit"></span></a>
+            <a class="btn btn-danger btn-sm" ui-sref="estudianteDelete({estudianteId: currentEstudiante.id})"><span class="glyphicon glyphicon-trash"></span></a>
         </div>
     </div>
 </div>

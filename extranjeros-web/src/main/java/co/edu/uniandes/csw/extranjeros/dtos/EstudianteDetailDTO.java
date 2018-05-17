@@ -116,13 +116,13 @@ public class EstudianteDetailDTO extends EstudianteDTO {
                 }
             }
         }
-        
-        if (eventosInvitado!=null){
-        if (eventosInvitado.size() > 0) {
-            for (int i = 0; i < getEventosInvitado().size(); i++) {
-                entity.agregarEventoInvitado(eventosInvitado.get(i).toEntity());
+
+        if (eventosInvitado != null) {
+            if (eventosInvitado.size() > 0) {
+                for (int i = 0; i < getEventosInvitado().size(); i++) {
+                    entity.agregarEventoInvitado(eventosInvitado.get(i).toEntity());
+                }
             }
-        }
         }
         return entity;
     }

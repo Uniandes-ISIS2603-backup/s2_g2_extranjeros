@@ -2,8 +2,8 @@
     var mod = ng.module("estudianteModule");
     mod.constant("estudianteContext", "api/estudiante");
     mod.constant("universidadesContext", "api/universidades");
-    mod.constant("providenciaContext","api/providencia");
-    mod.controller('estudianteUpdateCtrl', ['$scope', '$http', 'estudianteContext', '$state', '$rootScope','universidadesContext','providenciaContext',
+    mod.constant("providenciaContext", "api/providencia");
+    mod.controller('estudianteUpdateCtrl', ['$scope', '$http', 'estudianteContext', '$state', '$rootScope', 'universidadesContext', 'providenciaContext',
         /**
          * @ngdoc controller
          * @name universidades.controller:universidadUpdateCtrl
@@ -21,15 +21,15 @@
          * @param {Object} $filter Dependencia injectada para hacer filtros sobre
          * arreglos.
          */
-        function ($scope, $http, estudianteContext, $state, $rootScope,universidadesContext, providenciaContext) {
+        function ($scope, $http, estudianteContext, $state, $rootScope, universidadesContext, providenciaContext) {
             $rootScope.edit = false;
-            $scope.universidadesRecords=[];
-            $scope.providenciaRecords=[];
+            $scope.universidadesRecords = [];
+            $scope.providenciaRecords = [];
             $scope.data = {};
             $http.get(universidadesContext).then(function (response) {
                 $scope.universidadesRecords = response.data;
             });
-            
+
             $http.get(providenciaContext).then(function (response) {
                 $scope.providenciaRecords = response.data;
             });
@@ -37,14 +37,14 @@
             $scope.selectedItems = [];
 
             $scope.availableItems = [];
-            
-            
+
+
 
             var idEstudiante = $state.params.estudianteId;
 
             //Consulto la universidad a editar.
             $http.get(estudianteContext + '/' + idEstudiante).then(function (response) {
-                var estudiante= response.data;
+                var estudiante = response.data;
                 $scope.data.nombre = estudiante.nombre;
                 $scope.data.usuario = estudiante.usuario;
                 $scope.data.clave = estudiante.clave;
@@ -52,10 +52,10 @@
                 $scope.data.cedula = estudiante.cedula;
                 $scope.data.edad = estudiante.edad;
                 $scope.data.celular = estudiante.celular;
-                
+
             });
-            
-            
+
+
 
             /**
              * @ngdoc function

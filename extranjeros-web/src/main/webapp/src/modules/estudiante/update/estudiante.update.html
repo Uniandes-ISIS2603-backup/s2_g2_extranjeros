@@ -43,19 +43,6 @@ and open the template in the editor.
         </div>
     </div>
 
-    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
-        <div class="form-group col-md-12">
-            <div class="col-md-1"> </div>
-            <label for="estudianteCedula" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Cédula </strong> </label>
-
-            <div class="col-md-7" style="margin: auto; align-content: center;">
-                <div class="input-group">
-                    <input id="estudianteCedula" required ng-model="data.cedula"  class="form-control" placeholder="Cedula" aria-describedby="basic-addon7">
-                    <span class="input-group-addon" id="basic-addon7"></span>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
@@ -112,22 +99,7 @@ and open the template in the editor.
             </div>
         </div>
     </div>
-
-    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
-        <div class="form-group col-md-12">
-            <div class="col-md-1"> </div>
-
-            <div class="form-group">
-                <label for="sel1" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Providencia:</label>
-                <div class="col-md-7" style="margin: auto; align-content: center;">
-                    <select class="form-control" id="sel1" >
-                        <option ng-repeat="providencia in providenciaRecords" value="{{providencia.id}}" ng-model="providencia">{{providencia.pais}}, {{providencia.region}}</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>
@@ -158,9 +130,10 @@ and open the template in the editor.
         <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createEstudiante()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
             Guardar cambios
         </button>
-        <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="estudianteIngresar" >
+        <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="estudianteList" >
             Cancel   
         </button>
     </div>
     <div class="form-group col-sm-4"> </div>
 </div>
+
