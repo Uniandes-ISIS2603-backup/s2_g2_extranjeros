@@ -19,7 +19,8 @@
         'providenciaModule',
         'signUpModule',
         'loginModule',
-        'checklist-model'
+        'checklist-model',
+        'succesPostArrendatarioModule'
         
     ]);
     // Resuelve problemas de las promesas
@@ -33,7 +34,7 @@
 
                 var $state = trans.router.stateService;
                 var requireLogin = $state.current.data.requireLogin;
-                var roles = $state.current.data.roles
+                var roles = $state.current.data.roles;
                 
                
                 /**
@@ -63,7 +64,9 @@
                  * @returns {Boolean} Verdadero si el usuario tiene permisos.
                  */
                 $rootScope.hasPermissions = function () {
-                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
+                    console.log($rootScope.isAuthenticated());
+                    console.log(roles.indexOf(sessionStorage.getItem("rol")) > -1);
+                    if (($rootScope.isAuthenticated()) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
                         return true;
                     } else {
                         return false;
