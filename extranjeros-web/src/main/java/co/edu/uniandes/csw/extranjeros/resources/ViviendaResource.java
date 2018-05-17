@@ -101,16 +101,20 @@ public class ViviendaResource {
      */
     @GET
     public List<ViviendaDetailDTO> getViviendas(@QueryParam("filter") String filter){
-        String[] filtros=filter.split(",");
         List<ViviendaEntity> lista=logic.getViviendas();
+        if(filter!=null)
+        {
+            String[] filtros=filter.split(",");
+        
         if(filtros[0].equals("1:1"))
             lista=logic.viviendaOrdenadaPorPrecios(lista);
         if(filtros[1].startsWith("2:"))
-            lista=logic.viviendaPorPrecio(lista, Double.parseDouble(filtros[1].substring(2,filtros[1].length()-1)));
+            lista=logic.viviendaPorPrecio(lista, Double.parseDouble(filtros[1].substring(2,filtros[1].length())));
         if(filtros[2].startsWith("3:"))
             lista=logic.viviendaPorServicios(lista, filtros[2].replace("3:", ""));
         if(filtros[3].startsWith("4:"))
-            lista=logic.viviendaPorUniversidad(lista,Long.valueOf(filtros[3]).longValue());
+            lista=logic.viviendaPorUniversidad(lista,Long.valueOf(filtros[3].replace("4:", "")).longValue());
+        }
         return listEntity2DTO(lista);
     }
     

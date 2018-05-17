@@ -261,11 +261,10 @@ public class ViviendaLogic {
    *Retorna una lsta de viviendas ordeandas por precios
    */
      public List<ViviendaEntity> viviendaOrdenadaPorPrecios(List<ViviendaEntity> actual){
-         ArrayList<ViviendaEntity> retornar = new ArrayList<>();
          if(actual.isEmpty())
-           actual= persistence.findAll();
+           actual= getViviendas();
         bubbleSort(actual);
-       return retornar;         
+       return actual;         
      }
     
    /*
@@ -305,7 +304,7 @@ public class ViviendaLogic {
             swapped = false;
             for (j = 0; j < n - i - 1; j++) 
             {
-                if (arr.get(i).getPrecioMensual() > arr.get(j+1).getPrecioMensual()) 
+                if (arr.get(j).getPrecioMensual() > arr.get(j+1).getPrecioMensual()) 
                 {
                    
                     temp = arr.get(j);
