@@ -139,7 +139,7 @@ public class ArrendatarioViviendasResource {
      */
     @POST
     @Path("{viviendaId: \\d+}")
-    public ViviendaDetailDTO addViviendas(@PathParam("arrendatarioID") Long arrendID, @PathParam("viviendaId") Long viviendaId) {
+    public ViviendaDetailDTO addViviendas(@PathParam("arrendatarioID") Long arrendID, @PathParam("viviendaId") Long viviendaId) throws BusinessLogicException {
         return new ViviendaDetailDTO(logic.createViviendaIn(arrendID, viviendaId));
     }
 

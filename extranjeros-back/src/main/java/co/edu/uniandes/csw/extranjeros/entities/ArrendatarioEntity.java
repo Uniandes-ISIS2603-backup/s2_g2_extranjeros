@@ -33,7 +33,7 @@ public class ArrendatarioEntity extends BaseEntity implements Serializable {
     private List <FacturaEntity> facturas;
     
     @PodamExclude
-    @OneToMany(mappedBy = "arrendatariosPropietarios")
+    @OneToMany(mappedBy = "arrendatariosPropietarios", cascade = CascadeType.PERSIST)
     private List <ViviendaEntity> viviendas;
     
     @PodamExclude

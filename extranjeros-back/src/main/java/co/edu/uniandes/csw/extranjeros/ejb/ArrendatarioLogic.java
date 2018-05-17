@@ -333,15 +333,15 @@ public class ArrendatarioLogic {
      * @return Instancia de ViviendaEntity que fue asociada a un Arrendatario.
      * @throws co.edu.uniandes.csw.extranjeros.exceptions.BusinessLogicException
      */
-    public ViviendaEntity createViviendaIn (Long arrendatarioId, Long viviendaId) {
+    public ViviendaEntity createViviendaIn (Long arrendatarioId, Long viviendaId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de asociar una vivienda al arrendatario con id = {0}", arrendatarioId);
         
         ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
-        ViviendaEntity viviendaEntity = vivLogic.find(viviendaId);
+        ViviendaEntity viviendaEntity = new ViviendaEntity();
+        viviendaEntity.setId(viviendaId);
         arrendEntity.getViviendas().add(viviendaEntity);
-        persistence.update(arrendEntity);
         
-        return getViviendas(arrendatarioId).get(0);
+        return getVivienda(arrendatarioId, viviendaId);
     }
     
     /**
