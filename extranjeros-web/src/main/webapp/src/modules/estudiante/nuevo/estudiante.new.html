@@ -8,10 +8,13 @@ and open the template in the editor.
 
     <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
         <img class="img-circle" src="http://cdn3.wpbeginner.com/wp-content/uploads/2017/08/socialnetworkbuddypress.png" alt="Join Us" style="max-height: 25em; max-width: 30em; border-radius: 50%; align-content: center;"/>
-      
+
     </div>
-    
-    
+
+    <div class="form-group row" style="text-align: center; margin: auto; padding-top: 1.5em;">    
+        <hr>     
+    </div>
+
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
 
@@ -20,7 +23,7 @@ and open the template in the editor.
 
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
-                    <input id="estudianteNombre" required ng-model="data.nombre" type="text" class="form-control" placeholder="Maria Camila" aria-describedby="basic-addon3">
+                    <input id="estudianteNombre" required ng-model="data.nombre" type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon3">
                     <span class="input-group-addon" id="basic-addon3"></span>
                 </div>
             </div>
@@ -33,7 +36,7 @@ and open the template in the editor.
             <label for="estudianteEdad" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Edad </strong> </label>
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
-                    <input id="estudianteEdad" required ng-model="data.edad" type="number" class="form-control" placeholder="18" aria-describedby="basic-addon6">
+                    <input id="estudianteEdad" required ng-model="data.edad" class="form-control" placeholder="Edad" aria-describedby="basic-addon6">
                     <span class="input-group-addon" id="basic-addon6"></span>
                 </div>
             </div>
@@ -47,7 +50,7 @@ and open the template in the editor.
 
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
-                    <input id="estudianteCedula" required ng-model="data.cedula" type="number" class="form-control" placeholder="1010240037" aria-describedby="basic-addon7">
+                    <input id="estudianteCedula" required ng-model="data.cedula"  class="form-control" placeholder="Cedula" aria-describedby="basic-addon7">
                     <span class="input-group-addon" id="basic-addon7"></span>
                 </div>
             </div>
@@ -60,13 +63,13 @@ and open the template in the editor.
             <label for="estudianteUsuario" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Usuario </strong> </label>
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
-                    <input id="estudianteUsuario" required ng-model="data.usuario" type="text" class="form-control" placeholder="macamila123" aria-describedby="basic-addon4">
+                    <input id="estudianteUsuario" required ng-model="data.usuario" type="text" class="form-control" placeholder="Usuario" aria-describedby="basic-addon4">
                     <span class="input-group-addon" id="basic-addon4"></span>
                 </div>
             </div>            
         </div>
     </div>
-    
+
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">        
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>
@@ -83,13 +86,13 @@ and open the template in the editor.
 
     <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
         <div class="form-group col-md-12">
-            
+
             <div class="col-md-1"> </div>
             <label for="estudianteCorreo" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Correo </strong> </label>
-            
+
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
-                    <input id="estudianteCorreo" required ng-model="data.correo" type="text" class="form-control" placeholder="Correo electrónico" aria-describedby="basic-addon2">
+                    <input id="estudianteCorreo" required ng-model="data.correo"  class="form-control" placeholder="Correo electrónico" aria-describedby="basic-addon2">
                     <span class="input-group-addon" id="basic-addon2"></span>
                 </div>
             </div>
@@ -100,32 +103,67 @@ and open the template in the editor.
         <div class="form-group col-md-12">
             <div class="col-md-1"> </div>
             <label for="estudianteCelular" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;"> <strong> Celular </strong> </label>
-            
+
             <div class="col-md-7" style="margin: auto; align-content: center;">
                 <div class="input-group">
-                    <input id="estudianteCelular" required ng-model="data.celular" type="number" class="form-control" placeholder="3223457906" aria-describedby="basic-addon10">
+                    <input id="estudianteCelular" required ng-model="data.celular"  class="form-control" placeholder="Celular" aria-describedby="basic-addon10">
                     <span class="input-group-addon" id="basic-addon10"></span>
                 </div>
             </div>
         </div>
     </div>
 
-    
-    <move-lists ng-if="edit" selected="selectedItems" available="availableItems"></move-lists>
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+        <div class="col-md-1"> </div>
 
-
-    <div class="form-group row" style="margin: auto;">
-        <div class="form-group col-sm-4"> </div>
-        <div class="form-group col-sm-4" style="text-align: center;">
-
-            <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createEstudiante()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
-                Guardar cambios
-            </button>
-            <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="providenciaList" >
-                Cancel   
-            </button>
+        <div class="form-group">
+            <label for="sel1" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Providencia:</label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <select class="form-control" id="sel1">
+                    
+                    <option ng-repeat="providencia in providenciaRecords" value="providencia">{{providencia.pais}}, {{providencia.region}}</option>
+                </select>
+            </div>
         </div>
-        <div class="form-group col-sm-4"> </div>
+        </div>
     </div>
-    
+
+    <div class="form-group row" style="margin: auto; text-align: center; height: 2em;">
+        <div class="form-group col-md-12">
+        <div class="col-md-1"> </div>
+
+        <div class="form-group">
+            <label for="sel2" class="col-md-2" style="padding-top: 0.2em; font-family: 'Roboto', sans-serif; font-size: 1.2em; text-align: center;">Universidad:</label>
+            <div class="col-md-7" style="margin: auto; align-content: center;">
+                <select class="form-control" id="sel2" > 
+                    <option>Ninguna</option>
+                    <option ng-repeat="universidad in universidadesRecords" value="universidad">{{universidad.nombre}}</option>    
+                </select>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<move-lists ng-if="edit" selected="selectedItems" available="availableItems"></move-lists>
+
+
+<div class="form-group row" style="margin: auto;">
+    <div class="form-group col-sm-4"> </div>
+    <div class="form-group col-sm-4" style="text-align: center;">
+
+        <button type="button" id="create" ng-disabled="data.clave === undefined" ng-disabled="data.usuario === undefined" ng-click="createEstudiante()" value="Save" class="btn btn-info"  style="font-family: 'Roboto', cursive; font-size: 15px;">
+            Guardar cambios
+        </button>
+        <button type="button" style="font-family: 'Roboto', cursive; font-size: 15px;"  class="btn btn-danger" ui-sref="estudianteList" >
+            Cancel   
+        </button>
+    </div>
+    <div class="form-group col-sm-4"> </div>
+</div>
+
 </div>
