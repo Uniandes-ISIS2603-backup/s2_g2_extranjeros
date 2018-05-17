@@ -209,13 +209,14 @@ public class ViviendaLogic {
    /*
    *´retorna la lista de viviendas asociadas a una universidad
    */
-   public List<ViviendaEntity> viviendaPorUniversidad(Long idUniversidad){
+   public List<ViviendaEntity> viviendaPorUniversidad(List<ViviendaEntity> actual, Long idUniversidad){
        ArrayList<ViviendaEntity> retornar = new ArrayList<>();
        UniversidadEntity universidad = universidadPersistence.find(idUniversidad);
-       List<ViviendaEntity> iterar = getViviendas();
-       for (int i = 0; i < iterar.size(); i++) {
-           if(iterar.get(i).getUniversidades().contains(universidad)){
-               retornar.add(iterar.get(i));
+       if(actual.isEmpty())
+           actual= persistence.findAll();
+       for (int i = 0; i < actual.size(); i++) {
+           if(actual.get(i).getUniversidades().contains(universidad)){
+               retornar.add(actual.get(i));
            }
        }
        return retornar;
@@ -224,12 +225,13 @@ public class ViviendaLogic {
    /*
    *Retorna una lsta de viviendas debajo de un precio dado
    */
-     public List<ViviendaEntity> viviendaPorPrecio(Double precio){
+     public List<ViviendaEntity> viviendaPorPrecio(List<ViviendaEntity> actual, Double precio){
        ArrayList<ViviendaEntity> retornar = new ArrayList<>();
-       List<ViviendaEntity> iterar = getViviendas();
-       for (int i = 0; i < iterar.size(); i++) {
-           if(iterar.get(i).getPrecioMensual()<=precio){
-               retornar.add(iterar.get(i));
+       if(actual.isEmpty())
+           actual= persistence.findAll();
+       for (int i = 0; i < actual.size(); i++) {
+           if(actual.get(i).getPrecioMensual()<=precio){
+               retornar.add(actual.get(i));
            }
        }
        return retornar;
@@ -238,16 +240,34 @@ public class ViviendaLogic {
    /*
    *Retorna una lsta de viviendas que tengas una lista de servicios 
    */
-     public List<ViviendaEntity> viviendaPorServicios(ArrayList<ServicioEntity> servicios){
+     public List<ViviendaEntity> viviendaPorServicios(List<ViviendaEntity> actual, String serv){
+       String[] s=serv.split(";");
+       ArrayList<ServicioEntity> servicios=new ArrayList<>();
+       for(int i=0; i<s.length;i++)
+       {
+           servicios.add(servicioPersistence.find(Long.valueOf(s[i]).longValue()));
+       }
        ArrayList<ViviendaEntity> retornar = new ArrayList<>();
-       List<ViviendaEntity> iterar = getViviendas();
-       for (int i = 0; i < iterar.size(); i++) {
-           if(iterar.get(i).getServiciosFijos().containsAll(servicios)){
-               retornar.add(iterar.get(i));
+       if(actual.isEmpty())
+           actual= persistence.findAll();
+       for (int i = 0; i < actual.size(); i++) {
+           if(actual.get(i).getServiciosFijos().containsAll(servicios)){
+               retornar.add(actual.get(i));
            }
        }
        return retornar;
    }
+  /*
+   *Retorna una lsta de viviendas ordeandas por precios
+   */
+     public List<ViviendaEntity> viviendaOrdenadaPorPrecios(List<ViviendaEntity> actual){
+         ArrayList<ViviendaEntity> retornar = new ArrayList<>();
+         if(actual.isEmpty())
+           actual= persistence.findAll();
+        bubbleSort(actual);
+       return retornar;         
+     }
+    
    /*
      *Metodo que calcula la distancia en metros entre dos puntos
      */
@@ -273,5 +293,30 @@ public class ViviendaLogic {
     public List<LugaresDeInteresEntity> getFacturas(Long userID){
         LOGGER.log(Level.INFO, "Inicia el proceso para consultar las Facturas asociadas al Arrendatario con id = {0}", userID);
         return getVivienda(userID).getLugaresDeInteres();
+    }
+    static void bubbleSort(List<ViviendaEntity> arr)
+    {
+        int n=arr.size();
+        int i, j;
+        ViviendaEntity temp;
+        boolean swapped;
+        for (i = 0; i < n - 1; i++) 
+        {
+            swapped = false;
+            for (j = 0; j < n - i - 1; j++) 
+            {
+                if (arr.get(i).getPrecioMensual() > arr.get(j+1).getPrecioMensual()) 
+                {
+                   
+                    temp = arr.get(j);
+                    arr.set(j, arr.get(j+1));
+                    arr.set(j+1, temp);
+                    swapped = true;
+                }
+            }
+
+            if (swapped == false)
+                break;
+        }
     }
 }
