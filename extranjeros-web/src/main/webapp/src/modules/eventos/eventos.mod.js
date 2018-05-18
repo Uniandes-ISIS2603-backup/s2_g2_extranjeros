@@ -73,6 +73,18 @@
                         controller: 'eventoDeleteCtrl'
                     }
                 }
+            }).state('eventoFilter', {
+                url: '/buscar',
+                parent: 'eventos',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
+                    'buscarView':{
+                        templateUrl: basePath + 'eventos.buscar.html',
+                        controller: 'eventoFilterCtrl'
+                    }
+                }
             }).state('eventoUpdate', {
                 url: '/update/{eventoId:int}',
                 parent: 'eventos',
