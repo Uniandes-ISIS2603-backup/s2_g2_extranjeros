@@ -30,6 +30,9 @@
                     'listView': {
                         templateUrl: basePath + 'providencia.list.html'
                     }
+                },
+                data: {
+                    requireLogin: false
                 }
                 
             }).state('providenciaCreate', {
@@ -40,7 +43,11 @@
                         templateUrl: basePath + '/nuevo/providencia.nuevo.html',
                         controller: 'providenciaPostCtrl'
                     }
-             }
+             },
+             data: {
+                    requireLogin: true,
+                    roles: ['Admin']
+                }
             }).state('providenciaDelete', {
                 url: '/delete/{providenciaId:int}',
                 parent: 'providencia',
@@ -52,6 +59,10 @@
                         templateUrl: basePath + '/delete/providencia.delete.html',
                         controller: 'providenciaDeleteCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Admin']
                 }
             }).state('providenciaUpdate', {
                 url: '/update/{providenciaId:int}',
@@ -64,6 +75,10 @@
                         templateUrl: basePath + '/nuevo/providencia.nuevo.html',
                         controller: 'providenciaUpdateCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Admin']
                 }
             }).state('providenciaDetail', {
                 url: '/{providenciaId:int}/detail',
