@@ -339,9 +339,7 @@ public class ArrendatarioLogic {
         ArrendatarioEntity arrendEntity = getArrendatario(arrendatarioId);
         ViviendaEntity viviendaEntity = new ViviendaEntity();
         viviendaEntity.setId(viviendaId);
-        viviendaEntity = vivLogic.find(viviendaEntity.getId());
         arrendEntity.getViviendas().add(viviendaEntity);
-        persistence.update(arrendEntity);
         
         return getVivienda(arrendatarioId, viviendaId);
     }

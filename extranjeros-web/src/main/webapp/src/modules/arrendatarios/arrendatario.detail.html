@@ -1,88 +1,106 @@
-<div class="container-fluid"> 
-    <section id= "Informacion">
-        <div class="panel panel-primary">
-            <div class= "panel-heading" style="text-align: center;font-size: 22px;font-style: italic; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Información de mi cuenta </div>
-            <div class="panel-body">
-                <div class="row">
+<div class="imageDetailArr">
+    <div class="container-fluid"> 
+        <div class="form-group row">
 
-                    <div class="col-md-6"> 
-                        <img class="img-rounded" ng-src="{{currentArrendatario.imagen}}"/> 
-                    </div>
+            <div class="col-md-3"> 
+                <br>
+                <div class="panel panel-default" style="height: 87%;">
+                    <div class="panel-body">
 
-                    <div class="col-md-6"> 
-                        <div class="Ostias-chaval">
-                            <div class="col-md-6">
-                                <p class = "intro-lead-inDos">  Nombre </p> 
-                                <p class = "dd"> {{currentArrendatario.nombre}} </p>  
-                                <hr>
 
-                                <p class = "intro-lead-inDos"> Usuario </p>
-                                <p class = "dd">{{currentArrendatario.usuario}}</p>
-                                <hr>
-                            </div>
-                            <div class="col-md-6">
+                        <div class="row"> <br> </div>
 
-                                <p class = "intro-lead-inDos"> Teléfono </p>
-                                <p class = "dd">{{currentArrendatario.celular}}</p>
-                                <hr>
+                        <div class="row">
+                            <a ui-sref="arrendatarioDetail({arrendatarioId: currentUsuarioLog.id})">
+                                <p style="text-align: center; font-family: 'Roboto', sans-serif; font-size: 2em;"> Información de mi cuenta </p> 
+                            </a> 
+                            <hr>
+                        </div>
 
-                                <p class = "intro-lead-inDos"> Cédula </p>
-                                <p class = "dd">{{currentArrendatario.cedula}}</p>
-                                <hr>   
-                            </div>
-                        </div> 
-                    </div>
-                </div>
+                        <div class="row"> <br> </div>
 
-                <div class="form-group row">
-                    
-                    <div class="form-group col-md-7"> </div>
-                    <div class="pull-right form-group col-md-5" style="text-align: right;"> 
-                        <a class="btn btn-primary btn-sm" ui-sref="cuentasBancariasList({arrendatarioId: currentArrendatario.id})"><span class="glyphicon glyphicon-usd"></span> Cuentas Banciarias </a>
-                        <a class="btn btn-info btn-sm" ui-sref= "arrendatarioUpdate({arrendatarioId: currentArrendatario.id})"> <span class="glyphicon glyphicon-edit"> </span></a>
-                        <a class="btn btn-danger btn-sm" ui-sref="arrendatarioDelete({arrendatarioId: currentArrendatario.id})"><span class="glyphicon glyphicon-trash"></span> </a>
+                        <div class="row">
+                            <a ui-sref="misViviendas({arrendatarioId: currentUsuarioLog.id})">
+                                <p style="text-align: center; font-family: 'Roboto', sans-serif; font-size: 2em;"> Mis Viviendas </p> 
+                            </a>
+                            <hr>
+                        </div>
+
+                        <div class="row"> <br> </div>
+
+                        <div class="row">
+                            <a ui-sref="misFacturas({arrendatarioId: currentUsuarioLog.id})">
+                                <p style="text-align: center; font-family: 'Roboto', sans-serif; font-size: 2em;"> Mis Facturas </p> 
+                            </a>
+                            <hr>
+                        </div>
+
+                        <div class="row"> <br> </div>
 
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-12" style="text-align: center; margin: auto;">
-                        <div ui-view="childrenView"></div>
+
+            <div class="col-md-9"> 
+                <br>
+                <div class="panel panel-primary" style="min-height: 40%;">
+                    <div class= "panel-heading" style="text-align: center;font-size: 22px;font-style: italic; font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;"> Información de mi cuenta </div>
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-6"> 
+                                <img class="img-rounded" ng-src="{{currentArrendatario.imagen}}"/> 
+                            </div>
+
+                            <div class="col-md-6"> 
+                                <div class="Ostias-chaval">
+                                    <div class="col-md-6">
+                                        <p class = "intro-lead-inDos">  Nombre </p> 
+                                        <p class = "dd"> {{currentArrendatario.nombre}} </p>  
+                                        <hr>
+
+                                        <p class = "intro-lead-inDos"> Usuario </p>
+                                        <p class = "dd">{{currentArrendatario.usuario}}</p>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <p class = "intro-lead-inDos"> Teléfono </p>
+                                        <p class = "dd">{{currentArrendatario.celular}}</p>
+                                        <hr>
+
+                                        <p class = "intro-lead-inDos"> Cédula </p>
+                                        <p class = "dd">{{currentArrendatario.cedula}}</p>
+                                        <hr>   
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="form-group col-md-7"> </div>
+                            <div class="pull-right form-group col-md-5" style="text-align: right;"> 
+                                <a class="btn btn-primary btn-lg" ui-sref="cuentasBancariasList({arrendatarioId: currentArrendatario.id})"><span class="glyphicon glyphicon-usd"></span> Cuentas Banciarias </a>
+                                <a class="btn btn-info btn-lg" ui-sref= "arrendatarioUpdate({arrendatarioId: currentArrendatario.id})"> <span class="glyphicon glyphicon-edit"> </span></a>
+                                <a class="btn btn-danger  btn-lg" ui-sref="arrendatarioDelete({arrendatarioId: currentArrendatario.id})"><span class="glyphicon glyphicon-trash"></span> </a>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center; margin: auto;">
+                                <div ui-view="childrenView"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    
-    
-    
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"> Confirmación </h4>
-        </div>
-        <div class="modal-body">
-          <p>¿Está seguro que desea eliminar su cuenta? </p>
-        </div>
-        <div class="modal-footer">
-          
-                
-                    <a ui-sref="arrendatarioDelete({arrendatarioId: currentArrendatario.id})">
-                        <button  class="btn btn-danger" ng-click="deleteArrendatario()">
-                            Eliminar
-                        </button>
-                    </a> 
-            
-                    <a ui-sref="arrendatariosList" class="btn btn-info" data-dismiss="modal">Cancelar</a> 
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
+    </div>  
+
+
+
 
 </div>
