@@ -89,14 +89,8 @@ public class EstudianteLogic {
     public EstudianteEntity updateEstudiante(EstudianteEntity newUser) throws BusinessLogicException {
 
         LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
-
-        if (universidadPersistence.find(newUser.getUniversidad().getId()) != null) {
-            Long id = newUser.getUniversidad().getId();
-            newUser.setUniversidad(universidadPersistence.find(id));
-        } else {
-            throw new BusinessLogicException("No existe la universidad seleccionada");
-        }
-
+        
+      
         if (newUser.getClave().length() < 8 && newUser.getClave().length() > 15) {
             throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15");
         }

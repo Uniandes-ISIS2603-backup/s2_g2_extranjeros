@@ -30,6 +30,10 @@
                     'listView': {
                         templateUrl: basePath + 'estudiante.list.html'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['Admin']
                 }
             }).state('estudianteIngresar', {
                 url: '/signEstudiante',
@@ -38,6 +42,9 @@
                     'listView': {
                         templateUrl: basePath + 'loginEstudiante.html'
                     }
+                },
+                data: {
+                    requireLogin: false
                 }
             }).state('estudianteUpdate', {
                 url: '/update/{estudianteId:int}',
@@ -50,6 +57,10 @@
                         templateUrl: basePath + '/update/estudiante.update.html',
                         controller: 'estudianteUpdateCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['estudiante', 'Admin']
                 }
             }).state('estudianteCreate', {
                 url: '/create',
@@ -59,6 +70,9 @@
                         templateUrl: basePath + '/nuevo/estudiante.new.html',
                         controller: 'estudiantePostCtrl'
                     }
+                },
+                data: {
+                    requireLogin: false,
                 }
             }).state('estudianteDelete', {
                 url: '/delete/{estudianteId:int}',
@@ -71,6 +85,10 @@
                         templateUrl: basePath + '/delete/estudiante.delete.html',
                         controller: 'estudianteDeleteCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['estudiante', 'Admin']
                 }
             }).state('estudianteDetail', {
                 url: '/{estudianteId:int}/detail',
@@ -86,8 +104,9 @@
                         controllerAs: 'ctrl'
                     }
                 },
-                data:{
-                    
+                data: {
+                    requireLogin: true,
+                    roles: ['estudiante', 'Admin']
                 }
 
             });
