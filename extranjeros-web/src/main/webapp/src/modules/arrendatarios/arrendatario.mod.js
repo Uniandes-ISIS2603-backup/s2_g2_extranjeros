@@ -47,6 +47,40 @@
                         roles: ['Arrendatario', 'Admin']
                 }
 
+            }).state('misViviendas', {
+                url: '/{arrendatarioId:int}/detail/misViviendas',
+                parent: 'arrendatarios',
+                param: {
+                    arrendatarioId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'Img/misViviendas.html',
+                    }
+                },
+                
+                data: {
+                        requireLogin: true,
+                        roles: ['Arrendatario', 'Admin']
+                }
+
+            }).state('misFacturas', {
+                url: '/{arrendatarioId:int}/detail/misFacturas',
+                parent: 'arrendatarios',
+                param: {
+                    arrendatarioId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + 'Img/misFacturas.html'
+                    }
+                },
+                
+                data: {
+                        requireLogin: true,
+                        roles: ['Arrendatario', 'Admin']
+                }
+
             }).state('arrendatarioCreate', {
                 url: '/create',
                 parent: 'arrendatarios',
@@ -58,7 +92,7 @@
                 },
                                 
                 data: {
-                        requireLogin: false,
+                        requireLogin: false
                 }
                 
             }).state('arrendatarioUpdate', {
