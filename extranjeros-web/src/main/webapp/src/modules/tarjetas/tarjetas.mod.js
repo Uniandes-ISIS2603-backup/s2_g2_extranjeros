@@ -22,6 +22,8 @@
                         controller: 'tarjetaCtrl',
                         controllerAs: 'ctrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('tarjetasList', {
                 url: '/list',
@@ -30,6 +32,8 @@
                     'listView': {
                         templateUrl: basePath + 'tarjetas.list.html'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('tarjetaUpdate', {
                 url: '/update/{tarjetaId:int}',
@@ -45,6 +49,8 @@
                         templateUrl: basePath + 'tarjetas.update.html',
                         controller: 'tarjetaUpdateCtrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('tarjetaDetail', {
                 url: '/{tarjetaId:int}/detail',
@@ -59,6 +65,8 @@
                         controller: 'tarjetaDetailCtrl',
                         controllerAs: 'ctrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
 
             }).state('tarjetaCreate', {
@@ -72,6 +80,8 @@
                         templateUrl: basePath + 'tarjetas.new.html',
                         controller: 'tarjetaNewCtrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('tarjetaDelete', {
                 url: '/delete/{tarjetaId:int}',
@@ -87,6 +97,8 @@
                         templateUrl: basePath + 'tarjetas.delete.html',
                         controller: 'tarjetaDeleteCtrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
 });
         }
