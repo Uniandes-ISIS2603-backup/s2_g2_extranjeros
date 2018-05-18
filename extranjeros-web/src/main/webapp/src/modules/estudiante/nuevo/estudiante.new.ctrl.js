@@ -24,7 +24,6 @@
             });
             
             $scope.createEstudiante = function () {
-                console.log($scope.data);
                 $http.post(estudianteContext, $scope.data).then(function (response) {
                     $state.go('estudianteIngresar', {estudianteId: response.data.id}, {reload: true});
                 });

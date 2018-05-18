@@ -85,6 +85,9 @@
                         controller: 'estudianteDetailCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                data:{
+                    
                 }
 
             });

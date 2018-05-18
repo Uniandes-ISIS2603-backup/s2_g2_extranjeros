@@ -300,4 +300,6 @@ public class EstudianteEntity extends BaseEntity {
     public void setEdad(Integer edad) {
         this.edad = edad;
     }
+    
+    
 }

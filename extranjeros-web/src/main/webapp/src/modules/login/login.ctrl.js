@@ -1,15 +1,19 @@
 (function (ng) {
     var mod = ng.module("loginModule");
     mod.constant("arrendatarioContext", "api/arrendatarios");
-    mod.controller('loginCtrl', ['$scope', '$http', '$state', '$rootScope', 'arrendatarioContext',
+    mod.constant("estudianteContext","api/estudiante");
+    mod.controller('loginCtrl', ['$scope', '$http', '$state', '$rootScope', 'arrendatarioContext', 'estudianteContext',
 
-        function ($scope, $http, $state, $rootScope, arrendatarioContext) {
+        function ($scope, $http, $state, $rootScope, arrendatarioContext, estudianteContext) {
 
 
             $scope.user = {};
 
             $http.get(arrendatarioContext).then(function (response) {
                 $scope.arrendatarioRecords = response.data;
+            });
+            $http.get(estudianteContext).then(function (response) {
+                $scope.estudianteRecords = response.data;
             });
 
             $scope.autenticar = function () {
@@ -22,6 +26,15 @@
                         if (($scope.arrendatarioRecords[item].correo === $scope.data.UserName || $scope.arrendatarioRecords[item].usuario === $scope.data.UserName) && $scope.arrendatarioRecords[item].clave === $scope.data.Contrasenia) {
                             flag = true;
                             $scope.user = $scope.arrendatarioRecords[item];
+                            $state.go('viviendasList', {}, {reload: true});
+                            break;
+                        }
+                    }
+                    for (var item in $scope.estudianteRecords) {
+
+                        if (($scope.estudianteRecords[item].correo === $scope.data.UserName || $scope.estudianteRecords[item].usuario === $scope.data.UserName) && $scope.estudianteRecords[item].clave === $scope.data.Contrasenia) {
+                            flag = true;
+                            $scope.user = $scope.estudianteRecords[item];
                             $state.go('viviendasList', {}, {reload: true});
                             break;
                         }

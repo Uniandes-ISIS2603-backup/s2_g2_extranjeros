@@ -3,16 +3,29 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="thumb">
-                    <h1 class="bold">{{currentEstudiante.nombre}}</h1>
+                    <h1 class="bold">¡Hola {{currentEstudiante.nombre}}!</h1>
                 </div>
             </div>
-            <div class="col-md-3">
+        </div>
+        <div class="row">
+            
+            <div class="col-md-4">
+               <img class="img-rounded" ng-src="{{currentEstudiante.imagen}}"/> 
+            </div>
+            
+            <div class="col-md-4">
                 <dl> 
-                    <dt class="bold">Cedula</dt>
+                    <dt class="bold">Tu numero de cedula:</dt>
                     <dd>{{currentEstudiante.cedula}}</dd>
 
-                    <dt class="bold">Usuario</dt>
+                    <dt class="bold">Tu usuario:</dt>
                     <dd>{{currentEstudiante.usuario}}</dd>
+                    
+                    <dt class="bold">Tu universidad:</dt>
+                    <dd>{{currentEstudiante.universidad.nombre}}</dd>
+                    
+                     <dt class="bold">Tu origen:</dt>
+                    <dd>{{currentEstudiante.providencia.pais}},{{currentEstudiante.providencia.region}} </dd>
                 </dl>
             </div>
 
