@@ -22,7 +22,7 @@
                         controller: 'viviendaCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                }, data: {requireLogin:false}
             }).state('viviendas', {
                 
                 url: '/viviendas',
@@ -32,7 +32,7 @@
                         controller: 'viviendaCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                },data: {requireLogin:false}
             }).state('viviendaDetail', {
                 url: '/{viviendaId:int}/detail',
                 parent: 'viviendas',
@@ -46,7 +46,7 @@
                         controller: 'viviendaDetailCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                },data: {requireLogin:false}
 
             }).state('viviendaUpdate', {
                 url: '/update/{viviendaId:int}',
@@ -59,7 +59,7 @@
                         templateUrl: basePath + '/viviendas.new.html',
                         controller: 'viviendaUpdateCtrl'
                     }
-                }
+                },data: {requireLogin:true, roles:['Arrendatario']}
             }).state('viviendaDelete', {
                 url: '/delete/{viviendaId:int}',
                 parent: 'viviendas',
@@ -68,10 +68,10 @@
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/delete/viviendas.delete.html',
+                        templateUrl: basePath + '/viviendas.delete.html',
                         controller: 'viviendaDeleteCtrl'
                     }
-                }
+                },data: {requireLogin:true, roles:['Arrendatario']}
             }).state('viviendasCreate',
             { url: '/create',
                 parent: 'viviendas',
@@ -80,7 +80,7 @@
                         templateUrl: basePath + 'viviendas.new.html',
                         controller: 'viviendaNewCtrl'
                     }
-        }});
+        },data: {requireLogin:true, roles:['Arrendatario']}});
     }]);
     
 })(window.angular);
