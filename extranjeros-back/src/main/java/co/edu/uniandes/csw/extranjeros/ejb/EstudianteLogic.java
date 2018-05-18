@@ -88,9 +88,11 @@ public class EstudianteLogic {
      */
     public EstudianteEntity updateEstudiante(EstudianteEntity newUser) throws BusinessLogicException {
 
+        
         LOGGER.info("Inicia el proceso de actualizar un estudiante en la plataforma");
         
-      
+        newUser.setProvidencia(estudiantePersistence.find(newUser.getId()).getProvidencia());
+        newUser.setUniversidad(estudiantePersistence.find(newUser.getId()).getUniversidad());      
         if (newUser.getClave().length() < 8 && newUser.getClave().length() > 15) {
             throw new BusinessLogicException("Su contraseña debe tener más de 8 caracteres y menos de 15");
         }
