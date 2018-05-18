@@ -22,15 +22,22 @@
                         controller: 'eventoCtrl',
                         controllerAs: 'ctrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('eventoCreate', {
                 url: '/create',
                 parent: 'eventos',
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'eventos.new.html',
                         controller: 'eventoNewCtrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('eventosList', {
                 url: '/list',
@@ -39,6 +46,8 @@
                     'listView': {
                         templateUrl: basePath + 'eventos.list.html'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('eventoDetail', {
                 url: '/{eventoId:int}/detail',
@@ -53,6 +62,8 @@
                         controller: 'eventoDetailCtrl',
                         controllerAs: 'ctrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
 
             }).state('eventoDelete', {
@@ -62,10 +73,29 @@
                     eventoId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'eventos.delete.html',
                         controller: 'eventoDeleteCtrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
+                }
+            }).state('eventoFilter', {
+                url: '/buscar',
+                parent: 'eventos',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
+                    'buscarView':{
+                        templateUrl: basePath + 'eventos.buscar.html',
+                        controller: 'eventoFilterCtrl'
+                    }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             }).state('eventoUpdate', {
                 url: '/update/{eventoId:int}',
@@ -74,10 +104,15 @@
                     eventoId: null
                 },
                 views: {
+                    'listView': {
+                        templateUrl: basePath + 'eventos.list.html'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'eventos.update.html',
                         controller: 'eventoUpdateCtrl'
                     }
+                }, data: {
+                    requireLogin: true, roles:['Admin', 'Arrendatario']
                 }
             });
         }

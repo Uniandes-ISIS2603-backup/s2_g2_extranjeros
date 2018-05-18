@@ -6,34 +6,24 @@
 (function (ng) {
     var mod = ng.module("tarjetaModule");
     mod.constant("tarjetaContext", "api/tarjetas");
-    mod.constant("estudianteContext", "api/estudiante");
-    mod.controller('tarjetaNewCtrl', ['$scope', '$http', 'tarjetaContext', '$state', '$rootScope','estudianteContext',
-        function ($scope, $http, tarjetaContext, $state, $rootScope, estudianteContext) {
+    mod.controller('tarjetaNewCtrl', ['$scope', '$http', 'tarjetaContext', '$state', '$rootScope',
+        function ($scope, $http, tarjetaContext, $state, $rootScope) {
             
-            $scope.createTarjeta = function () {
+        $scope.createTarjeta = function () {
                 $http.post(tarjetaContext, {
                     numero: $scope.numero,
                     banco: $scope.banco,
                     fechaCaducidad: $scope.fechaCaducidad
                 }).then(function (response) {
                     //Author created successfully
-                    
-                    $state.go('estudianteList', {tarjetaId: response.data.id}, {reload: true});
-                   
-                }).catch(function (data) {
-                    // Handle error here
-                    alert(data.data);
-                });
-            };
-           
-            $scope.createEstudiante = function () {
-                $http.put(estudianteContext + "/" + $scope.actual.id, $scope.data).then(function (response) {
-                    
-                    $state.go('estudianteList', {estudianteId: response.data.id}, {reload: true});
-                });
-            };
-        }
-    ]);
+                    $state.go('tarjetasList', {tarjetaId: response.data.id}, {reload: true});
+                    }).catch(function(data) {
+                // Handle error here
+                alert(data.data);
+        });
+                };
+            }
+        ]);
 }
 )(window.angular);
 

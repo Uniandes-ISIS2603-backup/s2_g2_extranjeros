@@ -5,14 +5,12 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nombre evento</th>
                         <th>Fecha evento</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="evento in eventosRecords">
-                        <td>{{evento.id}}</td>
                         <td>{{evento.nombreEvento}}</td>
                         <td>{{evento.fechaEvento}}</td>
                         <td><a class="btn btn-info btn-xs" ui-sref="eventoDetail({eventoId: evento.id})"> Ver detalle</a></td>

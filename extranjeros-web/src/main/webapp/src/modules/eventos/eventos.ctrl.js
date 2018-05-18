@@ -6,11 +6,20 @@
 (function (ng) {
     var mod = ng.module("eventoModule");
     mod.constant("eventoContext", "api/eventos");
-    mod.controller('eventoCtrl', ['$scope', '$http', 'eventoContext',
-        function ($scope, $http, eventoContext) {
-            $http.get(eventoContext).then(function (response) {
-                $scope.eventosRecords = response.data;
-            });
+    mod.controller('eventoCtrl', ['$scope', '$http', 'eventoContext','$rootScope',
+        function ($scope, $http, eventoContext, $rootScope) {
+            if($rootScope.filtrado === "undefined")
+            {
+                $rootScope.filtrado = false;
+            }
+            if($rootScope.filtrado !== true )
+            {
+               $http.get(eventoContext).then(function (response) {
+                $rootScope.eventosRecords = response.data;
+            }); 
+            }
+            $rootScope.filtrado = false;
+            
         }
     ]);
 }
