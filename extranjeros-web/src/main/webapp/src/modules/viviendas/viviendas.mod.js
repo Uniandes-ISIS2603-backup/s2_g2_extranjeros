@@ -68,7 +68,7 @@
                 },
                 views: {
                     'detailView': {
-                        templateUrl: basePath + '/delete/viviendas.delete.html',
+                        templateUrl: basePath + '/viviendas.delete.html',
                         controller: 'viviendaDeleteCtrl'
                     }
                 }
