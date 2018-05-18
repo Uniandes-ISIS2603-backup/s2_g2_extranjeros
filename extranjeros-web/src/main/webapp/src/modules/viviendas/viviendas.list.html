@@ -18,6 +18,14 @@ and open the template in the editor.
                 </div>
                 <div class="form-group row">
                         <div class="form-group col-md-8">
+                             <label for="facturaIN" class="col-md-8">Universidad: </label> <br> 
+                             <label ng-repeat="u in data3"class="col-sm-12">
+                                <input type="checkbox" data-checklist-model="data.universidades" data-checklist-value="servicio" ng-click="cambiarFiltro4(u.id)"> {{u.nombre}}
+                             </label><br>
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <div class="form-group col-md-8">
                             <label for="facturaIN" class="col-md-8">Precio inferior a: </label> <br> 
                                 <input type="number" name="precio" min="0" max="100000" ng-model="text2.value" ng-change="cambiarFiltro2()">
                         </div>
@@ -25,11 +33,6 @@ and open the template in the editor.
                 <div class="form-group row">
                         <div class="form-group col-md-8">
                                 <input type="checkbox" name="dividir" value=true ng-click="cambiarFiltro1()" class="col-sm-1"/>Ordenar por precio<br>
-                        </div>
-                </div>
-                <div class="form-group row">
-                        <div class="form-group col-md-8">
-                                <input class="col-md-8" type="text" name="precio" ng-model="text.value" ng-change="cambiarFiltro4()">
                         </div>
                 </div>
             <div class="form-group row">

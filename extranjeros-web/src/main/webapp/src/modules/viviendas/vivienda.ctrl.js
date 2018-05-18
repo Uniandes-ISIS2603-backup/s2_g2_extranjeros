@@ -9,9 +9,13 @@
     mod.controller('viviendaCtrl', ['$scope', '$http', 'viviendaContext',
         function ($scope, $http, viviendaContext) {
             $scope.data2={};
+            $scope.data3={};
             //Consulto los servicios de la vivienda a facturar.
             $http.get("api/servicios").then(function (response) {
                 $scope.data2= response.data;
+            });
+            $http.get("api/universidades").then(function (response) {
+                $scope.data3= response.data;
             });
             $http.get(viviendaContext
                     ).then(function (response) {
@@ -39,9 +43,8 @@
                $scope.filtro2=":"+temp;
                $scope.filtroNuevo();
            };
-           $scope.cambiarFiltro4=function()
+           $scope.cambiarFiltro4=function(temp)
            {
-               temp=$scope.text.value;
                $scope.filtro4=":"+temp;
                $scope.filtroNuevo();
            };
