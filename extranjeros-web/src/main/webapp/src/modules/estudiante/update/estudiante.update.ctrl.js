@@ -52,6 +52,7 @@
                 $scope.data.cedula = estudiante.cedula;
                 $scope.data.edad = estudiante.edad;
                 $scope.data.celular = estudiante.celular;
+                $scope.data.imagen = estudiante.imagen;
 
             });
 

@@ -33,7 +33,7 @@ public class EstudianteDTO  {
     private int edad;
     private Long id;
     
-    private String imagen;
+    private String imagen = "https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png";
     
     /**
    
@@ -109,6 +109,11 @@ public class EstudianteDTO  {
         return nombre;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
+    
     public Boolean getEstadoArrendamiento() {
         return estadoArrendamiento;
     }

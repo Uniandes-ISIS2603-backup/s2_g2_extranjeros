@@ -8,7 +8,6 @@
     mod.constant("tarjetaContext", "api/tarjetas");
     mod.controller('tarjetaNewCtrl', ['$scope', '$http', 'tarjetaContext', '$state', '$rootScope',
         function ($scope, $http, tarjetaContext, $state, $rootScope) {
-            
         $scope.createTarjeta = function () {
                 $http.post(tarjetaContext, {
                     numero: $scope.numero,
@@ -16,7 +15,7 @@
                     fechaCaducidad: $scope.fechaCaducidad
                 }).then(function (response) {
                     //Author created successfully
-                    $state.go('tarjetasList', {tarjetaId: response.data.id}, {reload: true});
+                    $state.go('estudianteDetail({estudianteId: estudiante.id})', {tarjetaId: response.data.id}, {reload: true});
                     }).catch(function(data) {
                 // Handle error here
                 alert(data.data);
