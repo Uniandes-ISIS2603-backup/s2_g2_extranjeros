@@ -65,12 +65,13 @@
                     </ul>
                     <div id="{{$index}}-actions">
                         <a class="btn btn-default btn-sm" ui-sref="viviendaUpdate({viviendaId: currentVivienda.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a class="btn btn-danger btn-sm" ui-sref="viviendaDelete({viviendaId: currentVivienda.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                   
                     </div>
                     <ul class='nav nav-tabs'>
                         <li class='active'><a ui-sref='facturasList({viviendaId: currentVivienda.id})'>Facturas</a></li>
                          <li class='active'><a ui-sref='valoracionesList({viviendaId: currentVivienda.id})'>Valoraciones</a></li>
-                          <a class="btn btn-danger btn-sm" ui-sref="viviendaDelete({viviendaId currentVivienda.id})"><span class="glyphicon glyphicon-trash"></span></a>
-                    </ul>
+                      </ul>
                   
                      
                 </div>
