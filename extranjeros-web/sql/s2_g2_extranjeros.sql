@@ -1,5 +1,6 @@
 delete from serviciosavivienda;
 delete from serviciosfvivienda;
+delete from universidadvivienda;
 delete from ArrendatarioEntity;
 delete from CuentaBancariaEntity;
 delete from EstudianteEntity;
@@ -35,9 +36,9 @@ insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celula
 insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201687345,'Jose', '1020789654', 'eljose','granjose@hotmail.com','miclave','3128976543', 21);
 insert into EstudianteEntity (id, nombre, cedula, usuario, correo, clave, celular, edad) values (201789373,'Laura', '1020654287','lauris1','lau2018@gmail.com','laulau','3208362548',20);
 
-insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLon, ubicacionLat, privado, capacidad) values (146841989,'Rumba deliciosa','Fiesta','10/10/2018 11:11',10,'4.669595','-74.059950', 1,200);
-insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLon, ubicacionLat, privado, capacidad) values (416841989,'Mueve el bote','Fiesta','06/08/2018 15:00',10,'4.669595','-74.059950', 1,200);
-insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLon, ubicacionLat, privado, capacidad) values (336841989,'Scooby Do papa','Fiesta','01/07/2018 07:30',10,'4.669595','-74.059950', 1,200);
+insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLat, ubicacionLon, privado, capacidad) values (146841989,'Rumba deliciosa','Fiesta','10/10/2018 11:11',10,'4.669595','-74.059950', 1,200);
+insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLat, ubicacionLon, privado, capacidad) values (416841989,'Mueve el bote','Fiesta','06/08/2018 15:00',10,'4.669595','-74.059950', 1,200);
+insert into EventoEntity (id, nombreEvento, tipoEvento, fechaEvento, distanciaVivienda, ubicacionLat, ubicacionLon, privado, capacidad) values (336841989,'Scooby Do papa','Fiesta','01/07/2018 07:30',10,'4.669595','-74.059950', 1,200);
 
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (1234,350.200,100.500,'cobros mensuales',0,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
 insert into FacturaEntity (id,costoFijo,costosAdicionales,formaDePago,dividirCuentaServicios,fechaEntrada,fechaSalida,iva) values (2,350.200,150.500,'cargo único',0,{ts '2017-07-04 15:52:25'},{ts '2018-07-04 15:52:25'},0.890);
@@ -75,7 +76,7 @@ insert into ValoracionEntity (id, valoracion,comentario) values (3126,2,'terribl
 
 insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento, precioMensual) values (11,'carrera 12 7609',14,1,4,'4.643998','-74.071531','A',54637);
 insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento,precioMensual) values (8,'calle 189 2345',89,1,22,'4.668502','-74.058386','C',69000);
-insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento,precioMensual) values (9,'calle 21 1307',3,1,3,'4.652762','-74.056516','B',1234256);
+insert into ViviendaEntity (id,direccion,capacidad,disponible,inquilinos,latitud,longitud,tipoAlojamiento,precioMensual) values (9,'calle 21 1307',3,1,3,'4.652762','-74.056516','B',12);
 
 insert into serviciosavivienda(viviendaentity_id, serviciosadicionales_id) values(11,434235);
 insert into serviciosavivienda(viviendaentity_id, serviciosadicionales_id) values(11,101);
@@ -83,3 +84,7 @@ insert into serviciosavivienda(viviendaentity_id, serviciosadicionales_id) value
 insert into serviciosfvivienda(viviendaentity_id, serviciosfijos_id)values(11,100);
 insert into serviciosfvivienda(viviendaentity_id, serviciosfijos_id)values(11,687);
 insert into serviciosfvivienda(viviendaentity_id, serviciosfijos_id)values(11,233422);
+
+insert into universidadvivienda(viviendaEntity_id, universidades_id)values(11,100);
+insert into universidadvivienda(viviendaEntity_id, universidades_id)values(11,101);
+insert into universidadvivienda(viviendaEntity_id, universidades_id)values(9,102);

@@ -21,6 +21,7 @@
            $scope.filtro2="";
            $scope.filtro3="";
            $scope.filtro4="";
+           $scope.filtro5="";
            $scope.cambiarFiltro1=function(){
                $scope.filtro1=":1";
                $scope.filtroNuevo();
@@ -34,7 +35,7 @@
               $scope.filtroNuevo();
            };
            $scope.cambiarFiltro2=function(){
-               temp=parseFloat($scope.slider.value);
+               temp=parseInt($scope.text2.value);
                $scope.filtro2=":"+temp;
                $scope.filtroNuevo();
            };
@@ -44,8 +45,17 @@
                $scope.filtro4=":"+temp;
                $scope.filtroNuevo();
            };
+           $scope.cambiarFiltro51=function()
+           {
+               $scope.filtro5=$scope.fecha1.value;
+           };
+           $scope.cambiarFiltro52=function()
+           {
+               $scope.filtro5=$scope.filtro5+";"+$scope.fecha2.value;
+               $scope.filtroNuevo();
+           };
            $scope.filtroNuevo = function () {
-                $http.get(viviendaContext+'?filter=1'+$scope.filtro1+',2'+$scope.filtro2+',3'+$scope.filtro3+',4'+$scope.filtro4).then(function (response) {
+                $http.get(viviendaContext+'?filter=1'+$scope.filtro1+',2'+$scope.filtro2+',3'+$scope.filtro3+',4'+$scope.filtro4+',5').then(function (response) {
                     $scope.viviendasRecords = response.data;
                 });
             } 

@@ -113,7 +113,9 @@ public class ViviendaResource {
         if(filtros[2].startsWith("3:"))
             lista=logic.viviendaPorServicios(lista, filtros[2].replace("3:", ""));
         if(filtros[3].startsWith("4:"))
-            lista=logic.viviendaPorUniversidad(lista,Long.valueOf(filtros[3].replace("4:", "")).longValue());
+            lista=logic.viviendaPorUniversidad(lista,Long.valueOf(filtros[3].replace("4:", "").replace("%20", " ")).longValue());
+        if(filtros[4].startsWith("5:"))
+            lista=logic.viviendasPorFecha(filtros[4].replace("5:", ""));
         }
         return listEntity2DTO(lista);
     }

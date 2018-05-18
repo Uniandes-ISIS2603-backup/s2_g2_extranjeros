@@ -18,7 +18,8 @@ and open the template in the editor.
                 </div>
                 <div class="form-group row">
                         <div class="form-group col-md-8">
-                                <input type="range" name="precio" min="0" max="100000" ng-model="slider.value" ng-change="cambiarFiltro2()">
+                            <label for="facturaIN" class="col-md-8">Precio inferior a: </label> <br> 
+                                <input type="number" name="precio" min="0" max="100000" ng-model="text2.value" ng-change="cambiarFiltro2()">
                         </div>
                 </div>
                 <div class="form-group row">
@@ -28,9 +29,23 @@ and open the template in the editor.
                 </div>
                 <div class="form-group row">
                         <div class="form-group col-md-8">
-                                <input type="text" name="precio" ng-model="text.value" ng-change="cambiarFiltro4()">
+                                <input class="col-md-8" type="text" name="precio" ng-model="text.value" ng-change="cambiarFiltro4()">
                         </div>
                 </div>
+            <div class="form-group row">
+                        <div class="form-group col-md-8">
+                            <label for="facturaIN" class="col-md-8">Fecha de entrada:<br></label>
+
+                            <input class="col-md-8" type="date" name="bday" ng-model="fecha1.value" ng-change="cambiarFiltro51()"/><br><br>
+                        </div>
+            </div>
+            <div class="form-group row">
+                        <div class="form-group col-md-8">
+                            <label for="facturaIN" class="col-md-8">Fecha de salida:<br></label>
+
+                            <input class="col-md-8" type="date" name="bday" ng-model="fecha2.value" ng-change="cambiarFiltro52()"/><br><br>
+                        </div>
+                    </div>
         </div>
         <div class="col-md-9">
             <table class="table table-hover">
